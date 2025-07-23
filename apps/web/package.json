@@ -1,0 +1,10 @@
+{
+  "name": "@drop.az/web",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "dev": "echo Web app starting...",
+    "build": "echo Building web...",
+    "lint": "echo Linting web..."
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "name": "@drop.az/api",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "dev": "echo API starting...",
+    "build": "echo Building API...",
+    "lint": "echo Linting API..."
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "lib": ["ES2022"],
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true,
+    "noEmit": true,
+    "incremental": true,
+    "composite": true,
+    "declaration": true,
+    "declarationMap": true,
+    "baseUrl": ".",
+    "paths": {
+      "@drop.az/ui": ["./packages/ui/src"],
+      "@drop.az/ui/*": ["./packages/ui/src/*"],
+      "@drop.az/types": ["./packages/types/src"],
+      "@drop.az/types/*": ["./packages/types/src/*"],
+      "@drop.az/config": ["./packages/config/src"],
+      "@drop.az/config/*": ["./packages/config/src/*"]
+    }
+  },
+  "exclude": ["node_modules"],
+  "include": ["**/*.ts", "**/*.tsx"]
+}
