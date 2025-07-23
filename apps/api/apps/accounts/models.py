@@ -44,10 +44,11 @@ class User(AbstractUser):
     email = models.EmailField(blank=True, null=True)
     phone = PhoneNumberField(unique=True, region='AZ')
     
-    # User info
+    # User info - DÜZƏLTMƏ BURADA
     first_name = models.CharField(max_length=50)
+    last_name = models.CharField(max_length=50, blank=True)  # ← ƏLAVƏ EDİLDİ
     gender = models.CharField(max_length=1, choices=GENDER_CHOICES)
-    birth_date = models.DateField()
+    birth_date = models.DateField(null=True, blank=True)  # ← null=True, blank=True əlavə edildi
     
     # OTP fields
     is_phone_verified = models.BooleanField(default=False)
@@ -60,7 +61,7 @@ class User(AbstractUser):
     updated_at = models.DateTimeField(auto_now=True)
     
     USERNAME_FIELD = 'phone'
-    REQUIRED_FIELDS = ['first_name', 'gender', 'birth_date']
+    REQUIRED_FIELDS = ['first_name', 'gender']  # birth_date çıxarıldı
     
     objects = UserManager()
     
@@ -110,6 +111,8 @@ class User(AbstractUser):
     @property
     def age(self):
         """Calculate age from birth date"""
+        if not self.birth_date:  # ← ƏLAVƏ EDİLDİ
+            return None
         today = timezone.now().date()
         return today.year - self.birth_date.year - (
             (today.month, today.day) < (self.birth_date.month, self.birth_date.day)
