@@ -1,0 +1,24 @@
+# apps/api/.gitignore
+venv/
+*.pyc
+__pycache__/
+db.sqlite3
+.env
+.env.local
+.DS_Store
+media/
+staticfiles/
+*.log
+*.pot
+*.mo
+.coverage
+.pytest_cache/
+htmlcov/
+.tox/
+.cache
+.mypy_cache/
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
