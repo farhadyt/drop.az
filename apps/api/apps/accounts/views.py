@@ -70,9 +70,12 @@ def send_otp_view(request):
         
         # TODO: Send SMS OTP here
         # sms_service.send_otp(user.phone, user.otp_code)
+
+        print(f"🔐 OTP Code for {user.phone}: {user.otp_code}")
         
         return Response({
             'message': 'OTP kodu göndərildi',
+            'phone': str(user.phone),
             'otp_code': user.otp_code if settings.DEBUG else None  # Only in DEBUG mode
         }, status=status.HTTP_200_OK)
     
