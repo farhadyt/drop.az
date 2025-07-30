@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+    Əsas Səhifə
+{% endblock %}
+
+{% block content %}
+    <h1>Məhsullarımız</h1>
+    <div class="product-list">
+        {% for product in products %}
+            <div class="product-card">
+                {% if product.image %}
+                    <img src="{{ product.image.url }}" alt="{{ product.name }}">
+                {% else %}
+                    <p>Şəkil yoxdur</p>
+                {% endif %}
+                <h2>{{ product.name }}</h2>
+                <p class="price">{{ product.price }} AZN</p>
+            </div>
+        {% empty %}
+            <p>Hazırda satışda heç bir məhsul yoxdur.</p>
+        {% endfor %}
+    </div>
+{% endblock %}

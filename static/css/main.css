@@ -1,0 +1,105 @@
+/* =================================
+   GLOBAL STYLES & VARIABLES
+   ================================= */
+:root {
+    --header-scrolled-bg: rgba(255, 255, 255, 0.85); /* Yarı-şəffaf ağ */
+    --text-dark: #181818; /* Əsas mətn rəngi */
+    --accent-color: #007bff; /* Kliklənəbilən elementlər üçün rəng */
+    --header-height: 80px; /* Header-in hündürlüyü */
+}
+
+body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-image: linear-gradient(to bottom, #eef2f3, #ffffff);
+    color: var(--text-dark);
+    /* Header "fixed" olduğu üçün məzmunun onun arxasında qalmaması üçün boşluq */
+    padding-top: var(--header-height);
+}
+
+main {
+    padding: 20px 5%;
+}
+
+/* =================================
+   FLOATING HEADER STYLES
+   ================================= */
+.floating-header {
+    position: fixed; /* Səhifə ilə birlikdə yuxarıda sabit qalır */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: var(--header-height);
+    display: flex;
+    align-items: center;
+    padding: 0 5%;
+    background: transparent; /* Başlanğıcda tam şəffaf */
+    z-index: 1000;
+    transition: background-color 0.4s ease, box-shadow 0.4s ease; /* Yumşaq keçid effekti */
+}
+
+/* Scroll zamanı header-ə bu class əlavə olunacaq */
+.floating-header.scrolled {
+    background: var(--header-scrolled-bg);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    /* Bəzi brauzerlərdə "frosted glass" effekti üçün */
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+}
+
+.main-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.logo-link {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    text-decoration: none;
+}
+
+.user-actions {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+}
+
+.icon-link svg {
+    width: 26px;
+    height: 26px;
+    stroke: var(--text-dark);
+    transition: stroke 0.3s ease;
+}
+
+.icon-link:hover svg {
+    stroke: var(--accent-color);
+}
+
+
+/* =================================
+   PRODUCT CARD STYLES
+   ================================= */
+/* Bu kodlar əvvəlki kimi qalır, sadəcə yoxlamaq üçün */
+.product-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+.product-card {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 16px;
+    text-align: center;
+    width: 250px;
+    background-color: #ffffff;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    transition: transform 0.2s;
+}
+.product-card:hover { transform: translateY(-5px); }
+.product-card img { max-width: 100%; height: 200px; object-fit: cover; border-radius: 4px; margin-bottom: 15px; }
+.product-card h2 { font-size: 1.1em; color: #333; }
+.product-card .price { font-size: 1.2em; font-weight: bold; color: var(--accent-color); margin-top: 10px; }
