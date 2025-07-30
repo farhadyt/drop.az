@@ -1,16 +1,27 @@
 // =================================
+// ENHANCED JAVASCRIPT FOR DROP.AZ PLATFORM
+// Ultra Fast, Performance Optimized & Clean
+// =================================
+
+// =================================
 // GLOBAL VARIABLES & CONSTANTS
 // =================================
 let cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
 let favoriteItems = JSON.parse(localStorage.getItem('favoriteItems')) || [];
 let recentSearches = JSON.parse(localStorage.getItem('recentSearches')) || [];
-let isSearchOpen = false;
-let isMobileMenuOpen = false;
-let isAccountMenuOpen = false;
+
+// State management
+const appState = {
+    isSearchOpen: false,
+    isMobileMenuOpen: false,
+    isAccountMenuOpen: false,
+    isLoading: true
+};
 
 // Performance optimizations
 let scrollTimeout;
 let resizeTimeout;
+const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
 
 // =================================
 // MAIN APP INITIALIZATION
@@ -18,86 +29,85 @@ let resizeTimeout;
 document.addEventListener('DOMContentLoaded', function() {
     console.log('🚀 drop.az platform initializing...');
     
-    // Initialize loading screen
+    // Initialize all core modules
+    initializeApp();
+    
+    console.log('✅ drop.az platform ready!');
+});
+
+// =================================
+// CORE APP INITIALIZATION
+// =================================
+function initializeApp() {
+    // Initialize loading screen first
     initializeLoadingScreen();
     
-    // Initialize all components
+    // Initialize core components
     initializeHeader();
     initializeMobileMenu();
     initializeSearch();
     initializeCart();
     initializeFavorites();
     initializeAccountMenu();
-    initializeAnimations();
+    initializeScrollEffects();
     initializeBackToTop();
     initializeNewsletter();
     initializeProductInteractions();
     initializeProductFilters();
-    initializeScrollEffects();
     
-    // Update counters on page load
+    // Update UI
     updateCartCounter();
     updateFavoritesCounter();
     updateRecentSearches();
     
-    console.log('✅ drop.az platform initialized successfully!');
-});
-
-// =================================
-// LOADING SCREEN
-// =================================
-function initializeLoadingScreen() {
-    const loadingScreen = document.getElementById('loading-screen');
-    if (loadingScreen) {
-        // Simulated loading time
-        setTimeout(() => {
-            loadingScreen.classList.add('hidden');
-            setTimeout(() => {
-                loadingScreen.remove();
-                // Trigger enter animations
-                document.body.classList.add('loaded');
-            }, 500);
-        }, 1200);
-    }
+    // Initialize performance monitoring
+    initializePerformanceMonitoring();
 }
 
 // =================================
-// HEADER FUNCTIONALITY
+// LOADING SCREEN - FAST
+// =================================
+function initializeLoadingScreen() {
+    const loadingScreen = document.getElementById('loading-screen');
+    if (!loadingScreen) return;
+    
+    // Fast loading simulation
+    setTimeout(() => {
+        loadingScreen.classList.add('hidden');
+        appState.isLoading = false;
+        
+        // Remove from DOM after transition
+        setTimeout(() => {
+            loadingScreen?.remove();
+            document.body.classList.add('loaded');
+        }, 500);
+    }, 800); // Reduced from 1200ms
+}
+
+// =================================
+// HEADER FUNCTIONALITY - OPTIMIZED
 // =================================
 function initializeHeader() {
     const header = document.querySelector('.floating-header');
     if (!header) return;
 
     let lastScrollTop = 0;
-    let isScrolling = false;
+    let ticking = false;
 
     function updateHeader() {
-        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        const scrollTop = window.pageYOffset;
         
         // Add/remove scrolled class
-        if (scrollTop > 50) {
-            header.classList.add('scrolled');
-        } else {
-            header.classList.remove('scrolled');
-        }
-
-        // Optional: Header hide/show on scroll
-        if (scrollTop > lastScrollTop && scrollTop > 200) {
-            // Scrolling down - could hide header
-            // header.style.transform = 'translateY(-100%)';
-        } else {
-            // Scrolling up - show header
-            // header.style.transform = 'translateY(0)';
-        }
-
+        header.classList.toggle('scrolled', scrollTop > 30);
+        
         lastScrollTop = scrollTop;
-        isScrolling = false;
+        ticking = false;
     }
 
     function onScroll() {
-        if (!isScrolling) {
+        if (!ticking) {
             requestAnimationFrame(updateHeader);
-            isScrolling = true;
+            ticking = true;
         }
     }
 
@@ -109,7 +119,7 @@ function initializeHeader() {
 }
 
 // =================================
-// MOBILE MENU FUNCTIONALITY
+// MOBILE MENU - SIMPLIFIED
 // =================================
 function initializeMobileMenu() {
     const mobileToggle = document.querySelector('.mobile-menu-toggle');
@@ -120,47 +130,23 @@ function initializeMobileMenu() {
     if (!mobileToggle || !mobileMenu) return;
 
     function toggleMobileMenu() {
-        isMobileMenuOpen = !isMobileMenuOpen;
+        appState.isMobileMenuOpen = !appState.isMobileMenuOpen;
         
-        if (isMobileMenuOpen) {
-            openMobileMenu();
-        } else {
-            closeMobileMenu();
-        }
-    }
-
-    function openMobileMenu() {
-        mobileMenu.classList.add('active');
-        mobileToggle.classList.add('active');
-        document.body.style.overflow = 'hidden';
-        
-        // Animate menu items
-        const menuItems = mobileMenu.querySelectorAll('.mobile-nav-link');
-        menuItems.forEach((item, index) => {
-            item.style.opacity = '0';
-            item.style.transform = 'translateX(-30px)';
-            
-            setTimeout(() => {
-                item.style.transition = 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)';
-                item.style.opacity = '1';
-                item.style.transform = 'translateX(0)';
-            }, index * 80);
-        });
+        mobileMenu.classList.toggle('active', appState.isMobileMenuOpen);
+        mobileToggle.classList.toggle('active', appState.isMobileMenuOpen);
+        document.body.style.overflow = appState.isMobileMenuOpen ? 'hidden' : '';
     }
 
     function closeMobileMenu() {
+        appState.isMobileMenuOpen = false;
         mobileMenu.classList.remove('active');
         mobileToggle.classList.remove('active');
         document.body.style.overflow = '';
-        isMobileMenuOpen = false;
     }
 
     // Event listeners
     mobileToggle.addEventListener('click', toggleMobileMenu);
-    
-    if (mobileClose) {
-        mobileClose.addEventListener('click', closeMobileMenu);
-    }
+    mobileClose?.addEventListener('click', closeMobileMenu);
 
     // Close menu when clicking on links
     mobileNavLinks.forEach(link => {
@@ -169,40 +155,39 @@ function initializeMobileMenu() {
 
     // Close menu on escape key
     document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && isMobileMenuOpen) {
+        if (e.key === 'Escape' && appState.isMobileMenuOpen) {
             closeMobileMenu();
         }
     });
 
-    // Close menu on window resize
+    // Close menu on window resize (desktop)
     window.addEventListener('resize', () => {
         clearTimeout(resizeTimeout);
         resizeTimeout = setTimeout(() => {
-            if (window.innerWidth > 768 && isMobileMenuOpen) {
+            if (window.innerWidth > 768 && appState.isMobileMenuOpen) {
                 closeMobileMenu();
             }
-        }, 150);
+        }, 100);
     });
 }
 
 // =================================
-// ACCOUNT MENU FUNCTIONALITY
+// ACCOUNT MENU - FAST
 // =================================
 function initializeAccountMenu() {
     const accountToggle = document.querySelector('.account-toggle');
     const accountDropdown = document.querySelector('.account-dropdown');
-    const accountMenu = document.querySelector('.account-menu');
     
     if (!accountToggle || !accountDropdown) return;
 
     function toggleAccountMenu(e) {
         e.stopPropagation();
-        isAccountMenuOpen = !isAccountMenuOpen;
-        accountDropdown.classList.toggle('active', isAccountMenuOpen);
+        appState.isAccountMenuOpen = !appState.isAccountMenuOpen;
+        accountDropdown.classList.toggle('active', appState.isAccountMenuOpen);
     }
 
     function closeAccountMenu() {
-        isAccountMenuOpen = false;
+        appState.isAccountMenuOpen = false;
         accountDropdown.classList.remove('active');
     }
 
@@ -211,21 +196,21 @@ function initializeAccountMenu() {
     
     // Close when clicking outside
     document.addEventListener('click', (e) => {
-        if (isAccountMenuOpen && !accountDropdown.contains(e.target)) {
+        if (appState.isAccountMenuOpen && !accountDropdown.contains(e.target)) {
             closeAccountMenu();
         }
     });
 
     // Close on escape
     document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && isAccountMenuOpen) {
+        if (e.key === 'Escape' && appState.isAccountMenuOpen) {
             closeAccountMenu();
         }
     });
 }
 
 // =================================
-// SEARCH FUNCTIONALITY
+// SEARCH FUNCTIONALITY - OPTIMIZED
 // =================================
 function initializeSearch() {
     const searchToggle = document.querySelector('.search-toggle');
@@ -238,27 +223,21 @@ function initializeSearch() {
     if (!searchToggle || !searchOverlay) return;
 
     function openSearch() {
-        isSearchOpen = true;
+        appState.isSearchOpen = true;
         searchOverlay.classList.add('active');
         document.body.style.overflow = 'hidden';
         
-        // Focus on input with delay for animation
-        setTimeout(() => {
-            if (searchInput) {
-                searchInput.focus();
-            }
-        }, 300);
+        // Focus on input with delay
+        setTimeout(() => searchInput?.focus(), 200);
     }
 
     function closeSearch() {
-        isSearchOpen = false;
+        appState.isSearchOpen = false;
         searchOverlay.classList.remove('active');
         document.body.style.overflow = '';
         
         // Clear search input
-        if (searchInput) {
-            searchInput.value = '';
-        }
+        if (searchInput) searchInput.value = '';
     }
 
     function performSearch(query) {
@@ -275,7 +254,7 @@ function initializeSearch() {
         setTimeout(() => {
             const resultCount = Math.floor(Math.random() * 50) + 1;
             showNotification(`"${query}" üçün ${resultCount} nəticə tapıldı!`, 'success');
-        }, 1200);
+        }, 800);
         
         closeSearch();
     }
@@ -297,33 +276,25 @@ function initializeSearch() {
         openSearch();
     });
 
-    if (searchClose) {
-        searchClose.addEventListener('click', closeSearch);
-    }
+    searchClose?.addEventListener('click', closeSearch);
 
     // Close search on overlay click
     searchOverlay.addEventListener('click', (e) => {
-        if (e.target === searchOverlay) {
-            closeSearch();
-        }
+        if (e.target === searchOverlay) closeSearch();
     });
 
     // Search form submission
-    if (searchForm) {
-        searchForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const query = searchInput ? searchInput.value : '';
-            performSearch(query);
-        });
-    }
+    searchForm?.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const query = searchInput?.value || '';
+        performSearch(query);
+    });
 
     // Suggestion tags
     suggestionTags.forEach(tag => {
         tag.addEventListener('click', () => {
             const query = tag.textContent;
-            if (searchInput) {
-                searchInput.value = query;
-            }
+            if (searchInput) searchInput.value = query;
             performSearch(query);
         });
     });
@@ -333,7 +304,6 @@ function initializeSearch() {
         searchInput.addEventListener('input', debounce((e) => {
             const query = e.target.value;
             if (query.length > 2) {
-                // Show search suggestions
                 console.log('Getting suggestions for:', query);
             }
         }, 300));
@@ -348,7 +318,7 @@ function initializeSearch() {
         }
         
         // Close search with Escape
-        if (e.key === 'Escape' && isSearchOpen) {
+        if (e.key === 'Escape' && appState.isSearchOpen) {
             closeSearch();
         }
     });
@@ -370,7 +340,8 @@ function updateRecentSearches() {
         searchItem.className = 'recent-search-item';
         searchItem.textContent = search;
         searchItem.addEventListener('click', () => {
-            document.querySelector('.search-input').value = search;
+            const searchInput = document.querySelector('.search-input');
+            if (searchInput) searchInput.value = search;
             performSearch(search);
         });
         recentContainer.appendChild(searchItem);
@@ -378,7 +349,7 @@ function updateRecentSearches() {
 }
 
 // =================================
-// CART FUNCTIONALITY
+// CART FUNCTIONALITY - EFFICIENT
 // =================================
 function initializeCart() {
     const cartLink = document.querySelector('.cart-link');
@@ -392,14 +363,13 @@ function initializeCart() {
         cartLink.style.transform = 'scale(0.95)';
         setTimeout(() => {
             cartLink.style.transform = 'scale(1)';
-        }, 150);
+        }, 100);
         
         // Show cart
         if (cartItems.length === 0) {
             showNotification('Səbətiniz boşdur', 'info');
         } else {
             showNotification(`Səbətdə ${getTotalCartItems()} məhsul var`, 'success');
-            // Here you would open cart modal or navigate to cart page
         }
     });
 }
@@ -446,14 +416,7 @@ function updateCartCounter() {
     
     const totalItems = getTotalCartItems();
     cartCount.textContent = totalItems;
-    
-    if (totalItems > 0) {
-        cartCount.classList.add('active');
-        cartCount.style.display = 'flex';
-    } else {
-        cartCount.classList.remove('active');
-        cartCount.style.display = 'none';
-    }
+    cartCount.classList.toggle('active', totalItems > 0);
 }
 
 function getTotalCartItems() {
@@ -465,17 +428,16 @@ function animateCartIcon() {
     if (!cartLink) return;
     
     cartLink.style.animation = 'none';
-    setTimeout(() => {
-        cartLink.style.animation = 'cartBounce 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55)';
-    }, 10);
+    cartLink.offsetHeight; // Trigger reflow
+    cartLink.style.animation = 'cartBounce 0.4s ease';
     
     setTimeout(() => {
         cartLink.style.animation = '';
-    }, 600);
+    }, 400);
 }
 
 // =================================
-// FAVORITES FUNCTIONALITY
+// FAVORITES FUNCTIONALITY - FAST
 // =================================
 function initializeFavorites() {
     const favoritesLink = document.querySelector('.favorites-link');
@@ -503,9 +465,7 @@ function toggleFavorite(productId) {
         
         // Update button state
         const favoriteBtn = document.querySelector(`[data-product-id="${productId}"].favorite-btn`);
-        if (favoriteBtn) {
-            favoriteBtn.classList.remove('active');
-        }
+        favoriteBtn?.classList.remove('active');
     } else {
         // Add to favorites
         const newFavorite = {
@@ -536,64 +496,47 @@ function updateFavoritesCounter() {
     
     const totalFavorites = favoriteItems.length;
     favoritesCount.textContent = totalFavorites;
-    
-    if (totalFavorites > 0) {
-        favoritesCount.classList.add('active');
-        favoritesCount.style.display = 'flex';
-    } else {
-        favoritesCount.classList.remove('active');
-        favoritesCount.style.display = 'none';
-    }
+    favoritesCount.classList.toggle('active', totalFavorites > 0);
 }
 
 function animateFavoriteIcon(button) {
-    button.style.animation = 'heartBeat 0.8s ease';
+    button.style.animation = 'heartBeat 0.6s ease';
     setTimeout(() => {
         button.style.animation = '';
-    }, 800);
+    }, 600);
 }
 
 // =================================
-// PRODUCT INTERACTIONS
+// PRODUCT INTERACTIONS - OPTIMIZED
 // =================================
 function initializeProductInteractions() {
-    // Add to cart buttons
-    document.querySelectorAll('.add-to-cart-btn').forEach(button => {
-        button.addEventListener('click', function() {
-            const productId = parseInt(this.getAttribute('data-product-id'));
-            addToCart(productId);
-        });
-    });
-
-    // Favorite buttons
-    document.querySelectorAll('.favorite-btn').forEach(button => {
-        button.addEventListener('click', function() {
-            const productId = parseInt(this.getAttribute('data-product-id'));
-            toggleFavorite(productId);
-        });
+    // Use event delegation for better performance
+    document.addEventListener('click', (e) => {
+        const target = e.target.closest('[data-product-id]');
+        if (!target) return;
         
-        // Initialize favorite button state
-        const productId = parseInt(button.getAttribute('data-product-id'));
-        const isFavorite = favoriteItems.some(item => item.id === productId);
-        if (isFavorite) {
-            button.classList.add('active');
+        const productId = parseInt(target.getAttribute('data-product-id'));
+        
+        if (target.classList.contains('add-to-cart-btn')) {
+            e.preventDefault();
+            addToCart(productId);
+        } else if (target.classList.contains('favorite-btn')) {
+            e.preventDefault();
+            toggleFavorite(productId);
+        } else if (target.classList.contains('quick-view-btn')) {
+            e.preventDefault();
+            quickView(productId);
+        } else if (target.classList.contains('share-btn')) {
+            e.preventDefault();
+            shareProduct(productId);
         }
     });
 
-    // Quick view buttons
-    document.querySelectorAll('.quick-view-btn').forEach(button => {
-        button.addEventListener('click', function() {
-            const productId = parseInt(this.getAttribute('data-product-id'));
-            quickView(productId);
-        });
-    });
-
-    // Share buttons
-    document.querySelectorAll('.share-btn').forEach(button => {
-        button.addEventListener('click', function() {
-            const productId = parseInt(this.getAttribute('data-product-id'));
-            shareProduct(productId);
-        });
+    // Initialize favorite button states
+    document.querySelectorAll('.favorite-btn').forEach(button => {
+        const productId = parseInt(button.getAttribute('data-product-id'));
+        const isFavorite = favoriteItems.some(item => item.id === productId);
+        button.classList.toggle('active', isFavorite);
     });
 
     // Load more button
@@ -607,7 +550,7 @@ function initializeProductInteractions() {
                 this.disabled = false;
                 this.innerHTML = 'Daha çox məhsul yüklə';
                 showNotification('Daha çox məhsul yükləndi! 📦', 'success');
-            }, 2000);
+            }, 1500);
         });
     }
 }
@@ -616,10 +559,9 @@ function quickView(productId) {
     console.log('Quick view for product:', productId);
     showNotification('Məhsul haqqında ətraflı məlumat yüklənir... 👀', 'info');
     
-    // Here you would implement quick view modal
     setTimeout(() => {
         showNotification('Tez baxış funksiyası tezliklə əlavə ediləcək! 🔜', 'info');
-    }, 1500);
+    }, 1000);
 }
 
 function shareProduct(productId) {
@@ -643,7 +585,7 @@ function shareProduct(productId) {
 }
 
 // =================================
-// PRODUCT FILTERS
+// PRODUCT FILTERS - FAST
 // =================================
 function initializeProductFilters() {
     const filterBtns = document.querySelectorAll('.filter-btn');
@@ -660,52 +602,31 @@ function initializeProductFilters() {
 
             const filter = this.getAttribute('data-filter');
             
-            productCards.forEach((card, index) => {
+            let visibleCount = 0;
+            
+            productCards.forEach(card => {
                 const category = card.getAttribute('data-category');
                 const shouldShow = filter === 'all' || category === filter;
                 
                 if (shouldShow) {
                     card.style.display = 'block';
-                    card.style.opacity = '0';
-                    card.style.transform = 'translateY(20px)';
-                    
-                    setTimeout(() => {
-                        card.style.transition = 'all 0.5s cubic-bezier(0.4, 0, 0.2, 1)';
-                        card.style.opacity = '1';
-                        card.style.transform = 'translateY(0)';
-                    }, index * 50);
+                    visibleCount++;
                 } else {
-                    card.style.transition = 'all 0.3s ease';
-                    card.style.opacity = '0';
-                    card.style.transform = 'translateY(-20px)';
-                    
-                    setTimeout(() => {
-                        card.style.display = 'none';
-                    }, 300);
+                    card.style.display = 'none';
                 }
             });
 
             // Show notification
-            const visibleCount = Array.from(productCards).filter(card => {
-                const category = card.getAttribute('data-category');
-                return filter === 'all' || category === filter;
-            }).length;
-            
             showNotification(`${visibleCount} məhsul göstərilir`, 'info');
         });
     });
 }
 
 // =================================
-// SCROLL EFFECTS & ANIMATIONS
+// SCROLL EFFECTS - MINIMAL
 // =================================
 function initializeScrollEffects() {
-    // Intersection Observer for animations
-    const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -100px 0px'
-    };
-
+    // Simple intersection observer for fade-in effects
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -718,54 +639,23 @@ function initializeScrollEffects() {
     // Observe elements for animation
     const animateElements = document.querySelectorAll('.product-card, .feature-card, .stat-item');
     animateElements.forEach(el => {
+        el.classList.add('fade-in');
         observer.observe(el);
     });
 }
 
-function initializeAnimations() {
-    // Parallax effect for hero elements (optional)
-    const heroElements = document.querySelectorAll('.floating-element');
-    
-    if (heroElements.length === 0) return;
-
-    function updateParallax() {
-        const scrolled = window.pageYOffset;
-        
-        heroElements.forEach((element, index) => {
-            const speed = (index + 1) * 0.3;
-            const yPos = -(scrolled * speed);
-            element.style.transform = `translate3d(0, ${yPos}px, 0)`;
-        });
-    }
-
-    // Throttled scroll event
-    let ticking = false;
-    function onScroll() {
-        if (!ticking) {
-            requestAnimationFrame(() => {
-                updateParallax();
-                ticking = false;
-            });
-            ticking = true;
-        }
-    }
-
-    window.addEventListener('scroll', onScroll, { passive: true });
-}
-
 // =================================
-// BACK TO TOP FUNCTIONALITY
+// BACK TO TOP - SIMPLE
 // =================================
 function initializeBackToTop() {
     const backToTopBtn = document.querySelector('.back-to-top');
     if (!backToTopBtn) return;
 
+    let ticking = false;
+
     function toggleBackToTop() {
-        if (window.pageYOffset > 500) {
-            backToTopBtn.classList.add('visible');
-        } else {
-            backToTopBtn.classList.remove('visible');
-        }
+        backToTopBtn.classList.toggle('visible', window.pageYOffset > 300);
+        ticking = false;
     }
 
     function scrollToTop() {
@@ -775,15 +665,20 @@ function initializeBackToTop() {
         });
     }
 
-    // Show/hide button on scroll
-    window.addEventListener('scroll', throttle(toggleBackToTop, 100), { passive: true });
+    // Throttled scroll event
+    window.addEventListener('scroll', () => {
+        if (!ticking) {
+            requestAnimationFrame(toggleBackToTop);
+            ticking = true;
+        }
+    }, { passive: true });
     
     // Click event
     backToTopBtn.addEventListener('click', scrollToTop);
 }
 
 // =================================
-// NEWSLETTER FUNCTIONALITY
+// NEWSLETTER - OPTIMIZED
 // =================================
 function initializeNewsletter() {
     const newsletterForm = document.querySelector('.newsletter-form');
@@ -826,12 +721,12 @@ function initializeNewsletter() {
                 </svg>
                 Abunə ol
             `;
-        }, 2000);
+        }, 1500);
     });
 }
 
 // =================================
-// NOTIFICATION SYSTEM
+// NOTIFICATION SYSTEM - FAST
 // =================================
 function showNotification(message, type = 'success') {
     // Create notification element
@@ -854,9 +749,9 @@ function showNotification(message, type = 'success') {
     
     // Style the notification
     const colors = {
-        success: '#38a169',
-        error: '#e53e3e',
-        warning: '#d69e2e',
+        success: '#48bb78',
+        error: '#f56565',
+        warning: '#ed8936',
         info: '#4299e1'
     };
     
@@ -871,16 +766,14 @@ function showNotification(message, type = 'success') {
         boxShadow: '0 8px 32px rgba(0, 0, 0, 0.15)',
         zIndex: '10000',
         transform: 'translateX(400px)',
-        transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
+        transition: 'all 0.3s ease',
         fontSize: '0.9rem',
         fontWeight: '500',
         display: 'flex',
         alignItems: 'center',
         gap: '0.75rem',
         maxWidth: '350px',
-        wordBreak: 'break-word',
-        backdropFilter: 'blur(10px)',
-        border: '1px solid rgba(255, 255, 255, 0.2)'
+        wordBreak: 'break-word'
     });
     
     // Style close button
@@ -905,7 +798,7 @@ function showNotification(message, type = 'success') {
     // Stack notifications
     const existingNotifications = document.querySelectorAll('.notification');
     if (existingNotifications.length > 1) {
-        notification.style.top = `${100 + (existingNotifications.length - 1) * 80}px`;
+        notification.style.top = `${100 + (existingNotifications.length - 1) * 70}px`;
     }
     
     // Animate in
@@ -913,33 +806,60 @@ function showNotification(message, type = 'success') {
         notification.style.transform = 'translateX(0)';
     });
     
-    // Auto remove after 5 seconds
+    // Auto remove after 4 seconds
     setTimeout(() => {
         if (notification.parentNode) {
             notification.style.transform = 'translateX(400px)';
             setTimeout(() => {
-                if (notification.parentNode) {
-                    notification.parentNode.removeChild(notification);
-                }
-            }, 400);
+                notification.remove();
+            }, 300);
         }
-    }, 5000);
+    }, 4000);
     
     // Click to dismiss
     notification.addEventListener('click', (e) => {
         if (e.target !== closeBtn) {
             notification.style.transform = 'translateX(400px)';
             setTimeout(() => {
-                if (notification.parentNode) {
-                    notification.parentNode.removeChild(notification);
-                }
-            }, 400);
+                notification.remove();
+            }, 300);
         }
     });
 }
 
 // =================================
-// UTILITY FUNCTIONS
+// PERFORMANCE MONITORING
+// =================================
+function initializePerformanceMonitoring() {
+    // Performance metrics
+    if ('performance' in window) {
+        window.addEventListener('load', () => {
+            const navigationTiming = performance.getEntriesByType('navigation')[0];
+            if (navigationTiming) {
+                const loadTime = navigationTiming.loadEventEnd - navigationTiming.loadEventStart;
+                console.log(`Page load time: ${loadTime}ms`);
+                
+                // Show performance notification for developers
+                if (loadTime > 3000) {
+                    console.warn('Page load time is high:', loadTime + 'ms');
+                }
+            }
+        });
+    }
+    
+    // Memory usage monitoring (for development)
+    if ('memory' in performance) {
+        setInterval(() => {
+            const memInfo = performance.memory;
+            if (memInfo.usedJSHeapSize / memInfo.jsHeapSizeLimit > 0.9) {
+                console.warn('High memory usage detected');
+            }
+        }, 30000); // Check every 30 seconds
+    }
+}
+
+// =================================
+// UTILITY FUNCTIONS - OPTIMIZED
 // =================================
 function debounce(func, wait) {
     let timeout;
@@ -979,6 +899,7 @@ function formatPrice(price) {
     }).format(price);
 }
 
+// Device detection
 function isMobile() {
     return window.innerWidth <= 768;
 }
@@ -992,7 +913,7 @@ function isDesktop() {
 }
 
 // =================================
-// SMOOTH SCROLLING
+// SMOOTH SCROLLING - SIMPLE
 // =================================
 function initializeSmoothScrolling() {
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -1001,7 +922,7 @@ function initializeSmoothScrolling() {
             const target = document.querySelector(this.getAttribute('href'));
             
             if (target) {
-                const headerHeight = document.querySelector('.floating-header').offsetHeight;
+                const headerHeight = document.querySelector('.floating-header')?.offsetHeight || 0;
                 const targetPosition = target.offsetTop - headerHeight - 20;
                 
                 window.scrollTo({
@@ -1017,44 +938,33 @@ function initializeSmoothScrolling() {
 document.addEventListener('DOMContentLoaded', initializeSmoothScrolling);
 
 // =================================
-// KEYBOARD NAVIGATION & ACCESSIBILITY
+// KEYBOARD NAVIGATION - OPTIMIZED
 // =================================
 document.addEventListener('keydown', (e) => {
     // Escape key - close all overlays
     if (e.key === 'Escape') {
-        if (isSearchOpen) {
-            document.querySelector('.search-overlay').classList.remove('active');
+        if (appState.isSearchOpen) {
+            document.querySelector('.search-overlay')?.classList.remove('active');
             document.body.style.overflow = '';
-            isSearchOpen = false;
+            appState.isSearchOpen = false;
         }
         
-        if (isMobileMenuOpen) {
-            document.querySelector('.mobile-nav-menu').classList.remove('active');
-            document.querySelector('.mobile-menu-toggle').classList.remove('active');
+        if (appState.isMobileMenuOpen) {
+            document.querySelector('.mobile-nav-menu')?.classList.remove('active');
+            document.querySelector('.mobile-menu-toggle')?.classList.remove('active');
             document.body.style.overflow = '';
-            isMobileMenuOpen = false;
+            appState.isMobileMenuOpen = false;
         }
         
-        if (isAccountMenuOpen) {
-            document.querySelector('.account-dropdown').classList.remove('active');
-            isAccountMenuOpen = false;
+        if (appState.isAccountMenuOpen) {
+            document.querySelector('.account-dropdown')?.classList.remove('active');
+            appState.isAccountMenuOpen = false;
         }
     }
 });
 
 // =================================
-// PERFORMANCE MONITORING
-// =================================
-window.addEventListener('load', function() {
-    // Performance metrics
-    if ('performance' in window) {
-        const navigationTiming = performance.getEntriesByType('navigation')[0];
-        console.log('Page load time:', navigationTiming.loadEventEnd - navigationTiming.loadEventStart, 'ms');
-    }
-});
-
-// =================================
-// ERROR HANDLING
+// ERROR HANDLING - SIMPLIFIED
 // =================================
 window.addEventListener('error', function(e) {
     console.error('JavaScript error occurred:', e.error);
@@ -1067,13 +977,14 @@ window.addEventListener('unhandledrejection', function(e) {
 });
 
 // =================================
-// EXPORT GLOBAL FUNCTIONS
+// GLOBAL FUNCTIONS - FAST ACCESS
 // =================================
 window.addToCart = addToCart;
 window.toggleFavorite = toggleFavorite;
 window.quickView = quickView;
 window.shareProduct = shareProduct;
 
+// Utils object for external access
 window.dropAzUtils = {
     showNotification,
     addToCart,
@@ -1091,27 +1002,27 @@ window.dropAzUtils = {
 };
 
 // =================================
-// CSS ANIMATIONS
+// CSS ANIMATIONS FOR JS
 // =================================
-const style = document.createElement('style');
-style.textContent = `
+const additionalStyles = document.createElement('style');
+additionalStyles.textContent = `
     @keyframes cartBounce {
         0% { transform: scale(1); }
-        50% { transform: scale(1.2); }
+        50% { transform: scale(1.15); }
         100% { transform: scale(1); }
     }
     
     @keyframes heartBeat {
         0% { transform: scale(1); }
         25% { transform: scale(1.1); }
-        50% { transform: scale(1.2); }
+        50% { transform: scale(1.15); }
         75% { transform: scale(1.1); }
         100% { transform: scale(1); }
     }
     
     .favorite-btn.active svg {
-        fill: #e53e3e;
-        stroke: #e53e3e;
+        fill: #f56565;
+        stroke: #f56565;
     }
     
     .notification {
@@ -1122,36 +1033,21 @@ style.textContent = `
         transform: translateX(-5px) !important;
     }
     
-    .spinner-small {
-        width: 16px;
-        height: 16px;
-        border: 2px solid rgba(255,255,255,0.3);
-        border-top: 2px solid white;
-        border-radius: 50%;
-        animation: spin 1s linear infinite;
-        display: inline-block;
-    }
-    
-    .animate-in {
-        opacity: 1 !important;
-        transform: translateY(0) !important;
-    }
-    
     .recent-search-item {
         display: inline-block;
         padding: 0.5rem 1rem;
-        background: rgba(66, 153, 225, 0.1);
-        color: #4299e1;
+        background: rgba(79, 172, 254, 0.1);
+        color: #4facfe;
         border-radius: 20px;
         font-size: 0.85rem;
         cursor: pointer;
         margin: 0.25rem;
         transition: all 0.2s ease;
-        border: 1px solid rgba(66, 153, 225, 0.2);
+        border: 1px solid rgba(79, 172, 254, 0.2);
     }
     
     .recent-search-item:hover {
-        background: #4299e1;
+        background: #4facfe;
         color: white;
         transform: translateY(-1px);
     }
@@ -1160,8 +1056,26 @@ style.textContent = `
         color: #718096;
         font-style: italic;
         font-size: 0.9rem;
+        text-align: center;
+        padding: 1rem;
+    }
+    
+    .fade-in {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    
+    .fade-in.animate-in {
+        opacity: 1;
+        transform: translateY(0);
     }
 `;
-document.head.appendChild(style);
+document.head.appendChild(additionalStyles);
 
+// =================================
+// FINAL INITIALIZATION LOG
+// =================================
 console.log('🎉 drop.az Enhanced JavaScript loaded successfully!');
+console.log('Performance optimizations active 🚀');
+console.log('Ready for user interactions ✨');
