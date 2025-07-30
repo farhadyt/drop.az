@@ -61,8 +61,8 @@
     --transition-normal: all 0.3s ease;
     
     /* Layout */
-    --container-xl: 1280px;
-    --container-2xl: 1536px;
+    --container-xl: 1400px;  /* DÜZƏLDİLDİ: Daha geniş container */
+    --container-2xl: 1600px;  /* DÜZƏLDİLDİ: Daha geniş container */
     --header-height: 80px;
     --mobile-header-height: 70px;
     
@@ -113,7 +113,8 @@ body {
     color: var(--gray-800);
     line-height: 1.6;
     overflow-x: hidden;
-    padding-top: var(--header-height);
+    padding-top: calc(var(--header-height) + 2rem);
+    padding-bottom: calc(var(--header-height) + 1rem);  /* DÜZƏLDİLDİ: Aşağıdan az padding */
     min-height: 100vh;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -205,7 +206,7 @@ body::before {
     align-items: center;
     height: 100%;
     padding: 0 clamp(1rem, 5vw, 3rem);
-    max-width: var(--container-2xl);
+    max-width: var(--container-2xl);  /* DÜZƏLDİLDİ: Navigation daha geniş */
     margin: 0 auto;
     gap: 2rem;
 }
@@ -441,17 +442,17 @@ body::before {
 }
 
 /* =================================
-   HERO SECTION - PERFECT CONTAINER FIT
+   HERO SECTION - DÜZƏLDİLDİ: FULL WIDTH
    ================================= */
 .hero-section {
     display: flex;
     align-items: center;
     justify-content: center;
-    min-height: calc(100vh - var(--header-height));
+    min-height: calc(100vh - var(--header-height) - 4rem);
     text-align: center;
     position: relative;
     overflow: hidden;
-    margin: 0 clamp(1rem, 3vw, 2rem) clamp(2rem, 5vw, 4rem);
+    margin: clamp(3rem, 8vw, 5rem) clamp(1rem, 2vw, 2rem);  /* DÜZƏLDİLDİ: Yan tərəflərdən az margin, content geniş olsun */
     background: var(--glass-bg);
     backdrop-filter: var(--glass-backdrop);
     border-radius: var(--radius-2xl);
@@ -463,7 +464,7 @@ body::before {
 .hero-content {
     z-index: 2;
     position: relative;
-    max-width: 900px;
+    max-width: 1200px;  /* DÜZƏLDİLDİ: Content daha geniş olsun */
     width: 100%;
 }
 
@@ -488,7 +489,7 @@ body::before {
     letter-spacing: 0.5px;
 }
 
-/* Hero Offers - Perfect Grid */
+/* Hero Offers - Perfect Grid - DÜZƏLDİLDİ */
 .hero-offers {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -603,10 +604,10 @@ body::before {
 }
 
 /* =================================
-   STATS SECTION
+   STATS SECTION - DÜZƏLDİLDİ
    ================================= */
 .stats-section {
-    margin: clamp(4rem, 8vw, 6rem) clamp(1rem, 3vw, 2rem);
+    margin: clamp(5rem, 10vw, 7rem) clamp(1rem, 2vw, 2rem);  /* DÜZƏLDİLDİ: Yan tərəflərdən az margin */
 }
 
 .stats-container {
@@ -652,18 +653,18 @@ body::before {
 }
 
 /* =================================
-   SECTIONS
+   SECTIONS - DÜZƏLDİLDİ
    ================================= */
 .products-section,
 .features-section,
 .newsletter-section {
-    margin: clamp(6rem, 10vw, 8rem) clamp(1rem, 3vw, 2rem);
+    margin: clamp(7rem, 12vw, 10rem) clamp(1rem, 2vw, 2rem);  /* DÜZƏLDİLDİ: Yan tərəflərdən az margin */
 }
 
 .section-header {
     text-align: center;
     margin-bottom: clamp(3rem, 8vw, 5rem);
-    max-width: 800px;
+    max-width: 1000px;  /* DÜZƏLDİLDİ: Section header daha geniş */
     margin-left: auto;
     margin-right: auto;
 }
@@ -719,7 +720,7 @@ body::before {
 }
 
 /* =================================
-   PRODUCT CARDS
+   PRODUCT CARDS - DÜZƏLDİLDİ
    ================================= */
 .product-list {
     display: grid;
@@ -1004,7 +1005,7 @@ body::before {
 }
 
 /* =================================
-   FEATURES GRID
+   FEATURES GRID - DÜZƏLDİLDİ
    ================================= */
 .features-grid {
     display: grid;
@@ -1075,14 +1076,14 @@ body::before {
 }
 
 /* =================================
-   NEWSLETTER SECTION
+   NEWSLETTER SECTION - DÜZƏLDİLDİ
    ================================= */
 .newsletter-section {
     background: var(--glass-bg);
     backdrop-filter: var(--glass-backdrop);
     border: 1px solid var(--glass-border);
     border-radius: var(--radius-2xl);
-    margin: clamp(6rem, 10vw, 8rem) clamp(1rem, 3vw, 2rem);
+    margin: clamp(7rem, 12vw, 10rem) clamp(1rem, 3vw, 2rem);  /* DÜZƏLDİLDİ: Yuxarı və aşağı margin artırıldı */
     overflow: hidden;
 }
 
@@ -1092,7 +1093,7 @@ body::before {
 
 .newsletter-content {
     text-align: center;
-    max-width: 600px;
+    max-width: 800px;  /* DÜZƏLDİLDİ: Newsletter content daha geniş */
     margin: 0 auto;
 }
 
@@ -1136,7 +1137,7 @@ body::before {
 .newsletter-input-group {
     display: flex;
     width: 100%;
-    max-width: 500px;
+    max-width: 600px;  /* DÜZƏLDİLDİ: Input group daha geniş */
     gap: 1rem;
     flex-wrap: wrap;
 }
@@ -1471,21 +1472,22 @@ body::before {
 }
 
 /* =================================
-   FOOTER
+   FOOTER - DÜZƏLDİLDİ
    ================================= */
 .main-footer {
     background: var(--glass-bg);
     backdrop-filter: var(--glass-backdrop);
     border-top: 1px solid var(--glass-border);
     margin-top: clamp(6rem, 10vw, 8rem);
+    margin-bottom: 0;  /* DÜZƏLDİLDİ: Aşağıdan margin yoxdur çünki body-də padding var */
 }
 
 .footer-content {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));  /* DÜZƏLDİLDİ: 280px-dən 300px-yə */
     gap: 3rem;
-    padding: clamp(3rem, 8vw, 4rem) clamp(1rem, 3vw, 2rem);
-    max-width: var(--container-2xl);
+    padding: clamp(3rem, 8vw, 4rem) clamp(2rem, 4vw, 3rem);  /* DÜZƏLDİLDİ: Padding artırıldı */
+    max-width: var(--container-2xl);  /* DÜZƏLDİLDİ: Container artırıldı */
     margin: 0 auto;
 }
 
@@ -1606,7 +1608,7 @@ body::before {
 
 .footer-bottom {
     border-top: 1px solid var(--glass-border);
-    padding: 2rem clamp(1rem, 3vw, 2rem);
+    padding: 2rem clamp(2rem, 4vw, 3rem);  /* DÜZƏLDİLDİ: Padding artırıldı */
     background: var(--glass-bg);
 }
 
@@ -1614,7 +1616,7 @@ body::before {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    max-width: var(--container-2xl);
+    max-width: var(--container-2xl);  /* DÜZƏLDİLDİ: Container artırıldı */
     margin: 0 auto;
     flex-wrap: wrap;
     gap: 1rem;
@@ -1642,7 +1644,7 @@ body::before {
    ================================= */
 .back-to-top {
     position: fixed;
-    bottom: 2rem;
+    bottom: 2rem;  /* DÜZƏLDİLDİ: Normal position */
     right: 2rem;
     width: 56px;
     height: 56px;
@@ -1671,7 +1673,7 @@ body::before {
 }
 
 /* =================================
-   RESPONSIVE DESIGN
+   RESPONSIVE DESIGN - DÜZƏLDİLDİ
    ================================= */
 @media (max-width: 480px) {
     :root {
@@ -1699,8 +1701,8 @@ body::before {
     }
     
     .hero-section {
-        margin: 1rem;
-        min-height: calc(100vh - var(--mobile-header-height) - 2rem);
+        margin: clamp(2rem, 5vw, 3rem) 0.5rem;  /* DÜZƏLDİLDİ: Mobile üçün yan tərəflərdən minimal margin */
+        min-height: calc(100vh - var(--mobile-header-height) - 4rem);
         padding: 2rem 1rem;
     }
     
@@ -1741,7 +1743,7 @@ body::before {
     .footer-content {
         grid-template-columns: 1fr;
         gap: 2rem;
-        padding: 2rem 1rem;
+        padding: 2rem 1rem;  /* DÜZƏLDİLDİ: Mobile üçün normal padding */
     }
     
     .footer-bottom-content {
@@ -1749,8 +1751,12 @@ body::before {
         text-align: center;
     }
     
+    .footer-bottom {
+        padding: 2rem 1rem;  /* DÜZƏLDİLDİ: Mobile üçün normal padding */
+    }
+    
     .back-to-top {
-        bottom: 1rem;
+        bottom: 1rem;  /* DÜZƏLDİLDİ: Mobile üçün normal position */
         right: 1rem;
         width: 48px;
         height: 48px;
@@ -1773,17 +1779,29 @@ body::before {
     .features-grid {
         grid-template-columns: repeat(2, 1fr);
     }
+    
+    .hero-section {
+        margin: clamp(3rem, 6vw, 4rem) clamp(0.5rem, 1vw, 1rem);  /* DÜZƏLDİLDİ: Tablet üçün yan tərəflərdən minimal margin */
+    }
 }
 
 @media (min-width: 769px) and (max-width: 1024px) {
     .product-list {
         grid-template-columns: repeat(3, 1fr);
     }
+    
+    .hero-section {
+        margin: clamp(4rem, 8vw, 5rem) clamp(1rem, 2vw, 2rem);  /* DÜZƏLDİLDİ: Desktop üçün yan tərəflərdən az margin */
+    }
 }
 
 @media (min-width: 1025px) {
     .product-list {
         grid-template-columns: repeat(4, 1fr);
+    }
+    
+    .hero-section {
+        margin: clamp(5rem, 10vw, 6rem) clamp(1rem, 2vw, 2rem);  /* DÜZƏLDİLDİ: Böyük ekran üçün yan tərəflərdən az margin */
     }
 }
 
@@ -1880,9 +1898,4 @@ body::before {
 
 ::-webkit-scrollbar-thumb:hover {
     background: var(--primary);
-}
-
-html {
-    scrollbar-width: thin;
-    scrollbar-color: var(--primary) var(--gray-100);
 }
