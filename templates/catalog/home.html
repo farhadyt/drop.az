@@ -1,25 +1,441 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block title %}
-    Əsas Səhifə
-{% endblock %}
+{% block title %}drop.az - Əsas Səhifə{% endblock %}
 
 {% block content %}
-    <h1>Məhsullarımız</h1>
-    <div class="product-list">
-        {% for product in products %}
-            <div class="product-card">
-                {% if product.image %}
-                    <img src="{{ product.image.url }}" alt="{{ product.name }}">
-                {% else %}
-                    <p>Şəkil yoxdur</p>
-                {% endif %}
-                <h2>{{ product.name }}</h2>
-                <p class="price">{{ product.price }} AZN</p>
+    <!-- Hero Section with Offers -->
+    <section class="hero-section">
+        <div class="hero-content">
+            <h1 class="hero-title">drop.az</h1>
+            <p class="hero-subtitle">Azərbaycanda ən yaxşı alış-veriş təcrübəsi</p>
+            
+            <!-- Special Offers -->
+            <div class="hero-offers">
+                <div class="offer-item">
+                    <span class="offer-icon">🚚</span>
+                    <span class="offer-text">Pulsuz Çatdırılma</span>
+                </div>
+                <div class="offer-item">
+                    <span class="offer-icon">🎯</span>
+                    <span class="offer-text">24/7 Dəstək</span>
+                </div>
+                <div class="offer-item">
+                    <span class="offer-icon">🔒</span>
+                    <span class="offer-text">Təhlükəsiz Ödəniş</span>
+                </div>
+                <div class="offer-item">
+                    <span class="offer-icon">⚡</span>
+                    <span class="offer-text">Sürətli Xidmət</span>
+                </div>
             </div>
-        {% empty %}
-            <p>Hazırda satışda heç bir məhsul yoxdur.</p>
-        {% endfor %}
-    </div>
+            
+            <div class="hero-buttons">
+                <a href="#products" class="btn btn-primary">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" width="20" height="20">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+                    </svg>
+                    Məhsullara Bax
+                </a>
+                <a href="#features" class="btn btn-secondary">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" width="20" height="20">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                    Haqqımızda
+                </a>
+            </div>
+        </div>
+        
+        <!-- Decorative Elements -->
+        <div class="hero-decoration">
+            <div class="floating-element element-1"></div>
+            <div class="floating-element element-2"></div>
+            <div class="floating-element element-3"></div>
+        </div>
+    </section>
+
+    <!-- Quick Stats Section -->
+    <section class="stats-section">
+        <div class="stats-container">
+            <div class="stat-item">
+                <div class="stat-number">1000+</div>
+                <div class="stat-label">Məhsul</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">50K+</div>
+                <div class="stat-label">Müştəri</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">99%</div>
+                <div class="stat-label">Məmnuniyyət</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">24/7</div>
+                <div class="stat-label">Dəstək</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Products Section -->
+    <section id="products" class="products-section">
+        <div class="section-header">
+            <h2 class="section-title">Məhsullarımız</h2>
+            <p class="section-subtitle">Ən keyfiyyətli və uyğun qiymətli məhsullar sizləri gözləyir</p>
+        </div>
+        
+        {% if products %}
+            <!-- Product Filter Tabs -->
+            <div class="product-filters">
+                <button class="filter-btn active" data-filter="all">
+                    <span>Hamısı</span>
+                </button>
+                <button class="filter-btn" data-filter="new">
+                    <span>Yenilər</span>
+                </button>
+                <button class="filter-btn" data-filter="popular">
+                    <span>Populyar</span>
+                </button>
+                <button class="filter-btn" data-filter="sale">
+                    <span>Endirimdə</span>
+                </button>
+            </div>
+
+            <div class="product-list">
+                {% for product in products %}
+                    <div class="product-card" data-product-id="{{ product.id }}" data-category="{% if forloop.counter0|divisibleby:'4' %}new{% elif forloop.counter0|divisibleby:'3' %}popular{% elif forloop.counter0|divisibleby:'2' %}sale{% else %}all{% endif %}">
+                        <div class="product-image-container">
+                            {% if product.image %}
+                                <img src="{{ product.image.url }}" alt="{{ product.name }}" class="product-image" loading="lazy">
+                            {% else %}
+                                <div class="product-no-image">
+                                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" width="60" height="60">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                                    </svg>
+                                    <span>Şəkil yoxdur</span>
+                                </div>
+                            {% endif %}
+                            
+                            <!-- Product Actions Overlay -->
+                            <div class="product-actions">
+                                <button class="action-btn favorite-btn" 
+                                        title="Sevimlilərə əlavə et" 
+                                        data-product-id="{{ product.id }}">
+                                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" width="18" height="18">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+                                    </svg>
+                                </button>
+                                <button class="action-btn quick-view-btn" 
+                                        title="Tez baxış" 
+                                        data-product-id="{{ product.id }}">
+                                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" width="18" height="18">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
+                                    </svg>
+                                </button>
+                                <button class="action-btn share-btn" 
+                                        title="Paylaş" 
+                                        data-product-id="{{ product.id }}">
+                                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" width="18" height="18">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.367 2.684 3 3 0 00-5.367-2.684z"></path>
+                                    </svg>
+                                </button>
+                            </div>
+                            
+                            <!-- Product Badges -->
+                            {% if forloop.counter0|divisibleby:'4' %}
+                                <div class="product-badge new-badge">Yeni</div>
+                            {% elif forloop.counter0|divisibleby:'3' %}
+                                <div class="product-badge popular-badge">Hit</div>
+                            {% elif forloop.counter0|divisibleby:'2' %}
+                                <div class="product-badge sale-badge">-20%</div>
+                            {% endif %}
+                            
+                            <!-- Stock Badge -->
+                            {% if product.stock <= 5 and product.stock > 0 %}
+                                <div class="stock-badge low-stock">Az qalıb!</div>
+                            {% elif product.stock == 0 %}
+                                <div class="stock-badge out-of-stock">Stok yoxdur</div>
+                            {% endif %}
+                        </div>
+                        
+                        <div class="product-info">
+                            <div class="product-category-tag">{{ product.category.name }}</div>
+                            <h3 class="product-name">{{ product.name }}</h3>
+                            {% if product.description %}
+                                <p class="product-description">{{ product.description|truncatewords:12 }}</p>
+                            {% endif %}
+                            
+                            <div class="product-rating">
+                                <div class="stars">
+                                    <span class="star filled">★</span>
+                                    <span class="star filled">★</span>
+                                    <span class="star filled">★</span>
+                                    <span class="star filled">★</span>
+                                    <span class="star">★</span>
+                                </div>
+                                <span class="rating-text">4.2 ({{ product.id|add:15 }} rəy)</span>
+                            </div>
+                            
+                            <div class="product-footer">
+                                <div class="product-price">
+                                    {% if forloop.counter0|divisibleby:'2' %}
+                                        <span class="old-price">{{ product.price|add:15 }} AZN</span>
+                                        <span class="current-price">{{ product.price }} AZN</span>
+                                    {% else %}
+                                        <span class="current-price">{{ product.price }} AZN</span>
+                                    {% endif %}
+                                </div>
+                                
+                                {% if product.stock > 0 %}
+                                    <button class="btn btn-primary add-to-cart-btn" 
+                                            data-product-id="{{ product.id }}">
+                                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" width="16" height="16">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4m1.6 8L6 5H3m4 8v6a2 2 0 002 2h8a2 2 0 002-2v-6m-10 0V9a2 2 0 012-2h6a2 2 0 012 2v4.01"></path>
+                                        </svg>
+                                        Səbətə əlavə et
+                                    </button>
+                                {% else %}
+                                    <button class="btn btn-disabled" disabled>
+                                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" width="16" height="16">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                                        </svg>
+                                        Stok yoxdur
+                                    </button>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+            
+            <!-- Load More Section -->
+            <div class="load-more-section">
+                <button class="btn btn-outline load-more-btn">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" width="20" height="20">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path>
+                    </svg>
+                    Daha çox məhsul yüklə
+                </button>
+                <p class="load-more-text">Daha çox məhsul üçün kateqoriyalara baxın</p>
+            </div>
+        {% else %}
+            <div class="no-products">
+                <div class="no-products-icon">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" width="80" height="80">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4"></path>
+                    </svg>
+                </div>
+                <h3>Hazırda satışda heç bir məhsul yoxdur</h3>
+                <p>Tezliklə yeni məhsullar əlavə ediləcək. Geri qayıdın və ya bizə abunə olun!</p>
+                <div class="no-products-actions">
+                    <a href="/admin" class="btn btn-primary">Admin panelindən məhsul əlavə edin</a>
+                    <button class="btn btn-secondary" onclick="document.querySelector('.newsletter-form input').focus()">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" width="18" height="18">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-5 5-5-5h5v-5a7.5 7.5 0 000-15h-2.5m0 0H10m2.5 0V2"></path>
+                        </svg>
+                        Xəbər al
+                    </button>
+                </div>
+            </div>
+        {% endif %}
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features-section">
+        <div class="section-header">
+            <h2 class="section-title">Niyə drop.az?</h2>
+            <p class="section-subtitle">Bizim üstünlüklərimiz və sizə təklif etdiklərimiz</p>
+        </div>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                </div>
+                <h3>Sürətli Çatdırılma</h3>
+                <p>24 saat ərzində Bakı daxilində, 48 saat ərzində bütün Azərbaycana çatdırırıq. Express çatdırılma xidməti də mövcuddur.</p>
+                <div class="feature-benefits">
+                    <span class="benefit-item">✓ Pulsuz çatdırılma 50 AZN-dən yuxarı</span>
+                    <span class="benefit-item">✓ Express çatdırılma 2-3 saat</span>
+                </div>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                </div>
+                <h3>Keyfiyyət Zəmanəti</h3>
+                <p>Yalnız orijinal və keyfiyyətli məhsullar. 30 gün zəmanət və qaytarma imkanı. Müştəri məmnuniyyəti bizim prioritetimizdir.</p>
+                <div class="feature-benefits">
+                    <span class="benefit-item">✓ 30 gün qaytarma zəmanəti</span>
+                    <span class="benefit-item">✓ Orijinal məhsul sertifikatı</span>
+                </div>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                    </svg>
+                </div>
+                <h3>Təhlükəsiz Ödəniş</h3>
+                <p>Bütün ödəniş növləri 256-bit SSL şifrələmə ilə qorunur. Visa, Mastercard, bank köçürməsi və nağd ödəniş qəbul edilir.</p>
+                <div class="feature-benefits">
+                    <span class="benefit-item">✓ SSL sertifikatı ilə qorunur</span>
+                    <span class="benefit-item">✓ Nağd ödəniş imkanı</span>
+                </div>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z"></path>
+                    </svg>
+                </div>
+                <h3>24/7 Müştəri Dəstəyi</h3>
+                <p>Həftənin 7 günü, günün 24 saatı müştəri xidmətləri işləyir. WhatsApp, telefon və email dəstəyi mövcuddur.</p>
+                <div class="feature-benefits">
+                    <span class="benefit-item">✓ WhatsApp dəstəyi</span>
+                    <span class="benefit-item">✓ Canlı söhbət imkanı</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="newsletter-section">
+        <div class="newsletter-container">
+            <div class="newsletter-content">
+                <div class="newsletter-icon">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" width="48" height="48">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                    </svg>
+                </div>
+                <h2>Yeniliklər haqqında ilk siz öyrənin!</h2>
+                <p>Yeni məhsullar, xüsusi endirimlər və eksklüziv təkliflər haqqında məlumat almaq üçün abunə olun</p>
+                <form class="newsletter-form">
+                    <div class="newsletter-input-group">
+                        <input type="email" placeholder="E-mail ünvanınızı daxil edin" class="newsletter-input" required>
+                        <button type="submit" class="btn btn-primary newsletter-btn">
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" width="18" height="18">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path>
+                            </svg>
+                            Abunə ol
+                        </button>
+                    </div>
+                    <div class="newsletter-benefits">
+                        <span class="newsletter-benefit">📧 Həftəlik xülasə</span>
+                        <span class="newsletter-benefit">🎁 Eksklüziv endirimlər</span>
+                        <span class="newsletter-benefit">⚡ İlk xəbər</span>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- JavaScript for Enhanced Interactions -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Product Filter System
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            const productCards = document.querySelectorAll('.product-card');
+
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    // Remove active class from all buttons
+                    filterBtns.forEach(b => b.classList.remove('active'));
+                    // Add active class to clicked button
+                    this.classList.add('active');
+
+                    const filter = this.getAttribute('data-filter');
+                    
+                    productCards.forEach(card => {
+                        if (filter === 'all' || card.getAttribute('data-category') === filter) {
+                            card.style.display = 'block';
+                            card.style.animation = 'fadeIn 0.5s ease';
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    });
+                });
+            });
+
+            // Existing product interactions
+            document.querySelectorAll('.add-to-cart-btn').forEach(button => {
+                button.addEventListener('click', function() {
+                    const productId = parseInt(this.getAttribute('data-product-id'));
+                    if (window.dropAzUtils && window.dropAzUtils.addToCart) {
+                        window.dropAzUtils.addToCart(productId);
+                    }
+                });
+            });
+
+            document.querySelectorAll('.favorite-btn').forEach(button => {
+                button.addEventListener('click', function() {
+                    const productId = parseInt(this.getAttribute('data-product-id'));
+                    if (window.dropAzUtils && window.dropAzUtils.toggleFavorite) {
+                        window.dropAzUtils.toggleFavorite(productId);
+                    }
+                });
+            });
+
+            document.querySelectorAll('.quick-view-btn').forEach(button => {
+                button.addEventListener('click', function() {
+                    const productId = parseInt(this.getAttribute('data-product-id'));
+                    if (window.dropAzUtils && window.dropAzUtils.quickView) {
+                        window.dropAzUtils.quickView(productId);
+                    }
+                });
+            });
+
+            document.querySelectorAll('.share-btn').forEach(button => {
+                button.addEventListener('click', function() {
+                    const productId = parseInt(this.getAttribute('data-product-id'));
+                    if (navigator.share) {
+                        navigator.share({
+                            title: 'drop.az məhsulu',
+                            text: 'Bu məhsula baxın!',
+                            url: window.location.href + '#product-' + productId
+                        });
+                    } else {
+                        // Fallback for browsers that don't support Web Share API
+                        if (window.dropAzUtils && window.dropAzUtils.showNotification) {
+                            window.dropAzUtils.showNotification('Link kopyalandı!', 'success');
+                        }
+                    }
+                });
+            });
+
+            // Load more functionality
+            const loadMoreBtn = document.querySelector('.load-more-btn');
+            if (loadMoreBtn) {
+                loadMoreBtn.addEventListener('click', function() {
+                    if (window.dropAzUtils && window.dropAzUtils.showNotification) {
+                        window.dropAzUtils.showNotification('Daha çox məhsul yüklənir...', 'info');
+                    }
+                });
+            }
+
+            // Scroll animations
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            // Observe elements for animation
+            document.querySelectorAll('.product-card, .feature-card, .stat-item').forEach(el => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(30px)';
+                el.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+                observer.observe(el);
+            });
+        });
+    </script>
 {% endblock %}
