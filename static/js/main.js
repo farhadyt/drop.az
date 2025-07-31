@@ -54,6 +54,7 @@ function initializeApp() {
     initializeNewsletter();
     initializeProductInteractions();
     initializeProductFilters();
+    initializeLogoEffects();
     
     // Update UI
     updateCartCounter();
@@ -116,6 +117,85 @@ function initializeHeader() {
     
     // Initial call
     updateHeader();
+}
+
+// =================================
+// LOGO EFFECTS - SPECIAL
+// =================================
+function initializeLogoEffects() {
+    const logoLink = document.querySelector('.logo-link');
+    const logoImage = document.querySelector('.logo-image');
+    
+    if (!logoLink || !logoImage) return;
+
+    // Special click effect
+    logoLink.addEventListener('click', function(e) {
+        // Don't prevent default for navigation
+        
+        // Add special animation class
+        logoLink.style.animation = 'none';
+        logoImage.style.animation = 'none';
+        
+        // Force reflow
+        logoLink.offsetHeight;
+        logoImage.offsetHeight;
+        
+        // Apply special effect
+        logoLink.style.animation = 'logoClickEffect 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55)';
+        logoImage.style.animation = 'logoRotateEffect 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55)';
+        
+        // Reset after animation
+        setTimeout(() => {
+            logoLink.style.animation = '';
+            logoImage.style.animation = 'logoGlow 4s ease-in-out infinite';
+        }, 600);
+        
+        // Show special notification
+        setTimeout(() => {
+            showNotification('🎉 drop.az-a xoş gəlmisiniz!', 'success');
+        }, 300);
+    });
+
+    // Double click easter egg
+    let clickCount = 0;
+    let clickTimer = null;
+    
+    logoLink.addEventListener('click', function(e) {
+        clickCount++;
+        
+        if (clickCount === 1) {
+            clickTimer = setTimeout(() => {
+                clickCount = 0;
+            }, 400);
+        } else if (clickCount === 2) {
+            e.preventDefault(); // Prevent navigation on double click
+            clearTimeout(clickTimer);
+            clickCount = 0;
+            
+            // Easter egg effect
+            showNotification('🎊 Gizli effekt aktivləşdi! ✨', 'info');
+            
+            // Special rainbow effect
+            logoLink.style.background = 'linear-gradient(45deg, #ff0000, #ff7f00, #ffff00, #00ff00, #0000ff, #4b0082, #9400d3)';
+            logoLink.style.backgroundSize = '400% 400%';
+            logoLink.style.animation = 'rainbowEffect 2s linear infinite';
+            
+            setTimeout(() => {
+                logoLink.style.background = '';
+                logoLink.style.backgroundSize = '';
+                logoLink.style.animation = '';
+            }, 2000);
+        }
+    });
+
+    // Logo hover effects
+    logoLink.addEventListener('mouseenter', function() {
+        logoImage.style.transform = 'rotate(5deg) scale(1.1)';
+    });
+
+    logoLink.addEventListener('mouseleave', function() {
+        logoImage.style.transform = '';
+    });
 }
 
 // =================================
@@ -757,7 +837,7 @@ function showNotification(message, type = 'success') {
     
     Object.assign(notification.style, {
         position: 'fixed',
-        top: '100px',
+        top: '120px',
         right: '20px',
         background: colors[type] || colors.info,
         color: 'white',
@@ -798,7 +878,7 @@ function showNotification(message, type = 'success') {
     // Stack notifications
     const existingNotifications = document.querySelectorAll('.notification');
     if (existingNotifications.length > 1) {
-        notification.style.top = `${100 + (existingNotifications.length - 1) * 70}px`;
+        notification.style.top = `${120 + (existingNotifications.length - 1) * 70}px`;
     }
     
     // Animate in
@@ -923,7 +1003,7 @@ function initializeSmoothScrolling() {
             
             if (target) {
                 const headerHeight = document.querySelector('.floating-header')?.offsetHeight || 0;
-                const targetPosition = target.offsetTop - headerHeight - 20;
+                const targetPosition = target.offsetTop - headerHeight - 40;
                 
                 window.scrollTo({
                     top: targetPosition,
@@ -1002,7 +1082,7 @@ window.dropAzUtils = {
 };
 
 // =================================
-// CSS ANIMATIONS FOR JS
+// CSS ANIMATIONS FOR JS DYNAMICALLY
 // =================================
 const additionalStyles = document.createElement('style');
 additionalStyles.textContent = `

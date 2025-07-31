@@ -36,6 +36,7 @@
     --info: #4299e1;
     
     /* Glass Effects */
+    --nav-menu: rgba(154, 213, 236, 0.158);
     --glass-bg: rgba(255, 255, 255, 0.8);
     --glass-border: rgba(255, 255, 255, 0.3);
     --glass-shadow: 0 8px 32px rgba(31, 38, 135, 0.15);
@@ -61,10 +62,11 @@
     --transition-normal: all 0.3s ease;
     
     /* Layout */
-    --container-xl: 1400px;  /* DÜZƏLDİLDİ: Daha geniş container */
-    --container-2xl: 1600px;  /* DÜZƏLDİLDİ: Daha geniş container */
+    --container-xl: 1400px;
+    --container-2xl: 1600px;
     --header-height: 80px;
     --mobile-header-height: 70px;
+    --hero-margin: 1.5rem; /* Symmetric margin for hero section */
     
     /* Typography */
     --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
@@ -113,8 +115,7 @@ body {
     color: var(--gray-800);
     line-height: 1.6;
     overflow-x: hidden;
-    padding-top: calc(var(--header-height) + 2rem);
-    padding-bottom: calc(var(--header-height) + 1rem);  /* DÜZƏLDİLDİ: Aşağıdan az padding */
+    padding-top: var(--header-height);
     min-height: 100vh;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -134,7 +135,7 @@ body::before {
 }
 
 /* =================================
-   LOADING SCREEN - SIMPLIFIED
+   LOADING SCREEN
    ================================= */
 .loading-screen {
     position: fixed;
@@ -183,6 +184,8 @@ body::before {
     top: 0;
     left: 0;
     width: 100%;
+    border-bottom-left-radius: 24px;
+    border-bottom-right-radius: 24px;
     height: var(--header-height);
     background: var(--glass-bg);
     backdrop-filter: var(--glass-backdrop);
@@ -205,8 +208,8 @@ body::before {
     grid-template-columns: 1fr 2fr 1fr;
     align-items: center;
     height: 100%;
-    padding: 0 clamp(1rem, 5vw, 3rem);
-    max-width: var(--container-2xl);  /* DÜZƏLDİLDİ: Navigation daha geniş */
+    padding: 0 var(--hero-margin);
+    max-width: var(--container-2xl);
     margin: 0 auto;
     gap: 2rem;
 }
@@ -257,11 +260,11 @@ body::before {
     justify-content: center;
     align-items: center;
     gap: clamp(0.5rem, 2vw, 1.5rem);
-    background: var(--glass-bg);
+    background: var(--nav-menu);
     backdrop-filter: var(--glass-backdrop);
     border-radius: var(--radius-2xl);
-    padding: 0.75rem 1.5rem;
-    box-shadow: var(--shadow-md);
+    padding: 0.55rem 1.5rem;
+    box-shadow: var(--shadow-xl);
     border: 1px solid var(--glass-border);
 }
 
@@ -442,29 +445,33 @@ body::before {
 }
 
 /* =================================
-   HERO SECTION - DÜZƏLDİLDİ: FULL WIDTH
+   HERO SECTION - PERFECT SYMMETRY
    ================================= */
-.hero-section{
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    /* header + footer boşluğunu nəzərə alırıq */
-    min-height:calc(100vh - var(--header-height) - 4rem);
-    text-align:center;
-    position:relative;
-    overflow:hidden;
-    margin:clamp(3rem,8vw,5rem);         
-    background:var(--glass-bg);
-    backdrop-filter:var(--glass-backdrop);
-    border-radius:var(--radius-2xl);
-    box-shadow:var(--shadow-floating);
+.hero-section {
+    /* Perfect symmetric spacing - matches header padding */
+    margin: var(--hero-margin);
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: calc(100vh - var(--header-height) - (var(--hero-margin) * 2));
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    
+    background: var(--glass-bg);
+    backdrop-filter: var(--glass-backdrop);
+    border-radius: var(--radius-2xl);
+    box-shadow: var(--shadow-floating);
+    border: 1px solid var(--glass-border);
 }
 
 .hero-content {
     z-index: 2;
     position: relative;
-    max-width: 1200px;  /* DÜZƏLDİLDİ: Content daha geniş olsun */
+    max-width: 1200px;
     width: 100%;
+    padding: 2rem;
 }
 
 .hero-title {
@@ -488,7 +495,7 @@ body::before {
     letter-spacing: 0.5px;
 }
 
-/* Hero Offers - Perfect Grid - DÜZƏLDİLDİ */
+/* Hero Offers - Perfect Grid */
 .hero-offers {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -603,10 +610,63 @@ body::before {
 }
 
 /* =================================
-   STATS SECTION - DÜZƏLDİLDİ
+   MAIN CONTENT WRAPPER
+   ================================= */
+.main-content-wrapper {
+    width: 100%;
+    min-height: 100vh;
+}
+
+/* Enhanced container classes */
+.products-container,
+.features-container {
+    max-width: var(--container-2xl);
+    margin: 0 auto;
+    padding: 0 var(--hero-margin);
+}
+
+/* =================================
+   SECTIONS
+   ================================= */
+.stats-section,
+.products-section,
+.features-section,
+.newsletter-section {
+    margin: clamp(7rem, 12vw, 10rem) 0;
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: clamp(3rem, 8vw, 5rem);
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.section-title {
+    font-size: clamp(2.5rem, 8vw, 4rem);
+    font-weight: var(--font-weight-black);
+    background: var(--accent-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 1.5rem;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+}
+
+.section-subtitle {
+    font-size: clamp(1.1rem, 3vw, 1.3rem);
+    color: var(--gray-600);
+    font-weight: var(--font-weight-medium);
+    line-height: 1.6;
+}
+
+/* =================================
+   STATS SECTION
    ================================= */
 .stats-section {
-    margin: clamp(5rem, 10vw, 7rem) clamp(1rem, 2vw, 2rem);  /* DÜZƏLDİLDİ: Yan tərəflərdən az margin */
+    margin: clamp(5rem, 10vw, 7rem) var(--hero-margin);
 }
 
 .stats-container {
@@ -652,42 +712,6 @@ body::before {
 }
 
 /* =================================
-   SECTIONS - DÜZƏLDİLDİ
-   ================================= */
-.products-section,
-.features-section,
-.newsletter-section {
-    margin: clamp(7rem, 12vw, 10rem) clamp(1rem, 2vw, 2rem);  /* DÜZƏLDİLDİ: Yan tərəflərdən az margin */
-}
-
-.section-header {
-    text-align: center;
-    margin-bottom: clamp(3rem, 8vw, 5rem);
-    max-width: 1000px;  /* DÜZƏLDİLDİ: Section header daha geniş */
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.section-title {
-    font-size: clamp(2.5rem, 8vw, 4rem);
-    font-weight: var(--font-weight-black);
-    background: var(--accent-gradient);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    margin-bottom: 1.5rem;
-    letter-spacing: -0.02em;
-    line-height: 1.1;
-}
-
-.section-subtitle {
-    font-size: clamp(1.1rem, 3vw, 1.3rem);
-    color: var(--gray-600);
-    font-weight: var(--font-weight-medium);
-    line-height: 1.6;
-}
-
-/* =================================
    PRODUCT FILTERS
    ================================= */
 .product-filters {
@@ -719,7 +743,7 @@ body::before {
 }
 
 /* =================================
-   PRODUCT CARDS - DÜZƏLDİLDİ
+   PRODUCT CARDS
    ================================= */
 .product-list {
     display: grid;
@@ -727,7 +751,6 @@ body::before {
     gap: 2rem;
     max-width: var(--container-2xl);
     margin: 0 auto;
-    padding: 0 1rem;
 }
 
 .product-card {
@@ -1004,7 +1027,7 @@ body::before {
 }
 
 /* =================================
-   FEATURES GRID - DÜZƏLDİLDİ
+   FEATURES GRID
    ================================= */
 .features-grid {
     display: grid;
@@ -1012,7 +1035,6 @@ body::before {
     gap: 2rem;
     max-width: var(--container-xl);
     margin: 0 auto;
-    padding: 0 1rem;
 }
 
 .feature-card {
@@ -1075,14 +1097,14 @@ body::before {
 }
 
 /* =================================
-   NEWSLETTER SECTION - DÜZƏLDİLDİ
+   NEWSLETTER SECTION
    ================================= */
 .newsletter-section {
     background: var(--glass-bg);
     backdrop-filter: var(--glass-backdrop);
     border: 1px solid var(--glass-border);
     border-radius: var(--radius-2xl);
-    margin: clamp(7rem, 12vw, 10rem) clamp(1rem, 3vw, 2rem);  /* DÜZƏLDİLDİ: Yuxarı və aşağı margin artırıldı */
+    margin: clamp(7rem, 12vw, 10rem) var(--hero-margin);
     overflow: hidden;
 }
 
@@ -1092,7 +1114,7 @@ body::before {
 
 .newsletter-content {
     text-align: center;
-    max-width: 800px;  /* DÜZƏLDİLDİ: Newsletter content daha geniş */
+    max-width: 800px;
     margin: 0 auto;
 }
 
@@ -1136,7 +1158,7 @@ body::before {
 .newsletter-input-group {
     display: flex;
     width: 100%;
-    max-width: 600px;  /* DÜZƏLDİLDİ: Input group daha geniş */
+    max-width: 600px;
     gap: 1rem;
     flex-wrap: wrap;
 }
@@ -1471,22 +1493,21 @@ body::before {
 }
 
 /* =================================
-   FOOTER - DÜZƏLDİLDİ
+   FOOTER
    ================================= */
 .main-footer {
     background: var(--glass-bg);
     backdrop-filter: var(--glass-backdrop);
     border-top: 1px solid var(--glass-border);
     margin-top: clamp(6rem, 10vw, 8rem);
-    margin-bottom: 0;  /* DÜZƏLDİLDİ: Aşağıdan margin yoxdur çünki body-də padding var */
 }
 
 .footer-content {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));  /* DÜZƏLDİLDİ: 280px-dən 300px-yə */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 3rem;
-    padding: clamp(3rem, 8vw, 4rem) clamp(2rem, 4vw, 3rem);  /* DÜZƏLDİLDİ: Padding artırıldı */
-    max-width: var(--container-2xl);  /* DÜZƏLDİLDİ: Container artırıldı */
+    padding: clamp(3rem, 8vw, 4rem) var(--hero-margin);
+    max-width: var(--container-2xl);
     margin: 0 auto;
 }
 
@@ -1607,7 +1628,7 @@ body::before {
 
 .footer-bottom {
     border-top: 1px solid var(--glass-border);
-    padding: 2rem clamp(2rem, 4vw, 3rem);  /* DÜZƏLDİLDİ: Padding artırıldı */
+    padding: 2rem var(--hero-margin);
     background: var(--glass-bg);
 }
 
@@ -1615,7 +1636,7 @@ body::before {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    max-width: var(--container-2xl);  /* DÜZƏLDİLDİ: Container artırıldı */
+    max-width: var(--container-2xl);
     margin: 0 auto;
     flex-wrap: wrap;
     gap: 1rem;
@@ -1643,7 +1664,7 @@ body::before {
    ================================= */
 .back-to-top {
     position: fixed;
-    bottom: 2rem;  /* DÜZƏLDİLDİ: Normal position */
+    bottom: 2rem;
     right: 2rem;
     width: 56px;
     height: 56px;
@@ -1672,18 +1693,19 @@ body::before {
 }
 
 /* =================================
-   RESPONSIVE DESIGN - DÜZƏLDİLDİ
+   RESPONSIVE DESIGN
    ================================= */
 @media (max-width: 480px) {
     :root {
         --header-height: var(--mobile-header-height);
+        --hero-margin: 1rem;
     }
     
     .main-nav {
         display: flex;
         justify-content: space-between;
         grid-template-columns: none;
-        padding: 0 1rem;
+        padding: 0 var(--hero-margin);
         gap: 1rem;
     }
     
@@ -1700,9 +1722,7 @@ body::before {
     }
     
     .hero-section {
-        margin: clamp(2rem, 5vw, 3rem) 0.5rem;  /* DÜZƏLDİLDİ: Mobile üçün yan tərəflərdən minimal margin */
-        min-height: calc(100vh - var(--mobile-header-height) - 4rem);
-        padding: 2rem 1rem;
+        min-height: calc(100vh - var(--mobile-header-height) - (var(--hero-margin) * 2));
     }
     
     .hero-offers {
@@ -1722,7 +1742,6 @@ body::before {
     
     .product-list {
         grid-template-columns: 1fr;
-        padding: 0 0.5rem;
         gap: 1.5rem;
     }
     
@@ -1742,7 +1761,6 @@ body::before {
     .footer-content {
         grid-template-columns: 1fr;
         gap: 2rem;
-        padding: 2rem 1rem;  /* DÜZƏLDİLDİ: Mobile üçün normal padding */
     }
     
     .footer-bottom-content {
@@ -1750,12 +1768,8 @@ body::before {
         text-align: center;
     }
     
-    .footer-bottom {
-        padding: 2rem 1rem;  /* DÜZƏLDİLDİ: Mobile üçün normal padding */
-    }
-    
     .back-to-top {
-        bottom: 1rem;  /* DÜZƏLDİLDİ: Mobile üçün normal position */
+        bottom: 1rem;
         right: 1rem;
         width: 48px;
         height: 48px;
@@ -1763,6 +1777,10 @@ body::before {
 }
 
 @media (min-width: 481px) and (max-width: 768px) {
+    :root {
+        --hero-margin: 1.25rem;
+    }
+    
     .mobile-menu-toggle {
         display: flex;
     }
@@ -1778,19 +1796,11 @@ body::before {
     .features-grid {
         grid-template-columns: repeat(2, 1fr);
     }
-    
-    .hero-section {
-        margin: clamp(3rem, 6vw, 4rem) clamp(0.5rem, 1vw, 1rem);  /* DÜZƏLDİLDİ: Tablet üçün yan tərəflərdən minimal margin */
-    }
 }
 
 @media (min-width: 769px) and (max-width: 1024px) {
     .product-list {
         grid-template-columns: repeat(3, 1fr);
-    }
-    
-    .hero-section {
-        margin: clamp(4rem, 8vw, 5rem) clamp(1rem, 2vw, 2rem);  /* DÜZƏLDİLDİ: Desktop üçün yan tərəflərdən az margin */
     }
 }
 
@@ -1798,9 +1808,35 @@ body::before {
     .product-list {
         grid-template-columns: repeat(4, 1fr);
     }
+}
+
+/* Ultra-wide screen optimizations */
+@media (min-width: 1600px) {
+    :root {
+        --hero-margin: 2rem;
+    }
     
-    .hero-section {
-        margin: clamp(5rem, 10vw, 6rem) clamp(1rem, 2vw, 2rem);  /* DÜZƏLDİLDİ: Böyük ekran üçün yan tərəflərdən az margin */
+    .main-content-wrapper {
+        max-width: 1920px;
+        margin: 0 auto;
+    }
+    
+    .product-list {
+        grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+        gap: 3rem;
+        max-width: 1800px;
+    }
+    
+    .features-grid {
+        grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+        gap: 3rem;
+        max-width: 1800px;
+    }
+    
+    .stats-container {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 3rem;
+        max-width: 1400px;
     }
 }
 
