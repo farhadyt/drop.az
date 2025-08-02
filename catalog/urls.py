@@ -1,4 +1,4 @@
-# catalog/urls.py
+# catalog/urls.py - COMPLETE FILE with Hero Pages
 from django.urls import path, include
 from django.views.generic import TemplateView
 from . import views
@@ -11,18 +11,34 @@ urlpatterns = [
     # MAIN PAGES
     # =================================
     
-    # Ana səhifə
+    # Ana səhifə (original home page with full layout)
     path('', views.home, name='home'),
+    
+    # =================================
+    # 🆕 HERO PAGES - NEW ADDITIONS
+    # =================================
+    
+    # Bütün kateqoriyalar hero səhifəsi
+    path('categories-hero/', views.categories_hero_view, name='categories_hero'),
+    path('kateqoriyalar-hero/', views.categories_hero_view, name='categories_hero_az'),
+    
+    # Tək kateqoriya hero səhifəsi  
+    path('category-hero/<slug:slug>/', views.category_hero_view, name='category_hero'),
+    path('kateqoriya-hero/<slug:slug>/', views.category_hero_view, name='category_hero_az'),
+    
+    # =================================
+    # ORIGINAL PAGES (backward compatibility)
+    # =================================
     
     # Məhsul siyahısı
     path('products/', views.product_list, name='product_list'),
-    path('mehsullar/', views.product_list, name='product_list_az'),  # Azərbaycan dilində
+    path('mehsullar/', views.product_list, name='product_list_az'),
     
     # Məhsul təfsilatı
     path('product/<slug:slug>/', views.product_detail, name='product_detail'),
     path('mehsul/<slug:slug>/', views.product_detail, name='product_detail_az'),
     
-    # Kateqoriya səhifələri
+    # Original kateqoriya səhifələri
     path('category/<slug:slug>/', views.category_detail, name='category_detail'),
     path('kateqoriya/<slug:slug>/', views.category_detail, name='category_detail_az'),
 
@@ -36,7 +52,7 @@ urlpatterns = [
     # Axtarış təklifləri (AJAX)
     path('api/search-suggestions/', views.search_suggestions, name='search_suggestions'),
     
-    # Newsletter abunəliği (AJAX)
+    # Newsletter abunəliyi (AJAX)
     path('api/newsletter-subscribe/', views.newsletter_subscribe, name='newsletter_subscribe'),
     
     # Məhsul statistikaları (AJAX)
@@ -157,9 +173,6 @@ urlpatterns = [
     # Qiymət aralığı filter
     path('products/price/<int:min_price>-<int:max_price>/', views.product_list, name='products_by_price'),
     
-    # Brend filter (gələcək üçün)
-    # path('products/brand/<slug:brand_slug>/', views.product_list, name='products_by_brand'),
-    
     # =================================
     # SEO & UTILITY URLS
     # =================================
@@ -174,143 +187,26 @@ urlpatterns = [
     ), name='robots'),
     
     # =================================
-    # DEVELOPMENT & TESTING URLS
+    # LANGUAGE-SPECIFIC URLS
     # =================================
     
-    # Test səhifəsi (yalnız DEBUG=True zamanı)
-    # path('test/', TemplateView.as_view(template_name='test/test.html'), name='test'),
-    
-    # =================================
-    # REDIRECTS (Köhnə URL-lərdən yenilərə)
-    # =================================
-    
-    # Köhnə product URL-dən yeniyə redirect
-    # path('products/<int:id>/', RedirectView.as_view(pattern_name='catalog:product_detail'), name='product_redirect'),
-]
-
-# =================================
-# CUSTOM ERROR HANDLERS
-# =================================
-
-# Bu URL patterns yalnız DEBUG=False zamanı işləyir
-# settings.py-də handler404 və handler500 təyin edilməlidir
-
-# =================================
-# DYNAMIC URL PATTERNS (İdarəetmə panelindən əlavə edilən)
-# =================================
-
-# Bu hissə gələcəkdə dinamik səhifələr üçün istifadə oluna bilər
-# Məsələn: blog, yeniliklər, kampaniyalar və s.
-
-# =================================
-# LANGUAGE-SPECIFIC URLS
-# =================================
-
-# Azərbaycan dilində URL-lər
-az_patterns = [
+    # Azərbaycan dilində URL-lər
     path('ana-sehife/', views.home, name='home_az'),
     path('mehsullar/', views.product_list, name='products_az'),
-    path('kateqoriyalar/', TemplateView.as_view(template_name='pages/categories.html'), name='categories_az'),
     path('endirimler/', TemplateView.as_view(template_name='pages/sales.html'), name='sales_az'),
     path('yenilikler/', TemplateView.as_view(template_name='pages/new_products.html'), name='new_products_az'),
 ]
 
-# Ana URL patterns-ə əlavə et
-urlpatterns += az_patterns
-
 # =================================
-# API VERSIONING (Gələcək üçün)
+# API VERSIONING
 # =================================
 
 # API v1 patterns
 api_v1_patterns = [
     path('v1/products/', views.product_list, name='api_v1_products'),
-    path('v1/categories/', views.category_detail, name='api_v1_categories'),
+    path('v1/categories/', views.categories_hero_view, name='api_v1_categories'),
     path('v1/search/', views.search_suggestions, name='api_v1_search'),
 ]
 
 # API patterns-i əlavə et
 urlpatterns += [path('api/', include(api_v1_patterns))]
-
-# =================================
-# ADMIN HELPER URLS
-# =================================
-
-# Admin üçün köməkçi URL-lər (yalnız staff istifadəçilər üçün)
-admin_patterns = [
-    # path('admin-tools/clear-cache/', views.clear_cache, name='admin_clear_cache'),
-    # path('admin-tools/export-products/', views.export_products, name='admin_export_products'),
-    # path('admin-tools/import-products/', views.import_products, name='admin_import_products'),
-]
-
-# =================================
-# SOCIAL MEDIA & SHARING URLS
-# =================================
-
-# Social media sharing üçün URL-lər
-social_patterns = [
-    # path('share/facebook/<slug:slug>/', views.share_facebook, name='share_facebook'),
-    # path('share/twitter/<slug:slug>/', views.share_twitter, name='share_twitter'),
-    # path('share/whatsapp/<slug:slug>/', views.share_whatsapp, name='share_whatsapp'),
-]
-
-# =================================
-# WEBHOOK URLS (Third-party integrations üçün)
-# =================================
-
-# Webhook URL-ləri (ödəniş sistemləri, çatdırılma xidmətləri və s.)
-webhook_patterns = [
-    # path('webhooks/payment/', views.payment_webhook, name='payment_webhook'),
-    # path('webhooks/delivery/', views.delivery_webhook, name='delivery_webhook'),
-]
-
-# =================================
-# MOBILE APP API URLS
-# =================================
-
-# Mobil tətbiq üçün API endpoint-lər
-mobile_api_patterns = [
-    # path('mobile/api/products/', views.mobile_product_list, name='mobile_products'),
-    # path('mobile/api/categories/', views.mobile_category_list, name='mobile_categories'),
-    # path('mobile/api/auth/', views.mobile_auth, name='mobile_auth'),
-]
-
-# =================================
-# URL NAME REFERENCE
-# =================================
-
-"""
-URL Names və istifadə nümunələri:
-
-Template-lərdə istifadə:
-{% url 'catalog:home' %}
-{% url 'catalog:product_detail' slug='iphone-14' %}
-{% url 'catalog:category_detail' slug='telefonlar' %}
-
-Views-da istifadə:
-from django.urls import reverse
-url = reverse('catalog:product_detail', kwargs={'slug': 'iphone-14'})
-
-JavaScript-də istifadə:
-fetch('{% url "catalog:search_suggestions" %}?q=iphone')
-"""
-
-# =================================
-# URL OPTIMIZATION NOTES
-# =================================
-
-"""
-SEO üçün URL optimallaşdırması:
-
-1. Qısa və təsviri URL-lər
-2. Slug field-lərin istifadəsi
-3. Azərbaycan dilində URL seçimləri
-4. Canonicalization (dublika URL-lərin qarşısının alınması)
-5. 301 redirects köhnə URL-lər üçün
-6. URL structure-un consistent olması
-
-Nümunə yaxşı URL-lər:
-/mehsul/iphone-14-pro-max/
-/kateqoriya/telefonlar/
-/mehsullar/?search=iphone&category=telefonlar
-"""

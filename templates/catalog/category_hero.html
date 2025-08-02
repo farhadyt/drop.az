@@ -1,0 +1,570 @@
+{% extends "base_hero_only.html" %}
+{% load static %}
+
+{% block title %}{{ category.name }} - drop.az{% endblock %}
+
+{% block meta_description %}{{ category.name }} kateqoriyasında {{ products.paginator.count }} məhsul. drop.az-da ən yaxşı qiymətlərlə {{ category.name }} alış-veriş edin.{% endblock %}
+
+{% block meta_keywords %}{{ category.name }}, {% for product in products|slice:":5" %}{{ product.name }}, {% endfor %}drop.az, alış-veriş{% endblock %}
+
+{% block og_title %}{{ category.name }} Məhsulları - drop.az{% endblock %}
+{% block og_description %}{{ category.name }} kateqoriyasında {{ products.paginator.count }} məhsul. Keyfiyyətli və uyğun qiymətli məhsullar.{% endblock %}
+
+{% block hero_content %}
+    <!-- Category Hero Header -->
+    <div class="category-hero-header">
+        <!-- Breadcrumb Navigation -->
+        {% if breadcrumbs %}
+            <nav class="hero-breadcrumb" aria-label="Naviqasiya yolu">
+                <div class="breadcrumb-container">
+                    <a href="{% url 'catalog:home' %}" class="breadcrumb-link">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" width="16" height="16">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m0 0V11a1 1 0 011-1h2a1 1 0 011 1v10m3 0a1 1 0 001-1V10M9 21h6"></path>
+                        </svg>
+                        Ana səhifə
+                    </a>
+                    <span class="breadcrumb-separator">›</span>
+                    <a href="{% url 'catalog:categories_hero' %}" class="breadcrumb-link">Kateqoriyalar</a>
+                    {% for breadcrumb in breadcrumbs %}
+                        <span class="breadcrumb-separator">›</span>
+                        {% if forloop.last %}
+                            <span class="breadcrumb-current">{{ breadcrumb.name }}</span>
+                        {% else %}
+                            <a href="{{ breadcrumb.url }}" class="breadcrumb-link">{{ breadcrumb.name }}</a>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </nav>
+        {% endif %}
+
+        <!-- Category Title Section -->
+        <div class="hero-logo-container category-header">
+            <h1 id="hero-title" class="hero-title category-title">
+                <span class="category-emoji">
+                    {% if 'elektronika' in category.name|lower or 'telefon' in category.name|lower %}📱
+                    {% elif 'kompüter' in category.name|lower or 'laptop' in category.name|lower %}💻
+                    {% elif 'ev' in category.name|lower or 'mətbəx' in category.name|lower %}🏠
+                    {% elif 'geyim' in category.name|lower or 'paltar' in category.name|lower %}👕
+                    {% elif 'kitab' in category.name|lower %}📚
+                    {% elif 'oyun' in category.name|lower or 'əyləncə' in category.name|lower %}🎮
+                    {% elif 'idman' in category.name|lower %}⚽
+                    {% elif 'avtomobil' in category.name|lower or 'maşın' in category.name|lower %}🚗
+                    {% elif 'sağlamlıq' in category.name|lower %}🏥
+                    {% elif 'gözəllik' in category.name|lower %}💄
+                    {% else %}📦{% endif %}
+                </span>
+                <span class="title-text">{{ category.name }}</span>
+            </h1>
+            <div class="logo-glow category-glow" aria-hidden="true"></div>
+        </div>
+        
+        <p class="hero-subtitle">{{ category.name }} kateqoriyasında keyfiyyətli məhsullar</p>
+        <p class="hero-slogan">Ən yaxşı {{ category.name|lower }} məhsulları burada! 🛍️</p>
+        <p class="hero-tagline">{{ products.paginator.count }} məhsul · Uyğun qiymətlər · Sürətli çatdırılma</p>
+
+        <!-- Parent & Sibling Categories -->
+        {% if parent_category or sibling_categories %}
+            <div class="category-navigation">
+                {% if parent_category %}
+                    <a href="{% url 'catalog:category_hero' parent_category.slug %}" class="parent-category-link">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" width="18" height="18">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                        </svg>
+                        {{ parent_category.name }}
+                    </a>
+                {% endif %}
+
+                {% if sibling_categories %}
+                    <div class="sibling-categories">
+                        <span class="siblings-label">Oxşar kateqoriyalar:</span>
+                        {% for sibling in sibling_categories %}
+                            <a href="{% url 'catalog:category_hero' sibling.slug %}" class="sibling-link">
+                                {{ sibling.name }}
+                                <span class="sibling-count">({{ sibling.active_product_count }})</span>
+                            </a>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+        {% endif %}
+    </div>
+
+    <!-- Category Statistics -->
+    <div class="category-stats-section">
+        <div class="stat-item">
+            <span class="stat-icon">📦</span>
+            <span class="stat-number">{{ products.paginator.count }}</span>
+            <span class="stat-label">Məhsul</span>
+        </div>
+        {% if subcategories %}
+        <div class="stat-item">
+            <span class="stat-icon">🏷️</span>
+            <span class="stat-number">{{ subcategories.count }}</span>
+            <span class="stat-label">Alt Kateqoriya</span>
+        </div>
+        {% endif %}
+        {% if price_stats.min_price %}
+        <div class="stat-item">
+            <span class="stat-icon">💰</span>
+            <span class="stat-number">{{ price_stats.min_price|floatformat:0 }}-{{ price_stats.max_price|floatformat:0 }} AZN</span>
+            <span class="stat-label">Qiymət Aralığı</span>
+        </div>
+        {% endif %}
+        <div class="stat-item">
+            <span class="stat-icon">⭐</span>
+            <span class="stat-number">4.8</span>
+            <span class="stat-label">Orta Rəy</span>
+        </div>
+    </div>
+
+    <!-- Subcategories Quick Navigation -->
+    {% if subcategories %}
+        <div class="subcategories-navigation">
+            <h3 class="subcategories-title">Alt kateqoriyalar:</h3>
+            <div class="subcategories-pills">
+                <a href="{% url 'catalog:category_hero' category.slug %}" 
+                   class="subcategory-pill active">
+                    Hamısı ({{ products.paginator.count }})
+                </a>
+                {% for subcategory in subcategories %}
+                    <a href="{% url 'catalog:category_hero' subcategory.slug %}" 
+                       class="subcategory-pill">
+                        {{ subcategory.name }} ({{ subcategory.active_product_count }})
+                    </a>
+                {% endfor %}
+            </div>
+        </div>
+    {% endif %}
+
+    <!-- Products Content Area -->
+    <div class="products-content-area">
+        {% if products %}
+            <!-- Products Control Panel -->
+            <div class="products-control-panel">
+                <!-- Search & Filter Section -->
+                <div class="control-section search-filter-section">
+                    <!-- Search in Category -->
+                    <div class="category-search-wrapper">
+                        <form method="get" class="category-search-form">
+                            <div class="search-input-wrapper">
+                                <svg class="search-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" width="20" height="20">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m21 21-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                                </svg>
+                                <input type="search" 
+                                       name="search" 
+                                       class="product-search-input" 
+                                       placeholder="{{ category.name }} içində axtar..." 
+                                       value="{{ current_filters.search }}"
+                                       autocomplete="off">
+                                {% if current_filters.min_price %}<input type="hidden" name="min_price" value="{{ current_filters.min_price }}">{% endif %}
+                                {% if current_filters.max_price %}<input type="hidden" name="max_price" value="{{ current_filters.max_price }}">{% endif %}
+                                {% if current_filters.sort %}<input type="hidden" name="sort" value="{{ current_filters.sort }}">{% endif %}
+                                <button type="submit" class="search-submit-btn">
+                                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" width="18" height="18">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path>
+                                    </svg>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- Price Range Filter -->
+                    <div class="price-filter-wrapper">
+                        <form method="get" class="price-filter-form">
+                            <div class="price-inputs">
+                                <input type="number" 
+                                       name="min_price" 
+                                       placeholder="Min qiymət" 
+                                       value="{{ current_filters.min_price }}"
+                                       class="price-input">
+                                <span class="price-separator">—</span>
+                                <input type="number" 
+                                       name="max_price" 
+                                       placeholder="Max qiymət" 
+                                       value="{{ current_filters.max_price }}"
+                                       class="price-input">
+                                {% if current_filters.search %}<input type="hidden" name="search" value="{{ current_filters.search }}">{% endif %}
+                                {% if current_filters.sort %}<input type="hidden" name="sort" value="{{ current_filters.sort }}">{% endif %}
+                                <button type="submit" class="price-filter-btn">
+                                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" width="16" height="16">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.207A1 1 0 013 6.5V4z"></path>
+                                    </svg>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Results & Sort Section -->
+                <div class="control-section results-sort-section">
+                    <!-- Results Info -->
+                    <div class="results-info">
+                        <span class="results-count">
+                            <strong>{{ products.paginator.count }}</strong> məhsul tapıldı
+                        </span>
+                        {% if products.has_other_pages %}
+                            <span class="results-pagination-info">
+                                ({{ products.start_index }}-{{ products.end_index }} göstərilir)
+                            </span>
+                        {% endif %}
+                    </div>
+
+                    <!-- Sort Dropdown -->
+                    <div class="sort-wrapper">
+                        <form method="get" class="sort-form">
+                            <label for="sort-select" class="sort-label">Sırala:</label>
+                            <select id="sort-select" name="sort" class="sort-select" onchange="this.form.submit()">
+                                <option value="-created_at" {% if current_filters.sort == '-created_at' %}selected{% endif %}>Ən yenilər</option>
+                                <option value="price" {% if current_filters.sort == 'price' %}selected{% endif %}>Qiymət: ucuzdan bahaya</option>
+                                <option value="-price" {% if current_filters.sort == '-price' %}selected{% endif %}>Qiymət: bahadan ucuza</option>
+                                <option value="name" {% if current_filters.sort == 'name' %}selected{% endif %}>Ad: A-Z</option>
+                                <option value="-name" {% if current_filters.sort == '-name' %}selected{% endif %}>Ad: Z-A</option>
+                                <option value="-stock" {% if current_filters.sort == '-stock' %}selected{% endif %}>Stok sayına görə</option>
+                            </select>
+                            {% if current_filters.search %}<input type="hidden" name="search" value="{{ current_filters.search }}">{% endif %}
+                            {% if current_filters.min_price %}<input type="hidden" name="min_price" value="{{ current_filters.min_price }}">{% endif %}
+                            {% if current_filters.max_price %}<input type="hidden" name="max_price" value="{{ current_filters.max_price }}">{% endif %}
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Active Filters Display -->
+                {% if current_filters.search or current_filters.min_price or current_filters.max_price %}
+                    <div class="active-filters">
+                        <span class="active-filters-label">Aktiv filtrlər:</span>
+                        <div class="filter-tags">
+                            {% if current_filters.search %}
+                                <span class="filter-tag">
+                                    Axtarış: "{{ current_filters.search }}"
+                                    <a href="?{% if current_filters.min_price %}min_price={{ current_filters.min_price }}&{% endif %}{% if current_filters.max_price %}max_price={{ current_filters.max_price }}&{% endif %}{% if current_filters.sort %}sort={{ current_filters.sort }}{% endif %}" class="filter-remove">×</a>
+                                </span>
+                            {% endif %}
+                            {% if current_filters.min_price %}
+                                <span class="filter-tag">
+                                    Min: {{ current_filters.min_price }} AZN
+                                    <a href="?{% if current_filters.search %}search={{ current_filters.search }}&{% endif %}{% if current_filters.max_price %}max_price={{ current_filters.max_price }}&{% endif %}{% if current_filters.sort %}sort={{ current_filters.sort }}{% endif %}" class="filter-remove">×</a>
+                                </span>
+                            {% endif %}
+                            {% if current_filters.max_price %}
+                                <span class="filter-tag">
+                                    Max: {{ current_filters.max_price }} AZN
+                                    <a href="?{% if current_filters.search %}search={{ current_filters.search }}&{% endif %}{% if current_filters.min_price %}min_price={{ current_filters.min_price }}&{% endif %}{% if current_filters.sort %}sort={{ current_filters.sort }}{% endif %}" class="filter-remove">×</a>
+                                </span>
+                            {% endif %}
+                            <a href="{% url 'catalog:category_hero' category.slug %}" class="clear-all-filters">Hamısını təmizlə</a>
+                        </div>
+                    </div>
+                {% endif %}
+            </div>
+
+            <!-- Products Grid -->
+            <div class="category-products-grid" id="products-grid">
+                {% for product in products %}
+                    <article class="product-hero-card fade-in" 
+                             data-product-id="{{ product.id }}"
+                             itemscope 
+                             itemtype="https://schema.org/Product">
+                        
+                        <div class="product-image-section">
+                            {% if product.image %}
+                                <img src="{{ product.image.url }}" 
+                                     alt="{{ product.name }}" 
+                                     class="product-image" 
+                                     loading="lazy"
+                                     width="280"
+                                     height="280"
+                                     itemprop="image">
+                            {% else %}
+                                <div class="product-no-image">
+                                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" width="48" height="48">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                                    </svg>
+                                    <span>Şəkil yoxdur</span>
+                                </div>
+                            {% endif %}
+                            
+                            <!-- Product Actions -->
+                            <div class="product-actions">
+                                <button class="action-btn favorite-btn" 
+                                        title="Sevimlilərə əlavə et" 
+                                        data-product-id="{{ product.id }}">
+                                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" width="18" height="18">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+                                    </svg>
+                                </button>
+                                <button class="action-btn share-btn" 
+                                        title="Paylaş" 
+                                        data-product-id="{{ product.id }}">
+                                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" width="18" height="18">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.367 2.684 3 3 0 00-5.367-2.684z"></path>
+                                    </svg>
+                                </button>
+                            </div>
+                            
+                            <!-- Stock Badge -->
+                            {% if product.stock <= 5 and product.stock > 0 %}
+                                <div class="stock-badge low-stock">Son {{ product.stock }} ədəd!</div>
+                            {% elif product.stock == 0 %}
+                                <div class="stock-badge out-of-stock">Stok yoxdur</div>
+                            {% elif product.stock > 20 %}
+                                <div class="stock-badge in-stock">Çoxlu stok</div>
+                            {% endif %}
+                        </div>
+                        
+                        <div class="product-info-section">
+                            <h3 class="product-name" itemprop="name">
+                                <a href="/product/{{ product.slug }}/">{{ product.name }}</a>
+                            </h3>
+                            
+                            {% if product.description %}
+                                <p class="product-description" itemprop="description">
+                                    {{ product.description|truncatewords:15 }}
+                                </p>
+                            {% endif %}
+                            
+                            <!-- Product Rating -->
+                            <div class="product-rating">
+                                <div class="stars">
+                                    {% for i in "12345" %}
+                                        <span class="star {% if i|add:0 <= 4 %}filled{% endif %}">★</span>
+                                    {% endfor %}
+                                </div>
+                                <span class="rating-text">4.{{ product.id|slice:"-1" }} ({{ product.id|add:10 }} rəy)</span>
+                            </div>
+                            
+                            <!-- Price Section -->
+                            <div class="product-price-section" itemprop="offers" itemscope itemtype="https://schema.org/Offer">
+                                <div class="price-info">
+                                    <span class="current-price" itemprop="price" content="{{ product.price }}">
+                                        {{ product.price }} AZN
+                                    </span>
+                                    <meta itemprop="priceCurrency" content="AZN">
+                                    <meta itemprop="availability" content="{% if product.stock > 0 %}https://schema.org/InStock{% else %}https://schema.org/OutOfStock{% endif %}">
+                                </div>
+                                
+                                <!-- Installment Info -->
+                                {% if product.price > 100 %}
+                                    <div class="installment-info">
+                                        <span class="installment-text">
+                                            12 aya {{ product.price|floatformat:0|add:12|div:12|floatformat:0 }} AZN
+                                        </span>
+                                    </div>
+                                {% endif %}
+                            </div>
+                            
+                            <!-- Action Buttons -->
+                            <div class="product-action-buttons">
+                                {% if product.stock > 0 %}
+                                    <button class="btn-add-to-cart" data-product-id="{{ product.id }}">
+                                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" width="18" height="18">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4m1.6 8L6 5H3m4 8v6a2 2 0 002 2h8a2 2 0 002-2v-6m-10 0V9a2 2 0 012-2h6a2 2 0 012 2v4.01"></path>
+                                        </svg>
+                                        Səbətə əlavə et
+                                    </button>
+                                {% else %}
+                                    <button class="btn-out-of-stock" disabled>
+                                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" width="18" height="18">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                                        </svg>
+                                        Stok yoxdur
+                                    </button>
+                                {% endif %}
+                                
+                                <button class="btn-quick-view" data-product-id="{{ product.id }}">
+                                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" width="18" height="18">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
+                                    </svg>
+                                    Tez baxış
+                                </button>
+                            </div>
+                        </div>
+                    </article>
+                {% endfor %}
+            </div>
+
+            <!-- Pagination -->
+            {% if products.has_other_pages %}
+                <nav class="hero-pagination" aria-label="Səhifə naviqasiyası">
+                    <div class="pagination-container">
+                        {% if products.has_previous %}
+                            <a href="?page={{ products.previous_page_number }}{% if current_filters.search %}&search={{ current_filters.search }}{% endif %}{% if current_filters.min_price %}&min_price={{ current_filters.min_price }}{% endif %}{% if current_filters.max_price %}&max_price={{ current_filters.max_price }}{% endif %}{% if current_filters.sort %}&sort={{ current_filters.sort }}{% endif %}" 
+                               class="pagination-btn pagination-prev">
+                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" width="18" height="18">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                                </svg>
+                                Əvvəlki
+                            </a>
+                        {% endif %}
+                        
+                        <div class="pagination-info">
+                            <span class="current-page">{{ products.number }}</span>
+                            <span class="page-separator">/</span>
+                            <span class="total-pages">{{ products.paginator.num_pages }}</span>
+                        </div>
+                        
+                        {% if products.has_next %}
+                            <a href="?page={{ products.next_page_number }}{% if current_filters.search %}&search={{ current_filters.search }}{% endif %}{% if current_filters.min_price %}&min_price={{ current_filters.min_price }}{% endif %}{% if current_filters.max_price %}&max_price={{ current_filters.max_price }}{% endif %}{% if current_filters.sort %}&sort={{ current_filters.sort }}{% endif %}" 
+                               class="pagination-btn pagination-next">
+                                Növbəti
+                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" width="18" height="18">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                </svg>
+                            </a>
+                        {% endif %}
+                    </div>
+                </nav>
+            {% endif %}
+
+        {% else %}
+            <!-- No Products State -->
+            <div class="no-products-state">
+                <div class="no-products-content">
+                    <div class="no-products-icon">🛍️</div>
+                    <h2>{{ category.name }} kateqoriyasında məhsul tapılmadı</h2>
+                    {% if current_filters.search or current_filters.min_price or current_filters.max_price %}
+                        <p>Axtarış və ya filtr şərtlərinizə uyğun məhsul mövcud deyil. Filterləri dəyişərək yenidən cəhd edin.</p>
+                        <div class="no-products-actions">
+                            <a href="{% url 'catalog:category_hero' category.slug %}" class="btn-clear-filters">
+                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" width="18" height="18">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path>
+                                </svg>
+                                Filterləri təmizlə
+                            </a>
+                            <a href="{% url 'catalog:categories_hero' %}" class="btn-browse-categories">
+                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" width="18" height="18">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
+                                </svg>
+                                Digər kateqoriyalar
+                            </a>
+                        </div>
+                    {% else %}
+                        <p>Bu kateqoriyaya hələ məhsul əlavə edilməyib. Digər kateqoriyalara baxın və ya geri qayıdın.</p>
+                        <div class="no-products-actions">
+                            <a href="{% url 'catalog:categories_hero' %}" class="btn-browse-categories">
+                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" width="18" height="18">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
+                                </svg>
+                                Kateqoriyalara bax
+                            </a>
+                            {% if user.is_staff %}
+                                <a href="/admin/catalog/product/add/" class="btn-admin-add">
+                                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" width="18" height="18">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+                                    </svg>
+                                    Məhsul əlavə et
+                                </a>
+                            {% endif %}
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        {% endif %}
+    </div>
+
+    <!-- Category Info Footer -->
+    <div class="category-info-footer">
+        <div class="category-features">
+            <div class="feature-item">
+                <span class="feature-icon">✅</span>
+                <span class="feature-text">Orijinal məhsul zəmanəti</span>
+            </div>
+            <div class="feature-item">
+                <span class="feature-icon">🚚</span>
+                <span class="feature-text">Pulsuz çatdırılma 50 AZN+</span>
+            </div>
+            <div class="feature-item">
+                <span class="feature-icon">🔄</span>
+                <span class="feature-text">30 gün qaytarma</span>
+            </div>
+            <div class="feature-item">
+                <span class="feature-icon">📞</span>
+                <span class="feature-text">24/7 dəstək xidməti</span>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('🛍️ Category Hero Page loaded');
+    
+    // Initialize product interactions
+    initializeProductInteractions();
+    
+    // Initialize smooth scrolling for pagination
+    initializePaginationScrolling();
+    
+    // Initialize price filter validation
+    initializePriceFilterValidation();
+    
+    // Initialize product animations
+    initializeProductAnimations();
+    
+    console.log('✅ Category Hero Page ready');
+});
+
+function initializeProductInteractions() {
+    const productCards = document.querySelectorAll('.product-hero-card');
+    
+    productCards.forEach(card => {
+        // Add hover effects
+        card.addEventListener('mouseenter', function() {
+            this.style.transform = 'translateY(-8px)';
+        });
+        
+        card.addEventListener('mouseleave', function() {
+            this.style.transform = 'translateY(0)';
+        });
+    });
+}
+
+function initializePaginationScrolling() {
+    const paginationLinks = document.querySelectorAll('.pagination-btn');
+    
+    paginationLinks.forEach(link => {
+        link.addEventListener('click', function() {
+            // Scroll to top of products grid
+            const productsGrid = document.getElementById('products-grid');
+            if (productsGrid) {
+                productsGrid.scrollIntoView({ 
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
+    });
+}
+
+function initializePriceFilterValidation() {
+    const minPriceInput = document.querySelector('input[name="min_price"]');
+    const maxPriceInput = document.querySelector('input[name="max_price"]');
+    
+    if (minPriceInput && maxPriceInput) {
+        function validatePriceRange() {
+            const minPrice = parseFloat(minPriceInput.value) || 0;
+            const maxPrice = parseFloat(maxPriceInput.value) || Infinity;
+            
+            if (minPrice > maxPrice && maxPriceInput.value) {
+                maxPriceInput.setCustomValidity('Maximum qiymət minimum qiymətdən böyük olmalıdır');
+            } else {
+                maxPriceInput.setCustomValidity('');
+            }
+        }
+        
+        minPriceInput.addEventListener('input', validatePriceRange);
+        maxPriceInput.addEventListener('input', validatePriceRange);
+    }
+}
+
+function initializeProductAnimations() {
+    const productCards = document.querySelectorAll('.product-hero-card');
+    
+    productCards.forEach((card, index) => {
+        card.style.animationDelay = `${index * 0.1}s`;
+        card.classList.add('fade-in-up');
+    });
+}
+</script>
+{% endblock %}
