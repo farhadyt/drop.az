@@ -5,7 +5,7 @@
 
 {% block meta_description %}drop.az - keyfiyyətli məhsullar, sürətli çatdırılma, 24/7 dəstək və təhlükəsiz ödəniş sistemi ilə Azərbaycanda ən etibarlı alış-veriş təcrübəsi.{% endblock %}
 
-{% block meta_keywords %}drop.az, alış-veriş, Azərbaycan, onlayn mağaza, elektronika, telefon, kompüter, çatdırılma, endirim, keyfiyyət{% endblock %}
+{% block meta_keywords %}drop.az, alış-veriş, Azərbaycan, onlayn mağaza, elektronika, telefon, kompüter, çatdırılma, endirim, keyfiyyət, ödəniş{% endblock %}
 
 {% block og_title %}drop.az - Azərbaycanda ən yaxşı alış-veriş platforması{% endblock %}
 {% block og_description %}Keyfiyyətli məhsullar, sürətli çatdırılma və uyğun qiymətlərlə alış-veriş edin. 1000+ məhsul, 50K+ məmnun müştəri.{% endblock %}
@@ -36,57 +36,117 @@
 {% endblock %}
 
 {% block content %}
-    <!-- Hero Section -->
+    <!-- Enhanced Hero Section -->
     <section class="hero-section" aria-labelledby="hero-title">
         <div class="hero-content">
-            <h1 id="hero-title" class="hero-title">drop.az</h1>
-            <p class="hero-subtitle">Azərbaycanda ən yaxşı alış-veriş təcrübəsi</p>
+            <!-- Enhanced Logo with 3D Effect -->
+            <div class="hero-logo-container">
+                <h1 id="hero-title" class="hero-title">
+                    <span class="logo-letter">d</span>
+                    <span class="logo-letter">r</span>
+                    <span class="logo-letter">o</span>
+                    <span class="logo-letter">p</span>
+                    <span class="logo-dot">.</span>
+                    <span class="logo-letter">a</span>
+                    <span class="logo-letter">z</span>
+                </h1>
+                <div class="logo-glow" aria-hidden="true"></div>
+            </div>
+
+            <!-- Enhanced Subtitle -->
+            <p class="hero-subtitle">Sizin ən yaxşı alış-veriş təcrübə</p>
             
-            <!-- Special Offers -->
+            <!-- New Slogan -->
+            <p class="hero-slogan">Seç, Tıkla, Çatdıraq! 🛍️</p>
+            
+            <!-- Additional tagline -->
+            <p class="hero-tagline">Hər an, hər yerdə, ən yaxşı qiymətlə</p>
+            
+           
+            
+            <!-- Enhanced Special Offers -->
             <div class="hero-offers" role="list" aria-label="Xüsusi təkliflər">
-                <div class="offer-item" role="listitem">
-                    <span class="offer-icon" aria-hidden="true">🚚</span>
-                    <span class="offer-text">Pulsuz Çatdırılma</span>
+                <div class="offer-item enhanced-offer" role="listitem">
+                    <div class="offer-icon-container">
+                        <span class="offer-icon" aria-hidden="true">🚚</span>
+                        <div class="offer-badge">PULSUZ</div>
+                    </div>
+                    <div class="offer-content">
+                        <h3 class="offer-title">Çatdırılma</h3>
+                        <p class="offer-desc">50 AZN-dən yuxarı</p>
+                    </div>
                 </div>
-                <div class="offer-item" role="listitem">
-                    <span class="offer-icon" aria-hidden="true">🎯</span>
-                    <span class="offer-text">24/7 Dəstək</span>
+                
+                <div class="offer-item enhanced-offer" role="listitem">
+                    <div class="offer-icon-container">
+                        <span class="offer-icon" aria-hidden="true">🎯</span>
+                        <div class="offer-badge">24/7</div>
+                    </div>
+                    <div class="offer-content">
+                        <h3 class="offer-title">Dəstək</h3>
+                        <p class="offer-desc">Həmişə yanınızda</p>
+                    </div>
                 </div>
-                <div class="offer-item" role="listitem">
-                    <span class="offer-icon" aria-hidden="true">🔒</span>
-                    <span class="offer-text">Təhlükəsiz Ödəniş</span>
+                
+                <div class="offer-item enhanced-offer" role="listitem">
+                    <div class="offer-icon-container">
+                        <span class="offer-icon" aria-hidden="true">🔒</span>
+                        <div class="offer-badge">SSL</div>
+                    </div>
+                    <div class="offer-content">
+                        <h3 class="offer-title">Ödəniş</h3>
+                        <p class="offer-desc">256-bit şifrələmə</p>
+                    </div>
                 </div>
-                <div class="offer-item" role="listitem">
-                    <span class="offer-icon" aria-hidden="true">⚡</span>
-                    <span class="offer-text">Sürətli Xidmət</span>
+                
+                <div class="offer-item enhanced-offer" role="listitem">
+                    <div class="offer-icon-container">
+                        <span class="offer-icon" aria-hidden="true">⚡</span>
+                        <div class="offer-badge">2-3 SAAT</div>
+                    </div>
+                    <div class="offer-content">
+                        <h3 class="offer-title">Express</h3>
+                        <p class="offer-desc">Sürətli çatdırılma</p>
+                    </div>
                 </div>
             </div>
             
+            <!-- Enhanced Call to Actions -->
             <div class="hero-buttons">
                 <a href="#products" 
-                   class="btn btn-primary"
+                   class="btn btn-primary btn-hero"
                    aria-describedby="hero-cta-desc">
                     <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path>
                     </svg>
-                    Məhsullara Bax
+                    İndi Alış-veriş Et
+                    <span class="btn-highlight">1000+ məhsul</span>
                 </a>
+                
                 <a href="#features" 
-                   class="btn btn-secondary"
+                   class="btn btn-secondary btn-hero"
                    aria-describedby="hero-features-desc">
                     <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
                     </svg>
-                    Haqqımızda
+                    Xidmətlərimiz
+                    <span class="btn-highlight">Keyfiyyət zəmanəti</span>
                 </a>
+                
+                <button class="btn btn-outline btn-hero search-trigger" 
+                        onclick="document.querySelector('.search-toggle').click()"
+                        aria-describedby="hero-search-desc">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m21 21-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                    </svg>
+                    Məhsul Axtar
+                    <span class="btn-highlight">iPhone, Samsung...</span>
+                </button>
             </div>
             
-            <!-- Screen reader descriptions -->
-            <div class="sr-only">
-                <p id="hero-cta-desc">Bütün məhsullarımızı görün və alış-veriş edin</p>
-                <p id="hero-features-desc">Bizim xidmətlərimiz və üstünlüklərimiz haqqında məlumat alın</p>
-            </div>
-        </div>
+         
+            
+
     </section>
 
     <!-- Quick Stats Section -->
@@ -448,8 +508,14 @@
 {% block extra_js %}
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-    console.log('🎯 Home page enhanced interactions loaded');
+    console.log('🎯 Enhanced Hero Section loaded');
     
+    // Enhanced Logo Letter Animation
+    const logoLetters = document.querySelectorAll('.logo-letter, .logo-dot');
+    logoLetters.forEach((letter, index) => {
+        letter.style.animationDelay = `${index * 0.1}s`;
+    });
+
     // Enhanced Product Filter System
     const filterBtns = document.querySelectorAll('.filter-btn');
     const productCards = document.querySelectorAll('.product-card');
@@ -491,12 +557,6 @@ document.addEventListener('DOMContentLoaded', function() {
             if (window.dropAzUtils && window.dropAzUtils.showNotification) {
                 window.dropAzUtils.showNotification(announcement, 'info');
             }
-            
-            // Update live region
-            productGrid.setAttribute('aria-live', 'polite');
-            setTimeout(() => {
-                productGrid.setAttribute('aria-live', 'off');
-            }, 1000);
         });
     });
 
@@ -516,15 +576,6 @@ document.addEventListener('DOMContentLoaded', function() {
         
         if (action) {
             console.log(`Analytics: ${action} - Product: ${productName} (ID: ${productId})`);
-            
-            // Send to analytics (Google Analytics, Facebook Pixel, etc.)
-            if (typeof gtag !== 'undefined') {
-                gtag('event', action, {
-                    'event_category': 'ecommerce',
-                    'event_label': productName,
-                    'value': productId
-                });
-            }
         }
     });
 
@@ -546,105 +597,30 @@ document.addEventListener('DOMContentLoaded', function() {
                 this.setCustomValidity('');
             }
         });
+    }
 
-        // Enhanced form submission
-        newsletterForm.addEventListener('submit', function(e) {
+    // Smooth scroll for hero buttons
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            const href = this.getAttribute('href');
+            if (href === '#') return;
+            
             e.preventDefault();
+            const target = document.querySelector(href);
             
-            const email = newsletterInput.value.trim();
-            
-            if (!email) {
-                newsletterInput.focus();
-                return;
-            }
-            
-            if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-                newsletterInput.focus();
-                return;
-            }
-            
-            // Track newsletter subscription
-            if (typeof gtag !== 'undefined') {
-                gtag('event', 'newsletter_signup', {
-                    'event_category': 'engagement',
-                    'event_label': 'homepage'
+            if (target) {
+                const headerHeight = document.querySelector('.floating-header')?.offsetHeight || 0;
+                const targetPosition = target.offsetTop - headerHeight - 40;
+                
+                window.scrollTo({
+                    top: targetPosition,
+                    behavior: 'smooth'
                 });
             }
-            
-            console.log(`Newsletter signup: ${email}`);
         });
-    }
-
-    // Intersection Observer for progressive loading
-    const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('animate-in');
-                
-                // Load high-res images when visible
-                const img = entry.target.querySelector('img[data-src]');
-                if (img) {
-                    img.src = img.dataset.src;
-                    img.removeAttribute('data-src');
-                }
-                
-                observer.unobserve(entry.target);
-            }
-        });
-    }, observerOptions);
-
-    // Observe elements for lazy loading and animation
-    document.querySelectorAll('.fade-in').forEach(el => {
-        observer.observe(el);
     });
 
-    // Accessibility enhancements
-    function enhanceAccessibility() {
-        // Skip to main content link
-        const skipLink = document.querySelector('a[href="#main-content"]');
-        if (skipLink) {
-            skipLink.addEventListener('click', function(e) {
-                e.preventDefault();
-                const mainContent = document.getElementById('main-content');
-                if (mainContent) {
-                    mainContent.focus();
-                    mainContent.scrollIntoView();
-                }
-            });
-        }
-
-        // Improve focus management for modals and overlays
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Tab') {
-                // Trap focus in modals when open
-                const activeModal = document.querySelector('.search-overlay.active, .mobile-nav-menu.active');
-                if (activeModal) {
-                    const focusableElements = activeModal.querySelectorAll(
-                        'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
-                    );
-                    const firstElement = focusableElements[0];
-                    const lastElement = focusableElements[focusableElements.length - 1];
-
-                    if (e.shiftKey && document.activeElement === firstElement) {
-                        e.preventDefault();
-                        lastElement.focus();
-                    } else if (!e.shiftKey && document.activeElement === lastElement) {
-                        e.preventDefault();
-                        firstElement.focus();
-                    }
-                }
-            }
-        });
-    }
-
-    enhanceAccessibility();
-    
-    console.log('✅ Home page ready with enhanced features');
+    console.log('✅ Enhanced Hero Section ready');
 });
 </script>
 {% endblock %}
