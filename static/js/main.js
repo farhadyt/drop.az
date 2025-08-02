@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 // =================================
-// CORE APP INITIALIZATION
+// CORE APP INITIALIZATION - DÜZƏLDİLMİŞ
 // =================================
 function initializeApp() {
     // Initialize loading screen first
@@ -55,6 +55,9 @@ function initializeApp() {
     initializeProductInteractions();
     initializeProductFilters();
     initializeLogoEffects();
+    
+    // ✅ ƏLAVƏ EDİLDİ: Categories dropdown initialization
+    initializeCategoriesDropdown();
     
     // Update UI
     updateCartCounter();
@@ -126,7 +129,7 @@ function initializeLogoEffects() {
     const logoLink = document.querySelector('.logo-link');
     const logoImage = document.querySelector('.logo-image');
     
-    if (!logoLink || !logoImage) return;
+    if (!logoLink) return;
 
     // Special click effect
     logoLink.addEventListener('click', function(e) {
@@ -134,20 +137,20 @@ function initializeLogoEffects() {
         
         // Add special animation class
         logoLink.style.animation = 'none';
-        logoImage.style.animation = 'none';
+        if (logoImage) logoImage.style.animation = 'none';
         
         // Force reflow
         logoLink.offsetHeight;
-        logoImage.offsetHeight;
+        if (logoImage) logoImage.offsetHeight;
         
         // Apply special effect
         logoLink.style.animation = 'logoClickEffect 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55)';
-        logoImage.style.animation = 'logoRotateEffect 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55)';
+        if (logoImage) logoImage.style.animation = 'logoRotateEffect 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55)';
         
         // Reset after animation
         setTimeout(() => {
             logoLink.style.animation = '';
-            logoImage.style.animation = 'logoGlow 4s ease-in-out infinite';
+            if (logoImage) logoImage.style.animation = 'logoGlow 4s ease-in-out infinite';
         }, 600);
         
         // Show special notification
@@ -190,12 +193,104 @@ function initializeLogoEffects() {
 
     // Logo hover effects
     logoLink.addEventListener('mouseenter', function() {
-        logoImage.style.transform = 'rotate(5deg) scale(1.1)';
+        if (logoImage) logoImage.style.transform = 'rotate(5deg) scale(1.1)';
     });
 
     logoLink.addEventListener('mouseleave', function() {
-        logoImage.style.transform = '';
+        if (logoImage) logoImage.style.transform = '';
     });
+}
+
+// =================================
+// CATEGORIES DROPDOWN FUNCTIONALITY - DÜZƏLDİLMİŞ
+// =================================
+function initializeCategoriesDropdown() {
+    const categoriesDropdown = document.querySelector('.categories-dropdown');
+    const dropdownToggle = categoriesDropdown?.querySelector('.dropdown-toggle');
+    const megaDropdown = categoriesDropdown?.querySelector('.mega-dropdown');
+    
+    console.log('Initializing categories dropdown...', {
+        categoriesDropdown: !!categoriesDropdown,
+        dropdownToggle: !!dropdownToggle,
+        megaDropdown: !!megaDropdown
+    });
+    
+    if (!categoriesDropdown || !dropdownToggle || !megaDropdown) {
+        console.log('Categories dropdown elements not found');
+        return;
+    }
+
+    let hoverTimeout;
+    let isDropdownOpen = false;
+
+    function openDropdown() {
+        if (isDropdownOpen) return;
+        clearTimeout(hoverTimeout);
+        isDropdownOpen = true;
+        categoriesDropdown.classList.add('active');
+        dropdownToggle.setAttribute('aria-expanded', 'true');
+        
+        console.log('Dropdown opened');
+        
+        setTimeout(() => {
+            document.addEventListener('click', handleClickOutside);
+        }, 10);
+    }
+
+    function closeDropdown() {
+        if (!isDropdownOpen) return;
+        clearTimeout(hoverTimeout);
+        isDropdownOpen = false;
+        categoriesDropdown.classList.remove('active');
+        dropdownToggle.setAttribute('aria-expanded', 'false');
+        document.removeEventListener('click', handleClickOutside);
+        
+        console.log('Dropdown closed');
+    }
+
+    function handleClickOutside(event) {
+        if (!categoriesDropdown.contains(event.target)) {
+            closeDropdown();
+        }
+    }
+
+    // Hover events for desktop
+    categoriesDropdown.addEventListener('mouseenter', function() {
+        if (window.innerWidth > 768) {
+            clearTimeout(hoverTimeout);
+            hoverTimeout = setTimeout(openDropdown, 150);
+        }
+    });
+
+    categoriesDropdown.addEventListener('mouseleave', function() {
+        if (window.innerWidth > 768) {
+            clearTimeout(hoverTimeout);
+            hoverTimeout = setTimeout(closeDropdown, 300);
+        }
+    });
+
+    // Click events
+    dropdownToggle.addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        console.log('Dropdown toggle clicked');
+        if (isDropdownOpen) {
+            closeDropdown();
+        } else {
+            openDropdown();
+        }
+    });
+
+    // Track category clicks
+    megaDropdown.addEventListener('click', function(e) {
+        const categoryLink = e.target.closest('.main-category-link, .sub-category-link');
+        if (categoryLink) {
+            const categoryName = categoryLink.textContent.trim();
+            console.log('Category clicked:', categoryName);
+        }
+    });
+
+    console.log('✅ Categories dropdown initialized');
 }
 
 // =================================

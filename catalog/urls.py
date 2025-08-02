@@ -25,6 +25,9 @@ urlpatterns = [
     # Kateqoriya səhifələri
     path('category/<slug:slug>/', views.category_detail, name='category_detail'),
     path('kateqoriya/<slug:slug>/', views.category_detail, name='category_detail_az'),
+
+    path('categories/', views.categories_list, name='categories_list'),
+    path('kateqoriyalar/', views.categories_list, name='categories_list_az'),
     
     # =================================
     # AJAX & API ENDPOINTS

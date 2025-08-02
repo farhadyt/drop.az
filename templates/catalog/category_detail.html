@@ -1,0 +1,181 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}{{ category.name }} - Kateqoriya | drop.az{% endblock %}
+
+{% block meta_description %}{{ category.name }} kateqoriyasında {{ products.paginator.count }} məhsul. drop.az-da ən yaxşı qiymətlərlə alış-veriş edin.{% endblock %}
+
+{% block content %}
+    <!-- Category Hero -->
+    <section style="background: var(--glass-bgo); backdrop-filter: var(--glass-backdrop); border-radius: var(--radius-2xl); padding: 2rem; margin: 2rem; border: 1px solid var(--glass-border); box-shadow: var(--shadow-lg); position: relative; overflow: hidden;">
+        <div style="position: absolute; top: 0; left: 0; right: 0; height: 4px; background: var(--accent-gradient);"></div>
+        
+        <!-- Breadcrumbs -->
+        {% if breadcrumbs %}
+            <nav style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 1rem; font-size: var(--font-size-sm); color: var(--gray-600);">
+                <a href="{% url 'catalog:home' %}" style="color: var(--gray-600); text-decoration: none;">Ana səhifə</a>
+                <span>></span>
+                <a href="{% url 'catalog:categories_list' %}" style="color: var(--gray-600); text-decoration: none;">Kateqoriyalar</a>
+                {% for breadcrumb in breadcrumbs %}
+                    <span>></span>
+                    {% if forloop.last %}
+                        <span style="color: var(--gray-800); font-weight: var(--font-weight-medium);">{{ breadcrumb.name }}</span>
+                    {% else %}
+                        <a href="{{ breadcrumb.url }}" style="color: var(--gray-600); text-decoration: none;">{{ breadcrumb.name }}</a>
+                    {% endif %}
+                {% endfor %}
+            </nav>
+        {% endif %}
+
+        <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 2rem; margin-bottom: 1.5rem;">
+            <div>
+                <h1 style="font-size: clamp(1.5rem, 4vw, 2.5rem); font-weight: var(--font-weight-black); background: var(--accent-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 0.5rem;">{{ category.name }}</h1>
+                <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                    <span style="padding: 0.5rem 1rem; background: rgba(255, 255, 255, 0.7); border: 1px solid var(--glass-border); border-radius: var(--radius-full); font-size: var(--font-size-sm); font-weight: var(--font-weight-medium); color: var(--gray-700);">
+                        {{ products.paginator.count }} məhsul
+                    </span>
+                    {% if subcategories %}
+                        <span style="padding: 0.5rem 1rem; background: rgba(255, 255, 255, 0.7); border: 1px solid var(--glass-border); border-radius: var(--radius-full); font-size: var(--font-size-sm); font-weight: var(--font-weight-medium); color: var(--gray-700);">
+                            {{ subcategories.count }} alt kateqoriya
+                        </span>
+                    {% endif %}
+                </div>
+            </div>
+
+            {% if parent_category %}
+                <a href="{% url 'catalog:category_detail' parent_category.slug %}" 
+                   style="padding: 0.75rem 1rem; background: rgba(79, 172, 254, 0.1); border: 1px solid rgba(79, 172, 254, 0.2); border-radius: var(--radius-lg); text-decoration: none; color: var(--primary); font-size: var(--font-size-sm); font-weight: var(--font-weight-medium); transition: var(--transition-fast); display: flex; align-items: center; gap: 0.5rem;">
+                    ← {{ parent_category.name }}
+                </a>
+            {% endif %}
+        </div>
+
+        <!-- Subcategories -->
+        {% if subcategories %}
+            <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1.5rem;">
+                {% for subcategory in subcategories %}
+                    <a href="{% url 'catalog:category_detail' subcategory.slug %}" 
+                       style="padding: 0.5rem 1rem; background: rgba(255, 255, 255, 0.8); border: 1px solid var(--glass-border); border-radius: var(--radius-full); text-decoration: none; color: var(--gray-700); font-size: var(--font-size-sm); font-weight: var(--font-weight-medium); transition: var(--transition-fast); display: flex; align-items: center; gap: 0.25rem;">
+                        {{ subcategory.name }}
+                        <span style="font-size: var(--font-size-xs); opacity: 0.8;">({{ subcategory.active_product_count }})</span>
+                    </a>
+                {% endfor %}
+            </div>
+        {% endif %}
+    </section>
+
+    <!-- Main Content -->
+    <main style="display: grid; grid-template-columns: 280px 1fr; gap: 2rem; margin: 2rem; max-width: var(--container-2xl); margin-left: auto; margin-right: auto;">
+        <!-- Filters Sidebar -->
+        <aside style="background: var(--glass-bg); backdrop-filter: var(--glass-backdrop); border: 1px solid var(--glass-border); border-radius: var(--radius-xl); padding: 1.5rem; box-shadow: var(--shadow-md); position: sticky; top: calc(var(--header-height) + 2rem); height: fit-content;">
+            <div style="margin-bottom: 1.5rem;">
+                <h3 style="font-size: var(--font-size-lg); font-weight: var(--font-weight-semibold); color: var(--gray-800); margin-bottom: 1rem;">Qiymət aralığı</h3>
+                <form method="get" style="display: flex; gap: 0.5rem; align-items: center;">
+                    <input type="number" name="min_price" placeholder="Min" value="{{ current_filters.min_price }}" style="flex: 1; padding: 0.5rem; border: 1px solid var(--glass-border); border-radius: var(--radius-md); font-size: var(--font-size-sm);">
+                    <span>-</span>
+                    <input type="number" name="max_price" placeholder="Max" value="{{ current_filters.max_price }}" style="flex: 1; padding: 0.5rem; border: 1px solid var(--glass-border); border-radius: var(--radius-md); font-size: var(--font-size-sm);">
+                    <button type="submit" style="padding: 0.5rem 1rem; background: var(--primary); color: var(--white); border: none; border-radius: var(--radius-md); font-size: var(--font-size-sm); cursor: pointer;">Axtar</button>
+                </form>
+            </div>
+
+            <div style="margin-bottom: 1.5rem;">
+                <h3 style="font-size: var(--font-size-lg); font-weight: var(--font-weight-semibold); color: var(--gray-800); margin-bottom: 1rem;">Kateqoriyada axtar</h3>
+                <form method="get" style="display: flex; gap: 0.5rem;">
+                    <input type="search" name="search" placeholder="Məhsul adı..." value="{{ current_filters.search }}" style="flex: 1; padding: 0.5rem; border: 1px solid var(--glass-border); border-radius: var(--radius-md); font-size: var(--font-size-sm);">
+                    <button type="submit" style="padding: 0.5rem 1rem; background: var(--primary); color: var(--white); border: none; border-radius: var(--radius-md); font-size: var(--font-size-sm); cursor: pointer;">Axtar</button>
+                </form>
+            </div>
+        </aside>
+
+        <!-- Products Section -->
+        <section style="min-height: 400px;">
+            <!-- Sort Controls -->
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
+                <div style="color: var(--gray-600); font-size: var(--font-size-sm);">
+                    <strong>{{ products.paginator.count }}</strong> məhsul
+                    {% if products.has_other_pages %}
+                        ({{ products.start_index }}-{{ products.end_index }})
+                    {% endif %}
+                </div>
+
+                <form method="get" style="display: flex; align-items: center; gap: 0.5rem;">
+                    <label style="font-size: var(--font-size-sm); color: var(--gray-600);">Sırala:</label>
+                    <select name="sort" onchange="this.form.submit()" style="padding: 0.75rem 1rem; border: 2px solid var(--glass-border); border-radius: var(--radius-lg); background: var(--glass-bg); color: var(--gray-800); font-size: var(--font-size-sm);">
+                        <option value="-created_at" {% if current_filters.sort == '-created_at' %}selected{% endif %}>Ən yenilər</option>
+                        <option value="price" {% if current_filters.sort == 'price' %}selected{% endif %}>Qiymət (ucuzdan bahaya)</option>
+                        <option value="-price" {% if current_filters.sort == '-price' %}selected{% endif %}>Qiymət (bahadan ucuza)</option>
+                        <option value="name" {% if current_filters.sort == 'name' %}selected{% endif %}>Ad (A-Z)</option>
+                    </select>
+                </form>
+            </div>
+
+            <!-- Products Grid -->
+            {% if products %}
+                <div class="product-list">
+                    {% for product in products %}
+                        <article class="product-card" data-product-id="{{ product.id }}">
+                            <div class="product-image-container">
+                                {% if product.image %}
+                                    <img src="{{ product.image.url }}" alt="{{ product.name }}" class="product-image" loading="lazy">
+                                {% else %}
+                                    <div class="product-no-image">
+                                        <span>Şəkil yoxdur</span>
+                                    </div>
+                                {% endif %}
+                                
+                                <div class="product-actions">
+                                    <button class="action-btn favorite-btn" data-product-id="{{ product.id }}">♥</button>
+                                </div>
+                            </div>
+                            
+                            <div class="product-info">
+                                <div class="product-category-tag">{{ product.category.name }}</div>
+                                <h3 class="product-name">
+                                    <a href="/product/{{ product.slug }}/">{{ product.name }}</a>
+                                </h3>
+                                <div class="product-footer">
+                                    <div class="product-price">
+                                        <span class="current-price">{{ product.price }} AZN</span>
+                                    </div>
+                                    {% if product.stock > 0 %}
+                                        <button class="btn btn-primary add-to-cart-btn" data-product-id="{{ product.id }}">
+                                            Səbətə əlavə et
+                                        </button>
+                                    {% else %}
+                                        <button class="btn btn-disabled" disabled>Stok yoxdur</button>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </article>
+                    {% endfor %}
+                </div>
+
+                <!-- Pagination -->
+                {% if products.has_other_pages %}
+                    <nav style="margin-top: 3rem; display: flex; justify-content: center; gap: 0.5rem;">
+                        {% if products.has_previous %}
+                            <a href="?page={{ products.previous_page_number }}" class="btn btn-outline">Əvvəlki</a>
+                        {% endif %}
+                        <span class="btn btn-secondary">{{ products.number }} / {{ products.paginator.num_pages }}</span>
+                        {% if products.has_next %}
+                            <a href="?page={{ products.next_page_number }}" class="btn btn-outline">Növbəti</a>
+                        {% endif %}
+                    </nav>
+                {% endif %}
+            {% else %}
+                <div style="text-align: center; padding: 4rem 2rem;">
+                    <h3>{{ category.name }} kateqoriyasında məhsul tapılmadı</h3>
+                    <p>Bu kateqoriyaya məhsul əlavə edilməyib. Başqa kateqoriyalara baxın.</p>
+                    <a href="{% url 'catalog:categories_list' %}" class="btn btn-primary" style="margin-top: 2rem;">Digər kateqoriyalar</a>
+                </div>
+            {% endif %}
+        </section>
+    </main>
+
+    <style>
+    @media (max-width: 768px) {
+        main { grid-template-columns: 1fr !important; margin: 1rem !important; }
+        aside { position: static !important; order: 2; }
+    }
+    </style>
+{% endblock %}

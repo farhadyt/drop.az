@@ -1,8 +1,8 @@
 # catalog/views.py
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.http import JsonResponse, HttpResponse
 from django.core.paginator import Paginator
-from django.db.models import Q, Count, Avg
+from django.db.models import Q, Count, Avg, Min, Max
 from django.views.decorators.http import require_http_methods
 from django.views.decorators.csrf import csrf_exempt
 from django.utils.decorators import method_decorator
@@ -135,8 +135,8 @@ def product_list(request):
         
         # Qiymət aralığı (filter üçün)
         price_range = Product.objects.filter(available=True).aggregate(
-            min_price=models.Min('price'),
-            max_price=models.Max('price')
+            min_price=Min('price'),
+            max_price=Max('price')
         )
         
         context = {
@@ -209,43 +209,142 @@ def product_detail(request, slug):
 # =================================
 def category_detail(request, slug):
     """
-    Kateqoriya səhifəsi view-ı
+    Tək kateqoriya səhifəsi - yenilənmiş versiya
     """
     try:
         category = get_object_or_404(Category, slug=slug)
         
         # Kateqoriyadakı məhsullar
-        products = Product.objects.filter(
+        products_query = Product.objects.filter(
             category=category, 
             available=True
         ).select_related('category').order_by('-created_at')
         
-        # Alt kateqoriyalar
-        subcategories = Category.objects.filter(parent=category).annotate(
-            product_count=Count('products', filter=Q(products__available=True))
-        )
+        # Axtarış funksiyası
+        search_query = request.GET.get('search', '').strip()
+        if search_query:
+            products_query = products_query.filter(
+                Q(name__icontains=search_query) | 
+                Q(description__icontains=search_query)
+            )
+        
+        # Qiymət filtri
+        min_price = request.GET.get('min_price')
+        max_price = request.GET.get('max_price')
+        if min_price:
+            try:
+                products_query = products_query.filter(price__gte=float(min_price))
+            except ValueError:
+                pass
+        if max_price:
+            try:
+                products_query = products_query.filter(price__lte=float(max_price))
+            except ValueError:
+                pass
+        
+        # Sıralama
+        sort_by = request.GET.get('sort', '-created_at')
+        valid_sort_options = [
+            'name', '-name', 'price', '-price', 'created_at', '-created_at'
+        ]
+        if sort_by in valid_sort_options:
+            products_query = products_query.order_by(sort_by)
         
         # Paginasiya
-        paginator = Paginator(products, 12)
+        paginator = Paginator(products_query, 12)
         page_number = request.GET.get('page')
         page_obj = paginator.get_page(page_number)
         
+        # Alt kateqoriyalar
+        subcategories = category.children.annotate(
+            active_product_count=Count(
+                'products', 
+                filter=Q(products__available=True)
+            )
+        ).filter(active_product_count__gt=0).order_by('name')
+        
+        # Parent və sibling kateqoriyalar
+        parent_category = category.parent
+        sibling_categories = []
+        if parent_category:
+            sibling_categories = parent_category.children.exclude(
+                id=category.id
+            ).annotate(
+                active_product_count=Count(
+                    'products',
+                    filter=Q(products__available=True)
+                )
+            ).filter(active_product_count__gt=0).order_by('name')[:5]
+        
+        # Qiymət statistikası
+        price_stats = products_query.aggregate(
+            min_price=Min('price'),
+            max_price=Max('price'),
+            avg_price=Avg('price')
+        )
+        
         context = {
             'category': category,
-            'page_obj': page_obj,
             'products': page_obj,
+            'page_obj': page_obj,
             'subcategories': subcategories,
-            'page_title': category.name,
-            'meta_description': f'{category.name} kateqoriyası - drop.az'
+            'parent_category': parent_category,
+            'sibling_categories': sibling_categories,
+            'search_query': search_query,
+            'price_stats': price_stats,
+            'current_filters': {
+                'search': search_query,
+                'min_price': min_price,
+                'max_price': max_price,
+                'sort': sort_by
+            },
+            'page_title': f'{category.name} - Kateqoriya',
+            'meta_description': f'{category.name} kateqoriyasında {products_query.count()} məhsul.',
+            'breadcrumbs': get_category_breadcrumbs(category)
         }
         
-        logger.info(f"Category viewed: {category.name} ({products.count()} products)")
         return render(request, 'catalog/category_detail.html', context)
         
     except Exception as e:
         logger.error(f"Error in category_detail view: {str(e)}")
         messages.error(request, 'Kateqoriya tapılmadı.')
         return redirect('catalog:home')
+
+# =================================
+# CATEGORIES LIST VIEW
+# =================================
+def categories_list(request):
+    """
+    Bütün kateqoriyalar səhifəsi
+    """
+    try:
+        main_categories = Category.objects.filter(
+            parent__isnull=True
+        ).prefetch_related('children').annotate(
+            active_product_count=Count(
+                'products',
+                filter=Q(products__available=True)
+            ),
+            total_subcategories=Count('children')
+        ).filter(
+            active_product_count__gt=0
+        ).order_by('name')
+        
+        context = {
+            'main_categories': main_categories,
+            'page_title': 'Bütün Kateqoriyalar',
+            'meta_description': 'drop.az-da mövcud olan bütün məhsul kateqoriyaları'
+        }
+        
+        return render(request, 'catalog/categories_list.html', context)
+        
+    except Exception as e:
+        logger.error(f"Error in categories_list view: {str(e)}")
+        messages.error(request, 'Kateqoriyalar yüklənərkən xəta baş verdi.')
+        return render(request, 'catalog/categories_list.html', {
+            'main_categories': [],
+            'page_title': 'Kateqoriyalar'
+        })
 
 # =================================
 # AJAX VIEWS
@@ -467,26 +566,22 @@ def add_to_recently_viewed(request, product_id):
     except Exception as e:
         logger.error(f"Error adding to recently viewed: {str(e)}")
 
-# =================================
-# ERROR HANDLING VIEWS
-# =================================
-def handler404(request, exception):
+def get_category_breadcrumbs(category):
     """
-    404 səhifəsi
+    Kateqoriya üçün breadcrumb yaradır
     """
-    return render(request, 'errors/404.html', {
-        'page_title': 'Səhifə tapılmadı',
-        'error_code': '404'
-    }, status=404)
-
-def handler500(request):
-    """
-    500 səhifəsi
-    """
-    return render(request, 'errors/500.html', {
-        'page_title': 'Server xətası',
-        'error_code': '500'
-    }, status=500)
+    breadcrumbs = []
+    current = category
+    
+    while current:
+        breadcrumbs.insert(0, {
+            'name': current.name,
+            'url': f'/category/{current.slug}/',
+            'slug': current.slug
+        })
+        current = current.parent
+    
+    return breadcrumbs
 
 # =================================
 # SITEMAP VIEW
@@ -535,3 +630,24 @@ def sitemap_view(request):
     except Exception as e:
         logger.error(f"Error generating sitemap: {str(e)}")
         return HttpResponse('<?xml version="1.0" encoding="UTF-8"?><urlset></urlset>', content_type='application/xml')
+
+# =================================
+# ERROR HANDLING VIEWS
+# =================================
+def handler404(request, exception):
+    """
+    404 səhifəsi
+    """
+    return render(request, 'errors/404.html', {
+        'page_title': 'Səhifə tapılmadı',
+        'error_code': '404'
+    }, status=404)
+
+def handler500(request):
+    """
+    500 səhifəsi
+    """
+    return render(request, 'errors/500.html', {
+        'page_title': 'Server xətası',
+        'error_code': '500'
+    }, status=500)

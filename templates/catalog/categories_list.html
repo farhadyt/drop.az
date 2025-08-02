@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Bütün Kateqoriyalar - drop.az{% endblock %}
+
+{% block meta_description %}drop.az-da mövcud olan bütün məhsul kateqoriyaları. Elektronika, ev əşyaları və daha çox.{% endblock %}
+
+{% block content %}
+    <section class="categories-hero" style="background: var(--glass-bgo); backdrop-filter: var(--glass-backdrop); border-radius: var(--radius-2xl); padding: 3rem 2rem; margin: 2rem; text-align: center; border: 1px solid var(--glass-border); box-shadow: var(--shadow-lg);">
+        <h1 style="font-size: clamp(2rem, 5vw, 3rem); font-weight: var(--font-weight-black); background: var(--accent-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 1rem;">Məhsul Kateqoriyaları</h1>
+        <p style="font-size: var(--font-size-lg); color: var(--gray-600); max-width: 600px; margin: 0 auto;">drop.az-da mövcud olan bütün kateqoriyalar və alt kateqoriyalar. Axtardığınız məhsulu asanlıqla tapın və alış-verişə başlayın!</p>
+    </section>
+
+    <main style="padding: 2rem; max-width: var(--container-2xl); margin: 0 auto;">
+        {% if main_categories %}
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2rem; margin-top: 2rem;">
+                {% for category in main_categories %}
+                    <article style="background: var(--glass-bgo); backdrop-filter: var(--glass-backdrop); border: 1px solid var(--glass-border); border-radius: var(--radius-2xl); padding: 2rem; transition: var(--transition-fast); box-shadow: var(--shadow-md); position: relative; overflow: hidden;">
+                        <div style="position: absolute; top: 0; left: 0; right: 0; height: 4px; background: var(--accent-gradient);"></div>
+                        
+                        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.5rem;">
+                            <h2 style="font-size: var(--font-size-xl); font-weight: var(--font-weight-bold); color: var(--gray-800); margin: 0;">
+                                <a href="{% url 'catalog:category_detail' category.slug %}" style="text-decoration: none; color: inherit; transition: var(--transition-fast);">
+                                    {{ category.name }}
+                                </a>
+                            </h2>
+                            <div style="display: flex; gap: 1rem; font-size: var(--font-size-sm); color: var(--gray-500);">
+                                <span style="background: rgba(255, 255, 255, 0.7); padding: 0.25rem 0.75rem; border-radius: var(--radius-full); font-weight: var(--font-weight-medium);">
+                                    {{ category.active_product_count }} məhsul
+                                </span>
+                                {% if category.total_subcategories > 0 %}
+                                    <span style="background: rgba(255, 255, 255, 0.7); padding: 0.25rem 0.75rem; border-radius: var(--radius-full); font-weight: var(--font-weight-medium);">
+                                        {{ category.total_subcategories }} alt kateqoriya
+                                    </span>
+                                {% endif %}
+                            </div>
+                        </div>
+
+                        {% if category.children.all %}
+                            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 0.75rem; margin-bottom: 1.5rem;">
+                                {% for subcategory in category.children.all %}
+                                    <a href="{% url 'catalog:category_detail' subcategory.slug %}" 
+                                       style="padding: 0.75rem 1rem; background: rgba(255, 255, 255, 0.5); border: 1px solid var(--glass-border); border-radius: var(--radius-lg); text-decoration: none; color: var(--gray-700); font-size: var(--font-size-sm); font-weight: var(--font-weight-medium); transition: var(--transition-fast); display: flex; align-items: center; justify-content: space-between;">
+                                        <span>{{ subcategory.name }}</span>
+                                        <span style="font-size: var(--font-size-xs); color: var(--gray-500); background: rgba(255, 255, 255, 0.8); padding: 0.125rem 0.5rem; border-radius: var(--radius-full);">{{ subcategory.active_product_count }}</span>
+                                    </a>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+
+                        <div style="display: flex; gap: 1rem;">
+                            <a href="{% url 'catalog:category_detail' category.slug %}" 
+                               style="flex: 1; padding: 0.75rem 1.5rem; background: var(--accent-gradient); color: var(--white); text-decoration: none; border-radius: var(--radius-lg); font-size: var(--font-size-sm); font-weight: var(--font-weight-semibold); text-align: center; transition: var(--transition-fast); box-shadow: var(--shadow-md);">
+                                Məhsulları Gör
+                            </a>
+                        </div>
+                    </article>
+                {% endfor %}
+            </div>
+        {% else %}
+            <div style="text-align: center; padding: 4rem 2rem; background: var(--glass-bg); backdrop-filter: var(--glass-backdrop); border-radius: var(--radius-2xl); border: 1px solid var(--glass-border); margin: 2rem;">
+                <h2>Hazırda aktiv kateqoriya yoxdur</h2>
+                <p>Kateqoriyalar və məhsullar əlavə etmək üçün admin panelindən istifadə edin.</p>
+                <a href="/admin/catalog/category/add/" class="btn btn-primary" style="margin-top: 1rem;">Kateqoriya əlavə et</a>
+            </div>
+        {% endif %}
+    </main>
+{% endblock %}
