@@ -1,4 +1,4 @@
-# catalog/urls.py - COMPLETE FILE with Hero Pages
+# catalog/urls.py - CLEAN VERSION WITHOUT CATEGORIES
 from django.urls import path, include
 from django.views.generic import TemplateView
 from . import views
@@ -11,39 +11,24 @@ urlpatterns = [
     # MAIN PAGES
     # =================================
     
-    # Ana səhifə (original home page with full layout)
+    # Ana səhifə (main home page with full layout)
     path('', views.home, name='home'),
     
     # =================================
-    # 🆕 HERO PAGES - NEW ADDITIONS
-    # =================================
-    
-    # Bütün kateqoriyalar hero səhifəsi
-    path('categories-hero/', views.categories_hero_view, name='categories_hero'),
-    path('kateqoriyalar-hero/', views.categories_hero_view, name='categories_hero_az'),
-    
-    # Tək kateqoriya hero səhifəsi  
-    path('category-hero/<slug:slug>/', views.category_hero_view, name='category_hero'),
-    path('kateqoriya-hero/<slug:slug>/', views.category_hero_view, name='category_hero_az'),
-    
-    # =================================
-    # ORIGINAL PAGES (backward compatibility)
+    # PRODUCT PAGES
     # =================================
     
     # Məhsul siyahısı
     path('products/', views.product_list, name='product_list'),
     path('mehsullar/', views.product_list, name='product_list_az'),
+
+    # Hero versiyaları üçün
+    path('products-hero/', views.product_list_hero, name='product_list_hero'),
+    path('product-hero/<slug:slug>/', views.product_detail_hero, name='product_detail_hero'),
     
     # Məhsul təfsilatı
     path('product/<slug:slug>/', views.product_detail, name='product_detail'),
     path('mehsul/<slug:slug>/', views.product_detail, name='product_detail_az'),
-    
-    # Original kateqoriya səhifələri
-    path('category/<slug:slug>/', views.category_detail, name='category_detail'),
-    path('kateqoriya/<slug:slug>/', views.category_detail, name='category_detail_az'),
-
-    path('categories/', views.categories_list, name='categories_list'),
-    path('kateqoriyalar/', views.categories_list, name='categories_list_az'),
     
     # =================================
     # AJAX & API ENDPOINTS
@@ -167,9 +152,6 @@ urlpatterns = [
     path('search/', views.product_list, name='search'),
     path('axtar/', views.product_list, name='search_az'),
     
-    # Kateqoriya filter
-    path('products/category/<slug:category_slug>/', views.product_list, name='products_by_category'),
-    
     # Qiymət aralığı filter
     path('products/price/<int:min_price>-<int:max_price>/', views.product_list, name='products_by_price'),
     
@@ -204,7 +186,6 @@ urlpatterns = [
 # API v1 patterns
 api_v1_patterns = [
     path('v1/products/', views.product_list, name='api_v1_products'),
-    path('v1/categories/', views.categories_hero_view, name='api_v1_categories'),
     path('v1/search/', views.search_suggestions, name='api_v1_search'),
 ]
 

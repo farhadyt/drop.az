@@ -62,8 +62,6 @@
             <!-- Additional tagline -->
             <p class="hero-tagline">Hər an, hər yerdə, ən yaxşı qiymətlə</p>
             
-           
-            
             <!-- Enhanced Special Offers -->
             <div class="hero-offers" role="list" aria-label="Xüsusi təkliflər">
                 <div class="offer-item enhanced-offer" role="listitem">
@@ -143,10 +141,7 @@
                     <span class="btn-highlight">iPhone, Samsung...</span>
                 </button>
             </div>
-            
-         
-            
-
+        </div>
     </section>
 
     <!-- Quick Stats Section -->
@@ -296,8 +291,6 @@
                         </div>
                         
                         <div class="product-info">
-                            <div class="product-category-tag" itemprop="category">{{ product.category.name }}</div>
-                            
                             <h3 class="product-name" itemprop="name">
                                 <a href="/product/{{ product.slug }}/" aria-label="Məhsul səhifəsi: {{ product.name }}">
                                     {{ product.name }}
@@ -364,7 +357,7 @@
                     </svg>
                     Daha çox məhsul yüklə
                 </button>
-                <p class="load-more-text">Daha çox məhsul üçün kateqoriyalara baxın</p>
+                <p class="load-more-text">Daha çox məhsul üçün axtarış edin</p>
             </div>
         {% else %}
             <div class="no-products" role="alert">

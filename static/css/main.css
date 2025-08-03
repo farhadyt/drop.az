@@ -13,8 +13,6 @@
     --glass-gradient: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
     /* main color */
     --glass-bgo: linear-gradient(135deg, #ffffff 0%, #99abb611 25%, #e6e6e6 50%, #f5fafa02 75%, #ffffff 100%);
-    --cat-bg: linear-gradient(135deg, #ffffff 0%, #b9cdda 25%, #cccdce 50%, #bbc0c0 75%, #ffffff 100%);
-    
     
     /* Core Colors */
     --white: #ffffff;
@@ -474,222 +472,6 @@ body::before {
 }
 
 /* =================================
-   CATEGORIES MEGA DROPDOWN STYLES - DÜZƏLDİLMİŞ
-   ================================= */
-
-.nav-dropdown {
-    position: relative;
-    display: inline-block;
-}
-
-.dropdown-toggle {
-    display: flex !important;
-    align-items: center;
-    gap: 0.25rem;
-    position: relative;
-}
-
-.dropdown-arrow {
-    transition: transform 0.2s ease;
-    margin-left: 0.25rem;
-    flex-shrink: 0;
-}
-
-.categories-dropdown {
-    position: relative;
-}
-
-.categories-dropdown .dropdown-toggle {
-    position: relative;
-    z-index: 2;
-}
-
-/* ✅ Əsas dropdown animasiya və görünürlük düzəlişi */
-.categories-dropdown.active .dropdown-arrow,
-.categories-dropdown:hover .dropdown-arrow {
-    transform: rotate(180deg);
-}
-
-.mega-dropdown {
-    position: absolute;
-    top: calc(100% + 15px);
-    left: 50%;
-    transform: translateX(-50%) translateY(-15px);
-    min-width: 800px;
-    max-width: 900px;
-    background: var(--cat-bg);
-    backdrop-filter: var(--glass-backdrop);
-    border: 1px solid var(--glass-border);
-    border-radius: var(--radius-2xl);
-    box-shadow: var(--shadow-floating);
-    z-index: 9999;
-    opacity: 0;
-    visibility: hidden;
-    transition: all 0.3s ease;
-    max-height: 80vh;
-    overflow-y: auto;
-    pointer-events: auto;
-}
-
-/* ✅ Hover və aktiv hallar */
-.categories-dropdown:hover .mega-dropdown,
-.categories-dropdown.active .mega-dropdown {
-    opacity: 1;
-    visibility: visible;
-    transform: translateX(-50%) translateY(0);
-    pointer-events: auto;
-}
-
-.mega-dropdown-content {
-    padding: 1.5rem 2rem 2rem;
-}
-
-.mega-header {
-    text-align: center;
-    margin-bottom: 2rem;
-    padding-bottom: 1rem;
-    border-bottom: 1px solid var(--glass-border);
-}
-
-.mega-header h3 {
-    font-size: var(--font-size-xl);
-    font-weight: var(--font-weight-bold);
-    color: var(--gray-800);
-    margin-bottom: 0.5rem;
-    background: var(--accent-gradient);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-}
-
-.mega-header p {
-    font-size: var(--font-size-sm);
-    color: var(--gray-600);
-    margin: 0;
-}
-
-.categories-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-    gap: 1.5rem 2rem;
-    margin-bottom: 1.5rem;
-}
-
-.category-column {
-    display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
-}
-
-.main-category-link {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0.75rem 1rem;
-    background: rgba(79, 172, 254, 0.08);
-    border: 1px solid rgba(79, 172, 254, 0.15);
-    border-radius: var(--radius-lg);
-    text-decoration: none;
-    color: var(--gray-800);
-    font-weight: var(--font-weight-semibold);
-    font-size: var(--font-size-sm);
-    transition: var(--transition-fast);
-}
-
-.main-category-link:hover {
-    background: rgba(79, 172, 254, 0.15);
-    border-color: var(--primary);
-    color: var(--primary);
-    transform: translateY(-1px);
-}
-
-.category-count {
-    font-size: var(--font-size-xs);
-    color: var(--gray-500);
-    background: rgba(255, 255, 255, 0.8);
-    padding: 0.125rem 0.5rem;
-    border-radius: var(--radius-full);
-    font-weight: var(--font-weight-medium);
-}
-
-.sub-categories {
-    display: flex;
-    flex-direction: column;
-    gap: 0.25rem;
-    padding-left: 0.5rem;
-}
-
-.sub-category-link {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0.5rem 0.75rem;
-    text-decoration: none;
-    color: var(--gray-600);
-    font-size: var(--font-size-sm);
-    border-radius: var(--radius-md);
-    transition: var(--transition-fast);
-}
-
-.sub-category-link:hover {
-    background: rgba(79, 172, 254, 0.05);
-    color: var(--primary);
-    transform: translateX(2px);
-}
-
-.mega-footer {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding-top: 1rem;
-    border-top: 1px solid var(--glass-border);
-    margin-top: 1rem;
-}
-
-.view-all-categories {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.75rem 1.5rem;
-    background: var(--accent-gradient);
-    color: var(--white);
-    text-decoration: none;
-    border-radius: var(--radius-xl);
-    font-size: var(--font-size-sm);
-    font-weight: var(--font-weight-semibold);
-    transition: var(--transition-fast);
-}
-
-.view-all-categories:hover {
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-lg);
-}
-
-/* Mobile responsive */
-@media (max-width: 768px) {
-    .nav-dropdown {
-        display: none;
-    }
-    
-    .mega-dropdown {
-        min-width: 320px;
-        max-width: 95vw;
-        left: 5px;
-        transform: translateX(0) translateY(-15px);
-    }
-    
-    .categories-dropdown:hover .mega-dropdown,
-    .categories-dropdown.active .mega-dropdown {
-        transform: translateX(0) translateY(0);
-    }
-    
-    .categories-grid {
-        grid-template-columns: 1fr;
-        gap: 1rem;
-    }
-}
-
-/* =================================
    HERO SECTION - FULLY RESPONSIVE
    ================================= */
 .hero-section {
@@ -805,7 +587,6 @@ body::before {
     font-weight: var(--font-weight-medium);
     font-style: italic;
 }
-
 
 /* =================================
    ENHANCED HERO OFFERS - FIT ALL ON SCREEN
@@ -1003,7 +784,6 @@ body::before {
     text-transform: uppercase;
     letter-spacing: 1px;
 }
-
 
 /* =================================
    ENHANCED BUTTON SYSTEM
@@ -2240,21 +2020,6 @@ body::before {
     
     .btn-highlight {
         font-size: 0.6rem;
-    }
-    
-    .trust-indicators {
-        flex-direction: column;
-        gap: 0.4rem;
-    }
-    
-    .trust-item {
-        width: 100%;
-        justify-content: center;
-    }
-    
-    .hero-stats {
-        flex-direction: column;
-        gap: 0.6rem;
     }
     
     .product-list {

@@ -92,7 +92,7 @@
                 </a>
             </div>
             
-            <!-- Desktop Navigation Menu with Enhanced Categories -->
+            <!-- Desktop Navigation Menu -->
             <div class="nav-menu" role="menubar">
                 <a href="{% url 'catalog:home' %}" 
                    class="nav-link {% if request.resolver_match.url_name == 'home' %}active{% endif %}" 
@@ -100,96 +100,6 @@
                    {% if request.resolver_match.url_name == 'home' %}aria-current="page"{% endif %}>
                     Əsas
                 </a>
-                
-                <!-- ✅ ENHANCED CATEGORIES DROPDOWN - DÜZƏLDİLMİŞ -->
-                <div class="nav-dropdown categories-dropdown">
-                    <a href="{% url 'catalog:categories_list' %}" 
-                       class="nav-link dropdown-toggle {% if 'category' in request.resolver_match.url_name or 'categories' in request.resolver_match.url_name %}active{% endif %}" 
-                       role="menuitem"
-                       aria-expanded="false"
-                       aria-haspopup="true"
-                       id="categories-dropdown-toggle">
-                        Kateqoriyalar
-                        <svg class="dropdown-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                        </svg>
-                    </a>
-                    
-                    <!-- ✅ MEGA DROPDOWN MENU - STRUCTURE DÜZƏLDİLMİŞ -->
-                    <div class="mega-dropdown" role="menu" aria-label="Kateqoriyalar menyusu" aria-labelledby="categories-dropdown-toggle">
-                        <div class="mega-dropdown-content">
-                            <!-- Popular Categories Header -->
-                            <div class="mega-header">
-                                <h3>Məhsul Kateqoriyaları</h3>
-                                <p>Ən populyar kateqoriyalarımızı kəşf edin</p>
-                            </div>
-                            
-                            <!-- ✅ CATEGORIES GRID - CONTEXT PROCESSOR MƏLUMATLAR -->
-                            <div class="categories-grid">
-                                {% if header_categories %}
-                                    {% for category_data in header_categories %}
-                                        <div class="category-column">
-                                            <!-- Main Category -->
-                                            <div class="main-category">
-                                                <a href="{% url 'catalog:category_detail' category_data.category.slug %}" 
-                                                   class="main-category-link"
-                                                   role="menuitem">
-                                                    <span class="category-name">{{ category_data.category.name }}</span>
-                                                    <span class="category-count">({{ category_data.category.active_product_count }})</span>
-                                                </a>
-                                            </div>
-                                            
-                                            <!-- Sub Categories -->
-                                            {% if category_data.has_children %}
-                                                <div class="sub-categories">
-                                                    {% for child in category_data.children %}
-                                                        <a href="{% url 'catalog:category_detail' child.slug %}" 
-                                                           class="sub-category-link"
-                                                           role="menuitem">
-                                                            {{ child.name }}
-                                                            <small>({{ child.active_product_count }})</small>
-                                                        </a>
-                                                    {% endfor %}
-                                                </div>
-                                            {% endif %}
-                                        </div>
-                                    {% endfor %}
-                                {% else %}
-                                    <!-- ✅ NO CATEGORIES PLACEHOLDER -->
-                                    <div class="no-categories" style="grid-column: 1 / -1; text-align: center; padding: 2rem;">
-                                        <p style="color: var(--gray-600); font-size: var(--font-size-sm); margin-bottom: 1rem;">
-                                            Hazırda aktiv kateqoriya yoxdur
-                                        </p>
-                                        {% if user.is_staff %}
-                                            <a href="/admin/catalog/category/add/" 
-                                               class="btn btn-primary" 
-                                               style="font-size: var(--font-size-xs); padding: 0.5rem 1rem;">
-                                                Kateqoriya əlavə et
-                                            </a>
-                                        {% endif %}
-                                    </div>
-                                {% endif %}
-                            </div>
-                            
-                            <!-- ✅ DROPDOWN FOOTER -->
-                            <div class="mega-footer">
-                                <a href="{% url 'catalog:categories_list' %}" class="view-all-categories">
-                                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h16"></path>
-                                    </svg>
-                                    Bütün kateqoriyaları gör
-                                </a>
-                                <div class="category-stats">
-                                    {% if total_categories_count %}
-                                        <span class="stats-item">{{ total_categories_count }} ümumi kateqoriya</span>
-                                    {% else %}
-                                        <span class="stats-item">0 kateqoriya</span>
-                                    {% endif %}
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
                 
                 <a href="#" class="nav-link" role="menuitem">Yeniliklər</a>
                 <a href="#" class="nav-link" role="menuitem">Endirimlər</a>
@@ -315,36 +225,6 @@
                     Əsas
                 </a>
                 
-                <!-- ✅ MOBILE CATEGORIES SECTION - DÜZƏLDİLMİŞ -->
-                <div class="mobile-categories-section">
-                    <div class="mobile-category-header">
-                        <a href="{% url 'catalog:categories_list' %}" class="mobile-nav-link main-categories-link">
-                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
-                            </svg>
-                            Bütün Kateqoriyalar
-                        </a>
-                    </div>
-                    
-                    <!-- ✅ POPULAR MOBILE CATEGORIES -->
-                    <div class="mobile-popular-categories" style="padding-left: 2rem;">
-                        {% if header_categories %}
-                            {% for category_data in header_categories|slice:":4" %}
-                                <a href="{% url 'catalog:category_detail' category_data.category.slug %}" 
-                                   class="mobile-category-link"
-                                   style="display: flex; justify-content: space-between; align-items: center; padding: 0.75rem 1rem; color: var(--gray-600); text-decoration: none; font-size: var(--font-size-sm); border-radius: var(--radius-md); margin-bottom: 0.5rem; transition: var(--transition-fast);">
-                                    <span class="mobile-category-name">{{ category_data.category.name }}</span>
-                                    <span class="mobile-category-count" style="font-size: var(--font-size-xs); background: rgba(79, 172, 254, 0.1); color: var(--primary); padding: 0.125rem 0.5rem; border-radius: var(--radius-full);">{{ category_data.category.active_product_count }}</span>
-                                </a>
-                            {% endfor %}
-                        {% else %}
-                            <div style="text-align: center; padding: 1rem; color: var(--gray-500);">
-                                <p style="font-size: var(--font-size-sm);">Hazırda kateqoriya yoxdur</p>
-                            </div>
-                        {% endif %}
-                    </div>
-                </div>
-                
                 <a href="#" class="mobile-nav-link">
                     <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
@@ -409,7 +289,7 @@
                     </svg>
                     <input type="search" 
                            class="search-input" 
-                           placeholder="Məhsul, kateqoriya və ya marka axtarın..." 
+                           placeholder="Məhsul, marka axtarın..." 
                            autocomplete="off"
                            aria-label="Axtarış sorğusu">
                     <button type="submit" 
@@ -490,7 +370,6 @@
                 <h4>Səhifələr</h4>
                 <nav class="footer-links" aria-label="Footer naviqasiyası">
                     <a href="#" class="footer-link">Haqqımızda</a>
-                    <a href="{% url 'catalog:categories_list' %}" class="footer-link">Kateqoriyalar</a>
                     <a href="#" class="footer-link">Yeni məhsullar</a>
                     <a href="#" class="footer-link">Endirimlər</a>
                     <a href="#" class="footer-link">Blog</a>
