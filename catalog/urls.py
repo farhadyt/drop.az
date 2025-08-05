@@ -1,4 +1,4 @@
-# catalog/urls.py - CLEAN VERSION WITHOUT CATEGORIES
+# catalog/urls.py - ENHANCED VERSION WITH CATEGORY NAVIGATION
 from django.urls import path, include
 from django.views.generic import TemplateView
 from . import views
@@ -13,6 +13,22 @@ urlpatterns = [
     
     # Ana səhifə (main home page with full layout)
     path('', views.home, name='home'),
+    
+    # =================================
+    # CATEGORY PAGES
+    # =================================
+    
+    # Bütün kateqoriyalar səhifəsi
+    path('categories/', views.categories_view, name='categories'),
+    path('kategoriyalar/', views.categories_view, name='categories_az'),
+    
+    # Spesifik kateqoriya səhifəsi (və onun məhsulları)
+    path('categories/<slug:slug>/', views.category_detail, name='category_detail'),
+    path('kategoriya/<slug:slug>/', views.category_detail, name='category_detail_az'),
+    
+    # Alt kateqoriya səhifəsi
+    path('categories/<slug:parent_slug>/<slug:slug>/', views.subcategory_detail, name='subcategory_detail'),
+    path('kategoriya/<slug:parent_slug>/<slug:slug>/', views.subcategory_detail, name='subcategory_detail_az'),
     
     # =================================
     # PRODUCT PAGES
@@ -30,6 +46,10 @@ urlpatterns = [
     path('product/<slug:slug>/', views.product_detail, name='product_detail'),
     path('mehsul/<slug:slug>/', views.product_detail, name='product_detail_az'),
     
+    # Kateqoriyaya görə məhsullar
+    path('products/category/<slug:category_slug>/', views.products_by_category, name='products_by_category'),
+    path('mehsullar/kategoriya/<slug:category_slug>/', views.products_by_category, name='products_by_category_az'),
+    
     # =================================
     # AJAX & API ENDPOINTS
     # =================================
@@ -43,8 +63,14 @@ urlpatterns = [
     # Məhsul statistikaları (AJAX)
     path('api/product-stats/', views.get_product_stats, name='product_stats'),
     
+    # Kateqoriya statistikaları (AJAX)
+    path('api/category-stats/', views.get_category_stats, name='category_stats'),
+    
     # Məhsul filtrləri (AJAX)
     path('api/filter-products/', views.ProductFilterView.as_view(), name='filter_products'),
+    
+    # Kateqoriya məhsulları (AJAX)
+    path('api/category-products/<slug:category_slug>/', views.CategoryProductsView.as_view(), name='category_products'),
     
     # =================================
     # SPECIAL PAGES
@@ -155,6 +181,10 @@ urlpatterns = [
     # Qiymət aralığı filter
     path('products/price/<int:min_price>-<int:max_price>/', views.product_list, name='products_by_price'),
     
+    # Kateqoriya + qiymət filteri
+    path('categories/<slug:category_slug>/price/<int:min_price>-<int:max_price>/', 
+         views.products_by_category, name='category_products_by_price'),
+    
     # =================================
     # SEO & UTILITY URLS
     # =================================
@@ -174,9 +204,18 @@ urlpatterns = [
     
     # Azərbaycan dilində URL-lər
     path('ana-sehife/', views.home, name='home_az'),
-    path('mehsullar/', views.product_list, name='products_az'),
     path('endirimler/', TemplateView.as_view(template_name='pages/sales.html'), name='sales_az'),
     path('yenilikler/', TemplateView.as_view(template_name='pages/new_products.html'), name='new_products_az'),
+    
+    # =================================
+    # BREADCRUMB & NAVIGATION HELPERS
+    # =================================
+    
+    # Kateqoriya yolu (breadcrumb helper)
+    path('api/category-breadcrumb/<slug:category_slug>/', views.get_category_breadcrumb, name='category_breadcrumb'),
+    
+    # Kateqoriya ağacı (navigation helper)
+    path('api/category-tree/', views.get_category_tree, name='category_tree'),
 ]
 
 # =================================
@@ -186,8 +225,18 @@ urlpatterns = [
 # API v1 patterns
 api_v1_patterns = [
     path('v1/products/', views.product_list, name='api_v1_products'),
+    path('v1/categories/', views.categories_view, name='api_v1_categories'),
+    path('v1/category/<slug:slug>/', views.category_detail, name='api_v1_category_detail'),
     path('v1/search/', views.search_suggestions, name='api_v1_search'),
 ]
 
 # API patterns-i əlavə et
 urlpatterns += [path('api/', include(api_v1_patterns))]
+
+# =================================
+# ERROR HANDLING URLS
+# =================================
+
+# Custom error pages (if needed)
+handler404 = 'catalog.views.handler404'
+handler500 = 'catalog.views.handler500'

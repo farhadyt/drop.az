@@ -1,0 +1,469 @@
+/* =================================
+   ENHANCED MEGA MENU - DROP.AZ
+   Clean, Fast & Professional Design
+   ================================= */
+
+:root {
+    --menu-bg: var(--white);
+    --menu-border: var(--gray-200);
+    --menu-shadow: var(--shadow-floating);
+    --menu-radius: var(--radius-2xl);
+    --menu-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* =================================
+   MAIN DROPDOWN CONTAINER
+   ================================= */
+.nav-categories-dropdown {
+    position: relative;
+}
+
+.categories-nav-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+}
+
+.categories-dropdown-icon {
+    transition: transform 0.3s ease;
+    width: 16px;
+    height: 16px;
+    color: var(--gray-500);
+}
+
+.nav-link:hover .categories-dropdown-icon {
+    color: var(--primary);
+}
+
+.nav-categories-dropdown.open .categories-dropdown-icon {
+    transform: rotate(180deg);
+}
+
+/* =================================
+   MEGA MENU WRAPPER (Desktop)
+   ================================= */
+.categories-dropdown-menu {
+    position: fixed;
+    top: calc(var(--header-height) + 15px);
+    left: 0;
+    right: 0;
+    width: 100vw;
+    max-width: none;
+    background: var(--menu-bg);
+    border-radius: 0 0 var(--menu-radius) var(--menu-radius);
+    box-shadow: var(--menu-shadow);
+    border: 1px solid var(--menu-border);
+    border-top: none;
+    z-index: var(--z-dropdown);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-20px);
+    transition: all 0.25s ease;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-categories-dropdown.open .categories-dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.categories-dropdown-content-wrapper {
+    width: 100%;
+    max-width: none;
+    overflow: hidden;
+}
+
+.categories-dropdown-content {
+    display: grid;
+    grid-template-columns: 300px 1fr 1fr;
+    max-height: 70vh;
+    min-height: 400px;
+    width: 100%;
+}
+
+/* =================================
+   LEVEL 1: MAIN CATEGORIES PANEL (Left)
+   ================================= */
+.main-categories-panel {
+    background: var(--gray-50);
+    border-right: 1px solid var(--menu-border);
+    overflow-y: auto;
+    padding: 0.75rem 0;
+}
+
+.main-categories-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.category-dropdown-item {
+    position: relative;
+}
+
+.category-dropdown-link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 1.5rem;
+    text-decoration: none;
+    color: var(--gray-700);
+    font-weight: var(--font-weight-medium);
+    transition: background-color 0.2s, color 0.2s, border-color 0.2s;
+    cursor: pointer;
+    border-left: 3px solid transparent;
+}
+
+.category-icon-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.category-icon {
+    font-size: 1.25rem;
+    width: 28px;
+    text-align: center;
+}
+
+.category-name {
+    font-size: 0.9rem;
+}
+
+.category-dropdown-arrow {
+    width: 16px;
+    height: 16px;
+    color: var(--gray-400);
+    transition: transform 0.2s;
+}
+
+.category-dropdown-item:hover > .category-dropdown-link,
+.category-dropdown-item.active > .category-dropdown-link {
+    background: var(--white);
+    color: var(--primary);
+    border-left-color: var(--primary);
+}
+
+.subcategories-panel-mobile { display: none; }
+
+/* =================================
+   LEVEL 2: SUBCATEGORIES PANEL (Middle) - TAP.AZ KİMİ EYNİ STİL
+   ================================= */
+.subcategories-panel {
+    background: var(--gray-50);
+    border-right: 1px solid var(--menu-border);
+    overflow-y: auto;
+    padding: 0.75rem 0;
+    display: none;
+}
+
+.subcategory-group {
+    display: none;
+    animation: fadeIn 0.4s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.subcategory-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid var(--menu-border);
+    padding: 1rem 1.5rem 1rem 1.5rem;
+    background: var(--white);
+}
+
+.subcategory-title {
+    font-size: 1.1rem;
+    font-weight: var(--font-weight-bold);
+    color: var(--gray-800);
+    margin: 0;
+}
+
+.view-all-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--primary);
+    text-decoration: none;
+    font-weight: var(--font-weight-semibold);
+    font-size: 0.8rem;
+    transition: var(--transition-fast);
+    padding: 0.5rem 1rem;
+    border-radius: var(--radius-lg);
+    border: 1px solid rgba(79, 172, 254, 0.2);
+    background: rgba(79, 172, 254, 0.05);
+}
+
+.view-all-link:hover {
+    background: var(--primary);
+    color: var(--white);
+    border-color: var(--primary);
+    gap: 0.75rem;
+}
+
+.view-all-link svg {
+    width: 14px;
+    height: 14px;
+    transition: var(--transition-fast);
+}
+
+/* =================================
+   LEVEL 2 & 3: UNIVERSAL CATEGORY ITEM STYLE
+   Alt kateqoriyalar və 3-cü səviyyə eyni stilə malikdir
+   ================================= */
+.subcategories-list,
+.third-level-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* Alt kateqoriya və 3-cü səviyyə elementləri - əsas kateqoriya kimi */
+.subcategory-list-item,
+.third-level-item {
+    position: relative;
+}
+
+.subcategory-link,
+.third-level-link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 1.5rem;
+    text-decoration: none;
+    color: var(--gray-700);
+    font-weight: var(--font-weight-medium);
+    transition: background-color 0.2s, color 0.2s, border-color 0.2s;
+    cursor: pointer;
+    border-left: 3px solid transparent;
+}
+
+.subcategory-link:hover,
+.third-level-link:hover,
+.subcategory-list-item.active .subcategory-link,
+.third-level-item.active .third-level-link {
+    background: var(--white);
+    color: var(--primary);
+    border-left-color: var(--primary);
+}
+
+.subcategory-info,
+.third-level-info {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+/* Alt kateqoriya ikonu - əsas kateqoriya icon kimi */
+.subcategory-icon,
+.third-level-icon {
+    font-size: 1.25rem;
+    width: 28px;
+    text-align: center;
+}
+
+.subcategory-name,
+.third-level-name {
+    font-size: 0.9rem;
+    margin: 0;
+    color: inherit;
+    font-weight: inherit;
+}
+
+.subcategory-count,
+.third-level-count {
+    font-size: 0.75rem;
+    color: var(--gray-500);
+    background: var(--gray-100);
+    padding: 0.25rem 0.5rem;
+    border-radius: var(--radius-full);
+    min-width: 35px;
+    text-align: center;
+    font-weight: var(--font-weight-semibold);
+}
+
+.subcategory-link:hover .subcategory-count,
+.third-level-link:hover .third-level-count {
+    background: rgba(79, 172, 254, 0.1);
+    color: var(--primary);
+}
+
+.subcategory-arrow,
+.third-level-arrow {
+    width: 16px;
+    height: 16px;
+    color: var(--gray-400);
+    transition: transform 0.2s;
+}
+
+/* =================================
+   LEVEL 3: THIRD LEVEL CATEGORIES PANEL (Right)
+   ================================= */
+.third-level-panel {
+    background: var(--gray-50);
+    overflow-y: auto;
+    padding: 0.75rem 0;
+    display: none;
+}
+
+.third-level-group {
+    display: none;
+    animation: fadeIn 0.4s ease;
+}
+
+.third-level-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid var(--menu-border);
+    padding: 1rem 1.5rem 1rem 1.5rem;
+    background: var(--white);
+}
+
+.third-level-title {
+    font-size: 1.1rem;
+    font-weight: var(--font-weight-bold);
+    color: var(--gray-800);
+    margin: 0;
+}
+
+/* =================================
+   PLACEHOLDER DESIGN
+   ================================= */
+.subcategory-group-placeholder,
+.third-level-group-placeholder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    text-align: center;
+    color: var(--gray-500);
+    animation: fadeIn 0.4s ease;
+    padding: 3rem 2rem;
+}
+
+.placeholder-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    opacity: 0.5;
+}
+
+.subcategory-group-placeholder p,
+.third-level-group-placeholder p {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    max-width: 300px;
+}
+
+/* =================================
+   "ALL CATEGORIES" BUTTON
+   ================================= */
+.all-categories-section {
+    padding: 1rem;
+    background: var(--gray-50);
+    border-top: 1px solid var(--menu-border);
+    flex-shrink: 0;
+}
+
+.all-categories-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    width: 100%;
+    padding: 1rem;
+    background: var(--accent-gradient);
+    color: var(--white);
+    text-decoration: none;
+    border-radius: var(--radius-lg);
+    font-size: 0.95rem;
+    font-weight: var(--font-weight-semibold);
+    transition: var(--transition-fast);
+    box-shadow: var(--shadow-sm);
+}
+
+.all-categories-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+    filter: brightness(1.05);
+}
+
+.all-categories-btn svg {
+    width: 20px;
+    height: 20px;
+}
+
+/* =================================
+   SCROLLBAR STYLING
+   ================================= */
+.main-categories-panel::-webkit-scrollbar,
+.subcategories-panel::-webkit-scrollbar,
+.third-level-panel::-webkit-scrollbar {
+    width: 6px;
+}
+
+.main-categories-panel::-webkit-scrollbar-track,
+.subcategories-panel::-webkit-scrollbar-track,
+.third-level-panel::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.main-categories-panel::-webkit-scrollbar-thumb,
+.subcategories-panel::-webkit-scrollbar-thumb,
+.third-level-panel::-webkit-scrollbar-thumb {
+    background: var(--gray-300);
+    border-radius: 3px;
+}
+
+.main-categories-panel::-webkit-scrollbar-thumb:hover,
+.subcategories-panel::-webkit-scrollbar-thumb:hover,
+.third-level-panel::-webkit-scrollbar-thumb:hover {
+    background: var(--primary);
+}
+
+/* =================================
+   LOADING STATE
+   ================================= */
+.categories-loading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    color: var(--gray-500);
+    font-style: italic;
+}
+
+/* =================================
+   ACCESSIBILITY IMPROVEMENTS
+   ================================= */
+.category-dropdown-link:focus,
+.subcategory-link:focus,
+.third-level-link:focus {
+    outline: 2px solid var(--primary);
+    outline-offset: -2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .categories-dropdown-menu,
+    .category-dropdown-link,
+    .subcategory-link,
+    .third-level-link,
+    .subcategory-group,
+    .third-level-group {
+        transition: none;
+        animation: none;
+    }
+}

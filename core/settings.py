@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -59,9 +60,19 @@ TEMPLATES = [
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
+                'django.template.context_processors.debug',
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
-                'django.contrib.messages.context_processors.messages',                
+                'django.contrib.messages.context_processors.messages',
+                
+                # =================================
+                # CUSTOM CONTEXT PROCESSORS FOR NAVIGATION
+                # =================================
+                'catalog.context_processors.categories_context',
+                'catalog.context_processors.navigation_breadcrumb',
+                'catalog.context_processors.site_settings',
+                'catalog.context_processors.user_session_data',
+                'catalog.context_processors.performance_data',
             ],
         },
     },
@@ -130,6 +141,234 @@ STATICFILES_DIRS = [
     BASE_DIR / 'static',
 ]
 
-# core/settings.py
+# Media files (uploads)
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
+
+# =================================
+# CACHING CONFIGURATION FOR NAVIGATION
+# Performance optimization for category navigation
+# =================================
+
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
+        'LOCATION': 'drop-az-cache',
+        'TIMEOUT': 300,  # 5 minutes default timeout
+        'OPTIONS': {
+            'MAX_ENTRIES': 1000,
+            'CULL_FREQUENCY': 3,
+        }
+    }
+}
+
+# Cache key prefix
+CACHE_MIDDLEWARE_KEY_PREFIX = 'dropaz'
+CACHE_MIDDLEWARE_SECONDS = 300
+
+# =================================
+# SESSION CONFIGURATION
+# For cart, favorites, recently viewed items
+# =================================
+
+SESSION_ENGINE = 'django.contrib.sessions.backends.db'
+SESSION_COOKIE_AGE = 86400 * 30  # 30 days
+SESSION_SAVE_EVERY_REQUEST = True
+SESSION_EXPIRE_AT_BROWSER_CLOSE = False
+
+# Session security
+SESSION_COOKIE_SECURE = False  # Set to True in production with HTTPS
+SESSION_COOKIE_HTTPONLY = True
+SESSION_COOKIE_SAMESITE = 'Lax'
+
+# =================================
+# LOGGING CONFIGURATION
+# For debugging navigation and performance issues
+# =================================
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'formatters': {
+        'verbose': {
+            'format': '{levelname} {asctime} {module} {process:d} {thread:d} {message}',
+            'style': '{',
+        },
+        'simple': {
+            'format': '{levelname} {message}',
+            'style': '{',
+        },
+    },
+    'handlers': {
+        'file': {
+            'level': 'INFO',
+            'class': 'logging.FileHandler',
+            'filename': BASE_DIR / 'logs' / 'drop_az.log',
+            'formatter': 'verbose',
+        },
+        'console': {
+            'level': 'DEBUG',
+            'class': 'logging.StreamHandler',
+            'formatter': 'simple',
+        },
+    },
+    'root': {
+        'handlers': ['console', 'file'],
+        'level': 'INFO',
+    },
+    'loggers': {
+        'catalog': {
+            'handlers': ['console', 'file'],
+            'level': 'DEBUG',
+            'propagate': False,
+        },
+        'django.db.backends': {
+            'handlers': ['console'],
+            'level': 'DEBUG' if DEBUG else 'INFO',
+            'propagate': False,
+        },
+    },
+}
+
+# Create logs directory if it doesn't exist
+LOGS_DIR = BASE_DIR / 'logs'
+if not LOGS_DIR.exists():
+    LOGS_DIR.mkdir(exist_ok=True)
+
+# =================================
+# EMAIL CONFIGURATION
+# For newsletter subscriptions
+# =================================
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'  # Development
+# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'  # Production
+
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'your-email@gmail.com'  # Update this
+EMAIL_HOST_PASSWORD = 'your-app-password'  # Update this
+
+DEFAULT_FROM_EMAIL = 'drop.az <noreply@drop.az>'
+ADMIN_EMAIL = 'admin@drop.az'
+
+# =================================
+# SECURITY SETTINGS
+# =================================
+
+# CSRF settings
+CSRF_TRUSTED_ORIGINS = ['http://localhost:8000', 'http://127.0.0.1:8000']
+
+# Security headers (for production)
+if not DEBUG:
+    SECURE_BROWSER_XSS_FILTER = True
+    SECURE_CONTENT_TYPE_NOSNIFF = True
+    X_FRAME_OPTIONS = 'DENY'
+    SECURE_HSTS_SECONDS = 31536000
+    SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+    SECURE_HSTS_PRELOAD = True
+
+# =================================
+# CUSTOM SETTINGS FOR drop.az
+# =================================
+
+# Navigation settings
+NAVIGATION_CACHE_TIMEOUT = 300  # 5 minutes
+MAX_CATEGORIES_IN_NAVIGATION = 8
+MAX_SUBCATEGORIES_DISPLAY = 5
+
+# Product settings
+PRODUCTS_PER_PAGE = 12
+FEATURED_PRODUCTS_COUNT = 8
+RELATED_PRODUCTS_COUNT = 4
+RECENTLY_VIEWED_COUNT = 5
+
+# Search settings
+SEARCH_MIN_LENGTH = 2
+SEARCH_SUGGESTIONS_COUNT = 8
+RECENT_SEARCHES_COUNT = 5
+
+# File upload settings
+FILE_UPLOAD_MAX_MEMORY_SIZE = 5 * 1024 * 1024  # 5MB
+DATA_UPLOAD_MAX_MEMORY_SIZE = 10 * 1024 * 1024  # 10MB
+
+# Image settings for products
+THUMBNAIL_SIZE = (300, 300)
+LARGE_IMAGE_SIZE = (800, 800)
+
+# =================================
+# PERFORMANCE SETTINGS
+# =================================
+
+# Database connection pooling (for production)
+if not DEBUG:
+    DATABASES['default']['CONN_MAX_AGE'] = 60
+
+# Template caching (for production)
+if not DEBUG:
+    TEMPLATES[0]['OPTIONS']['loaders'] = [
+        ('django.template.loaders.cached.Loader', [
+            'django.template.loaders.filesystem.Loader',
+            'django.template.loaders.app_directories.Loader',
+        ]),
+    ]
+
+# Static files compression (for production)
+STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
+
+# =================================
+# DEVELOPMENT HELPERS
+# =================================
+
+if DEBUG:
+    # Django Debug Toolbar (install if needed)
+    try:
+        import debug_toolbar
+        INSTALLED_APPS.append('debug_toolbar')
+        MIDDLEWARE.insert(0, 'debug_toolbar.middleware.DebugToolbarMiddleware')
+        INTERNAL_IPS = ['127.0.0.1', 'localhost']
+        
+        DEBUG_TOOLBAR_CONFIG = {
+            'SHOW_TOOLBAR_CALLBACK': lambda request: DEBUG,
+        }
+    except ImportError:
+        pass
+
+    # Additional debug settings
+    ALLOWED_HOSTS = ['*']
+
+# =================================
+# CUSTOM VARIABLES FOR TEMPLATES
+# =================================
+
+# Site information
+SITE_NAME = 'drop.az'
+SITE_DESCRIPTION = 'Azərbaycanda ən yaxşı alış-veriş platforması'
+SITE_KEYWORDS = 'alış-veriş, Azərbaycan, onlayn mağaza, drop.az'
+
+# Contact information
+CONTACT_PHONE = '+994 XX XXX XX XX'
+CONTACT_EMAIL = 'info@drop.az'
+CONTACT_ADDRESS = 'Bakı, Azərbaycan'
+
+# Social media links
+SOCIAL_LINKS = {
+    'facebook': '#',
+    'instagram': '#', 
+    'youtube': '#',
+    'whatsapp': '#'
+}
+
+# Business hours
+WORKING_HOURS = {
+    'weekdays': '09:00 - 18:00',
+    'weekends': '10:00 - 16:00'
+}
+
+# Features
+SITE_FEATURES = {
+    'free_shipping_limit': 50,  # AZN
+    'express_delivery_hours': '2-3',
+    'support_available': '24/7',
+    'warranty_days': 30
+}

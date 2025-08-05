@@ -1,0 +1,367 @@
+INFO 2025-08-03 20:36:39,196 autoreload 19668 27252 Watching for file changes with StatReloader
+INFO 2025-08-03 20:36:41,899 views 19668 24276 Home page loaded with 8 products
+INFO 2025-08-03 20:36:41,933 context_processors 19668 24276 Categories context loaded: 4 main categories
+ERROR 2025-08-03 20:36:41,966 views 19668 24276 Error in home view: Reverse for 'category_detail' with arguments '('',)' not found. 1 pattern(s) tried: ['categories/(?P<slug>[-a-zA-Z0-9_]+)/\\Z']
+ERROR 2025-08-03 20:36:42,181 log 19668 24276 Internal Server Error: /
+Traceback (most recent call last):
+  File "D:\projects\drop.az\catalog\views.py", line 55, in home
+    return render(request, 'catalog/home.html', context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\projects\drop.az\venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\projects\drop.az\venv\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\projects\drop.az\venv\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\projects\drop.az\venv\Lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "D:\projects\drop.az\venv\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\projects\drop.az\venv\Lib\site-packages\django\template\base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\projects\drop.az\venv\Lib\site-packages\django\template\base.py", line 1016, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\projects\drop.az\venv\Lib\site-packages\django\template\base.py", line 977, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "D:\projects\drop.az\venv\Lib\site-packages\django\template\loader_tags.py", line 159, in render
+    return compiled_parent._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\projects\drop.az\venv\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\projects\drop.az\venv\Lib\site-packages\django\template\base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\projects\drop.az\venv\Lib\site-packages\django\template\base.py", line 1016, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\projects\drop.az\venv\Lib\site-packages\django\template\base.py", line 977, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "D:\projects\drop.az\venv\Lib\site-packages\django\template\defaulttags.py", line 243, in render
+    nodelist.append(node.render_annotated(context))
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\projects\drop.az\venv\Lib\site-packages\django\template\base.py", line 977, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "D:\projects\drop.az\venv\Lib\site-packages\django\template\defaulttags.py", line 327, in render
+    return nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\projects\drop.az\venv\Lib\site-packages\django\template\base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\projects\drop.az\venv\Lib\site-packages\django\template\base.py", line 1016, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\projects\drop.az\venv\Lib\site-packages\django\template\base.py", line 977, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "D:\projects\drop.az\venv\Lib\site-packages\django\template\defaulttags.py", line 243, in render
+    nodelist.append(node.render_annotated(context))
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\projects\drop.az\venv\Lib\site-packages\django\template\base.py", line 977, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "D:\projects\drop.az\venv\Lib\site-packages\django\template\defaulttags.py", line 480, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\projects\drop.az\venv\Lib\site-packages\django\urls\base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\projects\drop.az\venv\Lib\site-packages\django\urls\resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'category_detail' with arguments '('',)' not found. 1 pattern(s) tried: ['categories/(?P<slug>[-a-zA-Z0-9_]+)/\\Z']
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\projects\drop.az\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "D:\projects\drop.az\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\projects\drop.az\catalog\views.py", line 60, in home
+    return render(request, 'catalog/home.html', {'products': [], 'stats': {}})
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\projects\drop.az\venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\projects\drop.az\venv\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\projects\drop.az\venv\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\projects\drop.az\venv\Lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "D:\projects\drop.az\venv\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\projects\drop.az\venv\Lib\site-packages\django\template\base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\projects\drop.az\venv\Lib\site-packages\django\template\base.py", line 1016, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\projects\drop.az\venv\Lib\site-packages\django\template\base.py", line 977, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "D:\projects\drop.az\venv\Lib\site-packages\django\template\loader_tags.py", line 159, in render
+    return compiled_parent._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\projects\drop.az\venv\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\projects\drop.az\venv\Lib\site-packages\django\template\base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\projects\drop.az\venv\Lib\site-packages\django\template\base.py", line 1016, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\projects\drop.az\venv\Lib\site-packages\django\template\base.py", line 977, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "D:\projects\drop.az\venv\Lib\site-packages\django\template\defaulttags.py", line 243, in render
+    nodelist.append(node.render_annotated(context))
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\projects\drop.az\venv\Lib\site-packages\django\template\base.py", line 977, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "D:\projects\drop.az\venv\Lib\site-packages\django\template\defaulttags.py", line 327, in render
+    return nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\projects\drop.az\venv\Lib\site-packages\django\template\base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\projects\drop.az\venv\Lib\site-packages\django\template\base.py", line 1016, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\projects\drop.az\venv\Lib\site-packages\django\template\base.py", line 977, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "D:\projects\drop.az\venv\Lib\site-packages\django\template\defaulttags.py", line 243, in render
+    nodelist.append(node.render_annotated(context))
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\projects\drop.az\venv\Lib\site-packages\django\template\base.py", line 977, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "D:\projects\drop.az\venv\Lib\site-packages\django\template\defaulttags.py", line 480, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\projects\drop.az\venv\Lib\site-packages\django\urls\base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\projects\drop.az\venv\Lib\site-packages\django\urls\resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'category_detail' with arguments '('',)' not found. 1 pattern(s) tried: ['categories/(?P<slug>[-a-zA-Z0-9_]+)/\\Z']
+WARNING 2025-08-03 20:36:42,364 log 19668 24276 Not Found: /favicon.ico
+INFO 2025-08-03 20:38:49,837 autoreload 19668 27252 D:\projects\drop.az\catalog\context_processors.py changed, reloading.
+INFO 2025-08-03 20:38:50,367 autoreload 17144 18948 Watching for file changes with StatReloader
+INFO 2025-08-03 20:40:01,697 autoreload 23392 14200 Watching for file changes with StatReloader
+INFO 2025-08-03 20:40:07,167 views 23392 2828 Home page loaded with 8 products
+INFO 2025-08-03 20:40:07,202 context_processors 23392 2828 Categories context loaded: 4 main categories
+INFO 2025-08-03 20:40:09,132 views 23392 26188 Home page loaded with 8 products
+INFO 2025-08-03 20:40:26,434 views 23392 26236 Categories page loaded with 4 main categories
+INFO 2025-08-03 20:44:27,632 views 23392 26236 Categories page loaded with 4 main categories
+INFO 2025-08-03 20:44:34,890 views 23392 26884 Categories page loaded with 4 main categories
+INFO 2025-08-03 20:45:00,232 views 23392 25808 Categories page loaded with 4 main categories
+INFO 2025-08-03 20:45:12,983 views 23392 25912 Category detail loaded: Aptek with 1 products
+INFO 2025-08-03 20:45:12,983 context_processors 23392 25912 Categories context loaded: 4 main categories
+INFO 2025-08-03 20:45:23,715 views 23392 25912 Categories page loaded with 4 main categories
+INFO 2025-08-03 20:48:02,335 views 23392 25912 Home page loaded with 8 products
+INFO 2025-08-03 20:51:46,587 views 23392 25912 Home page loaded with 8 products
+INFO 2025-08-03 20:51:46,594 context_processors 23392 25912 Categories context loaded: 4 main categories
+INFO 2025-08-03 20:58:51,534 views 23392 17528 Home page loaded with 8 products
+INFO 2025-08-03 20:58:51,550 context_processors 23392 17528 Categories context loaded: 4 main categories
+INFO 2025-08-03 21:00:25,133 views 23392 26300 Category detail loaded: Aptek with 1 products
+INFO 2025-08-03 21:00:29,645 views 23392 12296 Categories page loaded with 4 main categories
+INFO 2025-08-03 21:02:46,445 views 23392 12296 Categories page loaded with 4 main categories
+INFO 2025-08-03 21:03:20,070 views 23392 26300 Home page loaded with 8 products
+INFO 2025-08-03 21:10:36,361 views 23392 21052 Home page loaded with 8 products
+INFO 2025-08-03 21:10:36,369 context_processors 23392 21052 Categories context loaded: 4 main categories
+INFO 2025-08-03 21:16:16,869 views 23392 23264 Home page loaded with 8 products
+INFO 2025-08-03 21:16:16,886 context_processors 23392 23264 Categories context loaded: 4 main categories
+INFO 2025-08-03 21:22:28,079 views 23392 20892 Home page loaded with 8 products
+INFO 2025-08-03 21:22:28,089 context_processors 23392 20892 Categories context loaded: 4 main categories
+INFO 2025-08-03 21:22:39,079 views 23392 26920 Categories page loaded with 4 main categories
+INFO 2025-08-03 21:27:23,326 views 23392 9732 Categories page loaded with 4 main categories
+INFO 2025-08-03 21:33:04,704 views 23392 26344 Categories page loaded with 4 main categories
+INFO 2025-08-03 21:33:04,718 context_processors 23392 26344 Categories context loaded: 4 main categories
+INFO 2025-08-03 21:33:12,986 views 23392 17772 Category detail loaded: Sehiyye with 3 products
+INFO 2025-08-03 21:33:16,319 views 23392 29452 Home page loaded with 8 products
+INFO 2025-08-03 21:33:21,620 views 23392 29452 Home page loaded with 8 products
+INFO 2025-08-03 21:39:34,905 views 23392 20176 Home page loaded with 8 products
+INFO 2025-08-03 21:39:34,913 context_processors 23392 20176 Categories context loaded: 4 main categories
+INFO 2025-08-03 21:39:53,531 views 23392 26816 Category detail loaded: Sehiyye with 3 products
+INFO 2025-08-03 21:42:11,289 views 23392 11880 Home page loaded with 8 products
+INFO 2025-08-03 21:52:09,692 views 23392 26392 Home page loaded with 8 products
+INFO 2025-08-03 21:52:09,692 context_processors 23392 26392 Categories context loaded: 4 main categories
+WARNING 2025-08-03 21:55:11,564 log 23392 16248 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+INFO 2025-08-03 21:55:13,646 views 23392 16248 Categories page loaded with 4 main categories
+WARNING 2025-08-03 21:55:13,773 log 23392 11160 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+INFO 2025-08-03 21:55:21,660 views 23392 11160 Categories page loaded with 4 main categories
+WARNING 2025-08-03 21:55:21,776 log 23392 11160 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+INFO 2025-08-03 21:55:24,261 views 23392 11160 Home page loaded with 8 products
+WARNING 2025-08-03 21:55:24,375 log 23392 16248 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+INFO 2025-08-03 21:55:48,977 views 23392 16248 Categories page loaded with 4 main categories
+WARNING 2025-08-03 21:55:49,120 log 23392 16936 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+INFO 2025-08-03 21:55:51,045 views 23392 16936 Categories page loaded with 4 main categories
+WARNING 2025-08-03 21:55:51,173 log 23392 16936 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+INFO 2025-08-03 21:55:53,938 views 23392 16936 Categories page loaded with 4 main categories
+WARNING 2025-08-03 21:55:54,055 log 23392 16936 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+INFO 2025-08-03 21:55:58,585 views 23392 16936 Categories page loaded with 4 main categories
+INFO 2025-08-03 22:24:12,521 views 23392 20800 Categories page loaded with 4 main categories
+INFO 2025-08-03 22:24:12,537 context_processors 23392 20800 Categories context loaded: 4 main categories
+WARNING 2025-08-03 22:24:12,657 log 23392 23444 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+INFO 2025-08-03 22:24:41,221 views 23392 23444 Categories page loaded with 4 main categories
+INFO 2025-08-03 22:24:46,200 views 23392 27572 Home page loaded with 8 products
+INFO 2025-08-03 22:24:50,221 views 23392 23444 Categories page loaded with 4 main categories
+INFO 2025-08-03 22:24:58,239 views 23392 5000 Home page loaded with 8 products
+INFO 2025-08-03 22:26:01,639 views 23392 23444 Categories page loaded with 4 main categories
+INFO 2025-08-03 22:28:39,484 views 23392 26100 Home page loaded with 8 products
+INFO 2025-08-03 22:30:49,173 views 23392 20240 Categories page loaded with 4 main categories
+INFO 2025-08-03 22:30:49,173 context_processors 23392 20240 Categories context loaded: 4 main categories
+INFO 2025-08-03 22:30:54,058 views 23392 20240 Category detail loaded: Sehiyye with 3 products
+INFO 2025-08-03 22:30:58,439 views 23392 20240 Home page loaded with 8 products
+INFO 2025-08-03 22:31:02,073 views 23392 26100 Categories page loaded with 4 main categories
+INFO 2025-08-03 22:31:07,040 views 23392 26100 Home page loaded with 8 products
+INFO 2025-08-03 22:31:10,640 views 23392 25924 Categories page loaded with 4 main categories
+INFO 2025-08-03 22:31:30,706 views 23392 25924 Home page loaded with 8 products
+INFO 2025-08-03 22:31:39,458 views 23392 19264 Home page loaded with 8 products
+INFO 2025-08-03 22:38:20,499 views 23392 29044 Home page loaded with 8 products
+INFO 2025-08-03 22:38:20,510 context_processors 23392 29044 Categories context loaded: 4 main categories
+INFO 2025-08-03 22:38:22,135 views 23392 29044 Home page loaded with 8 products
+INFO 2025-08-03 22:46:53,856 views 23392 16528 Home page loaded with 8 products
+INFO 2025-08-03 22:46:53,866 context_processors 23392 16528 Categories context loaded: 4 main categories
+INFO 2025-08-03 22:47:06,041 views 23392 28612 Category detail loaded: Sehiyye with 3 products
+INFO 2025-08-03 22:47:09,281 views 23392 28612 Home page loaded with 8 products
+INFO 2025-08-03 23:12:18,888 views 23392 25172 Home page loaded with 8 products
+INFO 2025-08-03 23:12:18,907 context_processors 23392 25172 Categories context loaded: 4 main categories
+INFO 2025-08-03 23:12:37,884 views 23392 14940 Categories page loaded with 4 main categories
+INFO 2025-08-03 23:12:50,985 views 23392 14940 Home page loaded with 8 products
+WARNING 2025-08-03 23:13:31,873 log 23392 25172 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+INFO 2025-08-04 16:56:49,763 views 23392 17384 Home page loaded with 8 products
+INFO 2025-08-04 16:56:49,779 context_processors 23392 17384 Categories context loaded: 4 main categories
+INFO 2025-08-04 16:57:14,229 views 23392 23168 Categories page loaded with 4 main categories
+INFO 2025-08-04 16:57:24,081 views 23392 23168 Category detail loaded: Elektronika with 3 products
+INFO 2025-08-04 16:57:30,964 views 23392 23168 Home page loaded with 8 products
+WARNING 2025-08-04 16:58:49,896 log 23392 8400 Not Found: /favicon.ico
+INFO 2025-08-04 16:59:06,243 views 23392 13956 Categories page loaded with 4 main categories
+INFO 2025-08-04 17:00:26,296 views 23392 13956 Categories page loaded with 4 main categories
+INFO 2025-08-04 17:00:31,399 views 23392 13956 Home page loaded with 8 products
+INFO 2025-08-04 17:03:35,147 context_processors 23392 17400 Categories context loaded: 5 main categories
+INFO 2025-08-04 17:03:37,023 views 23392 9032 Home page loaded with 8 products
+INFO 2025-08-04 17:05:01,943 views 23392 23376 Home page loaded with 8 products
+INFO 2025-08-04 17:05:25,262 views 23392 27516 Categories page loaded with 5 main categories
+INFO 2025-08-04 17:54:04,618 views 23392 7152 Home page loaded with 8 products
+INFO 2025-08-04 17:54:04,636 context_processors 23392 7152 Categories context loaded: 5 main categories
+INFO 2025-08-04 18:44:04,462 views 23392 16876 Home page loaded with 8 products
+INFO 2025-08-04 18:44:04,482 context_processors 23392 16876 Categories context loaded: 5 main categories
+INFO 2025-08-05 01:04:22,547 views 23392 18876 Home page loaded with 8 products
+INFO 2025-08-05 01:04:22,564 context_processors 23392 18876 Categories context loaded: 5 main categories
+INFO 2025-08-05 01:04:29,399 views 23392 18876 Home page loaded with 8 products
+INFO 2025-08-05 01:27:49,956 views 23392 11060 Home page loaded with 8 products
+INFO 2025-08-05 01:27:49,969 context_processors 23392 11060 Categories context loaded: 5 main categories
+INFO 2025-08-05 01:27:55,594 views 23392 27616 Category detail loaded: Sehiyye with 3 products
+INFO 2025-08-05 01:28:03,076 views 23392 27616 Home page loaded with 8 products
+INFO 2025-08-05 01:28:26,086 views 23392 27616 Category detail loaded: Qida with 1 products
+INFO 2025-08-05 01:28:34,097 views 23392 27616 Category detail loaded: Sehiyye with 3 products
+INFO 2025-08-05 01:28:58,673 views 23392 27616 Home page loaded with 8 products
+INFO 2025-08-05 01:33:51,846 views 23392 27616 Home page loaded with 8 products
+INFO 2025-08-05 01:33:51,861 context_processors 23392 27616 Categories context loaded: 5 main categories
+INFO 2025-08-05 01:34:50,458 views 23392 29044 Home page loaded with 8 products
+INFO 2025-08-05 01:36:14,284 views 23392 16876 Home page loaded with 8 products
+INFO 2025-08-05 01:38:09,593 autoreload 23392 14200 D:\projects\drop.az\catalog\context_processors.py changed, reloading.
+INFO 2025-08-05 01:38:10,631 autoreload 19812 28588 Watching for file changes with StatReloader
+INFO 2025-08-05 01:38:17,230 views 19812 16316 Home page loaded with 8 products
+INFO 2025-08-05 01:38:17,275 context_processors 19812 16316 3-Level Categories context loaded: 5 main categories
+INFO 2025-08-05 01:39:34,302 autoreload 19812 28588 D:\projects\drop.az\catalog\context_processors.py changed, reloading.
+INFO 2025-08-05 01:39:34,858 autoreload 13292 14872 Watching for file changes with StatReloader
+INFO 2025-08-05 01:39:41,966 views 13292 21276 Home page loaded with 8 products
+INFO 2025-08-05 01:39:42,001 context_processors 13292 21276 3-Level Categories context loaded: 5 main categories
+INFO 2025-08-05 01:43:19,375 views 13292 5008 Home page loaded with 8 products
+INFO 2025-08-05 01:44:47,450 context_processors 13292 5008 3-Level Categories context loaded: 5 main categories
+WARNING 2025-08-05 01:44:47,697 log 13292 5008 Not Found: /favicon.ico
+INFO 2025-08-05 01:46:04,353 views 13292 5008 Home page loaded with 8 products
+WARNING 2025-08-05 01:46:12,130 log 13292 10464 Not Found: /favicon.ico
+INFO 2025-08-05 01:48:12,183 views 13292 10464 Home page loaded with 8 products
+INFO 2025-08-05 01:48:22,581 views 13292 5008 Home page loaded with 8 products
+INFO 2025-08-05 01:48:44,658 views 13292 5008 Home page loaded with 8 products
+WARNING 2025-08-05 01:48:54,114 log 13292 10464 Not Found: /favicon.ico
+INFO 2025-08-05 01:51:37,894 views 13292 10464 Home page loaded with 8 products
+INFO 2025-08-05 01:51:37,911 context_processors 13292 10464 3-Level Categories context loaded: 5 main categories
+INFO 2025-08-05 01:52:27,349 views 13292 21276 Home page loaded with 8 products
+INFO 2025-08-05 01:55:28,849 views 13292 10464 Home page loaded with 8 products
+INFO 2025-08-05 01:55:59,138 views 13292 23348 Home page loaded with 8 products
+INFO 2025-08-05 01:58:33,984 views 13292 23348 Home page loaded with 8 products
+INFO 2025-08-05 01:58:33,999 context_processors 13292 23348 3-Level Categories context loaded: 5 main categories
+INFO 2025-08-05 02:02:13,385 views 13292 10464 Home page loaded with 8 products
+INFO 2025-08-05 02:18:23,376 autoreload 13292 14872 D:\projects\drop.az\catalog\context_processors.py changed, reloading.
+INFO 2025-08-05 02:18:24,113 autoreload 25328 26528 Watching for file changes with StatReloader
+INFO 2025-08-05 02:39:17,545 views 25328 6772 Home page loaded with 8 products
+INFO 2025-08-05 02:39:17,593 context_processors 25328 6772 Categories context loaded: 5 main categories
+INFO 2025-08-05 02:39:30,300 views 25328 27952 Category detail loaded: Qida with 1 products
+INFO 2025-08-05 02:49:52,368 context_processors 25328 26428 Categories context loaded: 5 main categories
+INFO 2025-08-05 02:49:55,493 views 25328 12800 Home page loaded with 8 products
+INFO 2025-08-05 02:50:04,443 views 25328 12800 Category detail loaded: Qida with 1 products
+INFO 2025-08-05 02:52:09,277 views 25328 12008 Home page loaded with 8 products
+INFO 2025-08-05 02:52:19,725 views 25328 12008 Home page loaded with 8 products
+INFO 2025-08-05 03:11:11,680 autoreload 23344 21216 Watching for file changes with StatReloader
+INFO 2025-08-05 03:11:12,966 views 23344 24780 Home page loaded with 8 products
+INFO 2025-08-05 03:11:12,991 context_processors 23344 24780 Categories context loaded: 5 main categories
+INFO 2025-08-05 03:12:47,176 views 23344 23704 Home page loaded with 8 products
+INFO 2025-08-05 03:15:43,734 views 23344 30612 Home page loaded with 8 products
+INFO 2025-08-05 03:21:12,066 views 23344 28416 Home page loaded with 8 products
+INFO 2025-08-05 03:21:12,082 context_processors 23344 28416 Categories context loaded: 5 main categories
+INFO 2025-08-05 03:21:22,486 views 23344 20596 Home page loaded with 8 products
+INFO 2025-08-05 03:21:31,402 views 23344 1640 Home page loaded with 8 products
+INFO 2025-08-05 03:22:00,725 autoreload 23344 21216 D:\projects\drop.az\catalog\context_processors.py changed, reloading.
+INFO 2025-08-05 03:22:01,450 autoreload 3900 1444 Watching for file changes with StatReloader
+INFO 2025-08-05 03:22:09,698 views 3900 20080 Home page loaded with 8 products
+INFO 2025-08-05 03:22:09,762 context_processors 3900 20080 Categories context loaded: 5 main categories
+INFO 2025-08-05 03:23:19,149 autoreload 3900 1444 D:\projects\drop.az\catalog\context_processors.py changed, reloading.
+INFO 2025-08-05 03:23:19,718 autoreload 6572 15636 Watching for file changes with StatReloader
+INFO 2025-08-05 03:25:58,004 autoreload 6572 15636 D:\projects\drop.az\catalog\views.py changed, reloading.
+INFO 2025-08-05 03:25:58,620 autoreload 29712 12428 Watching for file changes with StatReloader
+INFO 2025-08-05 03:26:08,734 views 29712 400 Home page loaded with 8 products
+INFO 2025-08-05 03:26:08,798 context_processors 29712 400 3-Level Categories context loaded: 5 main categories
+INFO 2025-08-05 03:39:06,751 views 29712 14344 Home page loaded with 8 products
+INFO 2025-08-05 03:39:06,771 context_processors 29712 14344 3-Level Categories context loaded: 5 main categories
+ERROR 2025-08-05 03:39:59,787 views 29712 28420 Error in category_detail: No Category matches the given query.
+INFO 2025-08-05 03:39:59,848 views 29712 28420 Categories page loaded with 5 main categories
+INFO 2025-08-05 03:40:09,136 views 29712 14344 Categories page loaded with 5 main categories
+INFO 2025-08-05 03:40:12,734 views 29712 14344 Home page loaded with 8 products
+INFO 2025-08-05 03:40:18,866 views 29712 1104 Home page loaded with 8 products
+INFO 2025-08-05 03:40:42,603 views 29712 1104 Home page loaded with 8 products
+INFO 2025-08-05 04:11:46,998 views 29712 27240 Home page loaded with 8 products
+INFO 2025-08-05 04:11:47,016 context_processors 29712 27240 3-Level Categories context loaded: 5 main categories
+INFO 2025-08-05 04:17:28,306 autoreload 29712 12428 D:\projects\drop.az\catalog\context_processors.py changed, reloading.
+INFO 2025-08-05 04:17:29,106 autoreload 28664 28400 Watching for file changes with StatReloader
+INFO 2025-08-05 04:33:08,911 views 28664 29876 Home page loaded with 8 products
+INFO 2025-08-05 04:33:08,986 context_processors 28664 29876 3-Level Categories context loaded: 5 main categories
+INFO 2025-08-05 04:37:05,538 views 28664 24524 Home page loaded with 8 products
+INFO 2025-08-05 04:37:33,987 views 28664 24524 Category detail loaded: Qida with 1 products
+INFO 2025-08-05 04:37:42,800 views 28664 24524 Home page loaded with 8 products
+INFO 2025-08-05 04:41:33,278 context_processors 28664 24524 3-Level Categories context loaded: 5 main categories
+INFO 2025-08-05 04:41:36,007 views 28664 24524 Home page loaded with 8 products
+INFO 2025-08-05 04:41:54,319 views 28664 24524 Category detail loaded: Qida with 1 products
+INFO 2025-08-05 16:31:10,765 views 28664 11720 Home page loaded with 8 products
+INFO 2025-08-05 16:31:10,798 context_processors 28664 11720 3-Level Categories context loaded: 5 main categories
+INFO 2025-08-05 17:26:29,861 views 28664 8264 Home page loaded with 8 products
+INFO 2025-08-05 17:26:29,878 context_processors 28664 8264 3-Level Categories context loaded: 5 main categories
+WARNING 2025-08-05 18:04:11,917 log 28664 29792 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+INFO 2025-08-05 18:07:05,769 autoreload 28664 28400 D:\projects\drop.az\catalog\context_processors.py changed, reloading.
+INFO 2025-08-05 18:07:06,643 autoreload 13452 13848 Watching for file changes with StatReloader
+INFO 2025-08-05 18:11:04,153 views 13452 14096 Home page loaded with 8 products
+INFO 2025-08-05 18:11:04,212 context_processors 13452 14096 3-Level Categories context loaded: 5 main categories
+WARNING 2025-08-05 18:11:14,932 log 13452 5932 Not Found: /.well-known/appspecific/com.chrome.devtools.json
