@@ -1190,3 +1190,58 @@ INFO 2025-08-08 15:05:31,152 context_processors 17604 16568 Full Width 3-Level C
 WARNING 2025-08-08 15:05:32,004 log 17604 13460 Not Found: /favicon.ico
 INFO 2025-08-08 15:09:41,851 views 17604 15784 Home page loaded with 0 products
 INFO 2025-08-08 15:09:51,829 views 17604 4808 Home page loaded with 0 products
+INFO 2025-08-08 15:14:40,478 autoreload 13968 15212 Watching for file changes with StatReloader
+INFO 2025-08-08 15:14:41,282 views 13968 7316 Categories page loaded with 0 main categories
+INFO 2025-08-08 15:14:41,300 context_processors 13968 7316 Full Width 3-Level Categories context loaded: 0 main categories
+INFO 2025-08-08 15:14:42,754 views 13968 10360 Categories page loaded with 0 main categories
+INFO 2025-08-08 15:14:50,828 views 13968 10360 Home page loaded with 0 products
+INFO 2025-08-08 15:22:04,365 autoreload 13968 15212 D:\projects\drop.az\catalog\widgets.py changed, reloading.
+INFO 2025-08-08 15:22:04,989 autoreload 13956 18516 Watching for file changes with StatReloader
+INFO 2025-08-08 15:22:15,892 autoreload 15988 22208 Watching for file changes with StatReloader
+INFO 2025-08-08 15:22:20,331 views 15988 4644 Home page loaded with 0 products
+INFO 2025-08-08 15:22:20,346 context_processors 15988 4644 Full Width 3-Level Categories context loaded: 0 main categories
+WARNING 2025-08-08 15:22:26,776 log 15988 936 Not Found: /favicon.ico
+INFO 2025-08-08 15:24:09,551 autoreload 15988 22208 D:\projects\drop.az\catalog\widgets.py changed, reloading.
+INFO 2025-08-08 15:24:10,140 autoreload 17660 12172 Watching for file changes with StatReloader
+INFO 2025-08-08 15:24:13,591 autoreload 17660 12172 D:\projects\drop.az\core\settings.py changed, reloading.
+INFO 2025-08-08 15:24:14,176 autoreload 13924 20040 Watching for file changes with StatReloader
+INFO 2025-08-08 15:24:15,838 context_processors 13924 8628 Full Width 3-Level Categories context loaded: 0 main categories
+WARNING 2025-08-08 15:24:16,652 log 13924 4808 Not Found: /favicon.ico
+INFO 2025-08-08 15:24:48,522 autoreload 13924 20040 D:\projects\drop.az\core\settings.py changed, reloading.
+INFO 2025-08-08 15:24:49,090 autoreload 11368 13684 Watching for file changes with StatReloader
+INFO 2025-08-08 15:24:55,632 autoreload 11368 13684 D:\projects\drop.az\catalog\widgets.py changed, reloading.
+INFO 2025-08-08 15:24:56,180 autoreload 9636 20176 Watching for file changes with StatReloader
+INFO 2025-08-08 15:25:00,630 autoreload 9636 20176 D:\projects\drop.az\catalog\widgets.py changed, reloading.
+INFO 2025-08-08 15:25:01,221 autoreload 1668 12084 Watching for file changes with StatReloader
+INFO 2025-08-08 15:25:02,481 context_processors 1668 14624 Full Width 3-Level Categories context loaded: 0 main categories
+WARNING 2025-08-08 15:25:03,336 log 1668 10768 Not Found: /favicon.ico
+INFO 2025-08-08 15:25:22,322 autoreload 1668 12084 D:\projects\drop.az\catalog\widgets.py changed, reloading.
+INFO 2025-08-08 15:25:22,880 autoreload 17524 20540 Watching for file changes with StatReloader
+INFO 2025-08-08 15:25:25,086 context_processors 17524 3976 Full Width 3-Level Categories context loaded: 0 main categories
+WARNING 2025-08-08 15:25:25,764 log 17524 18872 Not Found: /favicon.ico
+INFO 2025-08-08 15:25:42,402 views 17524 18872 Home page loaded with 0 products
+WARNING 2025-08-08 15:25:48,676 log 17524 19636 Not Found: /favicon.ico
+WARNING 2025-08-08 15:25:51,014 log 17524 15960 Not Found: /favicon.ico
+INFO 2025-08-08 15:28:45,031 views 17524 3976 Home page loaded with 1 products
+WARNING 2025-08-08 15:29:12,780 log 17524 3976 Not Found: /favicon.ico
+INFO 2025-08-08 15:29:22,730 views 17524 3976 Home page loaded with 1 products
+WARNING 2025-08-08 15:29:52,641 log 17524 3936 Not Found: /favicon.ico
+INFO 2025-08-08 15:30:44,879 context_processors 17524 3936 Full Width 3-Level Categories context loaded: 1 main categories
+INFO 2025-08-08 15:34:09,661 views 17524 3936 Home page loaded with 0 products
+INFO 2025-08-08 15:34:49,514 views 17524 18872 Categories page loaded with 0 main categories
+WARNING 2025-08-08 15:35:09,632 log 17524 18872 Not Found: /favicon.ico
+INFO 2025-08-08 15:36:05,763 context_processors 17524 18872 Full Width 3-Level Categories context loaded: 1 main categories
+INFO 2025-08-08 15:36:07,513 views 17524 18872 Categories page loaded with 1 main categories
+INFO 2025-08-08 15:36:15,066 views 17524 18872 Home page loaded with 1 products
+INFO 2025-08-08 15:36:23,030 views 17524 3976 Category detail loaded: Aptek with 1 products
+WARNING 2025-08-08 15:36:42,695 log 17524 3976 Not Found: /favicon.ico
+INFO 2025-08-08 15:37:30,046 views 17524 3976 Home page loaded with 0 products
+INFO 2025-08-08 15:37:36,498 views 17524 19636 Home page loaded with 0 products
+INFO 2025-08-08 15:37:54,019 views 17524 19636 Categories page loaded with 0 main categories
+INFO 2025-08-08 15:37:56,746 views 17524 19636 Home page loaded with 0 products
+INFO 2025-08-08 15:45:08,361 context_processors 17524 22340 Full Width 3-Level Categories context loaded: 0 main categories
+WARNING 2025-08-08 15:45:08,539 log 17524 22340 Not Found: /favicon.ico
+INFO 2025-08-08 15:45:52,845 views 17524 22340 Home page loaded with 0 products
+INFO 2025-08-08 15:46:01,427 views 17524 10992 Home page loaded with 0 products
+INFO 2025-08-08 15:48:35,734 views 17524 10992 Home page loaded with 0 products
+INFO 2025-08-08 15:48:51,344 views 17524 19368 Categories page loaded with 0 main categories

@@ -1,4 +1,4 @@
-# catalog/widgets.py - Tam işləyən versiya
+# catalog/widgets.py - Your structure compatible
 
 from django import forms
 from django.utils.safestring import mark_safe
@@ -9,8 +9,12 @@ class IconPickerWidget(forms.TextInput):
         css = {
             'all': (
                 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css',
+                'admin/css/icon-admin-enhanced.css',  # Your static structure
             )
         }
+        js = (
+            'admin/js/icon-picker-integration.js',  # Your static structure
+        )
     
     def render(self, name, value, attrs=None, renderer=None):
         html_input = super().render(name, value, attrs, renderer)
