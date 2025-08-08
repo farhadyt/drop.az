@@ -1245,3 +1245,12 @@ INFO 2025-08-08 15:45:52,845 views 17524 22340 Home page loaded with 0 products
 INFO 2025-08-08 15:46:01,427 views 17524 10992 Home page loaded with 0 products
 INFO 2025-08-08 15:48:35,734 views 17524 10992 Home page loaded with 0 products
 INFO 2025-08-08 15:48:51,344 views 17524 19368 Categories page loaded with 0 main categories
+INFO 2025-08-08 16:40:38,588 autoreload 20192 884 Watching for file changes with StatReloader
+INFO 2025-08-08 16:40:39,528 views 20192 6620 Categories page loaded with 0 main categories
+INFO 2025-08-08 16:40:39,571 context_processors 20192 6620 Full Width 3-Level Categories context loaded: 3 main categories (including empty ones)
+INFO 2025-08-08 16:40:42,912 views 20192 6620 Home page loaded with 0 products
+WARNING 2025-08-08 16:41:47,927 log 20192 13468 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+INFO 2025-08-08 16:44:47,060 views 20192 13468 Home page loaded with 0 products
+INFO 2025-08-08 16:46:09,386 views 20192 20072 Home page loaded with 0 products
+INFO 2025-08-08 16:46:09,399 context_processors 20192 20072 Full Width 3-Level Categories context loaded: 3 main categories (including empty ones)
+INFO 2025-08-08 16:50:43,539 views 20192 1664 Home page loaded with 0 products

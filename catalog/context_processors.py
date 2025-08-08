@@ -11,16 +11,17 @@ def categories_context(request):
     """
     3-səviyyəli navigation üçün kateqoriyalar və global məlumatları 
     bütün template-lərə göndərir. Full Width Mega Menu üçün optimizasiya edilib.
+    BÜTÜN kateqoriyalar göstərilir (boş olsa belə).
     """
     try:
         # Cache key
-        cache_key = 'header_categories_fullwidth_v2'
+        cache_key = 'header_categories_fullwidth_v3'
         cached_data = cache.get(cache_key)
         
         if cached_data:
             return cached_data
         
-        # Header navigation üçün əsas kateqoriyalar (maksimum 8 əsas kateqoriya)
+        # Header navigation üçün əsas kateqoriyalar (maksimum 15 əsas kateqoriya)
         main_categories = Category.objects.filter(
             parent__isnull=True  # Yalnız əsas kateqoriyalar
         ).prefetch_related(
@@ -42,7 +43,7 @@ def categories_context(request):
             )
         ).order_by('name')
         
-        # Navigation data hazırla
+        # Navigation data hazırla - BÜTÜN kateqoriyalar (boş olsa belə)
         navigation_categories = []
         for category in main_categories:
             # Total məhsul sayı (direct + children + grandchildren)
@@ -52,8 +53,8 @@ def categories_context(request):
                 category.grandchildren_product_count
             )
             
-            # Yalnız məhsulu olan kateqoriyaları göstər
-            if total_products > 0 and category.slug:
+            # BÜTÜN kateqoriyaları göstər, məhsul sayından asılı olmayaraq
+            if category.slug:  # Yalnız slug yoxlaması
                 # Alt kateqoriyaları hazırla (Level 2)
                 children_data = []
                 for child in category.children.all():
@@ -67,34 +68,33 @@ def categories_context(request):
                         for grandchild in child.children.all():
                             if grandchild.slug:
                                 grandchild_product_count = grandchild.products.filter(available=True).count()
-                                if grandchild_product_count > 0:
-                                    grandchildren_data.append({
-                                        'id': grandchild.id,
-                                        'name': grandchild.name,
-                                        'slug': grandchild.slug,
-                                        'product_count': grandchild_product_count,
-                                        'url': f'/categories/{grandchild.slug}/'
-                                    })
-                                    child_grandchildren_count += grandchild_product_count
+                                # Boş olanları da əlavə et
+                                grandchildren_data.append({
+                                    'id': grandchild.id,
+                                    'name': grandchild.name,
+                                    'slug': grandchild.slug,
+                                    'product_count': grandchild_product_count,
+                                    'url': f'/categories/{grandchild.slug}/'
+                                })
+                                child_grandchildren_count += grandchild_product_count
                         
                         # Total child məhsul sayı
                         child_total_products = child_direct_count + child_grandchildren_count
                         
-                        # Yalnız məhsulu olan alt kateqoriyaları əlavə et
-                        if child_total_products > 0:
-                            children_data.append({
-                                'id': child.id,
-                                'name': child.name,
-                                'slug': child.slug,
-                                'product_count': child_total_products,
-                                'direct_product_count': child_direct_count,
-                                'url': f'/categories/{child.slug}/',
-                                'children': grandchildren_data,  # 3-cü səviyyə
-                                'has_children': len(grandchildren_data) > 0
-                            })
+                        # BÜTÜN alt kateqoriyaları əlavə et (boş olsa belə)
+                        children_data.append({
+                            'id': child.id,
+                            'name': child.name,
+                            'slug': child.slug,
+                            'product_count': child_total_products,
+                            'direct_product_count': child_direct_count,
+                            'url': f'/categories/{child.slug}/',
+                            'children': grandchildren_data,  # 3-cü səviyyə
+                            'has_children': len(grandchildren_data) > 0
+                        })
                 
-                # Maksimum 6 alt kateqoriya göstər (performans üçün)
-                children_data = children_data[:6]
+                # Maksimum 10 alt kateqoriya göstər (performans üçün)
+                children_data = children_data[:10]
                 
                 navigation_categories.append({
                     'category': category,
@@ -105,16 +105,11 @@ def categories_context(request):
                     'url': f'/categories/{category.slug}/'
                 })
         
-        # Maksimum 8 əsas kateqoriya göstər
-        navigation_categories = navigation_categories[:8]
+        # Maksimum 15 əsas kateqoriya göstər
+        navigation_categories = navigation_categories[:15]
         
-        # Ümumi statistikalar
-        total_active_categories = Category.objects.annotate(
-            active_product_count=Count(
-                'products',
-                filter=Q(products__available=True)
-            )
-        ).filter(active_product_count__gt=0).count()
+        # Ümumi statistikalar - BÜTÜN kateqoriyalar
+        total_active_categories = Category.objects.count()  # Hamısı
         
         # 3-səviyyəli kateqoriya statistikaları
         categories_with_children = Category.objects.filter(
@@ -142,7 +137,7 @@ def categories_context(request):
         # 5 dəqiqə cache et (300 saniyə)
         cache.set(cache_key, context_data, 300)
         
-        logger.info(f"Full Width 3-Level Categories context loaded: {len(navigation_categories)} main categories")
+        logger.info(f"Full Width 3-Level Categories context loaded: {len(navigation_categories)} main categories (including empty ones)")
         
         return context_data
         
@@ -204,6 +199,7 @@ def navigation_breadcrumb(request):
                         if cat.slug:
                             breadcrumb.append({
                                 'name': cat.name,
+                                'slug': cat.slug,
                                 'url': f'/categories/{cat.slug}/',
                                 'is_current': i == len(category_chain) - 1,
                                 'level': len(category_chain) - i  # Hansı səviyyə olduğunu göstər
@@ -359,9 +355,9 @@ def performance_data(request):
                     'cache_enabled': hasattr(settings, 'CACHES'),
                     'request_path': request.path,
                     'request_method': request.method,
-                    'navigation_system': 'Full Width 3-Level Mega Menu',
-                    'cache_status': 'Active' if cache.get('header_categories_fullwidth_v2') else 'Empty',
-                    'mega_menu_version': 'v2.0 - Full Width'
+                    'navigation_system': 'Full Width 3-Level Mega Menu v3',
+                    'cache_status': 'Active' if cache.get('header_categories_fullwidth_v3') else 'Empty',
+                    'mega_menu_version': 'v3.0 - Shows All Categories'
                 }
             }
         else:
