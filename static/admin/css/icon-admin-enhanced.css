@@ -1,0 +1,421 @@
+/* catalog/static/admin/css/icon-admin-enhanced.css */
+
+/* =================================
+   PROFESSIONAL ICON WIDGET STYLES
+   ================================= */
+
+.icon-picker-widget {
+    margin: 10px 0;
+    background: #f8f9fa;
+    border: 1px solid #e9ecef;
+    border-radius: 8px;
+    padding: 16px;
+    transition: all 0.3s ease;
+}
+
+.icon-picker-widget:hover {
+    border-color: #007bff;
+    box-shadow: 0 2px 8px rgba(0,123,255,0.1);
+}
+
+.icon-input-group {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 8px;
+}
+
+.icon-picker-input {
+    flex: 1;
+    padding: 10px 12px;
+    border: 2px solid #e9ecef;
+    border-radius: 6px;
+    font-family: 'Courier New', monospace;
+    font-size: 13px;
+    background: white;
+    transition: border-color 0.2s ease;
+}
+
+.icon-picker-input:focus {
+    border-color: #007bff;
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(0,123,255,0.1);
+}
+
+.icon-preview {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    background: white;
+    border: 2px solid #e9ecef;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+}
+
+.icon-preview i {
+    font-size: 20px;
+    color: #495057;
+    transition: color 0.2s ease;
+}
+
+.icon-preview:hover {
+    border-color: #007bff;
+}
+
+.icon-picker-btn {
+    padding: 10px 16px;
+    background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: all 0.2s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.icon-picker-btn:hover {
+    background: linear-gradient(135deg, #0056b3 0%, #004085 100%);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0,123,255,0.3);
+}
+
+.current-selection {
+    padding-top: 8px;
+    border-top: 1px solid #e9ecef;
+}
+
+.current-selection code {
+    background: #e7f3ff;
+    color: #007bff;
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-size: 11px;
+}
+
+/* =================================
+   ADMIN LIST VIEW ENHANCEMENTS
+   ================================= */
+
+.admin-icon-display {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    min-width: 60px;
+}
+
+.icon-thumbnail {
+    width: 28px;
+    height: 28px;
+    object-fit: cover;
+    border-radius: 4px;
+    border: 1px solid #dee2e6;
+}
+
+.icon-type {
+    font-size: 9px;
+    background: #6c757d;
+    color: white;
+    padding: 2px 4px;
+    border-radius: 3px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.icon-info {
+    display: inline-block;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 500;
+    text-transform: uppercase;
+}
+
+.icon-info.custom {
+    background: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.icon-info.fontawesome {
+    background: #cce5ff;
+    color: #004085;
+    border: 1px solid #99d3ff;
+}
+
+.icon-info.default {
+    background: #f8f9fa;
+    color: #6c757d;
+    border: 1px solid #dee2e6;
+}
+
+/* =================================
+   DETAILED PREVIEW STYLES
+   ================================= */
+
+.detailed-icon-preview {
+    background: #f8f9fa;
+    border: 1px solid #e9ecef;
+    border-radius: 8px;
+    padding: 20px;
+    margin: 10px 0;
+}
+
+.preview-section h4 {
+    margin: 0 0 15px 0;
+    color: #495057;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.preview-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 120px;
+    background: white;
+    border: 2px dashed #dee2e6;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+.preview-box.fontawesome {
+    border-color: #007bff;
+    background: linear-gradient(135deg, #f8fbff 0%, #e7f3ff 100%);
+}
+
+.preview-box.custom {
+    border-color: #28a745;
+    background: linear-gradient(135deg, #f8fff9 0%, #d4edda 100%);
+}
+
+.preview-box.default {
+    border-color: #6c757d;
+}
+
+.large-icon-preview {
+    max-width: 80px;
+    max-height: 80px;
+    object-fit: cover;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.preview-details p {
+    margin: 8px 0;
+    font-size: 13px;
+}
+
+.preview-details strong {
+    color: #495057;
+    display: inline-block;
+    width: 60px;
+}
+
+.preview-info {
+    color: #6c757d;
+    font-size: 13px;
+    font-style: italic;
+    margin: 0;
+}
+
+/* =================================
+   COLOR PICKER ENHANCEMENT
+   ================================= */
+
+.color-picker {
+    width: 60px !important;
+    height: 40px !important;
+    padding: 0 !important;
+    border: 2px solid #e9ecef !important;
+    border-radius: 6px !important;
+    cursor: pointer !important;
+    transition: all 0.2s ease !important;
+}
+
+.color-picker:hover {
+    border-color: #007bff !important;
+    transform: scale(1.05);
+}
+
+/* =================================
+   FIELDSET ENHANCEMENTS
+   ================================= */
+
+.icon-fieldset {
+    background: linear-gradient(135deg, #f8fbff 0%, #e7f3ff 100%);
+    border: 1px solid #b3d9ff !important;
+    border-radius: 8px;
+}
+
+.icon-help-section {
+    background: white;
+    padding: 16px;
+    border-radius: 6px;
+    border-left: 4px solid #007bff;
+    margin: 10px 0;
+}
+
+.icon-help-section h3 {
+    color: #007bff;
+    margin: 0 0 10px 0;
+    font-size: 16px;
+}
+
+.icon-help-section ul {
+    margin: 0;
+    padding-left: 20px;
+}
+
+.icon-help-section li {
+    margin: 6px 0;
+    color: #495057;
+    font-size: 13px;
+}
+
+/* =================================
+   PRODUCT ADMIN ENHANCEMENTS
+   ================================= */
+
+.category-with-icon {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.category-mini-icon {
+    width: 16px;
+    height: 16px;
+    object-fit: cover;
+    border-radius: 3px;
+}
+
+.stock-status {
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 600;
+}
+
+.stock-status.available {
+    background: #d4edda;
+    color: #155724;
+}
+
+.stock-status.low {
+    background: #fff3cd;
+    color: #856404;
+}
+
+.stock-status.out {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.product-count-link {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: 500;
+    padding: 4px 8px;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+}
+
+.product-count-link:hover {
+    background: #e7f3ff;
+    text-decoration: none;
+}
+
+/* =================================
+   MODAL STYLES (for Icon Picker Modal)
+   ================================= */
+
+.icon-picker-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.icon-picker-modal.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.icon-picker-modal-content {
+    width: 90%;
+    max-width: 1200px;
+    max-height: 90%;
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    transform: scale(0.7);
+    transition: transform 0.3s ease;
+}
+
+.icon-picker-modal.active .icon-picker-modal-content {
+    transform: scale(1);
+}
+
+/* =================================
+   RESPONSIVE DESIGN
+   ================================= */
+
+@media (max-width: 768px) {
+    .icon-input-group {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .icon-preview {
+        align-self: center;
+        order: -1;
+    }
+    
+    .detailed-icon-preview {
+        padding: 15px;
+    }
+    
+    .preview-box {
+        height: 80px;
+    }
+    
+    .icon-picker-modal-content {
+        width: 95%;
+        max-height: 95%;
+    }
+}
+
+/* =================================
+   ADMIN THEME INTEGRATION
+   ================================= */
+
+.django-admin .icon-picker-widget {
+    background: var(--body-bg, #f8f9fa);
+    border-color: var(--border-color, #e9ecef);
+}
+
+.django-admin .icon-picker-btn {
+    background: var(--primary, #007bff);
+}
+
+.django-admin .icon-picker-input:focus {
+    border-color: var(--primary, #007bff);
+}

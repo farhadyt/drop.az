@@ -45,6 +45,7 @@ function initializeApp() {
     // Initialize core components
     initializeHeader();
     initializeMobileMenu();
+    initializeMobileCategoryToggle(); // Yeni eklenen
     initializeSearch();
     initializeCart();
     initializeFavorites();
@@ -82,7 +83,7 @@ function initializeLoadingScreen() {
             loadingScreen?.remove();
             document.body.classList.add('loaded');
         }, 500);
-    }, 800); // Reduced from 1200ms
+    }, 800);
 }
 
 // =================================
@@ -117,6 +118,186 @@ function initializeHeader() {
     
     // Initial call
     updateHeader();
+}
+
+// =================================
+// MOBILE MENU - ENHANCED
+// =================================
+function initializeMobileMenu() {
+    const mobileToggle = document.querySelector('.mobile-menu-toggle');
+    const mobileMenu = document.querySelector('.mobile-nav-menu');
+    const mobileClose = document.querySelector('.mobile-nav-close');
+    const mobileNavLinks = document.querySelectorAll('.mobile-nav-link:not(.mobile-category-toggle)');
+    
+    if (!mobileToggle || !mobileMenu) return;
+
+    function toggleMobileMenu() {
+        appState.isMobileMenuOpen = !appState.isMobileMenuOpen;
+        
+        mobileMenu.classList.toggle('active', appState.isMobileMenuOpen);
+        mobileToggle.classList.toggle('active', appState.isMobileMenuOpen);
+        document.body.style.overflow = appState.isMobileMenuOpen ? 'hidden' : '';
+        
+        // Update ARIA attributes
+        mobileToggle.setAttribute('aria-expanded', appState.isMobileMenuOpen);
+        mobileMenu.setAttribute('aria-hidden', !appState.isMobileMenuOpen);
+        
+        console.log('Mobile menu toggled:', appState.isMobileMenuOpen);
+    }
+
+    function closeMobileMenu() {
+        appState.isMobileMenuOpen = false;
+        mobileMenu.classList.remove('active');
+        mobileToggle.classList.remove('active');
+        document.body.style.overflow = '';
+        
+        // Update ARIA attributes
+        mobileToggle.setAttribute('aria-expanded', 'false');
+        mobileMenu.setAttribute('aria-hidden', 'true');
+        
+        // Close all open categories
+        const openCategories = document.querySelectorAll('.mobile-subcategories.active');
+        openCategories.forEach(cat => {
+            cat.classList.remove('active');
+            cat.style.maxHeight = '0';
+        });
+        
+        const categoryToggles = document.querySelectorAll('.mobile-category-toggle');
+        categoryToggles.forEach(toggle => {
+            toggle.classList.remove('active');
+            const arrow = toggle.querySelector('.mobile-nav-arrow');
+            if (arrow) arrow.style.transform = 'rotate(0deg)';
+        });
+        
+        console.log('Mobile menu closed');
+    }
+
+    // Event listeners
+    mobileToggle.addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        toggleMobileMenu();
+    });
+    
+    mobileClose?.addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        closeMobileMenu();
+    });
+
+    // Close menu when clicking on regular navigation links
+    mobileNavLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            // Don't close if it's a toggle button
+            if (!this.classList.contains('mobile-category-toggle')) {
+                setTimeout(() => closeMobileMenu(), 150);
+            }
+        });
+    });
+
+    // Close menu on escape key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && appState.isMobileMenuOpen) {
+            closeMobileMenu();
+        }
+    });
+
+    // Close menu on window resize (desktop)
+    window.addEventListener('resize', () => {
+        clearTimeout(resizeTimeout);
+        resizeTimeout = setTimeout(() => {
+            if (window.innerWidth > 768 && appState.isMobileMenuOpen) {
+                closeMobileMenu();
+            }
+        }, 100);
+    });
+
+    // Close menu when clicking on overlay (outside menu)
+    mobileMenu.addEventListener('click', function(e) {
+        if (e.target === this) {
+            closeMobileMenu();
+        }
+    });
+}
+
+// =================================
+// MOBILE CATEGORY TOGGLE - YENİ
+// =================================
+function initializeMobileCategoryToggle() {
+    const categoryToggle = document.querySelector('.mobile-category-toggle');
+    const subcategoriesList = document.getElementById('mobile-categories-list');
+    
+    if (!categoryToggle || !subcategoriesList) {
+        console.warn('Mobile category toggle elements not found');
+        return;
+    }
+
+    function toggleCategories() {
+        const isActive = categoryToggle.classList.contains('active');
+        const arrow = categoryToggle.querySelector('.mobile-nav-arrow');
+        
+        // Toggle states
+        categoryToggle.classList.toggle('active');
+        subcategoriesList.classList.toggle('active');
+        
+        // Animate arrow
+        if (arrow) {
+            arrow.style.transform = categoryToggle.classList.contains('active') ? 
+                'rotate(180deg)' : 'rotate(0deg)';
+        }
+        
+        // Animate height
+        if (categoryToggle.classList.contains('active')) {
+            subcategoriesList.style.maxHeight = subcategoriesList.scrollHeight + 'px';
+            subcategoriesList.style.opacity = '1';
+            
+            // Show notification
+            if (window.dropAzUtils && window.dropAzUtils.showNotification) {
+                window.dropAzUtils.showNotification('Kateqoriyalar açıldı 📂', 'info');
+            }
+        } else {
+            subcategoriesList.style.maxHeight = '0';
+            subcategoriesList.style.opacity = '0';
+        }
+        
+        // Update ARIA attributes
+        categoryToggle.setAttribute('aria-expanded', !isActive);
+        subcategoriesList.setAttribute('aria-hidden', isActive);
+        
+        console.log('Categories toggled:', !isActive);
+    }
+
+    // Click event for category toggle
+    categoryToggle.addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        toggleCategories();
+    });
+
+    // Add click handlers for subcategory links
+    const subcategoryLinks = subcategoriesList.querySelectorAll('.mobile-subcategory-link');
+    subcategoryLinks.forEach(link => {
+        link.addEventListener('click', function() {
+            const categoryName = this.textContent.trim();
+            if (window.dropAzUtils && window.dropAzUtils.showNotification) {
+                window.dropAzUtils.showNotification(`"${categoryName}" kateqoriyasına keçid...`, 'info');
+            }
+            
+            // Close mobile menu after short delay
+            setTimeout(() => {
+                const mobileMenu = document.querySelector('.mobile-nav-menu');
+                const mobileToggle = document.querySelector('.mobile-menu-toggle');
+                if (mobileMenu && mobileToggle) {
+                    mobileMenu.classList.remove('active');
+                    mobileToggle.classList.remove('active');
+                    document.body.style.overflow = '';
+                    appState.isMobileMenuOpen = false;
+                }
+            }, 300);
+        });
+    });
+
+    console.log('✅ Mobile category toggle initialized');
 }
 
 // =================================
@@ -195,59 +376,6 @@ function initializeLogoEffects() {
 
     logoLink.addEventListener('mouseleave', function() {
         if (logoImage) logoImage.style.transform = '';
-    });
-}
-
-// =================================
-// MOBILE MENU - SIMPLIFIED
-// =================================
-function initializeMobileMenu() {
-    const mobileToggle = document.querySelector('.mobile-menu-toggle');
-    const mobileMenu = document.querySelector('.mobile-nav-menu');
-    const mobileClose = document.querySelector('.mobile-nav-close');
-    const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
-    
-    if (!mobileToggle || !mobileMenu) return;
-
-    function toggleMobileMenu() {
-        appState.isMobileMenuOpen = !appState.isMobileMenuOpen;
-        
-        mobileMenu.classList.toggle('active', appState.isMobileMenuOpen);
-        mobileToggle.classList.toggle('active', appState.isMobileMenuOpen);
-        document.body.style.overflow = appState.isMobileMenuOpen ? 'hidden' : '';
-    }
-
-    function closeMobileMenu() {
-        appState.isMobileMenuOpen = false;
-        mobileMenu.classList.remove('active');
-        mobileToggle.classList.remove('active');
-        document.body.style.overflow = '';
-    }
-
-    // Event listeners
-    mobileToggle.addEventListener('click', toggleMobileMenu);
-    mobileClose?.addEventListener('click', closeMobileMenu);
-
-    // Close menu when clicking on links
-    mobileNavLinks.forEach(link => {
-        link.addEventListener('click', closeMobileMenu);
-    });
-
-    // Close menu on escape key
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && appState.isMobileMenuOpen) {
-            closeMobileMenu();
-        }
-    });
-
-    // Close menu on window resize (desktop)
-    window.addEventListener('resize', () => {
-        clearTimeout(resizeTimeout);
-        resizeTimeout = setTimeout(() => {
-            if (window.innerWidth > 768 && appState.isMobileMenuOpen) {
-                closeMobileMenu();
-            }
-        }, 100);
     });
 }
 

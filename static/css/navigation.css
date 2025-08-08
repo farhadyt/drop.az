@@ -1,21 +1,20 @@
 /* =================================
    ENHANCED MEGA MENU - DROP.AZ
-   Clean, Fast & Professional Design
+   Full Width 3-Level Navigation System
    ================================= */
 
 :root {
-    --menu-bg: var(--white);
-    --menu-border: var(--gray-200);
-    --menu-shadow: var(--shadow-floating);
-    --menu-radius: var(--radius-2xl);
+    --menu-bg: #ffffff;
+    --menu-border: #e2e8f0;
+    --menu-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+    --menu-radius: 24px;
     --menu-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* =================================
-   MAIN DROPDOWN CONTAINER
-   ================================= */
+/* MAIN DROPDOWN CONTAINER */
 .nav-categories-dropdown {
-    position: relative;
+    position: relative !important;
+    display: inline-block;
 }
 
 .categories-nav-link {
@@ -32,64 +31,64 @@
     color: var(--gray-500);
 }
 
-.nav-link:hover .categories-dropdown-icon {
+/* HOVER AÇILMA */
+.nav-categories-dropdown:hover .categories-dropdown-icon {
+    transform: rotate(180deg);
     color: var(--primary);
 }
 
-.nav-categories-dropdown.open .categories-dropdown-icon {
-    transform: rotate(180deg);
-}
-
-/* =================================
-   MEGA MENU WRAPPER (Desktop)
-   ================================= */
+/* MEGA MENU - TAM GENİŞLİK */
 .categories-dropdown-menu {
-    position: fixed;
-    top: calc(var(--header-height) + 15px);
-    left: 0;
-    right: 0;
-    width: 100vw;
-    max-width: none;
-    background: var(--menu-bg);
-    border-radius: 0 0 var(--menu-radius) var(--menu-radius);
-    box-shadow: var(--menu-shadow);
-    border: 1px solid var(--menu-border);
-    border-top: none;
-    z-index: var(--z-dropdown);
+    position: fixed !important;
+    top: 80px !important; /* header height */
+    left: 10px !important;
+    right: 10px !important;
+    width: auto !important;
+    max-width: none !important;
+    background: white;
+    border-radius: 0 0 24px 24px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+    border: 1px solid #e2e8f0;
+    z-index: 9999;
     opacity: 0;
     visibility: hidden;
     transform: translateY(-20px);
     transition: all 0.25s ease;
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
-    margin: 0;
-    padding: 0;
 }
 
-.nav-categories-dropdown.open .categories-dropdown-menu {
+/* HOVER İLE AÇILMA */
+.nav-categories-dropdown:hover .categories-dropdown-menu {
     opacity: 1;
     visibility: visible;
     transform: translateY(0);
 }
 
+.floating-header {
+    overflow: visible !important;
+}
+
+.main-nav {
+    position: relative;
+    overflow: visible !important;
+}
+
 .categories-dropdown-content-wrapper {
-    width: 100%;
-    max-width: none;
+    width: 100% !important;
     overflow: hidden;
+    padding: 0 !important;
+    margin: 0 !important;
 }
 
 .categories-dropdown-content {
     display: grid;
-    grid-template-columns: 300px 1fr 1fr;
+    grid-template-columns: 250px 1fr 1fr;
     max-height: 70vh;
     min-height: 400px;
     width: 100%;
+    overflow: hidden;
 }
 
-/* =================================
-   LEVEL 1: MAIN CATEGORIES PANEL (Left)
-   ================================= */
+/* LEVEL 1: MAIN CATEGORIES */
 .main-categories-panel {
     background: var(--gray-50);
     border-right: 1px solid var(--menu-border);
@@ -115,7 +114,7 @@
     text-decoration: none;
     color: var(--gray-700);
     font-weight: var(--font-weight-medium);
-    transition: background-color 0.2s, color 0.2s, border-color 0.2s;
+    transition: all 0.2s ease;
     cursor: pointer;
     border-left: 3px solid transparent;
 }
@@ -150,17 +149,13 @@
     border-left-color: var(--primary);
 }
 
-.subcategories-panel-mobile { display: none; }
-
-/* =================================
-   LEVEL 2: SUBCATEGORIES PANEL (Middle) - TAP.AZ KİMİ EYNİ STİL
-   ================================= */
+/* LEVEL 2: SUBCATEGORIES */
 .subcategories-panel {
     background: var(--gray-50);
     border-right: 1px solid var(--menu-border);
     overflow-y: auto;
     padding: 0.75rem 0;
-    display: none;
+    display: block;
 }
 
 .subcategory-group {
@@ -173,13 +168,19 @@
     to { opacity: 1; transform: translateY(0); }
 }
 
+/* HOVER İLE ALT KATEGORİ GÖSTERME */
+.category-dropdown-item:hover + .subcategories-panel .subcategory-group,
+.subcategory-group.active {
+    display: block !important;
+}
+
 .subcategory-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 1rem;
     border-bottom: 1px solid var(--menu-border);
-    padding: 1rem 1.5rem 1rem 1.5rem;
+    padding: 1rem 1.5rem;
     background: var(--white);
 }
 
@@ -209,7 +210,6 @@
     background: var(--primary);
     color: var(--white);
     border-color: var(--primary);
-    gap: 0.75rem;
 }
 
 .view-all-link svg {
@@ -218,10 +218,7 @@
     transition: var(--transition-fast);
 }
 
-/* =================================
-   LEVEL 2 & 3: UNIVERSAL CATEGORY ITEM STYLE
-   Alt kateqoriyalar və 3-cü səviyyə eyni stilə malikdir
-   ================================= */
+/* SUBCATEGORY ITEMS */
 .subcategories-list,
 .third-level-list {
     list-style: none;
@@ -229,7 +226,6 @@
     margin: 0;
 }
 
-/* Alt kateqoriya və 3-cü səviyyə elementləri - əsas kateqoriya kimi */
 .subcategory-list-item,
 .third-level-item {
     position: relative;
@@ -244,7 +240,7 @@
     text-decoration: none;
     color: var(--gray-700);
     font-weight: var(--font-weight-medium);
-    transition: background-color 0.2s, color 0.2s, border-color 0.2s;
+    transition: all 0.2s ease;
     cursor: pointer;
     border-left: 3px solid transparent;
 }
@@ -265,7 +261,6 @@
     gap: 1rem;
 }
 
-/* Alt kateqoriya ikonu - əsas kateqoriya icon kimi */
 .subcategory-icon,
 .third-level-icon {
     font-size: 1.25rem;
@@ -307,19 +302,23 @@
     transition: transform 0.2s;
 }
 
-/* =================================
-   LEVEL 3: THIRD LEVEL CATEGORIES PANEL (Right)
-   ================================= */
+/* LEVEL 3: THIRD LEVEL */
 .third-level-panel {
     background: var(--gray-50);
     overflow-y: auto;
     padding: 0.75rem 0;
-    display: none;
+    display: block;
 }
 
 .third-level-group {
     display: none;
     animation: fadeIn 0.4s ease;
+}
+
+/* HOVER İLE 3. SEVİYE GÖSTERME */
+.subcategory-list-item:hover + .third-level-panel .third-level-group,
+.third-level-group.active {
+    display: block !important;
 }
 
 .third-level-header {
@@ -328,7 +327,7 @@
     align-items: center;
     margin-bottom: 1rem;
     border-bottom: 1px solid var(--menu-border);
-    padding: 1rem 1.5rem 1rem 1.5rem;
+    padding: 1rem 1.5rem;
     background: var(--white);
 }
 
@@ -339,9 +338,7 @@
     margin: 0;
 }
 
-/* =================================
-   PLACEHOLDER DESIGN
-   ================================= */
+/* PLACEHOLDER */
 .subcategory-group-placeholder,
 .third-level-group-placeholder {
     display: flex;
@@ -368,9 +365,7 @@
     max-width: 300px;
 }
 
-/* =================================
-   "ALL CATEGORIES" BUTTON
-   ================================= */
+/* ALL CATEGORIES BUTTON */
 .all-categories-section {
     padding: 1rem;
     background: var(--gray-50);
@@ -406,9 +401,7 @@
     height: 20px;
 }
 
-/* =================================
-   SCROLLBAR STYLING
-   ================================= */
+/* SCROLLBAR */
 .main-categories-panel::-webkit-scrollbar,
 .subcategories-panel::-webkit-scrollbar,
 .third-level-panel::-webkit-scrollbar {
@@ -435,35 +428,411 @@
 }
 
 /* =================================
-   LOADING STATE
+   MOBILE NAVIGATION ENHANCEMENTS
    ================================= */
-.categories-loading {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 2rem;
-    color: var(--gray-500);
-    font-style: italic;
+
+/* Mobile Categories Accordion Styles */
+@media (max-width: 768px) {
+    /* Hide desktop mega menu on mobile */
+    .categories-dropdown-menu {
+        display: none !important;
+    }
+    
+    /* Mobile category navigation styles */
+    .mobile-nav-category {
+        border-bottom: 1px solid rgba(79, 172, 254, 0.1);
+    }
+    
+    .mobile-category-toggle {
+        background: none;
+        border: none;
+        width: 100%;
+        text-align: left;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        position: relative;
+    }
+    
+    .mobile-category-toggle:hover {
+        background: rgba(79, 172, 254, 0.05);
+    }
+    
+    .mobile-category-toggle.active {
+        background: rgba(79, 172, 254, 0.1);
+        color: var(--primary);
+    }
+    
+    .mobile-category-toggle.active .mobile-nav-arrow {
+        color: var(--primary);
+    }
+    
+    /* Mobile subcategories enhanced styling */
+    .mobile-subcategories {
+        background: linear-gradient(135deg, rgba(79, 172, 254, 0.03), rgba(0, 242, 254, 0.02));
+        border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+        margin: 0.5rem 1rem;
+        border: 1px solid rgba(79, 172, 254, 0.1);
+        overflow: hidden;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .mobile-subcategories.active {
+        box-shadow: 0 4px 12px rgba(79, 172, 254, 0.1);
+    }
+    
+    .mobile-subcategory-link {
+        position: relative;
+        transition: all 0.2s ease;
+        border-left: 3px solid transparent;
+    }
+    
+    .mobile-subcategory-link:hover {
+        background: rgba(79, 172, 254, 0.08);
+        border-left-color: var(--primary);
+        transform: translateX(4px);
+    }
+    
+    .mobile-subcategory-link.main-link {
+        background: linear-gradient(135deg, rgba(79, 172, 254, 0.15), rgba(0, 242, 254, 0.1));
+        border-left-color: var(--primary);
+        font-weight: var(--font-weight-bold);
+    }
+    
+    .mobile-subcategory-link.main-link:hover {
+        background: linear-gradient(135deg, rgba(79, 172, 254, 0.2), rgba(0, 242, 254, 0.15));
+        transform: translateX(6px);
+    }
+    
+    /* Mobile subcategory icons */
+    .mobile-subcategory-link span {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+    }
+    
+    .mobile-subcategory-link span::before {
+        content: '';
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: var(--primary);
+        opacity: 0.6;
+        transition: all 0.2s ease;
+    }
+    
+    .mobile-subcategory-link:hover span::before {
+        opacity: 1;
+        transform: scale(1.2);
+    }
+    
+    .mobile-subcategory-link.main-link span::before {
+        width: 8px;
+        height: 8px;
+        opacity: 1;
+    }
+}
+
+/* RESPONSIVE MEGA MENU */
+@media (max-width: 1400px) {
+    .categories-dropdown-menu {
+        width: calc(100vw - 40px) !important;
+        left: 20px !important;
+        right: 20px !important;
+    }
+    
+    .categories-dropdown-content {
+        grid-template-columns: minmax(200px, 280px) 1fr 1fr;
+    }
+}
+
+@media (max-width: 1200px) {
+    .categories-dropdown-menu {
+        width: calc(100vw - 30px) !important;
+        left: 15px !important;
+        right: 15px !important;
+    }
+    
+    .categories-dropdown-content {
+        grid-template-columns: minmax(180px, 260px) 1fr 1fr;
+    }
+}
+
+@media (max-width: 992px) {
+    .categories-dropdown-menu {
+        width: calc(100vw - 20px) !important;
+        left: 10px !important;
+        right: 10px !important;
+    }
+    
+    .categories-dropdown-content {
+        grid-template-columns: minmax(160px, 240px) 1fr;
+    }
+    
+    .third-level-panel {
+        display: none !important;
+    }
+}
+
+@media (max-width: 768px) {
+    .categories-dropdown-menu {
+        display: none !important;
+    }
+    
+    /* Mobile menu enhanced positioning */
+    .mobile-nav-menu {
+        height: 100vh;
+        max-height: 100vh;
+        padding-top: 0;
+    }
+    
+    .mobile-nav-links {
+        padding-bottom: 2rem;
+    }
+    
+    /* Better mobile category spacing */
+    .mobile-nav-category {
+        margin-bottom: 0.5rem;
+    }
+    
+    .mobile-subcategories {
+        margin: 0.25rem 0.5rem 0.5rem 0.5rem;
+    }
+    
+    .mobile-subcategory-link {
+        padding: 0.875rem 1.5rem 0.875rem 2.5rem;
+        font-size: 0.9rem;
+    }
+    
+    .mobile-subcategory-link.main-link {
+        padding-left: 2rem;
+        margin-bottom: 0.25rem;
+    }
+}
+
+/* Enhanced mobile menu animations */
+@media (max-width: 768px) {
+    .mobile-nav-menu {
+        transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .mobile-nav-menu.active {
+        transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .mobile-category-toggle {
+        transition: all 0.2s ease;
+    }
+    
+    .mobile-nav-arrow {
+        transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .mobile-subcategories {
+        transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), 
+                    opacity 0.3s ease,
+                    box-shadow 0.3s ease;
+    }
+    
+    /* Staggered animation for subcategory links */
+    .mobile-subcategory-link {
+        transition: all 0.2s ease;
+        transition-delay: calc(var(--index, 0) * 0.05s);
+    }
+    
+    .mobile-subcategory-link:nth-child(1) { --index: 1; }
+    .mobile-subcategory-link:nth-child(2) { --index: 2; }
+    .mobile-subcategory-link:nth-child(3) { --index: 3; }
+    .mobile-subcategory-link:nth-child(4) { --index: 4; }
+    .mobile-subcategory-link:nth-child(5) { --index: 5; }
+    .mobile-subcategory-link:nth-child(6) { --index: 6; }
+}
+
+/* Enhanced focus states for accessibility */
+.mobile-category-toggle:focus,
+.mobile-subcategory-link:focus {
+    outline: 2px solid var(--primary);
+    outline-offset: 2px;
+    background: rgba(79, 172, 254, 0.1);
+}
+
+/* Touch-friendly sizing for mobile */
+@media (max-width: 768px) {
+    .mobile-category-toggle,
+    .mobile-subcategory-link {
+        min-height: 48px;
+        touch-action: manipulation;
+    }
+    
+    .mobile-nav-arrow {
+        min-width: 24px;
+        min-height: 24px;
+    }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+    .mobile-subcategory-link {
+        border: 1px solid;
+    }
+    
+    .mobile-subcategory-link:hover {
+        border-width: 2px;
+    }
+}
+
+/* Reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+    .mobile-nav-menu,
+    .mobile-category-toggle,
+    .mobile-nav-arrow,
+    .mobile-subcategories,
+    .mobile-subcategory-link {
+        transition: none !important;
+        animation: none !important;
+    }
 }
 
 /* =================================
-   ACCESSIBILITY IMPROVEMENTS
+   ENHANCED MOBILE INTERACTION STATES
    ================================= */
-.category-dropdown-link:focus,
-.subcategory-link:focus,
-.third-level-link:focus {
-    outline: 2px solid var(--primary);
-    outline-offset: -2px;
+@media (max-width: 768px) {
+    /* Active state for mobile category toggle */
+    .mobile-category-toggle:active {
+        transform: scale(0.98);
+        background: rgba(79, 172, 254, 0.15);
+    }
+    
+    /* Active state for subcategory links */
+    .mobile-subcategory-link:active {
+        transform: translateX(2px) scale(0.98);
+        background: rgba(79, 172, 254, 0.12);
+    }
+    
+    /* Loading state for categories */
+    .mobile-subcategories.loading {
+        opacity: 0.6;
+        pointer-events: none;
+    }
+    
+    .mobile-subcategories.loading::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 20px;
+        height: 20px;
+        border: 2px solid var(--primary);
+        border-top: 2px solid transparent;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+        transform: translate(-50%, -50%);
+    }
 }
 
-@media (prefers-reduced-motion: reduce) {
+/* Improved visual hierarchy */
+@media (max-width: 768px) {
+    .mobile-nav-category {
+        position: relative;
+    }
+    
+    .mobile-nav-category::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 2rem;
+        right: 2rem;
+        height: 1px;
+        background: linear-gradient(90deg, transparent, rgba(79, 172, 254, 0.2), transparent);
+    }
+    
+    .mobile-nav-category:last-child::after {
+        display: none;
+    }
+}
+
+/* Enhanced error states */
+.mobile-subcategories.error {
+    background: rgba(245, 101, 101, 0.05);
+    border-color: rgba(245, 101, 101, 0.2);
+}
+
+.mobile-subcategories.error .mobile-subcategory-link {
+    color: var(--danger);
+    cursor: not-allowed;
+}
+
+/* Success/loaded state */
+.mobile-subcategories.loaded {
+    animation: slideInUp 0.4s ease;
+}
+
+@keyframes slideInUp {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* =================================
+   DESKTOP MEGA MENU IMPROVEMENTS
+   ================================= */
+@media (min-width: 769px) {
+    /* Enhanced hover states for desktop */
+    .category-dropdown-item:hover > .category-dropdown-link::after {
+        content: '';
+        position: absolute;
+        right: 1rem;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 4px;
+        height: 20px;
+        background: var(--primary);
+        border-radius: 2px;
+        animation: slideInRight 0.2s ease;
+    }
+    
+    @keyframes slideInRight {
+        from { opacity: 0; transform: translateY(-50%) translateX(-5px); }
+        to { opacity: 1; transform: translateY(-50%) translateX(0); }
+    }
+    
+    /* Enhanced subcategory hover states */
+    .subcategory-link:hover::before,
+    .third-level-link:hover::before {
+        content: '→';
+        position: absolute;
+        left: 0.5rem;
+        color: var(--primary);
+        font-weight: bold;
+        animation: bounceRight 0.3s ease;
+    }
+    
+    @keyframes bounceRight {
+        0%, 20%, 50%, 80%, 100% { transform: translateX(0); }
+        40% { transform: translateX(-3px); }
+        60% { transform: translateX(-1px); }
+    }
+}
+
+/* Performance optimizations */
+.categories-dropdown-menu {
+    will-change: opacity, visibility, transform;
+    contain: layout style paint;
+}
+
+.mobile-subcategories {
+    will-change: max-height, opacity;
+    contain: layout style;
+}
+
+/* Print styles */
+@media print {
     .categories-dropdown-menu,
-    .category-dropdown-link,
-    .subcategory-link,
-    .third-level-link,
-    .subcategory-group,
-    .third-level-group {
-        transition: none;
-        animation: none;
+    .mobile-nav-menu {
+        display: none !important;
     }
 }

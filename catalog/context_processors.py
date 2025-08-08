@@ -10,11 +10,11 @@ logger = logging.getLogger(__name__)
 def categories_context(request):
     """
     3-səviyyəli navigation üçün kateqoriyalar və global məlumatları 
-    bütün template-lərə göndərir. TAP.AZ stilində.
+    bütün template-lərə göndərir. Full Width Mega Menu üçün optimizasiya edilib.
     """
     try:
         # Cache key
-        cache_key = 'header_categories_3level_v1'
+        cache_key = 'header_categories_fullwidth_v2'
         cached_data = cache.get(cache_key)
         
         if cached_data:
@@ -136,12 +136,13 @@ def categories_context(request):
             'categories_with_grandchildren': categories_with_grandchildren,
             'category_navigation_enabled': True,
             'navigation_levels': 3,  # 3-səviyyəli olduğunu göstər
+            'mega_menu_full_width': True,  # Full width mega menu aktiv
         }
         
         # 5 dəqiqə cache et (300 saniyə)
         cache.set(cache_key, context_data, 300)
         
-        logger.info(f"3-Level Categories context loaded: {len(navigation_categories)} main categories")
+        logger.info(f"Full Width 3-Level Categories context loaded: {len(navigation_categories)} main categories")
         
         return context_data
         
@@ -157,6 +158,7 @@ def categories_context(request):
             'categories_with_grandchildren': 0,
             'category_navigation_enabled': False,
             'navigation_levels': 1,
+            'mega_menu_full_width': False,
         }
 
 def navigation_breadcrumb(request):
@@ -295,9 +297,12 @@ def site_settings(request):
             },
             'navigation_features': {
                 'mega_menu_enabled': True,
+                'mega_menu_full_width': True,  # Full width aktiv
                 'levels_supported': 3,
                 'mobile_accordion': True,
-                'search_suggestions': True
+                'search_suggestions': True,
+                'hover_delay': 300,  # milliseconds
+                'animation_speed': 250  # milliseconds
             }
         }
         
@@ -354,8 +359,9 @@ def performance_data(request):
                     'cache_enabled': hasattr(settings, 'CACHES'),
                     'request_path': request.path,
                     'request_method': request.method,
-                    'navigation_system': '3-Level Mega Menu (TAP.AZ Style)',
-                    'cache_status': 'Active' if cache.get('header_categories_3level_v1') else 'Empty'
+                    'navigation_system': 'Full Width 3-Level Mega Menu',
+                    'cache_status': 'Active' if cache.get('header_categories_fullwidth_v2') else 'Empty',
+                    'mega_menu_version': 'v2.0 - Full Width'
                 }
             }
         else:
