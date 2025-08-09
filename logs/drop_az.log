@@ -1254,3 +1254,958 @@ INFO 2025-08-08 16:44:47,060 views 20192 13468 Home page loaded with 0 products
 INFO 2025-08-08 16:46:09,386 views 20192 20072 Home page loaded with 0 products
 INFO 2025-08-08 16:46:09,399 context_processors 20192 20072 Full Width 3-Level Categories context loaded: 3 main categories (including empty ones)
 INFO 2025-08-08 16:50:43,539 views 20192 1664 Home page loaded with 0 products
+INFO 2025-08-08 16:51:41,321 autoreload 14396 12896 Watching for file changes with StatReloader
+INFO 2025-08-08 16:52:09,913 context_processors 14396 14736 Full Width 3-Level Categories context loaded: 3 main categories (including empty ones)
+WARNING 2025-08-08 16:52:10,139 log 14396 14736 Not Found: /favicon.ico
+INFO 2025-08-08 16:52:55,649 views 14396 14736 Home page loaded with 0 products
+INFO 2025-08-08 16:53:21,178 autoreload 18176 10140 Watching for file changes with StatReloader
+INFO 2025-08-08 16:53:23,080 views 18176 9732 Home page loaded with 0 products
+INFO 2025-08-08 16:53:23,099 context_processors 18176 9732 Full Width 3-Level Categories context loaded: 4 main categories (including empty ones)
+INFO 2025-08-08 16:58:49,399 autoreload 18176 10140 D:\projects\drop.az\catalog\models.py changed, reloading.
+INFO 2025-08-08 16:58:49,986 autoreload 22584 11864 Watching for file changes with StatReloader
+INFO 2025-08-08 17:45:12,928 autoreload 7236 11156 Watching for file changes with StatReloader
+INFO 2025-08-08 17:45:17,418 views 7236 20508 Home page loaded with 0 products and 0 priority categories
+INFO 2025-08-08 17:45:17,465 context_processors 7236 20508 Priority-sorted Categories context loaded: 4 main categories
+WARNING 2025-08-08 17:45:28,160 log 7236 224 Not Found: /favicon.ico
+ERROR 2025-08-08 17:45:54,196 log 7236 224 Internal Server Error: /admin/catalog/category/add/
+Traceback (most recent call last):
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\backends\django.py", line 33, in get_template
+    return Template(self.engine.get_template(template_name), self)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\engine.py", line 175, in get_template
+    template, origin = self.find_template(template_name)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\engine.py", line 161, in find_template
+    raise TemplateDoesNotExist(name, tried=tried)
+django.template.exceptions.TemplateDoesNotExist: admin/widgets/icon_picker.html
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\backends\django.py", line 61, in render
+    return self.template.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 1000, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 1000, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 961, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\loader_tags.py", line 159, in render
+    return compiled_parent._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 1000, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 1000, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 961, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\loader_tags.py", line 159, in render
+    return compiled_parent._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 1000, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 1000, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 961, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 1000, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 1000, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 961, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 1000, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 1000, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 961, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\defaulttags.py", line 241, in render
+    nodelist.append(node.render_annotated(context))
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 961, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\loader_tags.py", line 210, in render
+    return template.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 173, in render
+    return self._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 1000, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 1000, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 961, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\defaulttags.py", line 241, in render
+    nodelist.append(node.render_annotated(context))
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 961, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\defaulttags.py", line 241, in render
+    nodelist.append(node.render_annotated(context))
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 961, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\defaulttags.py", line 325, in render
+    return nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 1000, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 1000, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 961, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\defaulttags.py", line 325, in render
+    return nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 1000, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 1000, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 961, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 1065, in render
+    return render_value_in_context(output, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 1042, in render_value_in_context
+    value = str(value)
+            ^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\forms\utils.py", line 79, in __str__
+    return self.as_widget()
+           ^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\forms\boundfield.py", line 108, in as_widget
+    return widget.render(
+           ^^^^^^^^^^^^^^
+  File "D:\projects\drop.az\catalog\widgets.py", line 130, in render
+    input_html = super().render(name, value, attrs, renderer)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\forms\widgets.py", line 275, in render
+    return self._render(self.template_name, context, renderer)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\forms\widgets.py", line 280, in _render
+    return mark_safe(renderer.render(template_name, context))
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\forms\renderers.py", line 28, in render
+    template = self.get_template(template_name)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\forms\renderers.py", line 34, in get_template
+    return self.engine.get_template(template_name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\backends\django.py", line 35, in get_template
+    reraise(exc, self)
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\backends\django.py", line 84, in reraise
+    raise new from exc
+django.template.exceptions.TemplateDoesNotExist: admin/widgets/icon_picker.html
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\base.py", line 220, in _get_response
+    response = response.render()
+               ^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\response.py", line 114, in render
+    self.content = self.rendered_content
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\response.py", line 92, in rendered_content
+    return template.render(context, self._request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\backends\django.py", line 63, in render
+    reraise(exc, self.backend)
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\backends\django.py", line 84, in reraise
+    raise new from exc
+django.template.exceptions.TemplateDoesNotExist: admin/widgets/icon_picker.html
+ERROR 2025-08-08 17:45:57,130 log 7236 224 Internal Server Error: /admin/catalog/category/add/
+Traceback (most recent call last):
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\backends\django.py", line 33, in get_template
+    return Template(self.engine.get_template(template_name), self)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\engine.py", line 175, in get_template
+    template, origin = self.find_template(template_name)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\engine.py", line 161, in find_template
+    raise TemplateDoesNotExist(name, tried=tried)
+django.template.exceptions.TemplateDoesNotExist: admin/widgets/icon_picker.html
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\backends\django.py", line 61, in render
+    return self.template.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 1000, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 1000, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 961, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\loader_tags.py", line 159, in render
+    return compiled_parent._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 1000, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 1000, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 961, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\loader_tags.py", line 159, in render
+    return compiled_parent._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 1000, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 1000, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 961, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 1000, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 1000, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 961, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 1000, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 1000, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 961, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\defaulttags.py", line 241, in render
+    nodelist.append(node.render_annotated(context))
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 961, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\loader_tags.py", line 210, in render
+    return template.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 173, in render
+    return self._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 1000, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 1000, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 961, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\defaulttags.py", line 241, in render
+    nodelist.append(node.render_annotated(context))
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 961, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\defaulttags.py", line 241, in render
+    nodelist.append(node.render_annotated(context))
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 961, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\defaulttags.py", line 325, in render
+    return nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 1000, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 1000, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 961, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\defaulttags.py", line 325, in render
+    return nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 1000, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 1000, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 961, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 1065, in render
+    return render_value_in_context(output, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 1042, in render_value_in_context
+    value = str(value)
+            ^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\forms\utils.py", line 79, in __str__
+    return self.as_widget()
+           ^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\forms\boundfield.py", line 108, in as_widget
+    return widget.render(
+           ^^^^^^^^^^^^^^
+  File "D:\projects\drop.az\catalog\widgets.py", line 130, in render
+    input_html = super().render(name, value, attrs, renderer)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\forms\widgets.py", line 275, in render
+    return self._render(self.template_name, context, renderer)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\forms\widgets.py", line 280, in _render
+    return mark_safe(renderer.render(template_name, context))
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\forms\renderers.py", line 28, in render
+    template = self.get_template(template_name)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\forms\renderers.py", line 34, in get_template
+    return self.engine.get_template(template_name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\backends\django.py", line 35, in get_template
+    reraise(exc, self)
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\backends\django.py", line 84, in reraise
+    raise new from exc
+django.template.exceptions.TemplateDoesNotExist: admin/widgets/icon_picker.html
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\base.py", line 220, in _get_response
+    response = response.render()
+               ^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\response.py", line 114, in render
+    self.content = self.rendered_content
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\response.py", line 92, in rendered_content
+    return template.render(context, self._request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\backends\django.py", line 63, in render
+    reraise(exc, self.backend)
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\backends\django.py", line 84, in reraise
+    raise new from exc
+django.template.exceptions.TemplateDoesNotExist: admin/widgets/icon_picker.html
+INFO 2025-08-08 17:46:46,316 autoreload 7236 11156 D:\projects\drop.az\catalog\admin.py changed, reloading.
+INFO 2025-08-08 17:46:46,887 autoreload 4900 8044 Watching for file changes with StatReloader
+INFO 2025-08-08 17:46:57,480 autoreload 4900 8044 D:\projects\drop.az\catalog\widgets.py changed, reloading.
+INFO 2025-08-08 17:46:58,138 autoreload 14992 19756 Watching for file changes with StatReloader
+INFO 2025-08-08 17:47:00,810 context_processors 14992 4176 Priority-sorted Categories context loaded: 0 main categories
+INFO 2025-08-08 17:52:04,196 autoreload 14992 19756 D:\projects\drop.az\catalog\widgets.py changed, reloading.
+INFO 2025-08-08 17:52:04,792 autoreload 13256 6368 Watching for file changes with StatReloader
+INFO 2025-08-08 17:52:22,114 autoreload 21884 18100 Watching for file changes with StatReloader
+INFO 2025-08-08 17:55:00,743 autoreload 21884 18100 D:\projects\drop.az\catalog\widgets.py changed, reloading.
+INFO 2025-08-08 17:55:01,286 autoreload 12808 9896 Watching for file changes with StatReloader
+INFO 2025-08-08 17:55:10,547 context_processors 12808 19816 Priority-sorted Categories context loaded: 0 main categories
+WARNING 2025-08-08 17:55:10,725 log 12808 19816 Not Found: /favicon.ico
+INFO 2025-08-08 17:56:23,757 autoreload 10568 11664 Watching for file changes with StatReloader
+INFO 2025-08-08 17:56:25,393 views 10568 5832 Home page loaded with 0 products and 0 priority categories
+INFO 2025-08-08 17:56:25,420 context_processors 10568 5832 Priority-sorted Categories context loaded: 2 main categories
+WARNING 2025-08-08 17:56:48,775 log 10568 9996 Not Found: /favicon.ico
+INFO 2025-08-08 17:56:52,508 views 10568 9996 Home page loaded with 0 products and 0 priority categories
+INFO 2025-08-08 17:57:00,464 autoreload 8652 18644 Watching for file changes with StatReloader
+INFO 2025-08-08 17:57:01,641 views 8652 5580 Home page loaded with 0 products and 0 priority categories
+INFO 2025-08-08 17:57:01,674 context_processors 8652 5580 Priority-sorted Categories context loaded: 2 main categories
+WARNING 2025-08-08 17:57:12,641 log 8652 9240 Not Found: /favicon.ico
+INFO 2025-08-08 17:57:37,992 views 8652 9240 Home page loaded with 0 products and 0 priority categories
+INFO 2025-08-08 17:57:45,874 autoreload 19788 6424 Watching for file changes with StatReloader
+INFO 2025-08-08 17:57:48,808 views 19788 9928 Home page loaded with 0 products and 0 priority categories
+INFO 2025-08-08 17:57:48,825 context_processors 19788 9928 Priority-sorted Categories context loaded: 2 main categories
+WARNING 2025-08-08 17:58:05,093 log 19788 5340 Not Found: /favicon.ico
+INFO 2025-08-08 18:04:55,882 autoreload 10968 9340 Watching for file changes with StatReloader
+INFO 2025-08-08 18:05:07,903 context_processors 10968 4812 Priority-sorted Categories context loaded: 2 main categories
+WARNING 2025-08-08 18:05:09,407 log 10968 2700 Not Found: /favicon.ico
+INFO 2025-08-08 18:08:18,498 autoreload 10968 9340 D:\projects\drop.az\catalog\widgets.py changed, reloading.
+INFO 2025-08-08 18:08:19,116 autoreload 9980 3076 Watching for file changes with StatReloader
+INFO 2025-08-08 18:08:21,595 context_processors 9980 13968 Priority-sorted Categories context loaded: 2 main categories
+WARNING 2025-08-08 18:08:22,456 log 9980 11284 Not Found: /favicon.ico
+INFO 2025-08-08 18:08:46,176 autoreload 2392 18184 Watching for file changes with StatReloader
+INFO 2025-08-08 18:08:48,237 context_processors 2392 16912 Priority-sorted Categories context loaded: 2 main categories
+WARNING 2025-08-08 18:08:50,726 log 2392 2608 Not Found: /favicon.ico
+INFO 2025-08-08 18:12:04,251 autoreload 2392 18184 D:\projects\drop.az\catalog\widgets.py changed, reloading.
+INFO 2025-08-08 18:12:04,855 autoreload 10972 9316 Watching for file changes with StatReloader
+INFO 2025-08-08 18:12:12,605 autoreload 19432 19732 Watching for file changes with StatReloader
+INFO 2025-08-08 18:12:17,375 context_processors 19432 14244 Priority-sorted Categories context loaded: 2 main categories
+ERROR 2025-08-08 18:12:17,590 log 19432 14244 Internal Server Error: /admin/catalog/category/add/
+Traceback (most recent call last):
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\base.py", line 220, in _get_response
+    response = response.render()
+               ^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\response.py", line 114, in render
+    self.content = self.rendered_content
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\response.py", line 92, in rendered_content
+    return template.render(context, self._request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\backends\django.py", line 61, in render
+    return self.template.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 1000, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 1000, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 961, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\loader_tags.py", line 159, in render
+    return compiled_parent._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 1000, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 1000, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 961, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\loader_tags.py", line 159, in render
+    return compiled_parent._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 1000, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 1000, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 961, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 1000, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 1000, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 961, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 1000, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 1000, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 961, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\defaulttags.py", line 241, in render
+    nodelist.append(node.render_annotated(context))
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 961, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\loader_tags.py", line 210, in render
+    return template.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 173, in render
+    return self._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 1000, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 1000, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 961, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\defaulttags.py", line 241, in render
+    nodelist.append(node.render_annotated(context))
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 961, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\defaulttags.py", line 241, in render
+    nodelist.append(node.render_annotated(context))
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 961, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\defaulttags.py", line 325, in render
+    return nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 1000, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 1000, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 961, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\defaulttags.py", line 325, in render
+    return nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 1000, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 1000, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 961, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 1065, in render
+    return render_value_in_context(output, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 1042, in render_value_in_context
+    value = str(value)
+            ^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\forms\utils.py", line 79, in __str__
+    return self.as_widget()
+           ^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\forms\boundfield.py", line 108, in as_widget
+    return widget.render(
+           ^^^^^^^^^^^^^^
+  File "D:\projects\drop.az\catalog\widgets.py", line 31, in render
+    widget_html = format_html('''
+                  ^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\utils\html.py", line 135, in format_html
+    return mark_safe(format_string.format(*args_safe, **kwargs_safe))
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+IndexError: Replacement index 58 out of range for positional args tuple
+WARNING 2025-08-08 18:12:17,756 log 19432 14244 Not Found: /favicon.ico
+INFO 2025-08-08 18:14:33,834 autoreload 19432 19732 D:\projects\drop.az\catalog\widgets.py changed, reloading.
+INFO 2025-08-08 18:14:34,434 autoreload 5392 12588 Watching for file changes with StatReloader
+INFO 2025-08-08 18:14:38,734 autoreload 3836 10260 Watching for file changes with StatReloader
+INFO 2025-08-08 18:14:41,384 context_processors 3836 23172 Priority-sorted Categories context loaded: 2 main categories
+INFO 2025-08-08 18:17:42,112 autoreload 3836 10260 D:\projects\drop.az\catalog\admin.py changed, reloading.
+INFO 2025-08-08 18:17:42,654 autoreload 23000 4472 Watching for file changes with StatReloader
+INFO 2025-08-08 18:17:48,619 autoreload 21456 8864 Watching for file changes with StatReloader
+INFO 2025-08-08 18:17:50,575 context_processors 21456 13472 Priority-sorted Categories context loaded: 2 main categories
+WARNING 2025-08-08 18:17:51,380 log 21456 8388 Not Found: /favicon.ico
+INFO 2025-08-08 18:17:57,320 autoreload 21456 8864 D:\projects\drop.az\catalog\admin.py changed, reloading.
+INFO 2025-08-08 18:17:57,865 autoreload 3984 15064 Watching for file changes with StatReloader
+INFO 2025-08-08 18:18:20,755 autoreload 3984 15064 D:\projects\drop.az\catalog\widgets.py changed, reloading.
+INFO 2025-08-08 18:18:21,357 autoreload 21836 14844 Watching for file changes with StatReloader
+INFO 2025-08-08 18:18:25,766 autoreload 16592 22604 Watching for file changes with StatReloader
+INFO 2025-08-08 18:18:28,194 context_processors 16592 16664 Priority-sorted Categories context loaded: 2 main categories
+WARNING 2025-08-08 18:18:29,160 log 16592 19408 Not Found: /favicon.ico
+INFO 2025-08-08 18:26:22,622 autoreload 9740 14440 Watching for file changes with StatReloader
+INFO 2025-08-08 18:26:25,497 context_processors 9740 16208 Priority-sorted Categories context loaded: 2 main categories
+WARNING 2025-08-08 18:26:26,381 log 9740 11780 Not Found: /favicon.ico
+INFO 2025-08-08 18:32:03,118 context_processors 9740 19684 Priority-sorted Categories context loaded: 2 main categories
+WARNING 2025-08-08 18:32:03,742 log 9740 12628 Not Found: /favicon.ico
+WARNING 2025-08-08 18:34:38,988 log 9740 16664 Not Found: /favicon.ico
+WARNING 2025-08-08 18:34:41,061 log 9740 8864 Not Found: /favicon.ico
+INFO 2025-08-08 18:44:46,549 context_processors 9740 20628 Priority-sorted Categories context loaded: 2 main categories
+WARNING 2025-08-08 18:44:47,211 log 9740 9544 Not Found: /favicon.ico
+WARNING 2025-08-08 18:46:06,252 log 9740 9544 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+INFO 2025-08-08 18:46:44,383 autoreload 9740 14440 D:\projects\drop.az\catalog\widgets.py changed, reloading.
+INFO 2025-08-08 18:46:44,966 autoreload 9732 20544 Watching for file changes with StatReloader
+INFO 2025-08-08 18:46:47,017 context_processors 9732 9264 Priority-sorted Categories context loaded: 2 main categories
+WARNING 2025-08-08 18:46:47,515 log 9732 9620 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-08 18:46:47,969 log 9732 17536 Not Found: /favicon.ico
+INFO 2025-08-08 18:47:33,668 autoreload 9732 20544 D:\projects\drop.az\catalog\widgets.py changed, reloading.
+INFO 2025-08-08 18:47:34,250 autoreload 1792 15148 Watching for file changes with StatReloader
+INFO 2025-08-08 18:47:35,691 context_processors 1792 19620 Priority-sorted Categories context loaded: 2 main categories
+WARNING 2025-08-08 18:47:36,595 log 1792 21656 Not Found: /favicon.ico
+WARNING 2025-08-08 18:48:29,436 log 1792 6612 Not Found: /favicon.ico
+WARNING 2025-08-08 18:48:44,467 log 1792 20516 Not Found: /favicon.ico
+INFO 2025-08-08 22:17:32,732 context_processors 1792 18620 Priority-sorted Categories context loaded: 2 main categories
+INFO 2025-08-08 22:17:35,275 views 1792 18620 Home page loaded with 0 products and 0 priority categories
+INFO 2025-08-09 15:15:47,011 views 1792 24516 Home page loaded with 0 products and 0 priority categories
+INFO 2025-08-09 15:15:47,024 context_processors 1792 24516 Priority-sorted Categories context loaded: 2 main categories
+WARNING 2025-08-09 15:15:55,731 log 1792 23680 Not Found: /favicon.ico
+INFO 2025-08-09 15:16:43,671 views 1792 6764 Home page loaded with 0 products and 0 priority categories
+WARNING 2025-08-09 15:18:16,364 log 1792 7560 Not Found: /favicon.ico
+WARNING 2025-08-09 15:18:53,736 log 1792 7560 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-09 15:19:39,937 log 1792 24188 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-09 15:19:40,383 log 1792 24188 Not Found: /favicon.ico
+WARNING 2025-08-09 15:19:51,598 log 1792 6764 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-09 15:19:52,016 log 1792 6764 Not Found: /favicon.ico
+WARNING 2025-08-09 15:20:16,210 log 1792 14908 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-09 15:20:16,632 log 1792 14908 Not Found: /favicon.ico
+INFO 2025-08-09 15:20:26,492 autoreload 3784 15136 Watching for file changes with StatReloader
+INFO 2025-08-09 15:20:29,164 context_processors 3784 23648 Priority-sorted Categories context loaded: 2 main categories
+WARNING 2025-08-09 15:20:29,902 log 3784 23648 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-09 15:20:30,190 log 3784 18968 Not Found: /favicon.ico
+WARNING 2025-08-09 15:21:11,667 log 3784 24536 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-09 15:21:12,214 log 3784 14376 Not Found: /favicon.ico
+WARNING 2025-08-09 15:21:28,835 log 3784 23648 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-09 15:21:29,205 log 3784 23648 Not Found: /favicon.ico
+WARNING 2025-08-09 15:21:49,215 log 3784 24536 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-09 15:21:49,613 log 3784 14376 Not Found: /favicon.ico
+WARNING 2025-08-09 15:22:17,405 log 3784 24864 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-09 15:22:17,622 log 3784 14376 Not Found: /favicon.ico
+WARNING 2025-08-09 15:23:05,171 log 3784 18968 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-09 15:23:05,787 log 3784 10260 Not Found: /favicon.ico
+WARNING 2025-08-09 15:23:20,865 log 3784 18968 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-09 15:23:21,278 log 3784 18968 Not Found: /favicon.ico
+WARNING 2025-08-09 15:23:33,415 log 3784 23648 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-09 15:23:33,783 log 3784 24864 Not Found: /favicon.ico
+WARNING 2025-08-09 15:23:57,882 log 3784 24536 Not Found: /favicon.ico
+WARNING 2025-08-09 15:24:23,792 log 3784 24536 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+INFO 2025-08-09 15:25:09,633 autoreload 3784 15136 D:\projects\drop.az\catalog\widgets.py changed, reloading.
+INFO 2025-08-09 15:25:10,214 autoreload 11960 15980 Watching for file changes with StatReloader
+INFO 2025-08-09 15:25:11,899 context_processors 11960 14664 Priority-sorted Categories context loaded: 2 main categories
+WARNING 2025-08-09 15:25:12,364 log 11960 15152 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-09 15:25:12,836 log 11960 13072 Not Found: /favicon.ico
+INFO 2025-08-09 15:25:27,119 autoreload 11960 15980 D:\projects\drop.az\catalog\widgets.py changed, reloading.
+INFO 2025-08-09 15:25:27,688 autoreload 19768 22580 Watching for file changes with StatReloader
+INFO 2025-08-09 15:25:30,132 context_processors 19768 5664 Priority-sorted Categories context loaded: 2 main categories
+WARNING 2025-08-09 15:25:30,865 log 19768 12908 Not Found: /favicon.ico
+INFO 2025-08-09 15:26:01,283 autoreload 19768 22580 D:\projects\drop.az\catalog\widgets.py changed, reloading.
+INFO 2025-08-09 15:26:01,837 autoreload 1996 20232 Watching for file changes with StatReloader
+INFO 2025-08-09 15:26:05,393 context_processors 1996 8072 Priority-sorted Categories context loaded: 2 main categories
+WARNING 2025-08-09 15:26:06,232 log 1996 20864 Not Found: /favicon.ico
+INFO 2025-08-09 15:26:30,044 autoreload 1996 20232 D:\projects\drop.az\catalog\widgets.py changed, reloading.
+INFO 2025-08-09 15:26:30,625 autoreload 15956 18756 Watching for file changes with StatReloader
+INFO 2025-08-09 15:26:31,201 context_processors 15956 15268 Priority-sorted Categories context loaded: 2 main categories
+WARNING 2025-08-09 15:26:31,982 log 15956 21980 Not Found: /favicon.ico
+INFO 2025-08-09 15:26:38,183 autoreload 15956 18756 D:\projects\drop.az\catalog\widgets.py changed, reloading.
+INFO 2025-08-09 15:26:38,769 autoreload 18100 10416 Watching for file changes with StatReloader
+INFO 2025-08-09 15:26:41,074 context_processors 18100 21524 Priority-sorted Categories context loaded: 2 main categories
+WARNING 2025-08-09 15:26:41,865 log 18100 19168 Not Found: /favicon.ico
+WARNING 2025-08-09 15:26:44,137 log 18100 19168 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+INFO 2025-08-09 15:27:16,182 autoreload 18100 10416 D:\projects\drop.az\catalog\widgets.py changed, reloading.
+INFO 2025-08-09 15:27:16,796 autoreload 5072 19564 Watching for file changes with StatReloader
+INFO 2025-08-09 15:27:17,398 context_processors 5072 9520 Priority-sorted Categories context loaded: 2 main categories
+WARNING 2025-08-09 15:27:17,771 log 5072 4040 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-09 15:27:18,370 log 5072 6452 Not Found: /favicon.ico
+INFO 2025-08-09 15:27:40,773 autoreload 5072 19564 D:\projects\drop.az\catalog\widgets.py changed, reloading.
+INFO 2025-08-09 15:27:41,364 autoreload 23740 14184 Watching for file changes with StatReloader
+INFO 2025-08-09 15:27:43,074 context_processors 23740 19096 Priority-sorted Categories context loaded: 2 main categories
+WARNING 2025-08-09 15:27:43,765 log 23740 24216 Not Found: /favicon.ico
+WARNING 2025-08-09 15:28:29,666 log 23740 16548 Not Found: /favicon.ico
+WARNING 2025-08-09 15:29:17,114 log 23740 18320 Not Found: /favicon.ico
+INFO 2025-08-09 15:30:11,748 autoreload 23740 14184 D:\projects\drop.az\catalog\widgets.py changed, reloading.
+INFO 2025-08-09 15:30:12,330 autoreload 15816 10616 Watching for file changes with StatReloader
+INFO 2025-08-09 15:30:14,381 context_processors 15816 20372 Priority-sorted Categories context loaded: 2 main categories
+WARNING 2025-08-09 15:30:15,212 log 15816 17784 Not Found: /favicon.ico
+INFO 2025-08-09 15:30:24,116 autoreload 15816 10616 D:\projects\drop.az\catalog\widgets.py changed, reloading.
+INFO 2025-08-09 15:30:24,707 autoreload 3080 11964 Watching for file changes with StatReloader
+INFO 2025-08-09 15:30:25,441 context_processors 3080 23780 Priority-sorted Categories context loaded: 2 main categories
+WARNING 2025-08-09 15:30:26,114 log 3080 24364 Not Found: /favicon.ico
+INFO 2025-08-09 15:30:44,587 autoreload 3080 11964 D:\projects\drop.az\catalog\widgets.py changed, reloading.
+INFO 2025-08-09 15:30:45,165 autoreload 17676 25172 Watching for file changes with StatReloader
+INFO 2025-08-09 15:30:48,603 autoreload 17676 25172 D:\projects\drop.az\catalog\widgets.py changed, reloading.
+INFO 2025-08-09 15:30:49,179 autoreload 15152 25060 Watching for file changes with StatReloader
+INFO 2025-08-09 15:30:50,414 context_processors 15152 17212 Priority-sorted Categories context loaded: 2 main categories
+WARNING 2025-08-09 15:30:51,135 log 15152 13916 Not Found: /favicon.ico
+WARNING 2025-08-09 15:31:06,618 log 15152 13916 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+INFO 2025-08-09 15:32:01,498 autoreload 15152 25060 D:\projects\drop.az\catalog\widgets.py changed, reloading.
+INFO 2025-08-09 15:32:02,097 autoreload 7884 18540 Watching for file changes with StatReloader
+INFO 2025-08-09 15:32:02,831 context_processors 7884 15408 Priority-sorted Categories context loaded: 2 main categories
+WARNING 2025-08-09 15:32:03,698 log 7884 16024 Not Found: /favicon.ico
+INFO 2025-08-09 15:32:26,102 autoreload 7884 18540 D:\projects\drop.az\catalog\widgets.py changed, reloading.
+INFO 2025-08-09 15:32:26,664 autoreload 19744 25380 Watching for file changes with StatReloader
+INFO 2025-08-09 15:32:41,337 autoreload 19744 25380 D:\projects\drop.az\catalog\widgets.py changed, reloading.
+INFO 2025-08-09 15:32:41,937 autoreload 23808 12980 Watching for file changes with StatReloader
+INFO 2025-08-09 15:32:42,780 context_processors 23808 8892 Priority-sorted Categories context loaded: 2 main categories
+WARNING 2025-08-09 15:32:43,648 log 23808 8892 Not Found: /favicon.ico
+INFO 2025-08-09 15:34:39,256 autoreload 23808 12980 D:\projects\drop.az\catalog\widgets.py changed, reloading.
+INFO 2025-08-09 15:34:39,813 autoreload 24640 16772 Watching for file changes with StatReloader
+INFO 2025-08-09 15:34:46,099 context_processors 24640 24180 Priority-sorted Categories context loaded: 2 main categories
+WARNING 2025-08-09 15:34:46,963 log 24640 23524 Not Found: /favicon.ico
+INFO 2025-08-09 15:35:49,013 autoreload 24640 16772 D:\projects\drop.az\catalog\widgets.py changed, reloading.
+INFO 2025-08-09 15:35:49,617 autoreload 21924 24692 Watching for file changes with StatReloader
+INFO 2025-08-09 15:35:52,247 context_processors 21924 22404 Priority-sorted Categories context loaded: 2 main categories
+WARNING 2025-08-09 15:35:53,112 log 21924 18088 Not Found: /favicon.ico
+INFO 2025-08-09 15:36:56,917 autoreload 21924 24692 D:\projects\drop.az\catalog\widgets.py changed, reloading.
+INFO 2025-08-09 15:36:57,513 autoreload 23572 25096 Watching for file changes with StatReloader
+INFO 2025-08-09 15:36:58,431 context_processors 23572 14288 Priority-sorted Categories context loaded: 2 main categories
+ERROR 2025-08-09 15:36:58,687 log 23572 14288 Internal Server Error: /admin/catalog/category/add/
+Traceback (most recent call last):
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\base.py", line 220, in _get_response
+    response = response.render()
+               ^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\response.py", line 114, in render
+    self.content = self.rendered_content
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\response.py", line 92, in rendered_content
+    return template.render(context, self._request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\backends\django.py", line 61, in render
+    return self.template.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 1000, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 1000, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 961, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\loader_tags.py", line 159, in render
+    return compiled_parent._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 1000, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 1000, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 961, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\loader_tags.py", line 159, in render
+    return compiled_parent._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 1000, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 1000, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 961, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 1000, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 1000, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 961, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 1000, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 1000, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 961, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\defaulttags.py", line 241, in render
+    nodelist.append(node.render_annotated(context))
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 961, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\loader_tags.py", line 210, in render
+    return template.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 173, in render
+    return self._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 1000, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 1000, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 961, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\defaulttags.py", line 241, in render
+    nodelist.append(node.render_annotated(context))
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 961, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\defaulttags.py", line 241, in render
+    nodelist.append(node.render_annotated(context))
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 961, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\defaulttags.py", line 325, in render
+    return nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 1000, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 1000, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 961, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\defaulttags.py", line 325, in render
+    return nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 1000, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 1000, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 961, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 1065, in render
+    return render_value_in_context(output, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 1042, in render_value_in_context
+    value = str(value)
+            ^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\forms\utils.py", line 79, in __str__
+    return self.as_widget()
+           ^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\forms\boundfield.py", line 108, in as_widget
+    return widget.render(
+           ^^^^^^^^^^^^^^
+  File "D:\projects\drop.az\catalog\widgets.py", line 196, in render
+    current_icon_info,
+    ^^^^^^^^^^^^^^^^^
+NameError: name 'current_icon_info' is not defined
+WARNING 2025-08-09 15:36:58,830 log 23572 14288 Not Found: /favicon.ico
+INFO 2025-08-09 15:37:33,752 autoreload 23572 25096 D:\projects\drop.az\catalog\widgets.py changed, reloading.
+INFO 2025-08-09 15:37:34,331 autoreload 21068 24560 Watching for file changes with StatReloader
+INFO 2025-08-09 15:37:35,451 context_processors 21068 13316 Priority-sorted Categories context loaded: 2 main categories
+WARNING 2025-08-09 15:37:36,296 log 21068 16016 Not Found: /favicon.ico
+WARNING 2025-08-09 15:37:48,292 log 21068 16016 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+INFO 2025-08-09 15:37:59,393 autoreload 21068 24560 D:\projects\drop.az\catalog\widgets.py changed, reloading.
+INFO 2025-08-09 15:38:00,027 autoreload 19716 12448 Watching for file changes with StatReloader
+INFO 2025-08-09 15:38:15,513 context_processors 19716 16880 Priority-sorted Categories context loaded: 2 main categories
+WARNING 2025-08-09 15:38:16,013 log 19716 12060 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-09 15:38:16,522 log 19716 12060 Not Found: /favicon.ico
+WARNING 2025-08-09 15:38:38,283 log 19716 18512 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-09 15:38:38,664 log 19716 18512 Not Found: /favicon.ico
+WARNING 2025-08-09 15:38:45,384 log 19716 24028 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-09 15:38:45,816 log 19716 24028 Not Found: /favicon.ico
+INFO 2025-08-09 15:39:44,267 autoreload 19716 12448 D:\projects\drop.az\catalog\widgets.py changed, reloading.
+INFO 2025-08-09 15:39:44,829 autoreload 23092 3060 Watching for file changes with StatReloader
+INFO 2025-08-09 15:39:45,998 context_processors 23092 16108 Priority-sorted Categories context loaded: 2 main categories
+WARNING 2025-08-09 15:39:46,429 log 23092 20240 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-09 15:39:46,952 log 23092 11316 Not Found: /favicon.ico
+INFO 2025-08-09 16:27:56,606 context_processors 23092 14328 Priority-sorted Categories context loaded: 2 main categories
+INFO 2025-08-09 16:32:27,290 autoreload 15936 14844 Watching for file changes with StatReloader
+INFO 2025-08-09 16:32:28,363 views 15936 576 Home page loaded with 0 products and 0 priority categories
+INFO 2025-08-09 16:32:28,423 context_processors 15936 576 Priority-sorted Categories context loaded: 4 main categories
+WARNING 2025-08-09 16:34:25,955 log 15936 10748 Not Found: /favicon.ico
+INFO 2025-08-09 16:38:53,335 context_processors 15936 10748 Priority-sorted Categories context loaded: 6 main categories
+INFO 2025-08-09 16:42:22,726 autoreload 24808 19256 Watching for file changes with StatReloader
+INFO 2025-08-09 16:42:23,820 views 24808 7188 Home page loaded with 0 products and 0 priority categories
+INFO 2025-08-09 16:42:23,850 context_processors 24808 7188 Priority-sorted Categories context loaded: 9 main categories
+INFO 2025-08-09 16:51:33,724 context_processors 24808 24516 Priority-sorted Categories context loaded: 9 main categories
+INFO 2025-08-09 16:51:37,616 views 24808 24516 Categories page loaded with 0 priority-sorted main categories
+INFO 2025-08-09 16:51:44,903 views 24808 24516 Home page loaded with 0 products and 0 priority categories
+INFO 2025-08-09 16:51:53,006 views 24808 12420 Home page loaded with 0 products and 0 priority categories
+INFO 2025-08-09 16:52:10,320 views 24808 7424 Home page loaded with 0 products and 0 priority categories

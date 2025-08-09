@@ -1,9 +1,9 @@
-# catalog/admin.py - Widget ilə update edilmiş versiya
+# catalog/admin.py - ENHANCED VERSION WITH PRIORITY & INLINE EDITING
 
 from django.contrib import admin, messages
 from django.db.models import Count, Sum, Q
-from django.http import HttpResponse
-from django.urls import reverse
+from django.http import HttpResponse, JsonResponse
+from django.urls import reverse, path
 from django.utils import timezone
 from django.utils.html import format_html
 from django.utils.safestring import mark_safe
@@ -11,15 +11,15 @@ from django import forms
 import csv
 
 from .models import Category, Product
-from .widgets import IconPickerWidget  # Yeni widget import
+from .widgets import IconPickerWidget
 
 # =================================
-# CATEGORY FORM WITH ICON WIDGET
+# CATEGORY FORM WITH PRIORITY & ICON WIDGETS
 # =================================
 
 class CategoryAdminForm(forms.ModelForm):
     """
-    Custom form with Professional Icon Picker Widget
+    Custom form with Professional Icon Picker Widget & Priority
     """
     class Meta:
         model = Category
@@ -29,6 +29,17 @@ class CategoryAdminForm(forms.ModelForm):
                 'class': 'icon-picker-field',
                 'placeholder': 'FontAwesome icon seçin... (məs: fas fa-heart)'
             }),
+            'icon_color': forms.TextInput(attrs={
+                'type': 'color',
+                'class': 'color-picker',
+                'title': 'Icon rəngini seçin'
+            }),
+            'priority': forms.NumberInput(attrs={
+                'min': '0',
+                'max': '999',
+                'class': 'priority-input',
+                'style': 'width: 100px; text-align: center; font-weight: bold;'
+            })
         }
     
     def __init__(self, *args, **kwargs):
@@ -40,13 +51,10 @@ class CategoryAdminForm(forms.ModelForm):
             '2000+ FontAwesome icon mövcuddur.'
         )
         
-        # Icon color field styling  
-        if 'icon_color' in self.fields:
-            self.fields['icon_color'].widget.attrs.update({
-                'type': 'color',
-                'class': 'color-picker',
-                'title': 'Icon rəngini seçin'
-            })
+        # Priority field help text
+        self.fields['priority'].help_text = (
+            '0 = Ən yüksək priority (TOP), 1-3 = HIGH, 4-7 = MEDIUM, 8+ = LOW'
+        )
 
 # =================================
 # ADMIN MIXINS & UTILITY CLASSES
@@ -76,6 +84,31 @@ class ExportCsvMixin:
 # CUSTOM ADMIN FILTERS
 # =================================
 
+class PriorityLevelFilter(admin.SimpleListFilter):
+    """
+    Priority səviyyəsinə görə filtr
+    """
+    title = 'Priority Səviyyəsi'
+    parameter_name = 'priority_level'
+
+    def lookups(self, request, model_admin):
+        return (
+            ('top', 'TOP (0)'),
+            ('high', 'HIGH (1-3)'),
+            ('medium', 'MEDIUM (4-7)'),
+            ('low', 'LOW (8+)'),
+        )
+
+    def queryset(self, request, queryset):
+        if self.value() == 'top':
+            return queryset.filter(priority=0)
+        if self.value() == 'high':
+            return queryset.filter(priority__range=(1, 3))
+        if self.value() == 'medium':
+            return queryset.filter(priority__range=(4, 7))
+        if self.value() == 'low':
+            return queryset.filter(priority__gte=8)
+
 class StockLevelFilter(admin.SimpleListFilter):
     """
     Stok səviyyəsinə görə məhsulları filtrləmək üçün xüsusi filtr.
@@ -99,27 +132,43 @@ class StockLevelFilter(admin.SimpleListFilter):
             return queryset.filter(stock=0)
 
 # =================================
-# CATEGORY ADMIN WITH PROFESSIONAL WIDGET
+# CATEGORY ADMIN WITH PRIORITY
 # =================================
 
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin, ExportCsvMixin):
     """
-    Professional Category Admin with Visual Icon Picker
+    Professional Category Admin with Priority & Visual Icon Picker
     """
-    form = CategoryAdminForm  # Custom form with widget
+    form = CategoryAdminForm
     
-    list_display = ['get_icon_display', 'name', 'slug', 'parent', 'product_count', 'get_icon_info']
-    list_filter = ['parent']
+    list_display = ['get_icon_display', 'name', 'slug', 'parent', 'priority', 'get_priority_display', 'product_count', 'get_icon_info']
+    list_filter = ['parent', PriorityLevelFilter]
     search_fields = ['name', 'slug']
     prepopulated_fields = {'slug': ('name',)}
-    ordering = ['name']
-    actions = ['export_as_csv']
+    ordering = ['priority', 'name']  # Priority-yə görə sıralama
+    actions = ['export_as_csv', 'set_high_priority', 'set_medium_priority', 'set_low_priority']
+    list_editable = ['priority']  # Priority-ni siyahıda dəyişmək
 
     fieldsets = (
         ('📋 Əsas Məlumatlar', {
             'fields': ('name', 'slug', 'parent'),
             'classes': ('wide',)
+        }),
+        ('🎯 Priority & Sıralama', {
+            'fields': ('priority',),
+            'classes': ('wide', 'priority-section'),
+            'description': '''
+                <div class="priority-help-section">
+                    <h3>🎯 Priority Sistemi</h3>
+                    <ul>
+                        <li><strong>0</strong> = TOP priority (header-də ən yuxarıda)</li>
+                        <li><strong>1-3</strong> = HIGH priority (önəmli kateqoriyalar)</li>
+                        <li><strong>4-7</strong> = MEDIUM priority (normal kateqoriyalar)</li>
+                        <li><strong>8+</strong> = LOW priority (alt səviyyə kateqoriyalar)</li>
+                    </ul>
+                </div>
+            '''
         }),
         ('🎨 Professional Icon Picker', {
             'fields': ('icon_class', 'icon_color', 'icon_image'),
@@ -147,6 +196,32 @@ class CategoryAdmin(admin.ModelAdmin, ExportCsvMixin):
         return super().get_queryset(request).select_related('parent').annotate(
             products_count=Count('products', filter=Q(products__available=True))
         )
+
+    def get_priority_display(self, obj):
+        """Priority gösterimi rəng ilə"""
+        level = obj.get_priority_level()
+        color = obj.get_priority_color()
+        
+        # Quick priority change buttons
+        buttons_html = f'''
+            <div style="display: flex; align-items: center; gap: 5px;">
+                <div style="text-align: center;">
+                    <div style="background: {color}; color: white; padding: 4px 8px; border-radius: 4px; font-weight: bold; font-size: 11px; margin-bottom: 2px;">{level}</div>
+                    <div style="font-size: 18px; font-weight: bold; color: {color};">{obj.priority}</div>
+                </div>
+                <div class="priority-buttons" style="margin-left: 8px;">
+                    <button type="button" onclick="setPriority({obj.id}, 0)" style="background: #6f42c1; color: white; border: none; padding: 2px 6px; border-radius: 3px; font-size: 10px; cursor: pointer; margin: 1px;" title="TOP">0</button>
+                    <button type="button" onclick="setPriority({obj.id}, 1)" style="background: #28a745; color: white; border: none; padding: 2px 6px; border-radius: 3px; font-size: 10px; cursor: pointer; margin: 1px;" title="HIGH">H</button>
+                    <button type="button" onclick="setPriority({obj.id}, 5)" style="background: #ffc107; color: black; border: none; padding: 2px 6px; border-radius: 3px; font-size: 10px; cursor: pointer; margin: 1px;" title="MID">M</button>
+                    <button type="button" onclick="setPriority({obj.id}, 10)" style="background: #dc3545; color: white; border: none; padding: 2px 6px; border-radius: 3px; font-size: 10px; cursor: pointer; margin: 1px;" title="LOW">L</button>
+                </div>
+            </div>
+        '''
+        
+        return format_html(buttons_html)
+    
+    get_priority_display.short_description = '🎯 Priority & Quick Actions'
+    get_priority_display.allow_tags = True
 
     def get_icon_display(self, obj):
         """Enhanced icon display for list view"""
@@ -250,6 +325,22 @@ class CategoryAdmin(admin.ModelAdmin, ExportCsvMixin):
     product_count.short_description = '📦 Məhsullar'
     product_count.admin_order_field = 'products_count'
 
+    # Bulk actions for priority
+    def set_high_priority(self, request, queryset):
+        queryset.update(priority=1)
+        self.message_user(request, f'{queryset.count()} kateqoriyanın priority-si HIGH təyin edildi.', messages.SUCCESS)
+    set_high_priority.short_description = "Priority-ni HIGH (1) et"
+
+    def set_medium_priority(self, request, queryset):
+        queryset.update(priority=5)
+        self.message_user(request, f'{queryset.count()} kateqoriyanın priority-si MEDIUM təyin edildi.', messages.SUCCESS)
+    set_medium_priority.short_description = "Priority-ni MEDIUM (5) et"
+
+    def set_low_priority(self, request, queryset):
+        queryset.update(priority=10)
+        self.message_user(request, f'{queryset.count()} kateqoriyanın priority-si LOW təyin edildi.', messages.SUCCESS)
+    set_low_priority.short_description = "Priority-ni LOW (10) et"
+
     class Media:
         css = {
             'all': (
@@ -259,16 +350,17 @@ class CategoryAdmin(admin.ModelAdmin, ExportCsvMixin):
         }
         js = (
             'admin/js/icon-picker-integration.js',
+            'admin/js/priority-manager.js',
         )
 
 # =================================
-# PRODUCT ADMIN (Unchanged)
+# PRODUCT ADMIN (Enhanced with better editing)
 # =================================
 
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin, ExportCsvMixin):
     """
-    Məhsul modeli üçün Admin Panel konfiqurasiyası.
+    Məhsul modeli üçün Enhanced Admin Panel konfiqurasiyası.
     """
     list_display = [
         'get_image_thumbnail',
@@ -288,24 +380,27 @@ class ProductAdmin(admin.ModelAdmin, ExportCsvMixin):
         'updated_at'
     ]
     search_fields = ['name', 'description', 'category__name', 'slug']
-    list_editable = ['price', 'stock', 'available']
+    list_editable = ['price', 'stock', 'available']  # İnline editing aktiv
     prepopulated_fields = {'slug': ('name',)}
     ordering = ['-created_at']
     list_per_page = 20
     date_hierarchy = 'created_at'
-    actions = ['export_as_csv', 'make_available', 'make_unavailable']
+    actions = ['export_as_csv', 'make_available', 'make_unavailable', 'duplicate_products']
 
     fieldsets = (
-        ('Əsas Məlumatlar', {
-            'fields': ('name', 'slug', 'category', 'description')
+        ('📋 Əsas Məlumatlar', {
+            'fields': ('name', 'slug', 'category', 'description'),
+            'classes': ('wide',)
         }),
-        ('Qiymət və Anbar', {
-            'fields': ('price', 'stock', 'available')
+        ('💰 Qiymət və Anbar', {
+            'fields': ('price', 'stock', 'available'),
+            'classes': ('wide',)
         }),
-        ('Şəkil', {
-            'fields': ('image', 'get_image_preview')
+        ('🖼️ Şəkil', {
+            'fields': ('image', 'get_image_preview'),
+            'classes': ('wide',)
         }),
-        ('Sistem Məlumatları', {
+        ('📊 Sistem Məlumatları', {
             'fields': ('created_at', 'updated_at'),
             'classes': ('collapse',)
         }),
@@ -374,6 +469,18 @@ class ProductAdmin(admin.ModelAdmin, ExportCsvMixin):
         rows_updated = queryset.update(available=False)
         self.message_user(request, f'{rows_updated} məhsul satışdan yığışdır.', messages.WARNING)
     make_unavailable.short_description = "Seçilmiş məhsulları satışdan yığışdır"
+
+    def duplicate_products(self, request, queryset):
+        """Məhsulları kopyalama action-u"""
+        duplicated = 0
+        for product in queryset:
+            product.pk = None
+            product.name = f"{product.name} (Copy)"
+            product.slug = f"{product.slug}-copy-{timezone.now().strftime('%Y%m%d%H%M%S')}"
+            product.save()
+            duplicated += 1
+        self.message_user(request, f'{duplicated} məhsul uğurla kopyalandı.', messages.SUCCESS)
+    duplicate_products.short_description = "Seçilmiş məhsulları kopyala"
 
 # =================================
 # ADMIN SITE CUSTOMIZATION

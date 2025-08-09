@@ -1,4 +1,5 @@
-# catalog/context_processors.py - ENHANCED VERSION FOR 3-LEVEL NAVIGATION
+# catalog/context_processors.py - ENHANCED VERSION WITH PRIORITY SORTING
+
 from django.db.models import Q, Count
 from django.core.cache import cache
 import logging
@@ -10,18 +11,17 @@ logger = logging.getLogger(__name__)
 def categories_context(request):
     """
     3-səviyyəli navigation üçün kateqoriyalar və global məlumatları 
-    bütün template-lərə göndərir. Full Width Mega Menu üçün optimizasiya edilib.
-    BÜTÜN kateqoriyalar göstərilir (boş olsa belə).
+    bütün template-lərə göndərir. PRIORITY-YƏ GÖRƏ SIRALI.
     """
     try:
         # Cache key
-        cache_key = 'header_categories_fullwidth_v3'
+        cache_key = 'header_categories_priority_v4'
         cached_data = cache.get(cache_key)
         
         if cached_data:
             return cached_data
         
-        # Header navigation üçün əsas kateqoriyalar (maksimum 15 əsas kateqoriya)
+        # Header navigation üçün əsas kateqoriyalar - PRIORITY İLƏ SIRALI
         main_categories = Category.objects.filter(
             parent__isnull=True  # Yalnız əsas kateqoriyalar
         ).prefetch_related(
@@ -41,9 +41,9 @@ def categories_context(request):
                 'children__children__products',
                 filter=Q(children__children__products__available=True)
             )
-        ).order_by('name')
+        ).order_by('priority', 'name')  # ÇOX VACİB: priority ilə sıralama
         
-        # Navigation data hazırla - BÜTÜN kateqoriyalar (boş olsa belə)
+        # Navigation data hazırla - PRIORITY sırası ilə
         navigation_categories = []
         for category in main_categories:
             # Total məhsul sayı (direct + children + grandchildren)
@@ -53,26 +53,27 @@ def categories_context(request):
                 category.grandchildren_product_count
             )
             
-            # BÜTÜN kateqoriyaları göstər, məhsul sayından asılı olmayaraq
-            if category.slug:  # Yalnız slug yoxlaması
-                # Alt kateqoriyaları hazırla (Level 2)
+            # BÜTÜN kateqoriyaları göstər (Priority sistemində)
+            if category.slug:  # slug yoxlaması
+                # Alt kateqoriyaları hazırla (Level 2) - priority ilə sıralı
                 children_data = []
-                for child in category.children.all():
+                for child in category.children.all().order_by('priority', 'name'):
                     if child.slug:  # slug yoxlaması
                         # Child-ın məhsul sayı (direct + grandchildren)
                         child_direct_count = child.products.filter(available=True).count()
                         child_grandchildren_count = 0
                         
-                        # Grandchildren məlumatları (Level 3)
+                        # Grandchildren məlumatları (Level 3) - priority ilə sıralı
                         grandchildren_data = []
-                        for grandchild in child.children.all():
+                        for grandchild in child.children.all().order_by('priority', 'name'):
                             if grandchild.slug:
                                 grandchild_product_count = grandchild.products.filter(available=True).count()
-                                # Boş olanları da əlavə et
                                 grandchildren_data.append({
                                     'id': grandchild.id,
                                     'name': grandchild.name,
                                     'slug': grandchild.slug,
+                                    'priority': grandchild.priority,
+                                    'priority_level': grandchild.get_priority_level(),
                                     'product_count': grandchild_product_count,
                                     'url': f'/categories/{grandchild.slug}/'
                                 })
@@ -81,11 +82,13 @@ def categories_context(request):
                         # Total child məhsul sayı
                         child_total_products = child_direct_count + child_grandchildren_count
                         
-                        # BÜTÜN alt kateqoriyaları əlavə et (boş olsa belə)
+                        # Alt kateqoriyaları əlavə et
                         children_data.append({
                             'id': child.id,
                             'name': child.name,
                             'slug': child.slug,
+                            'priority': child.priority,
+                            'priority_level': child.get_priority_level(),
                             'product_count': child_total_products,
                             'direct_product_count': child_direct_count,
                             'url': f'/categories/{child.slug}/',
@@ -93,8 +96,8 @@ def categories_context(request):
                             'has_children': len(grandchildren_data) > 0
                         })
                 
-                # Maksimum 10 alt kateqoriya göstər (performans üçün)
-                children_data = children_data[:10]
+                # Maksimum 12 alt kateqoriya göstər (performans üçün)
+                children_data = children_data[:12]
                 
                 navigation_categories.append({
                     'category': category,
@@ -102,14 +105,25 @@ def categories_context(request):
                     'has_children': len(children_data) > 0,
                     'total_product_count': total_products,
                     'direct_product_count': category.direct_product_count,
+                    'priority': category.priority,
+                    'priority_level': category.get_priority_level(),
+                    'priority_color': category.get_priority_color(),
                     'url': f'/categories/{category.slug}/'
                 })
         
         # Maksimum 15 əsas kateqoriya göstər
         navigation_categories = navigation_categories[:15]
         
-        # Ümumi statistikalar - BÜTÜN kateqoriyalar
-        total_active_categories = Category.objects.count()  # Hamısı
+        # Ümumi statistikalar
+        total_active_categories = Category.objects.count()
+        
+        # Priority statistikaları
+        priority_stats = {
+            'top_priority': Category.objects.filter(priority=0).count(),
+            'high_priority': Category.objects.filter(priority__range=(1, 3)).count(),
+            'medium_priority': Category.objects.filter(priority__range=(4, 7)).count(),
+            'low_priority': Category.objects.filter(priority__gte=8).count(),
+        }
         
         # 3-səviyyəli kateqoriya statistikaları
         categories_with_children = Category.objects.filter(
@@ -129,15 +143,17 @@ def categories_context(request):
             'main_categories_count': len(navigation_categories),
             'categories_with_children': categories_with_children,
             'categories_with_grandchildren': categories_with_grandchildren,
+            'priority_stats': priority_stats,
             'category_navigation_enabled': True,
-            'navigation_levels': 3,  # 3-səviyyəli olduğunu göstər
-            'mega_menu_full_width': True,  # Full width mega menu aktiv
+            'navigation_levels': 3,
+            'mega_menu_full_width': True,
+            'priority_sorting_enabled': True,  # Priority sistemi aktiv
         }
         
         # 5 dəqiqə cache et (300 saniyə)
         cache.set(cache_key, context_data, 300)
         
-        logger.info(f"Full Width 3-Level Categories context loaded: {len(navigation_categories)} main categories (including empty ones)")
+        logger.info(f"Priority-sorted Categories context loaded: {len(navigation_categories)} main categories")
         
         return context_data
         
@@ -151,9 +167,11 @@ def categories_context(request):
             'main_categories_count': 0,
             'categories_with_children': 0,
             'categories_with_grandchildren': 0,
+            'priority_stats': {},
             'category_navigation_enabled': False,
             'navigation_levels': 1,
             'mega_menu_full_width': False,
+            'priority_sorting_enabled': False,
         }
 
 def navigation_breadcrumb(request):
@@ -202,7 +220,9 @@ def navigation_breadcrumb(request):
                                 'slug': cat.slug,
                                 'url': f'/categories/{cat.slug}/',
                                 'is_current': i == len(category_chain) - 1,
-                                'level': len(category_chain) - i  # Hansı səviyyə olduğunu göstər
+                                'level': len(category_chain) - i,
+                                'priority': cat.priority,
+                                'priority_level': cat.get_priority_level()
                             })
                         
                 except Category.DoesNotExist:
@@ -237,7 +257,9 @@ def navigation_breadcrumb(request):
                             breadcrumb.append({
                                 'name': cat.name,
                                 'url': f'/categories/{cat.slug}/',
-                                'is_current': False
+                                'is_current': False,
+                                'priority': cat.priority,
+                                'priority_level': cat.get_priority_level()
                             })
                     
                     # Məhsul
@@ -293,12 +315,14 @@ def site_settings(request):
             },
             'navigation_features': {
                 'mega_menu_enabled': True,
-                'mega_menu_full_width': True,  # Full width aktiv
+                'mega_menu_full_width': True,
                 'levels_supported': 3,
                 'mobile_accordion': True,
                 'search_suggestions': True,
                 'hover_delay': 300,  # milliseconds
-                'animation_speed': 250  # milliseconds
+                'animation_speed': 250,  # milliseconds
+                'priority_sorting': True,  # Priority sistemi
+                'priority_colors': True   # Priority rəngləri
             }
         }
         
@@ -355,9 +379,10 @@ def performance_data(request):
                     'cache_enabled': hasattr(settings, 'CACHES'),
                     'request_path': request.path,
                     'request_method': request.method,
-                    'navigation_system': 'Full Width 3-Level Mega Menu v3',
-                    'cache_status': 'Active' if cache.get('header_categories_fullwidth_v3') else 'Empty',
-                    'mega_menu_version': 'v3.0 - Shows All Categories'
+                    'navigation_system': 'Priority-Sorted 3-Level Mega Menu v4',
+                    'cache_status': 'Active' if cache.get('header_categories_priority_v4') else 'Empty',
+                    'mega_menu_version': 'v4.0 - Priority System Enabled',
+                    'priority_sorting': 'ACTIVE'
                 }
             }
         else:

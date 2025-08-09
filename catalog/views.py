@@ -1,4 +1,5 @@
-# catalog/views.py - ENHANCED VERSION WITH CATEGORY NAVIGATION
+# catalog/views.py - ENHANCED VERSION WITH PRIORITY SORTING
+
 from django.shortcuts import render, get_object_or_404, redirect
 from django.http import JsonResponse, HttpResponse
 from django.core.paginator import Paginator
@@ -24,11 +25,18 @@ logger = logging.getLogger(__name__)
 def home(request):
     """
     Ana səhifə view-ı
-    Bütün aktiv məhsulları göstərir və statistikaları hesablayır
+    Priority-yə görə sıralı kateqoriyalar və məhsullar
     """
     try:
         # Yalnız satışda olan məhsulları götürürük
         products = Product.objects.filter(available=True).select_related('category').order_by('-created_at')
+        
+        # Priority-yə görə sıralı əsas kateqoriyalar (ana səhifə üçün)
+        featured_categories = Category.objects.filter(
+            parent__isnull=True
+        ).annotate(
+            product_count=Count('products', filter=Q(products__available=True))
+        ).filter(product_count__gt=0).order_by('priority', 'name')[:8]  # Priority ilə sıralama
         
         # Statistikalar
         stats = {
@@ -38,7 +46,13 @@ def home(request):
             'average_price': Product.objects.filter(available=True).aggregate(avg_price=Avg('price'))['avg_price'] or 0,
             'total_categories': Category.objects.annotate(
                 active_product_count=Count('products', filter=Q(products__available=True))
-            ).filter(active_product_count__gt=0).count()
+            ).filter(active_product_count__gt=0).count(),
+            'priority_categories': {
+                'top': Category.objects.filter(priority=0).count(),
+                'high': Category.objects.filter(priority__range=(1, 3)).count(),
+                'medium': Category.objects.filter(priority__range=(4, 7)).count(),
+                'low': Category.objects.filter(priority__gte=8).count(),
+            }
         }
         
         # Featured məhsullar (ən yeni 8 məhsul)
@@ -46,28 +60,29 @@ def home(request):
         
         context = {
             'products': featured_products,
+            'featured_categories': featured_categories,
             'stats': stats,
             'page_title': 'Əsas Səhifə',
             'meta_description': 'drop.az - Azərbaycanda ən yaxşı alış-veriş platforması. Keyfiyyətli məhsullar və sürətli çatdırılma.'
         }
         
-        logger.info(f"Home page loaded with {len(featured_products)} products")
+        logger.info(f"Home page loaded with {len(featured_products)} products and {len(featured_categories)} priority categories")
         return render(request, 'catalog/home.html', context)
         
     except Exception as e:
         logger.error(f"Error in home view: {str(e)}")
         messages.error(request, 'Səhifə yüklənərkən xəta baş verdi.')
-        return render(request, 'catalog/home.html', {'products': [], 'stats': {}})
+        return render(request, 'catalog/home.html', {'products': [], 'featured_categories': [], 'stats': {}})
 
 # =================================
-# CATEGORY VIEWS
+# CATEGORY VIEWS WITH PRIORITY
 # =================================
 def categories_view(request):
     """
-    Bütün kateqoriyalar səhifəsi
+    Bütün kateqoriyalar səhifəsi - Priority-yə görə sıralı
     """
     try:
-        # Əsas kateqoriyalar (parent olmayan)
+        # Əsas kateqoriyalar (parent olmayan) - PRIORITY İLƏ SIRALI
         main_categories = Category.objects.filter(
             parent__isnull=True
         ).prefetch_related(
@@ -75,29 +90,44 @@ def categories_view(request):
         ).annotate(
             total_products=Count('products', filter=Q(products__available=True)) +
                           Count('children__products', filter=Q(children__products__available=True))
-        ).filter(total_products__gt=0).order_by('name')
+        ).filter(total_products__gt=0).order_by('priority', 'name')  # Priority ilə sıralama
+
+        # Priority səviyyəsinə görə qruplaşdırma
+        categorized_by_priority = {
+            'top': main_categories.filter(priority=0),
+            'high': main_categories.filter(priority__range=(1, 3)),
+            'medium': main_categories.filter(priority__range=(4, 7)),
+            'low': main_categories.filter(priority__gte=8),
+        }
 
         # Ümumi statistikalar
         category_stats = {
             'total_categories': Category.objects.count(),
             'main_categories_count': main_categories.count(),
             'total_products': Product.objects.filter(available=True).count(),
+            'priority_distribution': {
+                'top': categorized_by_priority['top'].count(),
+                'high': categorized_by_priority['high'].count(),
+                'medium': categorized_by_priority['medium'].count(),
+                'low': categorized_by_priority['low'].count(),
+            }
         }
 
         context = {
             'main_categories': main_categories,
+            'categorized_by_priority': categorized_by_priority,
             'category_stats': category_stats,
-            'page_title': 'Kateqoriyalar',
-            'meta_description': 'drop.az məhsul kateqoriyaları - bütün kateqoriyalarımızı incələyin və uyğun məhsulları tapın'
+            'page_title': 'Kateqoriyalar - Priority Sırası',
+            'meta_description': 'drop.az məhsul kateqoriyaları - priority sırası ilə düzülmüş kateqoriyalarımızı incələyin'
         }
         
-        logger.info(f"Categories page loaded with {main_categories.count()} main categories")
+        logger.info(f"Categories page loaded with {main_categories.count()} priority-sorted main categories")
         return render(request, 'catalog/categories.html', context)
         
     except Exception as e:
         logger.error(f"Error in categories_view: {str(e)}")
         messages.error(request, 'Kateqoriyalar yüklənərkən xəta baş verdi.')
-        return render(request, 'catalog/categories.html', {'main_categories': [], 'category_stats': {}})
+        return render(request, 'catalog/categories.html', {'main_categories': [], 'categorized_by_priority': {}, 'category_stats': {}})
 
 def category_detail(request, slug):
     """
@@ -115,10 +145,10 @@ def category_detail(request, slug):
                 available=True
             ).select_related('category').order_by('-created_at')
             
-            # Alt kateqoriyalar
+            # Alt kateqoriyalar - PRIORITY İLƏ SIRALI
             subcategories = category.children.annotate(
                 product_count=Count('products', filter=Q(products__available=True))
-            ).filter(product_count__gt=0)
+            ).filter(product_count__gt=0).order_by('priority', 'name')  # Priority ilə sıralama
         else:
             # Alt kateqoriya - yalnız öz məhsulları
             products = Product.objects.filter(
@@ -160,11 +190,16 @@ def category_detail(request, slug):
         page_number = request.GET.get('page')
         page_obj = paginator.get_page(page_number)
 
-        # Breadcrumb
+        # Breadcrumb - Priority məlumatı daxil olmaqla
         breadcrumb = []
         current_cat = category
         while current_cat:
-            breadcrumb.insert(0, current_cat)
+            breadcrumb.insert(0, {
+                'category': current_cat,
+                'priority': current_cat.priority,
+                'priority_level': current_cat.get_priority_level(),
+                'priority_color': current_cat.get_priority_color()
+            })
             current_cat = current_cat.parent
 
         context = {
@@ -175,11 +210,16 @@ def category_detail(request, slug):
             'breadcrumb': breadcrumb,
             'search_query': search_query,
             'total_products': products.count(),
-            'page_title': f'{category.name} - Kateqoriya',
+            'category_priority_info': {
+                'priority': category.priority,
+                'level': category.get_priority_level(),
+                'color': category.get_priority_color()
+            },
+            'page_title': f'{category.name} - Kateqoriya (Priority: {category.priority})',
             'meta_description': f'{category.name} kateqoriyasında {products.count()} məhsul - drop.az'
         }
         
-        logger.info(f"Category detail loaded: {category.name} with {products.count()} products")
+        logger.info(f"Category detail loaded: {category.name} (Priority: {category.priority}) with {products.count()} products")
         return render(request, 'catalog/categories.html', context)
         
     except Exception as e:
@@ -213,8 +253,19 @@ def subcategory_detail(request, parent_slug, slug):
         page_number = request.GET.get('page')
         page_obj = paginator.get_page(page_number)
 
-        # Breadcrumb
-        breadcrumb = [parent_category, subcategory]
+        # Breadcrumb - Priority məlumatları ilə
+        breadcrumb = [
+            {
+                'category': parent_category,
+                'priority': parent_category.priority,
+                'priority_level': parent_category.get_priority_level()
+            },
+            {
+                'category': subcategory,
+                'priority': subcategory.priority,
+                'priority_level': subcategory.get_priority_level()
+            }
+        ]
 
         context = {
             'category': subcategory,
@@ -225,7 +276,7 @@ def subcategory_detail(request, parent_slug, slug):
             'breadcrumb': breadcrumb,
             'search_query': search_query,
             'total_products': products.count(),
-            'page_title': f'{subcategory.name} - {parent_category.name}',
+            'page_title': f'{subcategory.name} - {parent_category.name} (Priority: {subcategory.priority})',
             'meta_description': f'{subcategory.name} alt kateqoriyasında {products.count()} məhsul - drop.az'
         }
         
@@ -266,7 +317,12 @@ def products_by_category(request, category_slug):
             'page_obj': page_obj,
             'products': page_obj,
             'search_query': search_query,
-            'page_title': f'{category.name} Məhsulları',
+            'category_priority_info': {
+                'priority': category.priority,
+                'level': category.get_priority_level(),
+                'color': category.get_priority_color()
+            },
+            'page_title': f'{category.name} Məhsulları (Priority: {category.priority})',
             'meta_description': f'{category.name} kateqoriyasından {products.count()} məhsul'
         }
         
@@ -277,7 +333,7 @@ def products_by_category(request, category_slug):
         return redirect('catalog:categories')
 
 # =================================
-# EXISTING PRODUCT VIEWS (unchanged)
+# EXISTING PRODUCT VIEWS (enhanced with priority info)
 # =================================
 def product_list(request):
     """
@@ -298,10 +354,11 @@ def product_list(request):
         
         # Kateqoriya filtri
         category_slug = request.GET.get('category')
+        selected_category = None
         if category_slug:
             try:
-                category = Category.objects.get(slug=category_slug)
-                products = products.filter(category=category)
+                selected_category = Category.objects.get(slug=category_slug)
+                products = products.filter(category=selected_category)
             except Category.DoesNotExist:
                 pass
         
@@ -348,11 +405,18 @@ def product_list(request):
             max_price=Max('price')
         )
         
+        # Priority-yə görə sıralı kateqoriyalar (filter dropdown üçün)
+        filter_categories = Category.objects.annotate(
+            product_count=Count('products', filter=Q(products__available=True))
+        ).filter(product_count__gt=0).order_by('priority', 'name')
+        
         context = {
             'page_obj': page_obj,
             'products': page_obj,
             'search_query': search_query,
             'price_range': price_range,
+            'filter_categories': filter_categories,
+            'selected_category': selected_category,
             'current_filters': {
                 'search': search_query,
                 'category': category_slug,
@@ -393,22 +457,32 @@ def product_detail(request, slug):
             recently_viewed = recently_viewed[:5]
             request.session['recently_viewed'] = recently_viewed
         
-        # Breadcrumb
+        # Breadcrumb - Priority məlumatı daxil olmaqla
         breadcrumb = []
         current_cat = product.category
         while current_cat:
-            breadcrumb.insert(0, current_cat)
+            breadcrumb.insert(0, {
+                'category': current_cat,
+                'priority': current_cat.priority,
+                'priority_level': current_cat.get_priority_level(),
+                'priority_color': current_cat.get_priority_color()
+            })
             current_cat = current_cat.parent
         
         context = {
             'product': product,
             'related_products': related_products,
             'breadcrumb': breadcrumb,
+            'category_priority_info': {
+                'priority': product.category.priority,
+                'level': product.category.get_priority_level(),
+                'color': product.category.get_priority_color()
+            },
             'page_title': product.name,
             'meta_description': product.description[:160] if product.description else f'{product.name} - drop.az'
         }
         
-        logger.info(f"Product detail viewed: {product.name} (ID: {product.id})")
+        logger.info(f"Product detail viewed: {product.name} (Category Priority: {product.category.priority})")
         return render(request, 'catalog/product_detail.html', context)
         
     except Exception as e:
@@ -417,12 +491,12 @@ def product_detail(request, slug):
         return redirect('catalog:home')
 
 # =================================
-# AJAX VIEWS - ENHANCED
+# AJAX VIEWS - ENHANCED WITH PRIORITY
 # =================================
 @require_http_methods(["GET"])
 def search_suggestions(request):
     """
-    AJAX axtarış təklifləri (kateqoriyalar da daxil)
+    AJAX axtarış təklifləri (priority-yə görə sıralı kateqoriyalar)
     """
     try:
         query = request.GET.get('q', '').strip()
@@ -442,15 +516,16 @@ def search_suggestions(request):
                     'subtitle': product.category.name,
                     'url': f'/product/{product.slug}/',
                     'image': product.image.url if product.image else None,
-                    'price': str(product.price)
+                    'price': str(product.price),
+                    'category_priority': product.category.priority
                 })
             
-            # Kateqoriya adları
+            # Kateqoriya adları - PRIORITY İLƏ SIRALI
             categories = Category.objects.filter(
                 name__icontains=query
             ).annotate(
                 product_count=Count('products', filter=Q(products__available=True))
-            ).filter(product_count__gt=0)[:3]
+            ).filter(product_count__gt=0).order_by('priority', 'name')[:3]  # Priority sırası
             
             for category in categories:
                 suggestions.append({
@@ -459,7 +534,9 @@ def search_suggestions(request):
                     'subtitle': f'{category.product_count} məhsul',
                     'url': f'/categories/{category.slug}/',
                     'image': None,
-                    'price': None
+                    'price': None,
+                    'priority': category.priority,
+                    'priority_level': category.get_priority_level()
                 })
         
         return JsonResponse({'suggestions': suggestions})
@@ -471,7 +548,7 @@ def search_suggestions(request):
 @require_http_methods(["GET"])
 def get_category_stats(request):
     """
-    Kateqoriya statistikaları API
+    Kateqoriya statistikaları API - Priority məlumatları daxil olmaqla
     """
     try:
         stats = {
@@ -482,7 +559,13 @@ def get_category_stats(request):
             ).filter(product_count__gt=0).count(),
             'avg_products_per_category': Category.objects.annotate(
                 product_count=Count('products', filter=Q(products__available=True))
-            ).aggregate(avg_count=Avg('product_count'))['avg_count'] or 0
+            ).aggregate(avg_count=Avg('product_count'))['avg_count'] or 0,
+            'priority_distribution': {
+                'top': Category.objects.filter(priority=0).count(),
+                'high': Category.objects.filter(priority__range=(1, 3)).count(),
+                'medium': Category.objects.filter(priority__range=(4, 7)).count(),
+                'low': Category.objects.filter(priority__gte=8).count(),
+            }
         }
         
         return JsonResponse({'success': True, 'stats': stats})
@@ -492,52 +575,31 @@ def get_category_stats(request):
         return JsonResponse({'success': False, 'message': 'Statistikalar alına bilmədi'})
 
 @require_http_methods(["GET"])
-def get_category_breadcrumb(request, category_slug):
-    """
-    Kateqoriya breadcrumb API
-    """
-    try:
-        category = get_object_or_404(Category, slug=category_slug)
-        
-        breadcrumb = []
-        current_cat = category
-        while current_cat:
-            breadcrumb.insert(0, {
-                'name': current_cat.name,
-                'slug': current_cat.slug,
-                'url': f'/categories/{current_cat.slug}/'
-            })
-            current_cat = current_cat.parent
-        
-        return JsonResponse({'success': True, 'breadcrumb': breadcrumb})
-        
-    except Exception as e:
-        logger.error(f"Error in get_category_breadcrumb: {str(e)}")
-        return JsonResponse({'success': False, 'message': 'Breadcrumb alına bilmədi'})
-
-@require_http_methods(["GET"])
 def get_category_tree(request):
     """
-    Kateqoriya ağacı API (navigation üçün)
+    Kateqoriya ağacı API (navigation üçün) - Priority sırası ilə
     """
     try:
         main_categories = Category.objects.filter(
             parent__isnull=True
         ).prefetch_related('children').annotate(
             product_count=Count('products', filter=Q(products__available=True))
-        ).filter(product_count__gt=0)
+        ).filter(product_count__gt=0).order_by('priority', 'name')  # Priority sırası
         
         tree = []
         for category in main_categories:
             children = []
-            for child in category.children.all():
+            # Alt kateqoriyalar da priority ilə sıralı
+            for child in category.children.all().order_by('priority', 'name'):
                 child_product_count = child.products.filter(available=True).count()
                 if child_product_count > 0:
                     children.append({
                         'name': child.name,
                         'slug': child.slug,
                         'url': f'/categories/{child.slug}/',
-                        'product_count': child_product_count
+                        'product_count': child_product_count,
+                        'priority': child.priority,
+                        'priority_level': child.get_priority_level()
                     })
             
             tree.append({
@@ -545,6 +607,9 @@ def get_category_tree(request):
                 'slug': category.slug,
                 'url': f'/categories/{category.slug}/',
                 'product_count': category.product_count,
+                'priority': category.priority,
+                'priority_level': category.get_priority_level(),
+                'priority_color': category.get_priority_color(),
                 'children': children
             })
         
@@ -555,64 +620,9 @@ def get_category_tree(request):
         return JsonResponse({'success': False, 'message': 'Kateqoriya ağacı alına bilmədi'})
 
 # =================================
-# CLASS-BASED VIEWS - ENHANCED
+# EXISTING VIEWS (kept unchanged but enhanced with priority where needed)
 # =================================
-class CategoryProductsView(View):
-    """
-    Kateqoriya məhsulları üçün AJAX view
-    """
-    
-    def get(self, request, category_slug):
-        try:
-            category = get_object_or_404(Category, slug=category_slug)
-            
-            products = Product.objects.filter(
-                category=category,
-                available=True
-            ).select_related('category')
-            
-            # Filtrləmə
-            search_query = request.GET.get('search', '').strip()
-            if search_query:
-                products = products.filter(
-                    Q(name__icontains=search_query) | 
-                    Q(description__icontains=search_query)
-                )
-            
-            # AJAX sorğusu üçün JSON cavab
-            if request.headers.get('X-Requested-With') == 'XMLHttpRequest':
-                product_data = []
-                for product in products[:20]:
-                    product_data.append({
-                        'id': product.id,
-                        'name': product.name,
-                        'price': float(product.price),
-                        'image': product.image.url if product.image else None,
-                        'slug': product.slug,
-                        'stock': product.stock,
-                        'available': product.available,
-                        'category': product.category.name
-                    })
-                
-                return JsonResponse({
-                    'success': True,
-                    'products': product_data,
-                    'total_count': products.count(),
-                    'category': {
-                        'name': category.name,
-                        'slug': category.slug
-                    }
-                })
-            
-            return JsonResponse({'success': False, 'message': 'AJAX sorğusu tələb olunur'})
-            
-        except Exception as e:
-            logger.error(f"Error in CategoryProductsView: {str(e)}")
-            return JsonResponse({'success': False, 'message': 'Kateqoriya məhsulları alına bilmədi'})
 
-# =================================
-# EXISTING VIEWS (kept unchanged)
-# =================================
 @require_http_methods(["POST"])
 @csrf_exempt
 def newsletter_subscribe(request):
@@ -669,6 +679,65 @@ def get_product_stats(request):
         logger.error(f"Error in get_product_stats: {str(e)}")
         return JsonResponse({'success': False, 'message': 'Statistikalar alına bilmədi'})
 
+# =================================
+# CLASS-BASED VIEWS (kept existing but enhanced)
+# =================================
+
+class CategoryProductsView(View):
+    """
+    Kateqoriya məhsulları üçün AJAX view
+    """
+    
+    def get(self, request, category_slug):
+        try:
+            category = get_object_or_404(Category, slug=category_slug)
+            
+            products = Product.objects.filter(
+                category=category,
+                available=True
+            ).select_related('category')
+            
+            # Filtrləmə
+            search_query = request.GET.get('search', '').strip()
+            if search_query:
+                products = products.filter(
+                    Q(name__icontains=search_query) | 
+                    Q(description__icontains=search_query)
+                )
+            
+            # AJAX sorğusu üçün JSON cavab
+            if request.headers.get('X-Requested-With') == 'XMLHttpRequest':
+                product_data = []
+                for product in products[:20]:
+                    product_data.append({
+                        'id': product.id,
+                        'name': product.name,
+                        'price': float(product.price),
+                        'image': product.image.url if product.image else None,
+                        'slug': product.slug,
+                        'stock': product.stock,
+                        'available': product.available,
+                        'category': product.category.name
+                    })
+                
+                return JsonResponse({
+                    'success': True,
+                    'products': product_data,
+                    'total_count': products.count(),
+                    'category': {
+                        'name': category.name,
+                        'slug': category.slug,
+                        'priority': category.priority,
+                        'priority_level': category.get_priority_level()
+                    }
+                })
+            
+            return JsonResponse({'success': False, 'message': 'AJAX sorğusu tələb olunur'})
+            
+        except Exception as e:
+            logger.error(f"Error in CategoryProductsView: {str(e)}")
+            return JsonResponse({'success': False, 'message': 'Kateqoriya məhsulları alına bilmədi'})
+
 class ProductFilterView(View):
     """Məhsul filtrlənməsi üçün class-based view"""
     
@@ -707,7 +776,8 @@ class ProductFilterView(View):
                         'image': product.image.url if product.image else None,
                         'slug': product.slug,
                         'stock': product.stock,
-                        'available': product.available
+                        'available': product.available,
+                        'category_priority': product.category.priority
                     })
                 
                 return JsonResponse({
@@ -730,8 +800,69 @@ class ProductFilterView(View):
                 return redirect('catalog:product_list')
 
 # =================================
-# HERO VERSIONS & UTILITY FUNCTIONS
+# UTILITY FUNCTIONS (kept existing)
 # =================================
+
+def sitemap_view(request):
+    """XML sitemap generator"""
+    try:
+        from django.urls import reverse
+        from django.utils import timezone
+        
+        urls = []
+        
+        urls.append({
+            'location': request.build_absolute_uri(reverse('catalog:home')),
+            'lastmod': timezone.now(),
+            'changefreq': 'daily',
+            'priority': '1.0'
+        })
+        
+        # Kateqoriyalar - Priority sırası ilə
+        categories = Category.objects.all().order_by('priority', 'name')
+        for category in categories:
+            urls.append({
+                'location': request.build_absolute_uri(f'/categories/{category.slug}/'),
+                'lastmod': timezone.now(),
+                'changefreq': 'weekly',
+                'priority': '0.8' if category.priority <= 3 else '0.6'  # Priority-yə görə SEO priority
+            })
+        
+        # Məhsullar
+        products = Product.objects.filter(available=True)
+        for product in products:
+            urls.append({
+                'location': request.build_absolute_uri(f'/product/{product.slug}/'),
+                'lastmod': product.updated_at,
+                'changefreq': 'weekly',
+                'priority': '0.7'
+            })
+        
+        xml_content = render(request, 'sitemap.xml', {'urls': urls}, content_type='application/xml')
+        return xml_content
+        
+    except Exception as e:
+        logger.error(f"Error generating sitemap: {str(e)}")
+        return HttpResponse('<?xml version="1.0" encoding="UTF-8"?><urlset></urlset>', content_type='application/xml')
+
+def handler404(request, exception):
+    """404 səhifəsi"""
+    return render(request, 'errors/404.html', {
+        'page_title': 'Səhifə tapılmadı',
+        'error_code': '404'
+    }, status=404)
+
+def handler500(request):
+    """500 səhifəsi"""
+    return render(request, 'errors/500.html', {
+        'page_title': 'Server xətası',
+        'error_code': '500'
+    }, status=500)
+
+# =================================
+# HERO VERSIONS (kept existing)
+# =================================
+
 def product_list_hero(request):
     """Hero versiyası - Məhsul siyahısı"""
     try:
@@ -802,58 +933,29 @@ def product_detail_hero(request, slug):
         logger.error(f"Error in product_detail_hero: {str(e)}")
         return redirect('catalog:home')
 
-def sitemap_view(request):
-    """XML sitemap generator"""
+@require_http_methods(["GET"])
+def get_category_breadcrumb(request, category_slug):
+    """
+    Kateqoriya breadcrumb API - Priority məlumatları ilə
+    """
     try:
-        from django.urls import reverse
-        from django.utils import timezone
+        category = get_object_or_404(Category, slug=category_slug)
         
-        urls = []
-        
-        urls.append({
-            'location': request.build_absolute_uri(reverse('catalog:home')),
-            'lastmod': timezone.now(),
-            'changefreq': 'daily',
-            'priority': '1.0'
-        })
-        
-        # Kateqoriyalar
-        categories = Category.objects.all()
-        for category in categories:
-            urls.append({
-                'location': request.build_absolute_uri(f'/categories/{category.slug}/'),
-                'lastmod': timezone.now(),
-                'changefreq': 'weekly',
-                'priority': '0.8'
+        breadcrumb = []
+        current_cat = category
+        while current_cat:
+            breadcrumb.insert(0, {
+                'name': current_cat.name,
+                'slug': current_cat.slug,
+                'url': f'/categories/{current_cat.slug}/',
+                'priority': current_cat.priority,
+                'priority_level': current_cat.get_priority_level(),
+                'priority_color': current_cat.get_priority_color()
             })
+            current_cat = current_cat.parent
         
-        # Məhsullar
-        products = Product.objects.filter(available=True)
-        for product in products:
-            urls.append({
-                'location': request.build_absolute_uri(f'/product/{product.slug}/'),
-                'lastmod': product.updated_at,
-                'changefreq': 'weekly',
-                'priority': '0.7'
-            })
-        
-        xml_content = render(request, 'sitemap.xml', {'urls': urls}, content_type='application/xml')
-        return xml_content
+        return JsonResponse({'success': True, 'breadcrumb': breadcrumb})
         
     except Exception as e:
-        logger.error(f"Error generating sitemap: {str(e)}")
-        return HttpResponse('<?xml version="1.0" encoding="UTF-8"?><urlset></urlset>', content_type='application/xml')
-
-def handler404(request, exception):
-    """404 səhifəsi"""
-    return render(request, 'errors/404.html', {
-        'page_title': 'Səhifə tapılmadı',
-        'error_code': '404'
-    }, status=404)
-
-def handler500(request):
-    """500 səhifəsi"""
-    return render(request, 'errors/500.html', {
-        'page_title': 'Server xətası',
-        'error_code': '500'
-    }, status=500)
+        logger.error(f"Error in get_category_breadcrumb: {str(e)}")
+        return JsonResponse({'success': False, 'message': 'Breadcrumb alına bilmədi'})
