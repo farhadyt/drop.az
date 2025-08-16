@@ -122,12 +122,12 @@ def categories_view(request):
         }
         
         logger.info(f"Categories page loaded with {main_categories.count()} priority-sorted main categories")
-        return render(request, 'catalog/categories.html', context)
+        return render(request, 'catalog/categories_hero.html', context)
         
     except Exception as e:
         logger.error(f"Error in categories_view: {str(e)}")
         messages.error(request, 'Kateqoriyalar yüklənərkən xəta baş verdi.')
-        return render(request, 'catalog/categories.html', {'main_categories': [], 'categorized_by_priority': {}, 'category_stats': {}})
+        return render(request, 'catalog/categories_hero.html', {'main_categories': [], 'categorized_by_priority': {}, 'category_stats': {}})
 
 def category_detail(request, slug):
     """
@@ -220,7 +220,7 @@ def category_detail(request, slug):
         }
         
         logger.info(f"Category detail loaded: {category.name} (Priority: {category.priority}) with {products.count()} products")
-        return render(request, 'catalog/categories.html', context)
+        return render(request, 'catalog/categories_hero.html', context)
         
     except Exception as e:
         logger.error(f"Error in category_detail: {str(e)}")
@@ -280,7 +280,7 @@ def subcategory_detail(request, parent_slug, slug):
             'meta_description': f'{subcategory.name} alt kateqoriyasında {products.count()} məhsul - drop.az'
         }
         
-        return render(request, 'catalog/categories.html', context)
+        return render(request, 'catalog/categories_hero.html', context)
         
     except Exception as e:
         logger.error(f"Error in subcategory_detail: {str(e)}")
@@ -326,7 +326,7 @@ def products_by_category(request, category_slug):
             'meta_description': f'{category.name} kateqoriyasından {products.count()} məhsul'
         }
         
-        return render(request, 'catalog/product_list.html', context)
+        return render(request, 'catalog/products_hero.html', context)
         
     except Exception as e:
         logger.error(f"Error in products_by_category: {str(e)}")
@@ -430,12 +430,12 @@ def product_list(request):
         }
         
         logger.info(f"Product list loaded: {products.count()} products found")
-        return render(request, 'catalog/product_list.html', context)
+        return render(request, 'catalog/products_hero.html', context)
         
     except Exception as e:
         logger.error(f"Error in product_list view: {str(e)}")
         messages.error(request, 'Məhsullar yüklənərkən xəta baş verdi.')
-        return render(request, 'catalog/product_list.html', {'page_obj': None, 'products': []})
+        return render(request, 'catalog/products_hero.html', {'page_obj': None, 'products': []})
 
 def product_detail(request, slug):
     """
@@ -860,7 +860,327 @@ def handler500(request):
     }, status=500)
 
 # =================================
-# HERO VERSIONS (kept existing)
+# HERO PAGE VERSIONS - Yeni base_hero.html template istifadə edən səhifələr
+# =================================
+
+def categories_hero(request):
+    """
+    Kateqoriyalar səhifəsi - Hero template versiyası
+    """
+    try:
+        # Əsas kateqoriyalar (parent olmayan) - PRIORITY İLƏ SIRALI
+        main_categories = Category.objects.filter(
+            parent__isnull=True
+        ).prefetch_related(
+            'children__products'
+        ).annotate(
+            total_products=Count('products', filter=Q(products__available=True)) +
+                          Count('children__products', filter=Q(children__products__available=True))
+        ).filter(total_products__gt=0).order_by('priority', 'name')
+
+        # Priority səviyyəsinə görə qruplaşdırma
+        categorized_by_priority = {
+            'top': main_categories.filter(priority=0),
+            'high': main_categories.filter(priority__range=(1, 3)),
+            'medium': main_categories.filter(priority__range=(4, 7)),
+            'low': main_categories.filter(priority__gte=8),
+        }
+
+        # Ümumi statistikalar
+        category_stats = {
+            'total_categories': Category.objects.count(),
+            'main_categories_count': main_categories.count(),
+            'total_products': Product.objects.filter(available=True).count(),
+            'categories_with_products': Category.objects.annotate(
+                product_count=Count('products', filter=Q(products__available=True))
+            ).filter(product_count__gt=0).count(),
+            'priority_distribution': {
+                'top': categorized_by_priority['top'].count(),
+                'high': categorized_by_priority['high'].count(),
+                'medium': categorized_by_priority['medium'].count(),
+                'low': categorized_by_priority['low'].count(),
+            }
+        }
+
+        context = {
+            'main_categories': main_categories,
+            'categorized_by_priority': categorized_by_priority,
+            'category_stats': category_stats,
+            'page_title': 'Kateqoriyalar - Hero Versiyası',
+            'meta_description': 'drop.az məhsul kateqoriyaları - hero template versiyası'
+        }
+        
+        logger.info(f"Categories hero page loaded with {main_categories.count()} categories")
+        return render(request, 'catalog/categories_hero.html', context)
+        
+    except Exception as e:
+        logger.error(f"Error in categories_hero: {str(e)}")
+        messages.error(request, 'Kateqoriyalar yüklənərkən xəta baş verdi.')
+        return render(request, 'catalog/categories_hero.html', {'main_categories': [], 'categorized_by_priority': {}, 'category_stats': {}})
+
+def products_hero(request):
+    """
+    Məhsullar səhifəsi - Hero template versiyası
+    """
+    try:
+        products = Product.objects.filter(available=True).select_related('category')
+        
+        # Axtarış funksionallığı
+        search_query = request.GET.get('search', '').strip()
+        if search_query:
+            products = products.filter(
+                Q(name__icontains=search_query) | 
+                Q(description__icontains=search_query) |
+                Q(category__name__icontains=search_query)
+            )
+        
+        # Kateqoriya filtri
+        category_slug = request.GET.get('category')
+        selected_category = None
+        if category_slug:
+            try:
+                selected_category = Category.objects.get(slug=category_slug)
+                products = products.filter(category=selected_category)
+            except Category.DoesNotExist:
+                pass
+        
+        # Qiymət aralığı filtri
+        min_price = request.GET.get('min_price')
+        max_price = request.GET.get('max_price')
+        if min_price:
+            try:
+                products = products.filter(price__gte=float(min_price))
+            except ValueError:
+                pass
+        if max_price:
+            try:
+                products = products.filter(price__lte=float(max_price))
+            except ValueError:
+                pass
+        
+        # Stok filtri
+        in_stock_only = request.GET.get('in_stock')
+        if in_stock_only:
+            products = products.filter(stock__gt=0)
+        
+        # Sıralama
+        sort_by = request.GET.get('sort', '-created_at')
+        valid_sort_options = [
+            'name', '-name', 
+            'price', '-price', 
+            'created_at', '-created_at',
+            'stock', '-stock'
+        ]
+        if sort_by in valid_sort_options:
+            products = products.order_by(sort_by)
+        else:
+            products = products.order_by('-created_at')
+        
+        # Paginasiya
+        paginator = Paginator(products, 12)
+        page_number = request.GET.get('page')
+        page_obj = paginator.get_page(page_number)
+        
+        # Priority-yə görə sıralı kateqoriyalar (filter dropdown üçün)
+        filter_categories = Category.objects.annotate(
+            product_count=Count('products', filter=Q(products__available=True))
+        ).filter(product_count__gt=0).order_by('priority', 'name')
+        
+        context = {
+            'page_obj': page_obj,
+            'products': page_obj,
+            'search_query': search_query,
+            'filter_categories': filter_categories,
+            'selected_category': selected_category,
+            'total_products': Product.objects.filter(available=True).count(),
+            'categories_count': filter_categories.count(),
+            'current_filters': {
+                'search': search_query,
+                'category': category_slug,
+                'min_price': min_price,
+                'max_price': max_price,
+                'in_stock': in_stock_only,
+                'sort': sort_by
+            },
+            'page_title': 'Məhsullar - Hero Versiyası',
+            'meta_description': f'drop.az məhsulları hero versiyası - {products.count()} məhsul tapıldı'
+        }
+        
+        logger.info(f"Products hero page loaded: {products.count()} products found")
+        return render(request, 'catalog/products_hero.html', context)
+        
+    except Exception as e:
+        logger.error(f"Error in products_hero view: {str(e)}")
+        messages.error(request, 'Məhsullar yüklənərkən xəta baş verdi.')
+        return render(request, 'catalog/products_hero.html', {'page_obj': None, 'products': []})
+
+def about_hero(request):
+    """
+    Haqqımızda səhifəsi - Hero template versiyası
+    """
+    try:
+        # Statistikalar
+        stats = {
+            'total_products': Product.objects.filter(available=True).count(),
+            'total_categories': Category.objects.count(),
+            'total_customers': 50000,  # Static data
+            'satisfaction_rate': 99,   # Static data
+        }
+        
+        context = {
+            'stats': stats,
+            'page_title': 'Haqqımızda - drop.az',
+            'meta_description': 'drop.az haqqında məlumat - Azərbaycanda ən yaxşı alış-veriş təcrübəsi təqdim edən platformamızın tarixi və missiyası'
+        }
+        
+        logger.info("About hero page loaded")
+        return render(request, 'catalog/about_hero.html', context)
+        
+    except Exception as e:
+        logger.error(f"Error in about_hero view: {str(e)}")
+        messages.error(request, 'Səhifə yüklənərkən xəta baş verdi.')
+        return render(request, 'catalog/about_hero.html', {'stats': {}})
+
+def contact_hero(request):
+    """
+    Əlaqə səhifəsi - Hero template versiyası
+    """
+    try:
+        if request.method == 'POST':
+            # Contact form submission handling
+            name = request.POST.get('name', '').strip()
+            email = request.POST.get('email', '').strip()
+            phone = request.POST.get('phone', '').strip()
+            subject = request.POST.get('subject', '').strip()
+            message = request.POST.get('message', '').strip()
+            
+            if name and email and subject and message:
+                # Here you would typically save to database or send email
+                # For now, just log the contact attempt
+                logger.info(f"Contact form submitted: {name} ({email}) - {subject}")
+                messages.success(request, 'Mesajınız uğurla göndərildi! Tezliklə sizinlə əlaqə saxlayacağıq.')
+            else:
+                messages.error(request, 'Zəhmət olmasa bütün vacib sahələri doldurun.')
+        
+        context = {
+            'page_title': 'Əlaqə - drop.az',
+            'meta_description': 'drop.az ilə əlaqə saxlayın - telefon, e-mail, ünvan və iş saatları'
+        }
+        
+        logger.info("Contact hero page loaded")
+        return render(request, 'catalog/contact_hero.html', context)
+        
+    except Exception as e:
+        logger.error(f"Error in contact_hero view: {str(e)}")
+        messages.error(request, 'Səhifə yüklənərkən xəta baş verdi.')
+        return render(request, 'catalog/contact_hero.html', {})
+
+def delivery_hero(request):
+    """Çatdırılma səhifəsi - Hero template versiyası"""
+    try:
+        context = {
+            'page_title': 'Çatdırılma - drop.az',
+            'meta_description': 'drop.az çatdırılma şərtləri və qiymətləri - pulsuz çatdırılma, express çatdırılma xidmətləri'
+        }
+        logger.info("Delivery hero page loaded")
+        return render(request, 'catalog/delivery_hero.html', context)
+    except Exception as e:
+        logger.error(f"Error in delivery_hero view: {str(e)}")
+        return render(request, 'catalog/delivery_hero.html', {})
+
+def returns_hero(request):
+    """Qaytarma səhifəsi - Hero template versiyası"""
+    try:
+        context = {
+            'page_title': 'Qaytarma - drop.az',
+            'meta_description': 'drop.az qaytarma şərtləri və prosedurları'
+        }
+        logger.info("Returns hero page loaded")
+        return render(request, 'catalog/delivery_hero.html', context)  # Temporarily use delivery template
+    except Exception as e:
+        logger.error(f"Error in returns_hero view: {str(e)}")
+        return render(request, 'catalog/delivery_hero.html', {})
+
+def payment_hero(request):
+    """Ödəniş səhifəsi - Hero template versiyası"""
+    try:
+        context = {
+            'page_title': 'Ödəniş - drop.az',
+            'meta_description': 'drop.az ödəniş üsulları və təhlükəsizlik'
+        }
+        logger.info("Payment hero page loaded")
+        return render(request, 'catalog/delivery_hero.html', context)  # Temporarily use delivery template
+    except Exception as e:
+        logger.error(f"Error in payment_hero view: {str(e)}")
+        return render(request, 'catalog/delivery_hero.html', {})
+
+def faq_hero(request):
+    """FAQ səhifəsi - Hero template versiyası"""
+    try:
+        context = {
+            'page_title': 'FAQ - drop.az',
+            'meta_description': 'drop.az tez-tez verilən suallar və cavablar'
+        }
+        logger.info("FAQ hero page loaded")
+        return render(request, 'catalog/delivery_hero.html', context)  # Temporarily use delivery template
+    except Exception as e:
+        logger.error(f"Error in faq_hero view: {str(e)}")
+        return render(request, 'catalog/delivery_hero.html', {})
+
+def warranty_hero(request):
+    """Zəmanət səhifəsi - Hero template versiyası"""
+    try:
+        context = {
+            'page_title': 'Zəmanət - drop.az',
+            'meta_description': 'drop.az zəmanət şərtləri və xidmətləri'
+        }
+        logger.info("Warranty hero page loaded")
+        return render(request, 'catalog/delivery_hero.html', context)  # Temporarily use delivery template
+    except Exception as e:
+        logger.error(f"Error in warranty_hero view: {str(e)}")
+        return render(request, 'catalog/delivery_hero.html', {})
+
+def terms_hero(request):
+    """İstifadə şərtləri - Hero template versiyası"""
+    try:
+        context = {
+            'page_title': 'İstifadə Şərtləri - drop.az',
+            'meta_description': 'drop.az istifadə şərtləri və qaydalar'
+        }
+        logger.info("Terms hero page loaded")
+        return render(request, 'catalog/delivery_hero.html', context)  # Temporarily use delivery template
+    except Exception as e:
+        logger.error(f"Error in terms_hero view: {str(e)}")
+        return render(request, 'catalog/delivery_hero.html', {})
+
+def privacy_hero(request):
+    """Məxfilik siyasəti - Hero template versiyası"""
+    try:
+        context = {
+            'page_title': 'Məxfilik Siyasəti - drop.az',
+            'meta_description': 'drop.az məxfilik siyasəti və şəxsi məlumatların qorunması'
+        }
+        logger.info("Privacy hero page loaded")
+        return render(request, 'catalog/delivery_hero.html', context)  # Temporarily use delivery template
+    except Exception as e:
+        logger.error(f"Error in privacy_hero view: {str(e)}")
+        return render(request, 'catalog/delivery_hero.html', {})
+
+def cookies_hero(request):
+    """Çerez siyasəti - Hero template versiyası"""
+    try:
+        context = {
+            'page_title': 'Çerez Siyasəti - drop.az',
+            'meta_description': 'drop.az çerez siyasəti və istifadəsi'
+        }
+        logger.info("Cookies hero page loaded")
+        return render(request, 'catalog/delivery_hero.html', context)  # Temporarily use delivery template
+    except Exception as e:
+        logger.error(f"Error in cookies_hero view: {str(e)}")
+        return render(request, 'catalog/delivery_hero.html', {})
+
+# =================================
+# LEGACY HERO VERSIONS (kept existing for backward compatibility)
 # =================================
 
 def product_list_hero(request):

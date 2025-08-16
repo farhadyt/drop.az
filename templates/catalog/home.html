@@ -16,6 +16,9 @@
 <meta name="content-language" content="az">
 <link rel="preload" as="image" href="{% static 'images/hero-bg.webp' %}">
 
+<!-- Hero Categories Styles -->
+<link rel="stylesheet" href="{% static 'css/hero-categories.css' %}">
+
 <!-- Additional structured data for homepage -->
 <script type="application/ld+json">
 {
@@ -41,7 +44,7 @@
         <div class="hero-content">
             <!-- Enhanced Logo with 3D Effect -->
             <div class="hero-logo-container">
-                <h1 id="hero-title" class="hero-title">
+                <!-- <h1 id="hero-title" class="hero-title">
                     <span class="logo-letter">d</span>
                     <span class="logo-letter">r</span>
                     <span class="logo-letter">o</span>
@@ -49,63 +52,96 @@
                     <span class="logo-dot">.</span>
                     <span class="logo-letter">a</span>
                     <span class="logo-letter">z</span>
-                </h1>
+                </h1> -->
                 <div class="logo-glow" aria-hidden="true"></div>
             </div>
 
             <!-- Enhanced Subtitle -->
-            <p class="hero-subtitle">Sizin ən yaxşı alış-veriş təcrübə</p>
+            <p class="hero-subtitle">Sizin ən yaxşı alış-veriş təcrübəniz</p>
             
-            <!-- New Slogan -->
-            <p class="hero-slogan">Seç, Tıkla, Çatdıraq! 🛍️</p>
+            <!-- Categories Section Title -->
+            <div class="hero-categories-header">
+                <h2 class="categories-main-title">
+                    <span class="title-highlight">Bütün</span> <span class="title-highlight">Kateqoriyalar</span>
+                </h2>
+                <!-- <p class="categories-subtitle">Minlərlə məhsul arasından seçim edin</p> -->
+            </div>
             
-            <!-- Additional tagline -->
-            <p class="hero-tagline">Hər an, hər yerdə, ən yaxşı qiymətlə</p>
+            <!-- Premium Category Grid -->
+            <div class="hero-categories-grid">
+                {% for category in featured_categories %}
+                <a href="{% url 'catalog:category_detail' category.slug %}" 
+                   class="category-card premium-card"
+                   data-category-id="{{ category.id }}"
+                   data-aos="fade-up"
+                   data-aos-delay="{{ forloop.counter0|add:1 }}00">
+                    
+                    <!-- Category Background Pattern -->
+                    <div class="category-pattern"></div>
+                    
+                    <!-- Category Icon with Animation -->
+                    <div class="category-icon-wrapper">
+                        {% if category.icon_image %}
+                            <img src="{{ category.icon_image.url }}" alt="{{ category.name }}" />
+                        {% elif category.icon_class %}
+                            <i class="{{ category.icon_class }}" style="color: {{ category.icon_color|default:'#4facfe' }}"></i>
+                        {% else %}
+                            <i class="fas fa-tags" style="color: {{ category.icon_color|default:'#4facfe' }}"></i>
+                        {% endif %}
+                        <div class="icon-pulse"></div>
+                    </div>
+                    
+                    <!-- Category Content -->
+                    <div class="category-content">
+                        <h3 class="category-title">{{ category.name }}</h3>
+                        <!-- <span class="category-count">{{ category.product_count }} məhsul</span> -->
+                    </div>
+                    
+                    <!-- Hover Effects -->
+                    <div class="category-hover-content">
+                        <p class="hover-text">Kəşf et</p>
+                        <svg class="hover-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                        </svg>
+                    </div>
+                    
+                    <!-- Special Badge for Top Categories -->
+                    {% if forloop.counter <= 3 %}
+                    <div class="category-badge">
+                        {% if forloop.counter == 1 %}
+                            <span class="badge-hot">🔥 Ən Populyar</span>
+                        {% elif forloop.counter == 2 %}
+                            <span class="badge-new">✨ Yeni</span>
+                        {% else %}
+                            <span class="badge-trending">📈 Trend</span>
+                        {% endif %}
+                    </div>
+                    {% endif %}
+                </a>
+                {% empty %}
+                <div class="no-categories-message">
+                    <p>Kateqoriyalar yüklənir...</p>
+                </div>
+                {% endfor %}
+            </div>
             
-            <!-- Enhanced Special Offers -->
-            <div class="hero-offers" role="list" aria-label="Xüsusi təkliflər">
-                <div class="offer-item enhanced-offer" role="listitem">
-                    <div class="offer-icon-container">
-                        <span class="offer-icon" aria-hidden="true">🚚</span>
-                        <div class="offer-badge">PULSUZ</div>
-                    </div>
-                    <div class="offer-content">
-                        <h3 class="offer-title">Çatdırılma</h3>
-                        <p class="offer-desc">50 AZN-dən yuxarı</p>
-                    </div>
+            <!-- Quick Stats Bar -->
+            <div class="hero-quick-stats">
+                <div class="stat-item-mini">
+                    <span class="stat-icon">🚚</span>
+                    <span class="stat-text">Pulsuz Çatdırılma</span>
                 </div>
-                
-                <div class="offer-item enhanced-offer" role="listitem">
-                    <div class="offer-icon-container">
-                        <span class="offer-icon" aria-hidden="true">🎯</span>
-                        <div class="offer-badge">24/7</div>
-                    </div>
-                    <div class="offer-content">
-                        <h3 class="offer-title">Dəstək</h3>
-                        <p class="offer-desc">Həmişə yanınızda</p>
-                    </div>
+                <div class="stat-item-mini">
+                    <span class="stat-icon">🔒</span>
+                    <span class="stat-text">Təhlükəsiz Ödəniş</span>
                 </div>
-                
-                <div class="offer-item enhanced-offer" role="listitem">
-                    <div class="offer-icon-container">
-                        <span class="offer-icon" aria-hidden="true">🔒</span>
-                        <div class="offer-badge">SSL</div>
-                    </div>
-                    <div class="offer-content">
-                        <h3 class="offer-title">Ödəniş</h3>
-                        <p class="offer-desc">256-bit şifrələmə</p>
-                    </div>
+                <div class="stat-item-mini">
+                    <span class="stat-icon">🎯</span>
+                    <span class="stat-text">24/7 Dəstək</span>
                 </div>
-                
-                <div class="offer-item enhanced-offer" role="listitem">
-                    <div class="offer-icon-container">
-                        <span class="offer-icon" aria-hidden="true">⚡</span>
-                        <div class="offer-badge">2-3 SAAT</div>
-                    </div>
-                    <div class="offer-content">
-                        <h3 class="offer-title">Express</h3>
-                        <p class="offer-desc">Sürətli çatdırılma</p>
-                    </div>
+                <div class="stat-item-mini">
+                    <span class="stat-icon">⚡</span>
+                    <span class="stat-text">Express Çatdırılma</span>
                 </div>
             </div>
             
@@ -142,6 +178,155 @@
                 </button>
             </div>
         </div>
+        
+        <!-- Hero Side Content: Left -->
+        <aside class="hero-side hero-side-left" aria-label="Niyə bizi seçməlisiniz?">
+            <div class="side-card side-features">
+                <h3 class="side-title">
+                    <svg class="side-title-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>
+                    Niyə bizi seçməlisiniz?
+                </h3>
+                <ul class="features-rotator" role="list">
+                    <li class="feature-item active" role="listitem">
+                        <div class="feature-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="1" y="3" width="15" height="13"></rect>
+                                <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon>
+                                <circle cx="5.5" cy="18.5" r="2.5"></circle>
+                                <circle cx="18.5" cy="18.5" r="2.5"></circle>
+                            </svg>
+                        </div>
+                        <div class="feature-texts">
+                            <p class="feature-text">Pulsuz Çatdırılma</p>
+                            <p class="feature-subtext">Bütün sifarişlər üçün</p>
+                        </div>
+                    </li>
+                    <li class="feature-item" role="listitem">
+                        <div class="feature-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+                            </svg>
+                        </div>
+                        <div class="feature-texts">
+                            <p class="feature-text">Sürətli Xidmət</p>
+                            <p class="feature-subtext">Anında sifarişlərinizi hazırlayırıq</p>
+                        </div>
+                    </li>
+                    <li class="feature-item" role="listitem">
+                        <div class="feature-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <polyline points="12 6 12 12 16 14"></polyline>
+                            </svg>
+                        </div>
+                        <div class="feature-texts">
+                            <p class="feature-text">24/7 Dəstək</p>
+                            <p class="feature-subtext">Həmişə yanınızdayıq</p>
+                        </div>
+                    </li>
+                    <li class="feature-item" role="listitem">
+                        <div class="feature-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="20 12 20 22 4 22 4 12"></polyline>
+                                <rect x="2" y="7" width="20" height="5"></rect>
+                                <line x1="12" y1="22" x2="12" y2="7"></line>
+                                <path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"></path>
+                                <path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"></path>
+                            </svg>
+                        </div>
+                        <div class="feature-texts">
+                            <p class="feature-text">Eksklüziv Təkliflər</p>
+                            <p class="feature-subtext">Hər gün yeni kampaniyalar</p>
+                        </div>
+                    </li>
+                </ul>
+                <div class="side-badges">
+                    <span class="side-badge">
+                        <svg class="badge-icon" width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M21.41 11.58l-9-9C12.05 2.22 11.55 2 11 2H4c-1.1 0-2 .9-2 2v7c0 .55.22 1.05.59 1.42l9 9c.36.36.86.58 1.41.58.55 0 1.05-.22 1.41-.59l7-7c.37-.36.59-.86.59-1.41 0-.55-.23-1.06-.59-1.42zM5.5 7C4.67 7 4 6.33 4 5.5S4.67 4 5.5 4 7 4.67 7 5.5 6.33 7 5.5 7z"/>
+                        </svg>
+                        Günlük endirimlər
+                    </span>
+                    <span class="side-badge">
+                        <svg class="badge-icon" width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                        </svg>
+                        30 gün qaytarma
+                    </span>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Hero Side Content: Right -->
+        <aside class="hero-side hero-side-right" aria-label="Sosial sübut və statistika">
+            <div class="side-card side-stats">
+                <h3 class="side-title">
+                    <svg class="side-title-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+                    </svg>
+                    Bizə güvənin
+                </h3>
+                <ul class="side-stats-list" role="list">
+                    <li class="stat-item" role="listitem">
+                        <div class="stat-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                                <circle cx="9" cy="7" r="4"></circle>
+                                <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                            </svg>
+                        </div>
+                        <div class="stat-texts">
+                            <p class="stat-number">5000+</p>
+                            <p class="stat-label">MƏMNUN MÜŞTƏRİ</p>
+                        </div>
+                    </li>
+                    <li class="stat-item" role="listitem">
+                        <div class="stat-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <line x1="16.5" y1="9.4" x2="7.5" y2="4.21"></line>
+                                <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+                                <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+                                <line x1="12" y1="22.08" x2="12" y2="12"></line>
+                            </svg>
+                        </div>
+                        <div class="stat-texts">
+                            <p class="stat-number">10 M +</p>
+                            <p class="stat-label">AKTİV MƏHSUL</p>
+                        </div>
+                    </li>
+                    <li class="stat-item" role="listitem">
+                        <div class="stat-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                            </svg>
+                        </div>
+                        <div class="stat-texts">
+                            <p class="stat-number">4.8/5</p>
+                            <p class="stat-label">MÜŞTƏRİ REYTİNQİ</p>
+                        </div>
+                    </li>
+                    <li class="stat-item" role="listitem">
+                        <div class="stat-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="1" y="3" width="15" height="13"></rect>
+                                <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon>
+                                <circle cx="5.5" cy="18.5" r="2.5"></circle>
+                                <circle cx="18.5" cy="18.5" r="2.5"></circle>
+                            </svg>
+                        </div>
+                        <div class="stat-texts">
+                            <p class="stat-number">24 saat</p>
+                            <p class="stat-label">ÇATDIRILMA</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            
+        </aside>
     </section>
 
     <!-- Quick Stats Section -->
@@ -501,12 +686,165 @@
 {% block extra_js %}
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-    console.log('🎯 Enhanced Hero Section loaded');
+    console.log('🎯 Enhanced Hero Section with Categories loaded');
     
     // Enhanced Logo Letter Animation
     const logoLetters = document.querySelectorAll('.logo-letter, .logo-dot');
     logoLetters.forEach((letter, index) => {
         letter.style.animationDelay = `${index * 0.1}s`;
+    });
+
+    // Category Cards Animation on Scroll
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+
+    const categoryObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('aos-animate');
+                // Add staggered animation
+                const delay = entry.target.dataset.aosDelay || 0;
+                entry.target.style.transitionDelay = `${delay}ms`;
+            }
+        });
+    }, observerOptions);
+
+    // Observe all category cards
+    document.querySelectorAll('.category-card').forEach(card => {
+        categoryObserver.observe(card);
+        
+        // Add interactive hover sound effect (optional)
+        card.addEventListener('mouseenter', function() {
+            // You can add a subtle sound effect here if desired
+            this.style.transform = 'translateY(-8px) scale(1.02)';
+        });
+        
+        card.addEventListener('mouseleave', function() {
+            this.style.transform = 'translateY(0) scale(1)';
+        });
+        
+        // Touch feedback for mobile
+        card.addEventListener('touchstart', function() {
+            this.classList.add('touch-active');
+        });
+        
+        card.addEventListener('touchend', function() {
+            setTimeout(() => {
+                this.classList.remove('touch-active');
+            }, 300);
+        });
+    });
+
+    // Parallax effect for category patterns
+    document.addEventListener('mousemove', (e) => {
+        const patterns = document.querySelectorAll('.category-pattern');
+        const x = e.clientX / window.innerWidth;
+        const y = e.clientY / window.innerHeight;
+        
+        patterns.forEach(pattern => {
+            const card = pattern.closest('.category-card');
+            if (card && card.matches(':hover')) {
+                const moveX = (x - 0.5) * 20;
+                const moveY = (y - 0.5) * 20;
+                pattern.style.transform = `rotate(45deg) translate(${moveX}px, ${moveY}px)`;
+            }
+        });
+    });
+
+    // Side features rotator (left panel)
+    const featureItems = Array.from(document.querySelectorAll('.features-rotator .feature-item'));
+    if (featureItems.length > 1) {
+        let activeIndex = 0;
+        setInterval(() => {
+            featureItems[activeIndex].classList.remove('active');
+            activeIndex = (activeIndex + 1) % featureItems.length;
+            featureItems[activeIndex].classList.add('active');
+        }, 3000);
+    }
+
+    // Right side stats staggered entrance
+    const rightStats = document.querySelectorAll('.side-stats .stat-item');
+    if (rightStats.length) {
+        rightStats.forEach((item, index) => {
+            item.style.animation = `slideInRight ${0.5 + index * 0.1}s ease-out both`;
+        });
+    }
+
+    // Category click tracking
+    document.querySelectorAll('.category-card').forEach(card => {
+        card.addEventListener('click', function(e) {
+            const categoryId = this.dataset.categoryId;
+            const categoryName = this.querySelector('.category-title').textContent;
+            console.log(`Category clicked: ${categoryName} (ID: ${categoryId})`);
+            
+            // Add ripple effect
+            const ripple = document.createElement('div');
+            ripple.className = 'click-ripple';
+            const rect = this.getBoundingClientRect();
+            const size = Math.max(rect.width, rect.height);
+            ripple.style.width = ripple.style.height = size + 'px';
+            ripple.style.left = (e.clientX - rect.left - size / 2) + 'px';
+            ripple.style.top = (e.clientY - rect.top - size / 2) + 'px';
+            this.appendChild(ripple);
+            
+            setTimeout(() => ripple.remove(), 600);
+        });
+    });
+
+    // Animate stats on scroll
+    const statsObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.querySelectorAll('.stat-item-mini').forEach((stat, index) => {
+                    setTimeout(() => {
+                        stat.style.animation = 'fadeInUp 0.6s ease forwards';
+                    }, index * 100);
+                });
+                statsObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.3 });
+
+    const quickStats = document.querySelector('.hero-quick-stats');
+    if (quickStats) {
+        statsObserver.observe(quickStats);
+    }
+
+    // Dynamic category count animation
+    const animateValue = (element, start, end, duration) => {
+        const range = end - start;
+        const increment = range / (duration / 16);
+        let current = start;
+        
+        const timer = setInterval(() => {
+            current += increment;
+            if ((increment > 0 && current >= end) || (increment < 0 && current <= end)) {
+                element.textContent = end + ' məhsul';
+                clearInterval(timer);
+            } else {
+                element.textContent = Math.floor(current) + ' məhsul';
+            }
+        }, 16);
+    };
+
+    // Animate category counts when visible
+    const countObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const count = entry.target;
+                const finalValue = parseInt(count.textContent);
+                if (!isNaN(finalValue)) {
+                    animateValue(count, 0, finalValue, 1000);
+                }
+                countObserver.unobserve(count);
+            }
+        });
+    }, { threshold: 0.5 });
+
+    document.querySelectorAll('.category-count').forEach(count => {
+        countObserver.observe(count);
     });
 
     // Enhanced Product Filter System

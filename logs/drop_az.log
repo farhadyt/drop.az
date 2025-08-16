@@ -2209,3 +2209,1404 @@ INFO 2025-08-09 16:51:37,616 views 24808 24516 Categories page loaded with 0 pri
 INFO 2025-08-09 16:51:44,903 views 24808 24516 Home page loaded with 0 products and 0 priority categories
 INFO 2025-08-09 16:51:53,006 views 24808 12420 Home page loaded with 0 products and 0 priority categories
 INFO 2025-08-09 16:52:10,320 views 24808 7424 Home page loaded with 0 products and 0 priority categories
+INFO 2025-08-10 02:10:16,518 autoreload 27556 12764 Watching for file changes with StatReloader
+INFO 2025-08-10 02:10:19,402 views 27556 15076 Home page loaded with 0 products and 0 priority categories
+INFO 2025-08-10 02:10:19,469 context_processors 27556 15076 Priority-sorted Categories context loaded: 9 main categories
+INFO 2025-08-11 18:25:42,958 autoreload 26652 13256 Watching for file changes with StatReloader
+INFO 2025-08-11 18:25:44,009 views 26652 28192 Home page loaded with 0 products and 0 priority categories
+INFO 2025-08-11 18:25:44,097 context_processors 26652 28192 Priority-sorted Categories context loaded: 9 main categories
+INFO 2025-08-11 19:06:30,041 context_processors 26652 25340 Priority-sorted Categories context loaded: 9 main categories
+INFO 2025-08-11 19:06:32,956 views 26652 25340 Home page loaded with 0 products and 0 priority categories
+INFO 2025-08-11 23:27:13,604 context_processors 26652 23688 Priority-sorted Categories context loaded: 9 main categories
+INFO 2025-08-11 23:37:18,468 views 26652 24072 Home page loaded with 0 products and 0 priority categories
+INFO 2025-08-11 23:37:18,492 context_processors 26652 24072 Priority-sorted Categories context loaded: 9 main categories
+INFO 2025-08-11 23:39:34,741 views 26652 17412 Categories page loaded with 0 priority-sorted main categories
+WARNING 2025-08-11 23:39:38,016 log 26652 8464 Not Found: /favicon.ico
+INFO 2025-08-12 00:53:20,563 autoreload 5476 7236 Watching for file changes with StatReloader
+INFO 2025-08-12 00:53:23,396 views 5476 27240 Home page loaded with 0 products and 0 priority categories
+INFO 2025-08-12 00:53:23,422 context_processors 5476 27240 Priority-sorted Categories context loaded: 9 main categories
+INFO 2025-08-12 00:53:25,490 views 5476 16020 Home page loaded with 0 products and 0 priority categories
+INFO 2025-08-12 00:54:31,788 autoreload 20688 16852 Watching for file changes with StatReloader
+INFO 2025-08-12 00:54:33,390 context_processors 20688 27692 Priority-sorted Categories context loaded: 9 main categories
+INFO 2025-08-12 00:54:36,223 views 20688 12704 Home page loaded with 0 products and 0 priority categories
+INFO 2025-08-12 00:54:43,824 views 20688 26024 Categories page loaded with 0 priority-sorted main categories
+INFO 2025-08-12 00:54:47,690 views 20688 26024 Home page loaded with 0 products and 0 priority categories
+INFO 2025-08-12 00:55:06,130 views 20688 27692 Home page loaded with 0 products and 0 priority categories
+INFO 2025-08-12 01:38:31,420 views 20688 30564 Home page loaded with 0 products and 0 priority categories
+INFO 2025-08-12 01:38:31,447 context_processors 20688 30564 Priority-sorted Categories context loaded: 9 main categories
+INFO 2025-08-12 01:38:56,318 views 20688 20148 Category detail loaded: Qida (Priority: 3) with 0 products
+INFO 2025-08-12 01:38:59,468 views 20688 20148 Home page loaded with 0 products and 0 priority categories
+INFO 2025-08-12 01:39:02,826 views 20688 24824 Category detail loaded: Elektronika (Priority: 2) with 0 products
+INFO 2025-08-12 01:39:07,519 views 20688 24824 Categories page loaded with 0 priority-sorted main categories
+INFO 2025-08-12 01:39:09,477 views 20688 24824 Home page loaded with 0 products and 0 priority categories
+INFO 2025-08-12 20:44:29,625 autoreload 13120 7008 Watching for file changes with StatReloader
+INFO 2025-08-12 20:44:34,213 context_processors 13120 18304 Priority-sorted Categories context loaded: 9 main categories
+INFO 2025-08-12 20:44:35,484 views 13120 18304 Home page loaded with 0 products and 0 priority categories
+INFO 2025-08-12 20:44:35,571 views 13120 2412 Home page loaded with 0 products and 0 priority categories
+WARNING 2025-08-12 20:44:35,700 log 13120 13764 Not Found: /favicon.ico
+INFO 2025-08-13 01:44:05,469 views 13120 19128 Home page loaded with 0 products and 0 priority categories
+INFO 2025-08-13 01:44:05,502 context_processors 13120 19128 Priority-sorted Categories context loaded: 9 main categories
+INFO 2025-08-13 11:41:07,146 autoreload 18504 18532 Watching for file changes with StatReloader
+INFO 2025-08-13 11:41:14,341 context_processors 18504 21216 Priority-sorted Categories context loaded: 9 main categories
+WARNING 2025-08-13 11:41:15,933 log 18504 18636 Not Found: /favicon.ico
+INFO 2025-08-13 11:41:29,292 views 18504 18636 Home page loaded with 0 products and 0 priority categories
+INFO 2025-08-13 14:54:55,736 autoreload 18504 18532 D:\projects\drop.az\catalog\views.py changed, reloading.
+INFO 2025-08-13 14:54:56,809 autoreload 3596 19432 Watching for file changes with StatReloader
+INFO 2025-08-13 14:55:08,501 autoreload 3596 19432 D:\projects\drop.az\catalog\urls.py changed, reloading.
+INFO 2025-08-13 14:55:09,174 autoreload 18704 15524 Watching for file changes with StatReloader
+INFO 2025-08-13 14:58:51,302 autoreload 16624 16700 Watching for file changes with StatReloader
+INFO 2025-08-13 14:59:01,681 views 16624 21332 Home page loaded with 0 products and 0 priority categories
+INFO 2025-08-13 14:59:01,713 context_processors 16624 21332 Priority-sorted Categories context loaded: 9 main categories
+INFO 2025-08-13 14:59:14,971 views 16624 16996 Category detail loaded: Elektronika (Priority: 2) with 0 products
+WARNING 2025-08-13 14:59:21,941 log 16624 16996 Not Found: /favicon.ico
+INFO 2025-08-13 14:59:24,369 views 16624 16996 Home page loaded with 0 products and 0 priority categories
+INFO 2025-08-13 15:00:02,729 views 16624 2340 Categories page loaded with 0 priority-sorted main categories
+INFO 2025-08-13 15:01:06,700 autoreload 16624 16700 D:\projects\drop.az\catalog\views.py changed, reloading.
+INFO 2025-08-13 15:01:07,290 autoreload 20752 2596 Watching for file changes with StatReloader
+INFO 2025-08-13 15:01:14,830 autoreload 20752 2596 D:\projects\drop.az\catalog\views.py changed, reloading.
+INFO 2025-08-13 15:01:15,419 autoreload 10928 8560 Watching for file changes with StatReloader
+INFO 2025-08-13 15:01:25,055 autoreload 10928 8560 D:\projects\drop.az\catalog\views.py changed, reloading.
+INFO 2025-08-13 15:01:25,607 autoreload 10712 19176 Watching for file changes with StatReloader
+INFO 2025-08-13 15:01:32,113 autoreload 10712 19176 D:\projects\drop.az\catalog\views.py changed, reloading.
+INFO 2025-08-13 15:01:32,681 autoreload 5864 20648 Watching for file changes with StatReloader
+INFO 2025-08-13 15:01:43,307 autoreload 5864 20648 D:\projects\drop.az\catalog\views.py changed, reloading.
+INFO 2025-08-13 15:01:43,938 autoreload 6884 18572 Watching for file changes with StatReloader
+INFO 2025-08-13 15:01:53,538 autoreload 6884 18572 D:\projects\drop.az\catalog\views.py changed, reloading.
+INFO 2025-08-13 15:01:54,113 autoreload 12432 6940 Watching for file changes with StatReloader
+INFO 2025-08-13 15:02:02,760 autoreload 12432 6940 D:\projects\drop.az\catalog\views.py changed, reloading.
+INFO 2025-08-13 15:02:03,501 autoreload 15952 11740 Watching for file changes with StatReloader
+INFO 2025-08-13 15:02:14,187 autoreload 15952 11740 D:\projects\drop.az\catalog\urls.py changed, reloading.
+INFO 2025-08-13 15:02:14,770 autoreload 11704 15324 Watching for file changes with StatReloader
+INFO 2025-08-13 15:04:22,715 autoreload 11704 15324 D:\projects\drop.az\catalog\views.py changed, reloading.
+INFO 2025-08-13 15:04:23,329 autoreload 15720 18476 Watching for file changes with StatReloader
+INFO 2025-08-13 15:04:31,914 autoreload 15720 18476 D:\projects\drop.az\catalog\urls.py changed, reloading.
+INFO 2025-08-13 15:04:32,501 autoreload 13368 23276 Watching for file changes with StatReloader
+INFO 2025-08-13 15:05:12,014 autoreload 13368 23276 D:\projects\drop.az\catalog\urls.py changed, reloading.
+INFO 2025-08-13 15:05:12,632 autoreload 16664 13468 Watching for file changes with StatReloader
+INFO 2025-08-13 15:06:42,534 autoreload 3696 16012 Watching for file changes with StatReloader
+INFO 2025-08-13 15:06:44,563 views 3696 5480 Categories page loaded with 0 priority-sorted main categories
+INFO 2025-08-13 15:06:44,597 context_processors 3696 5480 Priority-sorted Categories context loaded: 9 main categories
+INFO 2025-08-13 15:06:55,928 views 3696 11452 Home page loaded with 0 products and 0 priority categories
+INFO 2025-08-13 15:09:08,412 views 3696 8176 Home page loaded with 0 products and 0 priority categories
+INFO 2025-08-13 15:16:34,583 autoreload 3696 16012 D:\projects\drop.az\catalog\views.py changed, reloading.
+INFO 2025-08-13 15:16:35,262 autoreload 17480 15180 Watching for file changes with StatReloader
+INFO 2025-08-13 15:17:23,934 autoreload 17480 15180 D:\projects\drop.az\catalog\urls.py changed, reloading.
+INFO 2025-08-13 15:17:24,552 autoreload 2780 7916 Watching for file changes with StatReloader
+INFO 2025-08-13 15:18:47,224 autoreload 2780 7916 D:\projects\drop.az\catalog\views.py changed, reloading.
+INFO 2025-08-13 15:18:47,988 autoreload 12660 4396 Watching for file changes with StatReloader
+INFO 2025-08-13 15:19:12,953 autoreload 12660 4396 D:\projects\drop.az\catalog\urls.py changed, reloading.
+INFO 2025-08-13 15:19:13,473 autoreload 21136 18660 Watching for file changes with StatReloader
+INFO 2025-08-13 15:19:33,343 autoreload 21136 18660 D:\projects\drop.az\catalog\urls.py changed, reloading.
+INFO 2025-08-13 15:19:33,886 autoreload 21180 18072 Watching for file changes with StatReloader
+INFO 2025-08-13 15:20:40,036 autoreload 9168 15240 Watching for file changes with StatReloader
+INFO 2025-08-13 15:21:10,076 autoreload 12660 10440 Watching for file changes with StatReloader
+INFO 2025-08-13 15:21:12,060 views 9168 3964 Home page loaded with 0 products and 0 priority categories
+INFO 2025-08-13 15:21:12,091 context_processors 9168 3964 Priority-sorted Categories context loaded: 9 main categories
+INFO 2025-08-13 15:21:20,671 autoreload 9168 15240 D:\projects\drop.az\catalog\views.py changed, reloading.
+INFO 2025-08-13 15:21:20,694 autoreload 12660 10440 D:\projects\drop.az\catalog\views.py changed, reloading.
+INFO 2025-08-13 15:21:21,454 autoreload 20184 19860 Watching for file changes with StatReloader
+INFO 2025-08-13 15:21:21,827 context_processors 19184 11412 Priority-sorted Categories context loaded: 9 main categories
+INFO 2025-08-13 15:21:26,641 views 19184 11412 Category detail loaded: Elektronika (Priority: 2) with 0 products
+INFO 2025-08-13 15:21:36,773 views 19184 11412 Home page loaded with 0 products and 0 priority categories
+INFO 2025-08-13 15:22:18,139 autoreload 23268 19084 Watching for file changes with StatReloader
+INFO 2025-08-13 15:22:19,972 views 20184 1416 Home page loaded with 0 products and 0 priority categories
+INFO 2025-08-13 15:22:19,999 context_processors 20184 1416 Priority-sorted Categories context loaded: 9 main categories
+INFO 2025-08-13 15:25:01,399 views 20184 1416 Home page loaded with 0 products and 0 priority categories
+INFO 2025-08-13 15:28:52,117 autoreload 20376 19164 Watching for file changes with StatReloader
+INFO 2025-08-13 15:29:27,754 autoreload 1892 7852 Watching for file changes with StatReloader
+INFO 2025-08-13 15:29:30,737 views 20184 14760 Home page loaded with 0 products and 0 priority categories
+INFO 2025-08-13 15:29:30,760 context_processors 20184 14760 Priority-sorted Categories context loaded: 9 main categories
+ERROR 2025-08-13 15:29:38,260 views 20184 17588 Error in category_detail: Reverse for 'products' not found. 'products' is not a valid view function or pattern name.
+INFO 2025-08-13 15:29:38,322 views 20184 17588 Categories page loaded with 0 priority-sorted main categories
+ERROR 2025-08-13 15:29:38,331 views 20184 17588 Error in categories_view: Reverse for 'products' not found. 'products' is not a valid view function or pattern name.
+ERROR 2025-08-13 15:29:38,807 log 20184 17588 Internal Server Error: /categories/
+Traceback (most recent call last):
+  File "D:\projects\drop.az\catalog\views.py", line 125, in categories_view
+    return render(request, 'catalog/categories_hero.html', context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\backends\django.py", line 61, in render
+    return self.template.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 1000, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 1000, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 961, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\loader_tags.py", line 159, in render
+    return compiled_parent._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 1000, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 1000, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 961, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\defaulttags.py", line 478, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\urls\base.py", line 88, in reverse
+    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\urls\resolvers.py", line 848, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'products' not found. 'products' is not a valid view function or pattern name.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\projects\drop.az\catalog\views.py", line 130, in categories_view
+    return render(request, 'catalog/categories_hero.html', {'main_categories': [], 'categorized_by_priority': {}, 'category_stats': {}})
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\backends\django.py", line 61, in render
+    return self.template.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 1000, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 1000, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 961, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\loader_tags.py", line 159, in render
+    return compiled_parent._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 1000, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 1000, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 961, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\defaulttags.py", line 478, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\urls\base.py", line 88, in reverse
+    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\urls\resolvers.py", line 848, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'products' not found. 'products' is not a valid view function or pattern name.
+WARNING 2025-08-13 15:29:39,005 log 20184 17588 Not Found: /favicon.ico
+INFO 2025-08-13 15:30:02,434 views 20184 17588 Categories page loaded with 0 priority-sorted main categories
+ERROR 2025-08-13 15:30:02,444 views 20184 17588 Error in categories_view: Reverse for 'products' not found. 'products' is not a valid view function or pattern name.
+ERROR 2025-08-13 15:30:02,715 log 20184 17588 Internal Server Error: /categories/
+Traceback (most recent call last):
+  File "D:\projects\drop.az\catalog\views.py", line 125, in categories_view
+    return render(request, 'catalog/categories_hero.html', context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\backends\django.py", line 61, in render
+    return self.template.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 1000, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 1000, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 961, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\loader_tags.py", line 159, in render
+    return compiled_parent._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 1000, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 1000, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 961, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\defaulttags.py", line 478, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\urls\base.py", line 88, in reverse
+    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\urls\resolvers.py", line 848, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'products' not found. 'products' is not a valid view function or pattern name.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\projects\drop.az\catalog\views.py", line 130, in categories_view
+    return render(request, 'catalog/categories_hero.html', {'main_categories': [], 'categorized_by_priority': {}, 'category_stats': {}})
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\backends\django.py", line 61, in render
+    return self.template.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 1000, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 1000, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 961, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\loader_tags.py", line 159, in render
+    return compiled_parent._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 1000, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 1000, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 961, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\defaulttags.py", line 478, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\urls\base.py", line 88, in reverse
+    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\urls\resolvers.py", line 848, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'products' not found. 'products' is not a valid view function or pattern name.
+INFO 2025-08-13 15:30:53,804 autoreload 10716 24252 Watching for file changes with StatReloader
+INFO 2025-08-13 15:36:15,426 autoreload 7284 17928 Watching for file changes with StatReloader
+INFO 2025-08-13 15:36:18,627 views 20184 23720 Categories page loaded with 0 priority-sorted main categories
+INFO 2025-08-13 15:36:18,654 context_processors 20184 23720 Priority-sorted Categories context loaded: 9 main categories
+INFO 2025-08-13 15:36:30,592 views 20184 23720 Product list loaded: 0 products found
+INFO 2025-08-13 15:36:32,642 views 20184 23720 Product list loaded: 0 products found
+INFO 2025-08-13 15:36:34,642 views 20184 23720 About hero page loaded
+INFO 2025-08-13 15:36:36,567 views 20184 23720 Contact hero page loaded
+INFO 2025-08-13 15:36:40,576 views 20184 23720 About hero page loaded
+INFO 2025-08-13 15:36:42,687 views 20184 23720 Product list loaded: 0 products found
+INFO 2025-08-13 15:36:45,871 views 20184 23720 Product list loaded: 0 products found
+INFO 2025-08-13 15:40:46,552 views 20184 23720 Home page loaded with 0 products and 0 priority categories
+INFO 2025-08-13 15:53:06,962 views 20184 1348 Home page loaded with 0 products and 0 priority categories
+INFO 2025-08-13 15:53:06,983 context_processors 20184 1348 Priority-sorted Categories context loaded: 9 main categories
+INFO 2025-08-13 15:53:24,611 views 20184 8608 Product list loaded: 0 products found
+INFO 2025-08-13 15:53:26,840 views 20184 8608 About hero page loaded
+INFO 2025-08-13 15:53:34,497 views 20184 8608 Product list loaded: 0 products found
+INFO 2025-08-13 15:53:37,136 views 20184 8608 Home page loaded with 0 products and 0 priority categories
+INFO 2025-08-13 16:01:47,800 views 20184 12736 Category detail loaded: Elektronika (Priority: 2) with 0 products
+INFO 2025-08-13 16:01:47,823 context_processors 20184 12736 Priority-sorted Categories context loaded: 9 main categories
+INFO 2025-08-13 16:08:00,179 autoreload 6016 4400 Watching for file changes with StatReloader
+INFO 2025-08-13 16:08:02,946 views 20184 10592 Category detail loaded: Elektronika (Priority: 2) with 0 products
+INFO 2025-08-13 16:08:02,968 context_processors 20184 10592 Priority-sorted Categories context loaded: 9 main categories
+INFO 2025-08-13 16:08:07,255 views 20184 12784 Product list loaded: 0 products found
+INFO 2025-08-13 16:08:09,911 views 20184 12784 Home page loaded with 0 products and 0 priority categories
+INFO 2025-08-13 16:08:13,472 views 20184 10592 Product list loaded: 0 products found
+INFO 2025-08-13 16:08:16,673 views 20184 10592 Contact hero page loaded
+INFO 2025-08-13 16:08:28,915 views 20184 10592 Home page loaded with 0 products and 0 priority categories
+INFO 2025-08-13 16:12:01,759 autoreload 4300 20324 Watching for file changes with StatReloader
+INFO 2025-08-13 16:12:03,026 views 20184 16856 Home page loaded with 0 products and 0 priority categories
+INFO 2025-08-13 16:12:05,821 views 20184 18596 Product list loaded: 0 products found
+WARNING 2025-08-13 16:12:26,366 log 20184 18596 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+INFO 2025-08-13 16:12:56,974 views 20184 18596 Home page loaded with 0 products and 0 priority categories
+INFO 2025-08-13 16:14:37,984 views 20184 16856 Product list loaded: 0 products found
+INFO 2025-08-13 16:14:38,016 context_processors 20184 16856 Priority-sorted Categories context loaded: 9 main categories
+INFO 2025-08-13 16:14:41,541 views 20184 16856 Home page loaded with 0 products and 0 priority categories
+INFO 2025-08-13 16:14:44,804 views 20184 11412 Categories page loaded with 0 priority-sorted main categories
+INFO 2025-08-13 16:16:41,784 autoreload 12692 20920 Watching for file changes with StatReloader
+INFO 2025-08-13 16:16:45,151 views 20184 11412 Home page loaded with 0 products and 0 priority categories
+INFO 2025-08-13 16:16:48,991 views 20184 11412 Categories page loaded with 0 priority-sorted main categories
+INFO 2025-08-13 16:19:16,887 autoreload 20944 22516 Watching for file changes with StatReloader
+INFO 2025-08-13 16:19:20,443 views 20184 11412 Categories page loaded with 0 priority-sorted main categories
+INFO 2025-08-13 16:19:26,483 views 20184 4548 Product list loaded: 0 products found
+INFO 2025-08-13 16:19:29,154 views 20184 4548 Product list loaded: 0 products found
+INFO 2025-08-13 16:19:31,538 views 20184 4548 About hero page loaded
+INFO 2025-08-13 16:19:33,550 views 20184 4548 Contact hero page loaded
+INFO 2025-08-13 16:20:33,571 views 20184 4548 Home page loaded with 0 products and 0 priority categories
+INFO 2025-08-13 16:20:33,592 context_processors 20184 4548 Priority-sorted Categories context loaded: 9 main categories
+INFO 2025-08-13 16:20:49,709 views 20184 4548 Product list loaded: 0 products found
+INFO 2025-08-13 16:37:10,771 views 20184 1080 Home page loaded with 0 products and 0 priority categories
+INFO 2025-08-13 16:37:10,814 context_processors 20184 1080 Priority-sorted Categories context loaded: 9 main categories
+INFO 2025-08-13 16:37:29,552 views 20184 21000 Product list loaded: 0 products found
+INFO 2025-08-13 16:37:31,931 views 20184 21000 Contact hero page loaded
+INFO 2025-08-13 16:37:38,183 views 20184 21000 Home page loaded with 0 products and 0 priority categories
+INFO 2025-08-13 17:23:01,739 views 20184 5388 Product list loaded: 0 products found
+INFO 2025-08-13 17:23:01,763 context_processors 20184 5388 Priority-sorted Categories context loaded: 9 main categories
+INFO 2025-08-13 17:23:03,558 views 20184 20648 Product list loaded: 0 products found
+INFO 2025-08-13 17:26:07,654 views 20184 20648 Home page loaded with 0 products and 0 priority categories
+INFO 2025-08-13 17:26:14,162 views 20184 5388 Product list loaded: 0 products found
+INFO 2025-08-13 17:27:02,308 views 20184 5388 Product list loaded: 0 products found
+WARNING 2025-08-13 17:27:04,770 log 20184 5388 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-13 17:27:17,417 log 20184 5388 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+INFO 2025-08-13 17:33:41,109 autoreload 11740 18676 Watching for file changes with StatReloader
+INFO 2025-08-13 17:34:14,201 views 20184 2244 Home page loaded with 0 products and 0 priority categories
+INFO 2025-08-13 17:34:14,218 context_processors 20184 2244 Priority-sorted Categories context loaded: 9 main categories
+INFO 2025-08-13 17:34:25,219 views 20184 15092 Product list loaded: 0 products found
+INFO 2025-08-13 17:34:28,400 views 20184 15092 Product list loaded: 0 products found
+INFO 2025-08-13 17:34:30,026 views 20184 15092 About hero page loaded
+INFO 2025-08-13 17:34:32,244 views 20184 15092 Contact hero page loaded
+INFO 2025-08-13 17:34:34,519 views 20184 15092 About hero page loaded
+INFO 2025-08-13 17:34:36,512 views 20184 15092 Contact hero page loaded
+INFO 2025-08-13 17:34:40,043 views 20184 15092 Home page loaded with 0 products and 0 priority categories
+INFO 2025-08-13 17:34:45,811 views 20184 2244 Product list loaded: 0 products found
+INFO 2025-08-13 17:51:04,429 views 20184 16936 Product list loaded: 0 products found
+INFO 2025-08-13 17:51:04,452 context_processors 20184 16936 Priority-sorted Categories context loaded: 9 main categories
+INFO 2025-08-13 18:00:49,599 views 20184 5180 Product list loaded: 0 products found
+INFO 2025-08-13 18:00:49,624 context_processors 20184 5180 Priority-sorted Categories context loaded: 9 main categories
+INFO 2025-08-13 18:01:05,243 autoreload 20356 16512 Watching for file changes with StatReloader
+INFO 2025-08-13 18:01:07,024 views 20184 5180 Product list loaded: 0 products found
+INFO 2025-08-13 18:01:17,622 views 20184 18072 Product list loaded: 0 products found
+INFO 2025-08-13 18:01:24,607 views 20184 18072 Product list loaded: 0 products found
+INFO 2025-08-13 18:06:57,598 views 20184 9792 Product list loaded: 0 products found
+INFO 2025-08-13 18:06:57,654 context_processors 20184 9792 Priority-sorted Categories context loaded: 9 main categories
+INFO 2025-08-13 18:15:31,717 views 20184 22192 Home page loaded with 0 products and 0 priority categories
+INFO 2025-08-13 18:15:31,781 context_processors 20184 22192 Priority-sorted Categories context loaded: 9 main categories
+INFO 2025-08-13 18:15:37,996 views 20184 23584 Home page loaded with 0 products and 0 priority categories
+INFO 2025-08-13 18:15:39,880 views 20184 12672 Home page loaded with 0 products and 0 priority categories
+INFO 2025-08-13 18:16:19,596 views 20184 12384 Product list loaded: 0 products found
+INFO 2025-08-13 18:16:22,420 views 20184 21260 Product list loaded: 0 products found
+INFO 2025-08-13 18:16:40,475 views 20184 21260 About hero page loaded
+INFO 2025-08-13 18:16:49,182 views 20184 21260 Contact hero page loaded
+INFO 2025-08-13 18:17:32,499 views 20184 12384 Home page loaded with 0 products and 0 priority categories
+INFO 2025-08-13 18:17:41,264 views 20184 22444 Categories page loaded with 0 priority-sorted main categories
+INFO 2025-08-13 18:17:45,575 views 20184 22444 Categories page loaded with 0 priority-sorted main categories
+INFO 2025-08-13 18:18:00,879 views 20184 22444 Categories page loaded with 0 priority-sorted main categories
+INFO 2025-08-13 18:18:03,931 views 20184 22444 Categories page loaded with 0 priority-sorted main categories
+INFO 2025-08-13 18:21:58,407 views 20184 22444 Categories page loaded with 0 priority-sorted main categories
+INFO 2025-08-13 18:21:58,428 context_processors 20184 22444 Priority-sorted Categories context loaded: 9 main categories
+INFO 2025-08-13 18:22:07,593 views 20184 22444 Contact hero page loaded
+INFO 2025-08-13 18:22:10,187 views 20184 21260 Product list loaded: 0 products found
+INFO 2025-08-13 18:22:37,729 views 20184 21260 Home page loaded with 0 products and 0 priority categories
+INFO 2025-08-13 18:22:42,855 views 20184 22444 Categories page loaded with 0 priority-sorted main categories
+INFO 2025-08-13 18:25:19,573 views 20184 22444 Categories page loaded with 0 priority-sorted main categories
+INFO 2025-08-13 18:26:49,986 views 20184 12384 Home page loaded with 0 products and 0 priority categories
+INFO 2025-08-13 18:27:00,298 views 20184 12384 Home page loaded with 0 products and 0 priority categories
+INFO 2025-08-13 18:27:00,334 context_processors 20184 12384 Priority-sorted Categories context loaded: 9 main categories
+INFO 2025-08-13 18:27:01,732 views 20184 5368 Home page loaded with 0 products and 0 priority categories
+INFO 2025-08-13 18:27:16,882 views 20184 5368 Home page loaded with 0 products and 0 priority categories
+INFO 2025-08-13 18:33:42,785 views 20184 10304 Home page loaded with 0 products and 0 priority categories
+INFO 2025-08-13 18:33:42,818 context_processors 20184 10304 Priority-sorted Categories context loaded: 9 main categories
+INFO 2025-08-13 18:33:49,322 views 20184 10812 Home page loaded with 0 products and 0 priority categories
+INFO 2025-08-13 18:38:06,688 views 20184 10304 Home page loaded with 0 products and 0 priority categories
+INFO 2025-08-13 18:38:32,870 views 20184 10304 Product list loaded: 0 products found
+WARNING 2025-08-13 18:38:47,789 log 20184 15868 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+INFO 2025-08-13 21:36:15,468 views 20356 9636 Home page loaded with 0 products and 0 priority categories
+INFO 2025-08-13 21:36:15,500 context_processors 20356 9636 Priority-sorted Categories context loaded: 9 main categories
+INFO 2025-08-13 21:36:33,222 views 20356 21060 Home page loaded with 0 products and 0 priority categories
+WARNING 2025-08-13 21:37:05,656 log 20356 15972 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-13 21:39:35,350 log 20356 20188 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+INFO 2025-08-13 21:41:21,727 context_processors 20356 20188 Priority-sorted Categories context loaded: 9 main categories
+INFO 2025-08-13 21:46:05,088 views 20356 15972 Product list loaded: 0 products found
+INFO 2025-08-13 21:46:08,286 views 20356 15972 Product list loaded: 0 products found
+INFO 2025-08-13 21:50:09,682 views 20356 10748 Contact hero page loaded
+INFO 2025-08-13 21:50:09,747 context_processors 20356 10748 Priority-sorted Categories context loaded: 9 main categories
+INFO 2025-08-13 21:50:11,908 views 20356 10748 About hero page loaded
+INFO 2025-08-13 21:50:13,783 views 20356 10748 Product list loaded: 0 products found
+INFO 2025-08-13 21:50:16,617 views 20356 10748 Product list loaded: 0 products found
+INFO 2025-08-13 21:50:18,986 views 20356 10748 Product list loaded: 0 products found
+INFO 2025-08-15 01:12:27,320 views 20356 25132 Home page loaded with 0 products and 0 priority categories
+INFO 2025-08-15 01:12:27,347 context_processors 20356 25132 Priority-sorted Categories context loaded: 9 main categories
+INFO 2025-08-15 01:41:24,480 autoreload 12884 1632 Watching for file changes with StatReloader
+INFO 2025-08-15 01:41:34,058 views 12884 25116 Home page loaded with 0 products and 0 priority categories
+INFO 2025-08-15 01:41:34,090 context_processors 12884 25116 Priority-sorted Categories context loaded: 9 main categories
+INFO 2025-08-15 01:42:15,359 views 12884 18132 Home page loaded with 0 products and 0 priority categories
+INFO 2025-08-15 01:42:21,984 views 12884 18132 Product list loaded: 0 products found
+INFO 2025-08-15 01:52:48,505 autoreload 24788 2164 Watching for file changes with StatReloader
+INFO 2025-08-15 01:52:51,599 views 24788 15224 Product list loaded: 0 products found
+INFO 2025-08-15 01:52:51,626 context_processors 24788 15224 Priority-sorted Categories context loaded: 9 main categories
+INFO 2025-08-15 01:52:55,585 views 24788 26348 Home page loaded with 0 products and 0 priority categories
+INFO 2025-08-15 01:55:06,327 views 24788 18100 Home page loaded with 0 products and 0 priority categories
+WARNING 2025-08-15 01:55:12,837 log 24788 18100 Not Found: /home/
+WARNING 2025-08-15 01:55:12,931 log 24788 18100 Not Found: /favicon.ico
+INFO 2025-08-15 01:55:15,822 views 24788 18100 Home page loaded with 0 products and 0 priority categories
+INFO 2025-08-15 01:56:57,273 autoreload 24788 2164 D:\projects\drop.az\catalog\views.py changed, reloading.
+INFO 2025-08-15 01:56:58,038 autoreload 6584 23836 Watching for file changes with StatReloader
+INFO 2025-08-15 01:57:09,651 views 6584 14028 Home page loaded with 0 products and 8 priority categories
+INFO 2025-08-15 01:57:09,679 context_processors 6584 14028 Priority-sorted Categories context loaded: 9 main categories
+INFO 2025-08-15 01:57:16,254 autoreload 6584 23836 D:\projects\drop.az\catalog\views.py changed, reloading.
+INFO 2025-08-15 01:57:16,765 autoreload 26220 24684 Watching for file changes with StatReloader
+INFO 2025-08-15 01:57:34,959 views 26220 20960 Home page loaded with 0 products and 8 priority categories
+INFO 2025-08-15 01:57:34,992 context_processors 26220 20960 Priority-sorted Categories context loaded: 9 main categories
+INFO 2025-08-15 01:57:40,792 views 26220 9752 Categories page loaded with 0 priority-sorted main categories
+INFO 2025-08-15 01:57:43,959 views 26220 9752 Home page loaded with 0 products and 8 priority categories
+INFO 2025-08-15 02:03:33,525 views 26220 11204 Home page loaded with 0 products and 8 priority categories
+INFO 2025-08-15 02:03:33,541 context_processors 26220 11204 Priority-sorted Categories context loaded: 9 main categories
+WARNING 2025-08-15 02:04:12,757 log 26220 11204 Not Found: /favicon.ico
+WARNING 2025-08-15 02:04:20,974 log 26220 11204 Not Found: /favicon.ico
+INFO 2025-08-15 02:05:13,609 views 26220 11204 Home page loaded with 1 products and 8 priority categories
+INFO 2025-08-15 02:05:16,827 views 26220 11204 Categories page loaded with 1 priority-sorted main categories
+INFO 2025-08-15 02:05:37,340 autoreload 15692 8852 Watching for file changes with StatReloader
+INFO 2025-08-15 02:05:39,535 context_processors 15692 6780 Priority-sorted Categories context loaded: 9 main categories
+INFO 2025-08-15 02:05:41,657 views 15692 11020 Home page loaded with 1 products and 8 priority categories
+INFO 2025-08-15 02:13:01,024 views 15692 10592 Home page loaded with 1 products and 8 priority categories
+INFO 2025-08-15 02:13:01,070 context_processors 15692 10592 Priority-sorted Categories context loaded: 9 main categories
+INFO 2025-08-15 02:13:12,312 views 15692 10592 Home page loaded with 1 products and 8 priority categories
+INFO 2025-08-15 02:18:57,705 views 15692 21300 Home page loaded with 1 products and 8 priority categories
+INFO 2025-08-15 02:18:57,723 context_processors 15692 21300 Priority-sorted Categories context loaded: 9 main categories
+INFO 2025-08-15 02:19:06,528 views 15692 12116 Home page loaded with 1 products and 8 priority categories
+INFO 2025-08-15 02:24:06,322 views 15692 12116 Home page loaded with 1 products and 8 priority categories
+ERROR 2025-08-15 02:24:06,322 views 15692 12116 Error in home view: slice requires 2 arguments, 1 provided
+ERROR 2025-08-15 02:24:06,516 log 15692 12116 Internal Server Error: /
+Traceback (most recent call last):
+  File "D:\projects\drop.az\catalog\views.py", line 72, in home
+    return render(request, 'catalog/home.html', context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\backends\django.py", line 33, in get_template
+    return Template(self.engine.get_template(template_name), self)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\engine.py", line 175, in get_template
+    template, origin = self.find_template(template_name)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\engine.py", line 157, in find_template
+    template = loader.get_template(name, skip=skip)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+           ^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 196, in compile_nodelist
+    return parser.parse()
+           ^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 510, in parse
+    raise self.error(token, e)
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 508, in parse
+    compiled_result = compile_func(self, token)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\loader_tags.py", line 295, in do_extends
+    nodelist = parser.parse()
+               ^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 510, in parse
+    raise self.error(token, e)
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 508, in parse
+    compiled_result = compile_func(self, token)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\loader_tags.py", line 234, in do_block
+    nodelist = parser.parse(("endblock",))
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 510, in parse
+    raise self.error(token, e)
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 508, in parse
+    compiled_result = compile_func(self, token)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\defaulttags.py", line 960, in do_if
+    nodelist = parser.parse(("elif", "else", "endif"))
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 510, in parse
+    raise self.error(token, e)
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 508, in parse
+    compiled_result = compile_func(self, token)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\defaulttags.py", line 960, in do_if
+    nodelist = parser.parse(("elif", "else", "endif"))
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 510, in parse
+    raise self.error(token, e)
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 508, in parse
+    compiled_result = compile_func(self, token)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\defaulttags.py", line 859, in do_for
+    sequence = parser.compile_filter(bits[in_index + 1])
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 597, in compile_filter
+    return FilterExpression(token, self)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 694, in __init__
+    self.args_check(filter_name, filter_func, args)
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 756, in args_check
+    raise TemplateSyntaxError(
+django.template.exceptions.TemplateSyntaxError: slice requires 2 arguments, 1 provided
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\projects\drop.az\catalog\views.py", line 77, in home
+    return render(request, 'catalog/home.html', {'products': [], 'featured_categories': [], 'stats': {}})
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\backends\django.py", line 33, in get_template
+    return Template(self.engine.get_template(template_name), self)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\engine.py", line 175, in get_template
+    template, origin = self.find_template(template_name)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\engine.py", line 157, in find_template
+    template = loader.get_template(name, skip=skip)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+           ^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 196, in compile_nodelist
+    return parser.parse()
+           ^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 510, in parse
+    raise self.error(token, e)
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 508, in parse
+    compiled_result = compile_func(self, token)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\loader_tags.py", line 295, in do_extends
+    nodelist = parser.parse()
+               ^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 510, in parse
+    raise self.error(token, e)
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 508, in parse
+    compiled_result = compile_func(self, token)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\loader_tags.py", line 234, in do_block
+    nodelist = parser.parse(("endblock",))
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 510, in parse
+    raise self.error(token, e)
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 508, in parse
+    compiled_result = compile_func(self, token)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\defaulttags.py", line 960, in do_if
+    nodelist = parser.parse(("elif", "else", "endif"))
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 510, in parse
+    raise self.error(token, e)
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 508, in parse
+    compiled_result = compile_func(self, token)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\defaulttags.py", line 960, in do_if
+    nodelist = parser.parse(("elif", "else", "endif"))
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 510, in parse
+    raise self.error(token, e)
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 508, in parse
+    compiled_result = compile_func(self, token)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\defaulttags.py", line 859, in do_for
+    sequence = parser.compile_filter(bits[in_index + 1])
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 597, in compile_filter
+    return FilterExpression(token, self)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 694, in __init__
+    self.args_check(filter_name, filter_func, args)
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 756, in args_check
+    raise TemplateSyntaxError(
+django.template.exceptions.TemplateSyntaxError: slice requires 2 arguments, 1 provided
+WARNING 2025-08-15 02:24:06,671 log 15692 12116 Not Found: /favicon.ico
+INFO 2025-08-15 02:25:25,400 views 15692 12116 Home page loaded with 1 products and 8 priority categories
+INFO 2025-08-15 02:25:25,422 context_processors 15692 12116 Priority-sorted Categories context loaded: 9 main categories
+INFO 2025-08-15 02:25:48,988 autoreload 15692 8852 D:\projects\drop.az\catalog\views.py changed, reloading.
+INFO 2025-08-15 02:25:49,579 autoreload 25500 15900 Watching for file changes with StatReloader
+INFO 2025-08-15 02:25:50,267 views 25500 19364 Home page loaded with 1 products and 1 priority categories
+INFO 2025-08-15 02:25:50,289 context_processors 25500 19364 Priority-sorted Categories context loaded: 9 main categories
+INFO 2025-08-15 02:32:22,876 views 25500 26380 Home page loaded with 1 products and 1 priority categories
+INFO 2025-08-15 02:32:22,899 context_processors 25500 26380 Priority-sorted Categories context loaded: 9 main categories
+INFO 2025-08-15 02:32:44,723 views 25500 26380 Home page loaded with 1 products and 1 priority categories
+INFO 2025-08-15 02:33:39,772 views 25500 6584 Home page loaded with 1 products and 1 priority categories
+WARNING 2025-08-15 02:38:19,947 log 25500 6584 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+INFO 2025-08-15 02:38:54,875 views 25500 6584 Home page loaded with 1 products and 1 priority categories
+INFO 2025-08-15 02:38:54,898 context_processors 25500 6584 Priority-sorted Categories context loaded: 9 main categories
+WARNING 2025-08-15 02:38:55,020 log 25500 7628 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-15 02:39:16,493 log 25500 7628 Not Found: /favicon.ico
+INFO 2025-08-15 02:40:31,904 views 25500 7628 Home page loaded with 4 products and 4 priority categories
+WARNING 2025-08-15 02:41:14,842 log 25500 1904 Not Found: /favicon.ico
+INFO 2025-08-15 02:42:19,731 views 25500 1904 Home page loaded with 8 products and 8 priority categories
+INFO 2025-08-15 02:43:17,647 views 25500 1904 Home page loaded with 8 products and 8 priority categories
+INFO 2025-08-15 02:43:45,354 views 25500 1904 Home page loaded with 8 products and 8 priority categories
+INFO 2025-08-15 02:44:04,754 views 25500 6584 Home page loaded with 8 products and 8 priority categories
+INFO 2025-08-15 02:44:04,792 context_processors 25500 6584 Priority-sorted Categories context loaded: 9 main categories
+INFO 2025-08-15 02:44:18,927 views 25500 26868 Home page loaded with 8 products and 8 priority categories
+INFO 2025-08-15 02:44:46,480 views 25500 26868 Home page loaded with 8 products and 8 priority categories
+WARNING 2025-08-15 02:44:56,166 log 25500 27464 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-15 02:45:12,044 log 25500 27464 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-15 02:47:15,294 log 25500 27464 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-15 02:47:25,654 log 25500 27464 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-15 02:47:42,708 log 25500 27464 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+INFO 2025-08-15 02:47:50,624 views 25500 27464 Home page loaded with 8 products and 8 priority categories
+WARNING 2025-08-15 02:47:50,817 log 25500 10936 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+INFO 2025-08-15 02:50:43,430 autoreload 25500 15900 D:\projects\drop.az\catalog\views.py changed, reloading.
+INFO 2025-08-15 02:50:44,019 autoreload 27132 18940 Watching for file changes with StatReloader
+INFO 2025-08-15 02:50:50,271 autoreload 26228 14548 Watching for file changes with StatReloader
+INFO 2025-08-15 02:55:45,950 autoreload 27132 18940 D:\projects\drop.az\catalog\views.py changed, reloading.
+INFO 2025-08-15 02:55:45,951 autoreload 26228 14548 D:\projects\drop.az\catalog\views.py changed, reloading.
+INFO 2025-08-15 02:55:46,565 autoreload 26552 21532 Watching for file changes with StatReloader
+INFO 2025-08-15 02:55:46,566 autoreload 8148 26652 Watching for file changes with StatReloader
+INFO 2025-08-15 02:55:54,381 views 8148 3768 Home page loaded with 8 products and 8 priority categories
+INFO 2025-08-15 02:55:54,424 context_processors 8148 3768 Priority-sorted Categories context loaded: 9 main categories
+INFO 2025-08-15 02:56:07,503 autoreload 26552 21532 D:\projects\drop.az\catalog\views.py changed, reloading.
+INFO 2025-08-15 02:56:07,773 autoreload 8148 26652 D:\projects\drop.az\catalog\views.py changed, reloading.
+INFO 2025-08-15 02:56:08,922 autoreload 1640 23716 Watching for file changes with StatReloader
+INFO 2025-08-15 02:56:09,080 autoreload 16240 26268 Watching for file changes with StatReloader
+INFO 2025-08-15 02:56:18,710 autoreload 1640 23716 D:\projects\drop.az\catalog\views.py changed, reloading.
+INFO 2025-08-15 02:56:18,840 autoreload 16240 26268 D:\projects\drop.az\catalog\views.py changed, reloading.
+INFO 2025-08-15 02:56:19,888 autoreload 27160 26668 Watching for file changes with StatReloader
+INFO 2025-08-15 02:56:19,987 autoreload 19460 9640 Watching for file changes with StatReloader
+INFO 2025-08-15 02:56:25,600 views 27160 13152 Home page loaded with 8 products and 8 priority categories
+INFO 2025-08-15 02:56:25,672 context_processors 27160 13152 Priority-sorted Categories context loaded: 9 main categories
+INFO 2025-08-15 02:59:49,526 views 27160 4032 Home page loaded with 8 products and 8 priority categories
+WARNING 2025-08-15 03:02:28,086 log 27160 4032 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+INFO 2025-08-15 03:03:13,977 views 27160 4032 Home page loaded with 8 products and 8 priority categories
+INFO 2025-08-15 03:03:14,007 context_processors 27160 4032 Priority-sorted Categories context loaded: 9 main categories
+WARNING 2025-08-15 03:03:14,168 log 27160 3964 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+INFO 2025-08-15 03:03:26,845 views 27160 3964 Home page loaded with 8 products and 8 priority categories
+INFO 2025-08-15 03:03:47,095 views 27160 7620 Home page loaded with 8 products and 8 priority categories
+WARNING 2025-08-15 03:04:29,978 log 27160 27496 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+INFO 2025-08-15 03:05:21,196 views 27160 27496 Home page loaded with 8 products and 8 priority categories
+INFO 2025-08-15 03:05:32,438 views 27160 27496 Home page loaded with 8 products and 8 priority categories
+INFO 2025-08-15 03:06:47,174 views 27160 26948 Home page loaded with 8 products and 8 priority categories
+INFO 2025-08-15 03:06:49,530 views 27160 26948 Contact hero page loaded
+INFO 2025-08-15 03:06:51,857 views 27160 26948 About hero page loaded
+INFO 2025-08-15 03:06:56,777 views 27160 26948 Home page loaded with 8 products and 8 priority categories
+INFO 2025-08-15 03:07:15,942 views 27160 3964 Home page loaded with 8 products and 8 priority categories
+INFO 2025-08-15 03:08:25,408 views 27160 8212 Home page loaded with 8 products and 8 priority categories
+INFO 2025-08-15 03:08:25,454 context_processors 27160 8212 Priority-sorted Categories context loaded: 9 main categories
+INFO 2025-08-15 03:08:30,452 views 27160 8212 Product list loaded: 9 products found
+INFO 2025-08-15 03:08:34,977 views 27160 8212 Home page loaded with 8 products and 8 priority categories
+INFO 2025-08-15 03:09:02,405 views 27160 21368 Home page loaded with 8 products and 8 priority categories
+INFO 2025-08-15 03:11:55,780 views 27160 13272 Product list loaded: 9 products found
+INFO 2025-08-15 03:12:09,196 views 27160 13272 Home page loaded with 8 products and 8 priority categories
+INFO 2025-08-15 03:12:46,101 views 27160 10484 Product list loaded: 9 products found
+INFO 2025-08-15 03:26:56,491 views 27160 26072 Product list loaded: 9 products found
+INFO 2025-08-15 03:26:56,539 context_processors 27160 26072 Priority-sorted Categories context loaded: 9 main categories
+INFO 2025-08-15 03:26:59,722 views 27160 26004 Home page loaded with 8 products and 8 priority categories
+ERROR 2025-08-15 03:26:59,729 views 27160 26004 Error in home view: Invalid block tag on line 849: 'endblock'. Did you forget to register or load this tag?
+ERROR 2025-08-15 03:26:59,828 log 27160 26004 Internal Server Error: /
+Traceback (most recent call last):
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 502, in parse
+    compile_func = self.tags[command]
+                   ~~~~~~~~~^^^^^^^^^
+KeyError: 'endblock'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\projects\drop.az\catalog\views.py", line 70, in home
+    return render(request, 'catalog/home.html', context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\backends\django.py", line 33, in get_template
+    return Template(self.engine.get_template(template_name), self)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\engine.py", line 175, in get_template
+    template, origin = self.find_template(template_name)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\engine.py", line 157, in find_template
+    template = loader.get_template(name, skip=skip)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+           ^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 196, in compile_nodelist
+    return parser.parse()
+           ^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 504, in parse
+    self.invalid_block_tag(token, command, parse_until)
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 565, in invalid_block_tag
+    raise self.error(
+django.template.exceptions.TemplateSyntaxError: Invalid block tag on line 849: 'endblock'. Did you forget to register or load this tag?
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 502, in parse
+    compile_func = self.tags[command]
+                   ~~~~~~~~~^^^^^^^^^
+KeyError: 'endblock'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\projects\drop.az\catalog\views.py", line 75, in home
+    return render(request, 'catalog/home.html', {'products': [], 'featured_categories': [], 'stats': {}})
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\backends\django.py", line 33, in get_template
+    return Template(self.engine.get_template(template_name), self)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\engine.py", line 175, in get_template
+    template, origin = self.find_template(template_name)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\engine.py", line 157, in find_template
+    template = loader.get_template(name, skip=skip)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+           ^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 196, in compile_nodelist
+    return parser.parse()
+           ^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 504, in parse
+    self.invalid_block_tag(token, command, parse_until)
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 565, in invalid_block_tag
+    raise self.error(
+django.template.exceptions.TemplateSyntaxError: Invalid block tag on line 849: 'endblock'. Did you forget to register or load this tag?
+WARNING 2025-08-15 03:26:59,978 log 27160 26004 Not Found: /favicon.ico
+INFO 2025-08-15 03:28:14,403 views 27160 26004 Home page loaded with 8 products and 8 priority categories
+ERROR 2025-08-15 03:28:14,406 views 27160 26004 Error in home view: Invalid block tag on line 849: 'endblock'. Did you forget to register or load this tag?
+ERROR 2025-08-15 03:28:14,515 log 27160 26004 Internal Server Error: /
+Traceback (most recent call last):
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 502, in parse
+    compile_func = self.tags[command]
+                   ~~~~~~~~~^^^^^^^^^
+KeyError: 'endblock'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\projects\drop.az\catalog\views.py", line 70, in home
+    return render(request, 'catalog/home.html', context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\backends\django.py", line 33, in get_template
+    return Template(self.engine.get_template(template_name), self)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\engine.py", line 175, in get_template
+    template, origin = self.find_template(template_name)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\engine.py", line 157, in find_template
+    template = loader.get_template(name, skip=skip)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+           ^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 196, in compile_nodelist
+    return parser.parse()
+           ^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 504, in parse
+    self.invalid_block_tag(token, command, parse_until)
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 565, in invalid_block_tag
+    raise self.error(
+django.template.exceptions.TemplateSyntaxError: Invalid block tag on line 849: 'endblock'. Did you forget to register or load this tag?
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 502, in parse
+    compile_func = self.tags[command]
+                   ~~~~~~~~~^^^^^^^^^
+KeyError: 'endblock'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\projects\drop.az\catalog\views.py", line 75, in home
+    return render(request, 'catalog/home.html', {'products': [], 'featured_categories': [], 'stats': {}})
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\backends\django.py", line 33, in get_template
+    return Template(self.engine.get_template(template_name), self)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\engine.py", line 175, in get_template
+    template, origin = self.find_template(template_name)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\engine.py", line 157, in find_template
+    template = loader.get_template(name, skip=skip)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+           ^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 196, in compile_nodelist
+    return parser.parse()
+           ^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 504, in parse
+    self.invalid_block_tag(token, command, parse_until)
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 565, in invalid_block_tag
+    raise self.error(
+django.template.exceptions.TemplateSyntaxError: Invalid block tag on line 849: 'endblock'. Did you forget to register or load this tag?
+WARNING 2025-08-15 03:28:14,657 log 27160 26004 Not Found: /favicon.ico
+INFO 2025-08-15 03:28:17,525 views 27160 26004 Home page loaded with 8 products and 8 priority categories
+ERROR 2025-08-15 03:28:17,531 views 27160 26004 Error in home view: Invalid block tag on line 849: 'endblock'. Did you forget to register or load this tag?
+ERROR 2025-08-15 03:28:17,617 log 27160 26004 Internal Server Error: /
+Traceback (most recent call last):
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 502, in parse
+    compile_func = self.tags[command]
+                   ~~~~~~~~~^^^^^^^^^
+KeyError: 'endblock'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\projects\drop.az\catalog\views.py", line 70, in home
+    return render(request, 'catalog/home.html', context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\backends\django.py", line 33, in get_template
+    return Template(self.engine.get_template(template_name), self)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\engine.py", line 175, in get_template
+    template, origin = self.find_template(template_name)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\engine.py", line 157, in find_template
+    template = loader.get_template(name, skip=skip)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+           ^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 196, in compile_nodelist
+    return parser.parse()
+           ^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 504, in parse
+    self.invalid_block_tag(token, command, parse_until)
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 565, in invalid_block_tag
+    raise self.error(
+django.template.exceptions.TemplateSyntaxError: Invalid block tag on line 849: 'endblock'. Did you forget to register or load this tag?
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 502, in parse
+    compile_func = self.tags[command]
+                   ~~~~~~~~~^^^^^^^^^
+KeyError: 'endblock'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\projects\drop.az\catalog\views.py", line 75, in home
+    return render(request, 'catalog/home.html', {'products': [], 'featured_categories': [], 'stats': {}})
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\backends\django.py", line 33, in get_template
+    return Template(self.engine.get_template(template_name), self)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\engine.py", line 175, in get_template
+    template, origin = self.find_template(template_name)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\engine.py", line 157, in find_template
+    template = loader.get_template(name, skip=skip)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+           ^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 196, in compile_nodelist
+    return parser.parse()
+           ^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 504, in parse
+    self.invalid_block_tag(token, command, parse_until)
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 565, in invalid_block_tag
+    raise self.error(
+django.template.exceptions.TemplateSyntaxError: Invalid block tag on line 849: 'endblock'. Did you forget to register or load this tag?
+WARNING 2025-08-15 03:28:17,766 log 27160 26004 Not Found: /favicon.ico
+INFO 2025-08-15 03:28:19,708 views 27160 26004 Home page loaded with 8 products and 8 priority categories
+ERROR 2025-08-15 03:28:19,714 views 27160 26004 Error in home view: Invalid block tag on line 849: 'endblock'. Did you forget to register or load this tag?
+ERROR 2025-08-15 03:28:19,781 log 27160 26004 Internal Server Error: /
+Traceback (most recent call last):
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 502, in parse
+    compile_func = self.tags[command]
+                   ~~~~~~~~~^^^^^^^^^
+KeyError: 'endblock'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\projects\drop.az\catalog\views.py", line 70, in home
+    return render(request, 'catalog/home.html', context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\backends\django.py", line 33, in get_template
+    return Template(self.engine.get_template(template_name), self)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\engine.py", line 175, in get_template
+    template, origin = self.find_template(template_name)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\engine.py", line 157, in find_template
+    template = loader.get_template(name, skip=skip)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+           ^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 196, in compile_nodelist
+    return parser.parse()
+           ^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 504, in parse
+    self.invalid_block_tag(token, command, parse_until)
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 565, in invalid_block_tag
+    raise self.error(
+django.template.exceptions.TemplateSyntaxError: Invalid block tag on line 849: 'endblock'. Did you forget to register or load this tag?
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 502, in parse
+    compile_func = self.tags[command]
+                   ~~~~~~~~~^^^^^^^^^
+KeyError: 'endblock'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\projects\drop.az\catalog\views.py", line 75, in home
+    return render(request, 'catalog/home.html', {'products': [], 'featured_categories': [], 'stats': {}})
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\backends\django.py", line 33, in get_template
+    return Template(self.engine.get_template(template_name), self)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\engine.py", line 175, in get_template
+    template, origin = self.find_template(template_name)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\engine.py", line 157, in find_template
+    template = loader.get_template(name, skip=skip)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+           ^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 196, in compile_nodelist
+    return parser.parse()
+           ^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 504, in parse
+    self.invalid_block_tag(token, command, parse_until)
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 565, in invalid_block_tag
+    raise self.error(
+django.template.exceptions.TemplateSyntaxError: Invalid block tag on line 849: 'endblock'. Did you forget to register or load this tag?
+INFO 2025-08-15 03:28:57,172 autoreload 25488 26936 Watching for file changes with StatReloader
+INFO 2025-08-15 03:29:24,142 views 27160 26004 Home page loaded with 8 products and 8 priority categories
+INFO 2025-08-15 03:29:53,622 views 27160 26004 Product list loaded: 9 products found
+INFO 2025-08-15 03:29:59,322 views 27160 26004 Home page loaded with 8 products and 8 priority categories
+INFO 2025-08-15 03:30:25,046 views 27160 25828 Home page loaded with 8 products and 8 priority categories
+INFO 2025-08-15 03:36:46,876 views 27160 19732 Home page loaded with 8 products and 8 priority categories
+INFO 2025-08-15 03:36:46,919 context_processors 27160 19732 Priority-sorted Categories context loaded: 9 main categories
+INFO 2025-08-15 03:36:53,642 views 27160 26056 Product list loaded: 9 products found
+INFO 2025-08-15 03:37:24,191 views 27160 26056 Home page loaded with 8 products and 8 priority categories
+INFO 2025-08-15 03:43:28,231 views 27160 7424 Home page loaded with 8 products and 8 priority categories
+INFO 2025-08-15 03:43:28,261 context_processors 27160 7424 Priority-sorted Categories context loaded: 9 main categories
+INFO 2025-08-15 03:43:34,042 views 27160 17704 Product list loaded: 9 products found
+INFO 2025-08-15 03:43:37,672 views 27160 17704 Home page loaded with 8 products and 8 priority categories
+INFO 2025-08-15 03:49:12,907 views 27160 16576 Home page loaded with 8 products and 8 priority categories
+INFO 2025-08-15 03:49:12,926 context_processors 27160 16576 Priority-sorted Categories context loaded: 9 main categories
+INFO 2025-08-15 03:50:00,924 views 27160 14028 Category detail loaded: Elektronika (Priority: 2) with 1 products
+WARNING 2025-08-15 03:50:45,981 log 27160 14028 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+INFO 2025-08-15 03:51:10,907 views 27160 27316 Home page loaded with 8 products and 8 priority categories
+INFO 2025-08-15 03:51:17,388 views 27160 27316 Home page loaded with 8 products and 8 priority categories
+WARNING 2025-08-15 11:47:59,605 log 19460 12992 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+INFO 2025-08-15 11:48:00,742 views 19460 12992 Category detail loaded: Elektronika (Priority: 2) with 1 products
+INFO 2025-08-15 11:48:00,792 context_processors 19460 12992 Priority-sorted Categories context loaded: 9 main categories
+WARNING 2025-08-15 11:48:01,086 log 19460 7244 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+INFO 2025-08-15 11:48:03,499 views 19460 7244 Home page loaded with 8 products and 8 priority categories
+INFO 2025-08-15 11:54:31,355 views 19460 25324 Home page loaded with 8 products and 8 priority categories
+INFO 2025-08-15 11:54:31,393 context_processors 19460 25324 Priority-sorted Categories context loaded: 9 main categories
+INFO 2025-08-15 11:54:50,664 views 19460 26716 Home page loaded with 8 products and 8 priority categories
+INFO 2025-08-15 11:55:13,104 views 19460 26716 Home page loaded with 8 products and 8 priority categories
+INFO 2025-08-15 11:55:29,743 views 19460 26716 Home page loaded with 8 products and 8 priority categories
+INFO 2025-08-15 11:55:42,971 views 19460 26716 Home page loaded with 8 products and 8 priority categories
+INFO 2025-08-15 11:56:00,084 views 19460 15632 Home page loaded with 8 products and 8 priority categories
+INFO 2025-08-15 11:56:11,909 views 19460 11892 Home page loaded with 8 products and 8 priority categories
+INFO 2025-08-15 11:56:19,732 views 19460 26716 Home page loaded with 8 products and 8 priority categories
+INFO 2025-08-15 11:57:18,295 views 19460 26716 Home page loaded with 8 products and 8 priority categories
+INFO 2025-08-15 11:57:31,577 views 19460 11892 Home page loaded with 8 products and 8 priority categories
+INFO 2025-08-15 11:57:54,992 views 19460 11892 Home page loaded with 8 products and 8 priority categories
+INFO 2025-08-15 11:58:11,347 views 19460 11892 Home page loaded with 8 products and 8 priority categories
+INFO 2025-08-15 11:58:23,803 views 19460 9484 Home page loaded with 8 products and 8 priority categories
+INFO 2025-08-15 11:58:33,759 views 19460 16616 Home page loaded with 8 products and 8 priority categories
+INFO 2025-08-15 11:58:51,276 views 19460 25888 Home page loaded with 8 products and 8 priority categories
+INFO 2025-08-15 11:59:00,206 views 19460 2544 Home page loaded with 8 products and 8 priority categories
+INFO 2025-08-15 11:59:12,510 views 19460 9320 Home page loaded with 8 products and 8 priority categories
+INFO 2025-08-15 12:00:04,491 views 19460 15672 Home page loaded with 8 products and 8 priority categories
+INFO 2025-08-15 12:00:04,525 context_processors 19460 15672 Priority-sorted Categories context loaded: 9 main categories
+INFO 2025-08-15 12:00:13,261 views 19460 15672 Home page loaded with 8 products and 8 priority categories
+INFO 2025-08-15 12:00:21,063 views 19460 27324 Home page loaded with 8 products and 8 priority categories
+INFO 2025-08-15 12:00:28,072 views 19460 15736 Home page loaded with 8 products and 8 priority categories
+INFO 2025-08-15 12:00:34,692 views 19460 7516 Home page loaded with 8 products and 8 priority categories
+INFO 2025-08-15 12:00:46,847 views 19460 9060 Home page loaded with 8 products and 8 priority categories
+INFO 2025-08-15 12:02:34,800 views 19460 9060 Home page loaded with 8 products and 8 priority categories
+INFO 2025-08-15 12:02:43,818 views 19460 28156 Home page loaded with 8 products and 8 priority categories
+INFO 2025-08-15 12:02:49,269 views 19460 28156 Home page loaded with 8 products and 8 priority categories
+INFO 2025-08-15 12:02:57,740 views 19460 28156 Home page loaded with 8 products and 8 priority categories
+INFO 2025-08-15 12:09:09,657 views 19460 15484 Home page loaded with 8 products and 8 priority categories
+INFO 2025-08-15 12:09:09,698 context_processors 19460 15484 Priority-sorted Categories context loaded: 9 main categories
+INFO 2025-08-15 12:09:24,016 views 19460 28440 Home page loaded with 8 products and 8 priority categories
+INFO 2025-08-15 12:10:16,306 views 19460 11928 Home page loaded with 8 products and 8 priority categories
+INFO 2025-08-15 12:10:27,257 views 19460 28180 Home page loaded with 8 products and 8 priority categories
+INFO 2025-08-15 12:10:44,263 views 19460 3400 Home page loaded with 8 products and 8 priority categories
+INFO 2025-08-15 12:15:34,954 views 19460 3400 Home page loaded with 8 products and 8 priority categories
+INFO 2025-08-15 12:15:34,990 context_processors 19460 3400 Priority-sorted Categories context loaded: 9 main categories
+INFO 2025-08-15 12:26:08,873 views 19460 16436 Home page loaded with 8 products and 8 priority categories
+INFO 2025-08-15 12:26:08,915 context_processors 19460 16436 Priority-sorted Categories context loaded: 9 main categories
+INFO 2025-08-15 12:26:27,249 views 19460 25696 Home page loaded with 8 products and 8 priority categories
+INFO 2025-08-15 12:29:57,592 views 19460 25260 Category detail loaded: Qida (Priority: 3) with 1 products
+INFO 2025-08-15 12:30:00,507 views 19460 25260 Home page loaded with 8 products and 8 priority categories
+WARNING 2025-08-15 12:31:07,769 log 19460 24968 Not Found: /favicon.ico
+INFO 2025-08-15 12:31:10,514 context_processors 19460 24968 Priority-sorted Categories context loaded: 9 main categories
+INFO 2025-08-15 12:32:38,123 views 19460 24968 Home page loaded with 8 products and 8 priority categories
+WARNING 2025-08-15 12:32:57,727 log 19460 16116 Not Found: /favicon.ico
+INFO 2025-08-15 12:33:15,372 views 19460 16116 Home page loaded with 8 products and 8 priority categories
+INFO 2025-08-15 12:51:03,392 context_processors 19460 26176 Priority-sorted Categories context loaded: 9 main categories
+WARNING 2025-08-15 12:51:03,598 log 19460 26176 Not Found: /favicon.ico
+INFO 2025-08-15 12:53:04,937 views 19460 26176 Home page loaded with 8 products and 8 priority categories
+INFO 2025-08-15 13:04:29,352 context_processors 19460 6124 Priority-sorted Categories context loaded: 9 main categories
+WARNING 2025-08-15 13:04:29,662 log 19460 6124 Not Found: /favicon.ico
+INFO 2025-08-15 13:05:42,163 views 19460 6124 Home page loaded with 8 products and 8 priority categories
+INFO 2025-08-15 13:05:54,080 views 19460 26480 Home page loaded with 8 products and 8 priority categories
+INFO 2025-08-15 13:06:01,006 views 19460 21436 Product list loaded: 8 products found
+WARNING 2025-08-15 13:06:15,332 log 19460 21436 Not Found: /favicon.ico
+INFO 2025-08-15 13:06:24,853 views 19460 21436 Product list loaded: 8 products found
+INFO 2025-08-15 13:06:35,917 autoreload 30620 11492 Watching for file changes with StatReloader
+INFO 2025-08-15 13:06:36,864 views 30620 14316 Product list loaded: 8 products found
+INFO 2025-08-15 13:06:36,900 context_processors 30620 14316 Priority-sorted Categories context loaded: 9 main categories
+WARNING 2025-08-15 13:08:01,058 log 30620 30348 Not Found: /favicon.ico
+INFO 2025-08-15 13:12:32,919 context_processors 30620 30348 Priority-sorted Categories context loaded: 9 main categories
+INFO 2025-08-15 13:12:41,165 autoreload 19260 18068 Watching for file changes with StatReloader
+INFO 2025-08-15 13:12:42,894 views 19260 16276 Home page loaded with 8 products and 8 priority categories
+INFO 2025-08-15 13:12:42,954 context_processors 19260 16276 Priority-sorted Categories context loaded: 9 main categories
+INFO 2025-08-15 13:13:03,737 views 19260 4720 Category detail loaded: Referans Mardakan (Priority: 2) with 0 products
+WARNING 2025-08-15 13:13:46,583 log 19260 4720 Not Found: /favicon.ico
+INFO 2025-08-15 13:15:28,346 autoreload 27304 29908 Watching for file changes with StatReloader
+INFO 2025-08-15 13:15:32,674 views 27304 30548 Category detail loaded: Referans Mardakan (Priority: 2) with 0 products
+INFO 2025-08-15 13:15:32,708 context_processors 27304 30548 Priority-sorted Categories context loaded: 9 main categories
+WARNING 2025-08-15 13:17:15,720 log 27304 30676 Not Found: /favicon.ico
+INFO 2025-08-15 13:18:08,137 views 27304 30676 Category detail loaded: Referans Mardakan (Priority: 2) with 0 products
+INFO 2025-08-15 13:18:17,802 autoreload 29408 29488 Watching for file changes with StatReloader
+INFO 2025-08-15 13:18:18,470 views 29408 26832 Category detail loaded: Referans Mardakan (Priority: 2) with 0 products
+INFO 2025-08-15 13:18:18,520 context_processors 29408 26832 Priority-sorted Categories context loaded: 9 main categories
+WARNING 2025-08-15 13:20:02,336 log 29408 10936 Not Found: /favicon.ico
+INFO 2025-08-15 13:20:48,822 autoreload 18560 11872 Watching for file changes with StatReloader
+INFO 2025-08-15 13:20:49,852 views 18560 8300 Category detail loaded: Referans Mardakan (Priority: 201) with 0 products
+INFO 2025-08-15 13:20:49,886 context_processors 18560 8300 Priority-sorted Categories context loaded: 9 main categories
+INFO 2025-08-15 13:21:27,473 views 18560 27784 Home page loaded with 8 products and 8 priority categories
+INFO 2025-08-15 13:53:08,719 views 18560 29620 Home page loaded with 8 products and 8 priority categories
+INFO 2025-08-15 13:53:08,763 context_processors 18560 29620 Priority-sorted Categories context loaded: 9 main categories
+INFO 2025-08-15 13:57:02,287 views 18560 29620 Home page loaded with 8 products and 8 priority categories
+INFO 2025-08-15 13:57:45,578 views 18560 27500 Home page loaded with 8 products and 8 priority categories
+WARNING 2025-08-15 13:59:13,914 log 18560 13928 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+INFO 2025-08-15 14:03:15,319 autoreload 11764 4552 Watching for file changes with StatReloader
+WARNING 2025-08-15 14:03:16,719 log 11764 30232 Not Found: /az/landing/
+WARNING 2025-08-15 14:03:16,782 log 11764 30232 Not Found: /favicon.ico
+INFO 2025-08-15 14:03:20,716 views 11764 30232 Home page loaded with 8 products and 8 priority categories
+INFO 2025-08-15 14:03:20,768 context_processors 11764 30232 Priority-sorted Categories context loaded: 9 main categories
+INFO 2025-08-15 14:03:26,925 views 11764 26492 Home page loaded with 8 products and 8 priority categories
+INFO 2025-08-15 14:03:56,605 views 11764 28764 Home page loaded with 8 products and 8 priority categories
+INFO 2025-08-15 14:08:48,506 context_processors 11764 25680 Priority-sorted Categories context loaded: 9 main categories
+INFO 2025-08-15 14:08:53,231 views 11764 25680 Home page loaded with 8 products and 8 priority categories
+INFO 2025-08-15 14:09:02,431 views 11764 28548 Home page loaded with 8 products and 8 priority categories
+INFO 2025-08-15 14:48:34,725 context_processors 11764 27088 Priority-sorted Categories context loaded: 9 main categories
+WARNING 2025-08-15 14:48:34,807 log 11764 27088 Not Found: /favicon.ico
+INFO 2025-08-15 14:49:25,375 autoreload 5888 3208 Watching for file changes with StatReloader
+INFO 2025-08-15 14:49:26,844 views 5888 31464 Home page loaded with 8 products and 8 priority categories
+INFO 2025-08-15 14:49:26,909 context_processors 5888 31464 Priority-sorted Categories context loaded: 9 main categories
+INFO 2025-08-15 14:49:35,948 views 5888 30380 Category detail loaded: Referans Mardakan (Priority: 201) with 1 products
+INFO 2025-08-15 14:50:57,627 views 5888 30380 Home page loaded with 8 products and 8 priority categories
+INFO 2025-08-15 15:18:11,262 views 5888 30944 Home page loaded with 8 products and 8 priority categories
+INFO 2025-08-15 15:18:11,319 context_processors 5888 30944 Priority-sorted Categories context loaded: 9 main categories
+WARNING 2025-08-15 15:18:44,249 log 5888 14660 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+INFO 2025-08-15 15:23:07,946 views 5888 14660 Home page loaded with 8 products and 8 priority categories
+INFO 2025-08-15 15:27:15,384 views 5888 2336 Home page loaded with 8 products and 8 priority categories
+INFO 2025-08-15 15:27:15,436 context_processors 5888 2336 Priority-sorted Categories context loaded: 9 main categories
+WARNING 2025-08-15 15:27:34,503 log 5888 2336 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-15 15:27:37,473 log 5888 2336 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-15 15:27:40,911 log 5888 2336 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-15 15:27:41,032 log 5888 2336 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+INFO 2025-08-15 15:27:49,745 views 5888 2336 Category detail loaded: Elektronika (Priority: 2) with 1 products
+WARNING 2025-08-15 15:27:49,857 log 5888 2336 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-15 15:27:51,109 log 5888 2336 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-15 15:27:51,191 log 5888 2336 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+INFO 2025-08-15 15:27:54,493 views 5888 2336 Home page loaded with 8 products and 8 priority categories
+WARNING 2025-08-15 15:27:54,602 log 5888 30944 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+INFO 2025-08-15 15:39:08,100 views 5888 26844 Home page loaded with 8 products and 8 priority categories
+INFO 2025-08-15 15:39:08,158 context_processors 5888 26844 Priority-sorted Categories context loaded: 9 main categories
+INFO 2025-08-15 15:41:42,159 views 5888 26844 Category detail loaded: Referans Mardakan (Priority: 201) with 1 products
+INFO 2025-08-15 15:41:49,625 views 5888 26844 Home page loaded with 8 products and 8 priority categories
+INFO 2025-08-15 16:20:49,114 views 5888 28744 Home page loaded with 8 products and 8 priority categories
+INFO 2025-08-15 16:20:49,186 context_processors 5888 28744 Priority-sorted Categories context loaded: 9 main categories
+INFO 2025-08-15 16:20:59,635 views 5888 19532 Home page loaded with 8 products and 8 priority categories
+INFO 2025-08-15 16:21:21,913 views 5888 21184 Home page loaded with 8 products and 8 priority categories
+INFO 2025-08-15 16:33:33,871 views 5888 18684 Home page loaded with 8 products and 8 priority categories
+INFO 2025-08-15 16:33:33,934 context_processors 5888 18684 Priority-sorted Categories context loaded: 9 main categories
+INFO 2025-08-15 16:48:18,005 views 5888 27496 Home page loaded with 8 products and 8 priority categories
+INFO 2025-08-15 16:48:18,069 context_processors 5888 27496 Priority-sorted Categories context loaded: 9 main categories
+INFO 2025-08-15 16:52:14,696 views 5888 27496 Home page loaded with 8 products and 8 priority categories
+WARNING 2025-08-15 16:52:33,096 log 5888 19700 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-15 16:52:37,188 log 5888 19700 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-15 16:52:40,651 log 5888 19700 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+INFO 2025-08-15 16:53:03,141 views 5888 19700 Product list loaded: 9 products found
+INFO 2025-08-15 16:53:05,256 views 5888 19700 Home page loaded with 8 products and 8 priority categories
+INFO 2025-08-15 16:53:14,927 views 5888 19700 Home page loaded with 8 products and 8 priority categories
+INFO 2025-08-15 16:53:59,664 views 5888 27496 Home page loaded with 8 products and 8 priority categories
+INFO 2025-08-15 16:53:59,725 context_processors 5888 27496 Priority-sorted Categories context loaded: 9 main categories
+WARNING 2025-08-15 16:54:10,285 log 5888 27496 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+INFO 2025-08-15 16:55:10,596 views 5888 27496 Home page loaded with 8 products and 8 priority categories
+INFO 2025-08-15 17:44:36,583 views 5888 25724 Home page loaded with 8 products and 8 priority categories
+INFO 2025-08-15 17:44:36,639 context_processors 5888 25724 Priority-sorted Categories context loaded: 9 main categories
+INFO 2025-08-15 17:49:25,214 views 5888 24108 Home page loaded with 8 products and 8 priority categories
+INFO 2025-08-15 17:51:26,475 context_processors 5888 15404 Priority-sorted Categories context loaded: 9 main categories
+WARNING 2025-08-15 17:51:26,780 log 5888 15404 Not Found: /favicon.ico
+INFO 2025-08-15 17:51:51,500 views 5888 15404 Home page loaded with 8 products and 8 priority categories
+INFO 2025-08-15 17:52:03,520 autoreload 27808 2192 Watching for file changes with StatReloader
+INFO 2025-08-15 17:52:04,653 views 27808 23952 Home page loaded with 8 products and 8 priority categories
+INFO 2025-08-15 17:52:04,719 context_processors 27808 23952 Priority-sorted Categories context loaded: 9 main categories
+INFO 2025-08-15 18:15:33,369 views 27808 26680 Home page loaded with 8 products and 8 priority categories
+INFO 2025-08-15 18:15:33,428 context_processors 27808 26680 Priority-sorted Categories context loaded: 9 main categories
+WARNING 2025-08-15 18:15:46,720 log 27808 30792 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+INFO 2025-08-15 18:18:22,205 views 27808 30792 Home page loaded with 8 products and 8 priority categories
+INFO 2025-08-15 18:21:29,425 views 27808 30792 Home page loaded with 8 products and 8 priority categories
+INFO 2025-08-15 18:21:29,488 context_processors 27808 30792 Priority-sorted Categories context loaded: 9 main categories
+INFO 2025-08-15 18:21:56,918 views 27808 30792 Home page loaded with 8 products and 8 priority categories
+INFO 2025-08-15 18:22:48,583 views 27808 30384 Home page loaded with 8 products and 8 priority categories
+INFO 2025-08-15 18:24:18,819 views 27808 30384 Home page loaded with 8 products and 8 priority categories
+INFO 2025-08-15 18:41:28,449 autoreload 21748 4980 Watching for file changes with StatReloader
+INFO 2025-08-15 18:42:09,601 views 27808 24656 Home page loaded with 8 products and 8 priority categories
+INFO 2025-08-15 18:42:09,650 context_processors 27808 24656 Priority-sorted Categories context loaded: 9 main categories
+INFO 2025-08-15 18:48:24,701 views 27808 29864 Home page loaded with 8 products and 8 priority categories
+INFO 2025-08-15 18:48:24,757 context_processors 27808 29864 Priority-sorted Categories context loaded: 9 main categories
+INFO 2025-08-15 18:55:41,359 context_processors 27808 30396 Priority-sorted Categories context loaded: 9 main categories
+WARNING 2025-08-15 18:55:41,661 log 27808 30396 Not Found: /favicon.ico
+INFO 2025-08-15 19:07:17,756 context_processors 27808 30068 Priority-sorted Categories context loaded: 9 main categories
+INFO 2025-08-15 19:07:41,409 views 27808 30068 Home page loaded with 8 products and 8 priority categories
+INFO 2025-08-15 19:21:25,156 autoreload 28172 31096 Watching for file changes with StatReloader
+WARNING 2025-08-15 19:21:48,181 log 28172 25672 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-15 19:22:01,349 log 28172 25672 Not Found: /az/accounts/login/
+WARNING 2025-08-15 19:22:01,445 log 28172 25672 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-15 19:22:01,451 log 28172 10840 Not Found: /favicon.ico
+WARNING 2025-08-15 19:22:04,050 log 28172 10840 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-15 19:22:04,118 log 28172 10840 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+INFO 2025-08-15 19:27:43,348 views 28172 19024 Home page loaded with 8 products and 8 priority categories
+INFO 2025-08-15 19:27:43,422 context_processors 28172 19024 Priority-sorted Categories context loaded: 9 main categories
+INFO 2025-08-15 19:28:28,876 views 28172 28852 Home page loaded with 8 products and 8 priority categories
+INFO 2025-08-15 19:33:32,040 views 28172 22428 Home page loaded with 8 products and 8 priority categories
+INFO 2025-08-15 19:33:32,106 context_processors 28172 22428 Priority-sorted Categories context loaded: 9 main categories
+INFO 2025-08-15 19:33:44,199 views 28172 22428 Home page loaded with 8 products and 8 priority categories
+INFO 2025-08-15 19:37:18,925 views 28172 29556 Home page loaded with 8 products and 8 priority categories
+WARNING 2025-08-15 19:37:59,324 log 28172 29556 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+INFO 2025-08-16 12:50:00,633 autoreload 17236 30484 Watching for file changes with StatReloader
+INFO 2025-08-16 12:50:01,132 views 17236 21660 Home page loaded with 8 products and 8 priority categories
+INFO 2025-08-16 12:50:01,218 context_processors 17236 21660 Priority-sorted Categories context loaded: 9 main categories
+INFO 2025-08-16 12:50:03,836 views 17236 25828 Home page loaded with 8 products and 8 priority categories
+INFO 2025-08-16 13:31:13,046 views 17236 20004 Home page loaded with 8 products and 8 priority categories
+INFO 2025-08-16 13:31:13,115 context_processors 17236 20004 Priority-sorted Categories context loaded: 9 main categories

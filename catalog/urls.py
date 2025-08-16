@@ -38,9 +38,25 @@ urlpatterns = [
     path('products/', views.product_list, name='product_list'),
     path('mehsullar/', views.product_list, name='product_list_az'),
 
-    # Hero versiyaları üçün
+    # Hero versiyaları üçün (legacy)
     path('products-hero/', views.product_list_hero, name='product_list_hero'),
     path('product-hero/<slug:slug>/', views.product_detail_hero, name='product_detail_hero'),
+    
+    # =================================
+    # HERO PAGE TEMPLATE VERSIONS - Yeni base_hero.html istifadə edən səhifələr
+    # =================================
+    
+    # Kateqoriyalar - Hero versiyası
+    path('categories-hero/', views.categories_hero, name='categories_hero'),
+    path('kategoriyalar-hero/', views.categories_hero, name='categories_hero_az'),
+    
+    # Məhsullar - Hero versiyası  
+    path('products-hero-new/', views.products_hero, name='products_hero'),
+    path('mehsullar-hero/', views.products_hero, name='products_hero_az'),
+    
+    # Haqqımızda - Hero versiyası
+    path('about-hero/', views.about_hero, name='about_hero'),
+    path('haqqimizda-hero/', views.about_hero, name='about_hero_az'),
     
     # Məhsul təfsilatı
     path('product/<slug:slug>/', views.product_detail, name='product_detail'),
@@ -77,98 +93,38 @@ urlpatterns = [
     # =================================
     
     # Haqqımızda səhifəsi
-    path('about/', TemplateView.as_view(
-        template_name='pages/about.html',
-        extra_context={
-            'page_title': 'Haqqımızda',
-            'meta_description': 'drop.az haqqında məlumat - missiyamız və dəyərlərimiz'
-        }
-    ), name='about'),
+    path('about/', views.about_hero, name='about'),
     
     # Əlaqə səhifəsi
-    path('contact/', TemplateView.as_view(
-        template_name='pages/contact.html',
-        extra_context={
-            'page_title': 'Əlaqə',
-            'meta_description': 'drop.az ilə əlaqə saxlayın - telefon, e-mail və ünvan'
-        }
-    ), name='contact'),
+    path('contact/', views.contact_hero, name='contact'),
     
     # Çatdırılma məlumatları
-    path('delivery/', TemplateView.as_view(
-        template_name='pages/delivery.html',
-        extra_context={
-            'page_title': 'Çatdırılma',
-            'meta_description': 'drop.az çatdırılma şərtləri və qiymətləri'
-        }
-    ), name='delivery'),
+    path('delivery/', views.delivery_hero, name='delivery'),
     
     # Qaytarma şərtləri
-    path('returns/', TemplateView.as_view(
-        template_name='pages/returns.html',
-        extra_context={
-            'page_title': 'Qaytarma',
-            'meta_description': 'drop.az qaytarma şərtləri və prosedurları'
-        }
-    ), name='returns'),
+    path('returns/', views.returns_hero, name='returns'),
     
     # Ödəniş üsulları
-    path('payment/', TemplateView.as_view(
-        template_name='pages/payment.html',
-        extra_context={
-            'page_title': 'Ödəniş',
-            'meta_description': 'drop.az ödəniş üsulları və təhlükəsizlik'
-        }
-    ), name='payment'),
+    path('payment/', views.payment_hero, name='payment'),
     
     # FAQ - Tez-tez verilən suallar
-    path('faq/', TemplateView.as_view(
-        template_name='pages/faq.html',
-        extra_context={
-            'page_title': 'FAQ',
-            'meta_description': 'drop.az tez-tez verilən suallar və cavablar'
-        }
-    ), name='faq'),
+    path('faq/', views.faq_hero, name='faq'),
     
     # Zəmanət şərtləri
-    path('warranty/', TemplateView.as_view(
-        template_name='pages/warranty.html',
-        extra_context={
-            'page_title': 'Zəmanət',
-            'meta_description': 'drop.az zəmanət şərtləri və xidmətləri'
-        }
-    ), name='warranty'),
+    path('warranty/', views.warranty_hero, name='warranty'),
     
     # =================================
     # LEGAL PAGES
     # =================================
     
     # İstifadə şərtləri
-    path('terms/', TemplateView.as_view(
-        template_name='legal/terms.html',
-        extra_context={
-            'page_title': 'İstifadə Şərtləri',
-            'meta_description': 'drop.az istifadə şərtləri və qaydalar'
-        }
-    ), name='terms'),
+    path('terms/', views.terms_hero, name='terms'),
     
     # Məxfilik siyasəti
-    path('privacy/', TemplateView.as_view(
-        template_name='legal/privacy.html',
-        extra_context={
-            'page_title': 'Məxfilik Siyasəti',
-            'meta_description': 'drop.az məxfilik siyasəti və şəxsi məlumatların qorunması'
-        }
-    ), name='privacy'),
+    path('privacy/', views.privacy_hero, name='privacy'),
     
     # Çerez siyasəti
-    path('cookies/', TemplateView.as_view(
-        template_name='legal/cookies.html',
-        extra_context={
-            'page_title': 'Çerez Siyasəti',
-            'meta_description': 'drop.az çerez siyasəti və istifadəsi'
-        }
-    ), name='cookies'),
+    path('cookies/', views.cookies_hero, name='cookies'),
     
     # =================================
     # SEARCH & FILTER URLS
@@ -204,8 +160,8 @@ urlpatterns = [
     
     # Azərbaycan dilində URL-lər
     path('ana-sehife/', views.home, name='home_az'),
-    path('endirimler/', TemplateView.as_view(template_name='pages/sales.html'), name='sales_az'),
-    path('yenilikler/', TemplateView.as_view(template_name='pages/new_products.html'), name='new_products_az'),
+    path('endirimler/', views.delivery_hero, name='sales_az'),  # Temporarily use delivery hero
+    path('yenilikler/', views.delivery_hero, name='new_products_az'),  # Temporarily use delivery hero
     
     # =================================
     # BREADCRUMB & NAVIGATION HELPERS

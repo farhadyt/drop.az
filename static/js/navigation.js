@@ -187,14 +187,17 @@ class MegaMenu {
     bindDesktopEvents() {
         if (!this.elements.trigger) return;
 
-        // Click to open on desktop (instead of hover for better control)
+        // Open on click and hover for full parity across templates
         this.elements.trigger.addEventListener('click', (e) => {
             e.preventDefault();
             e.stopPropagation();
             this.toggleMenu();
         });
+        this.elements.trigger.addEventListener('mouseenter', () => {
+            this.openMenu();
+        });
 
-        // Keep menu open when hovering
+        // Keep menu open when hovering inside menu
         if (this.elements.menu) {
             this.elements.menu.addEventListener('mouseenter', () => {
                 clearTimeout(this.state.closeTimer);
@@ -205,18 +208,20 @@ class MegaMenu {
             });
         }
 
-        // Level 1: Main category hover events
+        // Level 1: Main category hover events — bind to link for reliability
         this.elements.categoryItems.forEach(item => {
-            item.addEventListener('mouseenter', () => {
+            const link = item.querySelector('.category-dropdown-link') || item;
+            link.addEventListener('mouseenter', () => {
                 const categoryId = item.dataset.categoryId;
                 this.showSubcategories(categoryId);
             });
         });
 
-        // Level 2: Subcategory hover events (only for desktop)
+        // Level 2: Subcategory hover events (desktop only) — bind to link
         if (!this.state.isTablet) {
             this.elements.subcategoryItems.forEach(item => {
-                item.addEventListener('mouseenter', () => {
+                const link = item.querySelector('.subcategory-link') || item;
+                link.addEventListener('mouseenter', () => {
                     const subcategoryId = item.dataset.subcategoryId;
                     this.showThirdLevel(subcategoryId);
                 });
